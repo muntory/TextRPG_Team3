@@ -2,12 +2,17 @@
 
 public class SceneManager
 {
-	private static private SceneManager instance = new();
-	public static SceneManager Instance => instance ?? (_instance = new());
+	private static SceneManager instance;
+	public static SceneManager Instance {  get { return instance; } }
+
+	public BaseScene CurrentScene { get; set; }
 
 	public SceneManager()
 	{
-
+		if (instance == null)
+		{
+			instance = this;
+		}
 	}
 
 }
