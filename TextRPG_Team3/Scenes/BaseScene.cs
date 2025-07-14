@@ -1,10 +1,15 @@
 ﻿using System;
+using TextRPG_Team3.Interfaces;
 
-namespace TextRPG_Team3.Scenes
+public class BaseScene : IScene
 {
-    public class BaseScene
-    {
+	public virtual void Render(ref int menuMin, ref int menuMax)
+	{
+		Console.Clear();
+	}
+	public virtual void SelectMenu(int num)
+	{
 
-    }
+	}
 }
 

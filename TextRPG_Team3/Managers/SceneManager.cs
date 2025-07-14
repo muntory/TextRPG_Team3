@@ -1,4 +1,5 @@
 ﻿using System;
+using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Scenes;
 
 namespace TextRPG_Team3.Managers

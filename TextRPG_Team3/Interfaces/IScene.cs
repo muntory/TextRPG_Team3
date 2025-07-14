@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TextRPG_Team3.Interfaces
 {
-    internal interface IScene
+    public interface IScene
     {
-        void Render();
+        void Render(ref int menuMin, ref int menuMax);
+        void SelectMenu(int num);
     }
 }
