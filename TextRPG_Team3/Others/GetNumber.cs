@@ -8,12 +8,10 @@ namespace TextRPG_Team3.Others
 {
     internal class GetNumber
     {
-        private static GetNumber instance = new();
-        public static GetNumber Instance => instance ?? (instance = new());
         int result = 0;
         public int GetMenuNumber(int min, int max)
         {
-            Console.WriteLine("원하시는 행동을 입력해주세요.");
+            Console.WriteLine("\n원하시는 행동을 입력해주세요.");
             while (true)
             {
                 Console.WriteLine(">>");

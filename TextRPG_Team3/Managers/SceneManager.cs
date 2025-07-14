@@ -7,7 +7,7 @@ public class SceneManager
     private static SceneManager instance;
     public static SceneManager Instance { get { return instance; } }
 
-    public BaseScene CurrentScene { get; set; }
+    public IScene CurrentScene { get; set; }
 
     public SceneManager()
     {
