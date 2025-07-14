@@ -1,18 +1,23 @@
 ﻿using System;
+using TextRPG_Team3.Scenes;
 
-public class SceneManager
+namespace TextRPG_Team3.Managers
 {
-	private static SceneManager instance;
-	public static SceneManager Instance {  get { return instance; } }
-
-	public BaseScene CurrentScene { get; set; }
-
-	public SceneManager()
+	public class SceneManager
 	{
-		if (instance == null)
-		{
-			instance = this;
-		}
-	}
+		private static SceneManager instance;
+		public static SceneManager Instance {  get { return instance; } }
 
+		public BaseScene CurrentScene { get; set; }
+
+		public SceneManager()
+		{
+			if (instance == null)
+			{
+				instance = this;
+			}
+		}
+
+	}
 }
+
