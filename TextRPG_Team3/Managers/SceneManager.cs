@@ -4,6 +4,18 @@ using TextRPG_Team3.Scenes;
 
 public class SceneManager
 {
+    private static SceneManager instance;
+    public static SceneManager Instance { get { return instance; } }
+
+    public BaseScene CurrentScene { get; set; }
+
+    public SceneManager()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     /*private static SceneManager instance = new();
     public static SceneManager Instance => instance ?? (instance = new());
 
@@ -40,6 +52,6 @@ public class SceneManager
     }
     public SceneManager()
     {
-
+	
     }*/
 }
