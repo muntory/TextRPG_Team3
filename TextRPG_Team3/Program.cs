@@ -7,10 +7,11 @@ namespace TextRPG_Team3
     internal class Program
     {
         SceneManager sceneManager;
-        int menuMin = 0;
-        int menuMax = 0;
+        
         static void Main(string[] args)
         {
+            int menuMin = 0;
+            int menuMax = 0;
             Program program = new();
             program.Init();
 
