@@ -6,6 +6,7 @@ namespace TextRPG_Team3
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             int menuMin = 0;
