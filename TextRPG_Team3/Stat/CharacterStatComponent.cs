@@ -41,23 +41,26 @@ namespace TextRPG_Team3.Stat
 
         // 체력 선언
         public int MaxHealth;
-        private int health;
+        private int health = 1;
         public int Health           // 체력 범위 한정
         {
             get { return health; }
             set
             {
                 health = Math.Clamp(value, 0, MaxHealth);
-                if (health == 0)
+                if (Health == 0)
                 {
                     OnHpZero?.Invoke();
                 }
             }
         }
 
-        public void TakeDamage(int inDamage)
+        public int TakeDamage(int inDamage)
         {
+            int prevHealth = Health;
             Health -= inDamage;
+
+            return Health - prevHealth;
         }
 
 

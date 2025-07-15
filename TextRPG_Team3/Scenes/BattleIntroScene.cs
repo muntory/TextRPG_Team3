@@ -19,7 +19,7 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            Console.WriteLine("**Battle!!**");
+            Console.WriteLine("Battle!!");
             Console.WriteLine();
 
             // 문자열 변수 만들어서 적 정보 할당할 공간 만들기
@@ -29,9 +29,9 @@ namespace TextRPG_Team3.Scenes
             foreach (var enemy in currentEnemies)
             {
                 // Level : 임시로 1~5 사이의 숫자 부여.
-                int enemyLevel = random.Next(1, 6);
+                enemy.CharacterStat.Level = random.Next(1, 6);
 
-                enemyinfo += $"Lv. {enemyLevel}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
+                enemyinfo += $"Lv. {enemy.CharacterStat.Level}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
             }
             Console.WriteLine(enemyinfo);
             Console.WriteLine();
@@ -53,7 +53,7 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Attack:
-                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene(currentEnemies);
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

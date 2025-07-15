@@ -14,7 +14,6 @@ namespace TextRPG_Team3.Character
     public class EnemyCharacter : BaseCharacter
     {
         
-        public bool IsAlive { get; private set; }
         
 
         public CharacterStatComponent CharacterStat { get; set; }
@@ -27,10 +26,9 @@ namespace TextRPG_Team3.Character
             CharacterStat.OnHpZero += Die;
         }
 
-        public EnemyCharacter(EnemyData enemyData) : base()
+        public EnemyCharacter(EnemyData enemyData) : this()
         {
             Name = enemyData.Name;
-            CharacterStat = new CharacterStatComponent();
             CharacterStat.MaxHealth = enemyData.HP;
             CharacterStat.Health = CharacterStat.MaxHealth;
             CharacterStat.BaseAttack = enemyData.Attack;
@@ -40,13 +38,19 @@ namespace TextRPG_Team3.Character
         // enemy Attack 로직 구현하기
         public void Attack(BaseCharacter target)
         {
+            if (!IsAlive)
+                return;
             target.OnHit?.Invoke((int)CharacterStat.FinalAttack);
         }
 
 
         public void Die()
         {
-            IsAlive = false;
+            if (IsAlive)
+            {
+                IsAlive = false;
+            }
+            
 
             // 에너미 사망 로직
             // 1. 플레이어 한테 경험치 주기

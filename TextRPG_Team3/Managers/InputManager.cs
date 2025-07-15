@@ -12,6 +12,8 @@ namespace TextRPG_Team3.Managers
         static private InputManager instance;
         static public InputManager Instance { get { return instance; } }
 
+        public int UserInput {  get; set; }
+
         public InputManager()
         {
             if (instance == null)
@@ -42,6 +44,7 @@ namespace TextRPG_Team3.Managers
                     break;
                 }
             }
+            UserInput = ret;
 
             return ret;
         }

@@ -26,6 +26,8 @@ namespace TextRPG_Team3.Character
         // Attack 로직 구현 하기
         public void Attack(BaseCharacter target)
         {
+            if (!IsAlive) return;
+
             double damageModifier = 1.0 + (Random.Shared.NextDouble() * 20.0 - 10.0) * 0.01;
             double inDamage = PlayerStat.FinalAttack * damageModifier;
             inDamage = Math.Ceiling(inDamage);
