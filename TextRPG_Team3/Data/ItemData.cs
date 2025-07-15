@@ -20,9 +20,20 @@ namespace TextRPG_Team3.Data
     {
         private static ItemData instance;
         private JsonSerializerOptions options;
+       
+    
         public static ItemData Instance { get { return instance; } }
         public static string Game_Root_Dir = $"{AppDomain.CurrentDomain.BaseDirectory}/../../..";
         public static string SAVE_DIR = $"{Game_Root_Dir}/Save";
+
+
+        public ItemData()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -30,7 +41,7 @@ namespace TextRPG_Team3.Data
         public CharacterStatComponent.CharacterStatType CharacterBaseStat { get; set; }
         public int Value { get; set; }
 
-        public string Discription { get; set; }
+        public string Description { get; set; }
     
         public List<T> LoadJsonData<T>(string jsonPath)
         {

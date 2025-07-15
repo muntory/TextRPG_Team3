@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Character\EnemyCharcter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EditorConfigFiles Remove="C:\TextRPG_Team3\TextRPG_Team3\.editorconfig" />
   </ItemGroup>
 

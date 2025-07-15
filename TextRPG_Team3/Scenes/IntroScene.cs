@@ -35,7 +35,6 @@ namespace TextRPG_Team3.Scenes
                 case IntroMenuE.Stat:
                     SceneManager.Instance.CurrentScene = new StatScene();
                     ResourceManager.Instance.SaveJsonData($"{ResourceManager.GAME_ROOT_DIR}/Save/Character/Player.json", GameManager.Instance.Player);
-                    ItemData.Instance.SaveJsonData($"{ItemData.Game_Root_Dir}/Save/Item/Item.json", ItemData.Instance.Id);
                     break;
                 case IntroMenuE.Battle:
                     SceneManager.Instance.CurrentScene = new BattleScene(); break;
