@@ -15,7 +15,7 @@ namespace TextRPG_Team3.Character
     {
         
         public bool IsAlive { get; private set; }
-        
+        Random random = new Random();
 
         public CharacterStatComponent CharacterStat { get; set; }
 
@@ -35,6 +35,9 @@ namespace TextRPG_Team3.Character
             CharacterStat.Health = CharacterStat.MaxHealth;
             CharacterStat.BaseAttack = enemyData.Attack;
             CharacterStat.BaseDefense = enemyData.Defense;
+            
+            // Level 만들어 둬야 해서 임시로 만듦.
+            CharacterStat.Level = random.Next(1, 10);
         }
 
         // enemy Attack 로직 구현하기
