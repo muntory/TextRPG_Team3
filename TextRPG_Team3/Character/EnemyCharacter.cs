@@ -32,6 +32,7 @@ namespace TextRPG_Team3.Character
             Name = enemyData.Name;
             CharacterStat = new CharacterStatComponent();
             CharacterStat.MaxHealth = enemyData.HP;
+            CharacterStat.Health = CharacterStat.MaxHealth;
             CharacterStat.BaseAttack = enemyData.Attack;
             CharacterStat.BaseDefense = enemyData.Defense;
         }
