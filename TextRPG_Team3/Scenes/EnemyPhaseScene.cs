@@ -26,6 +26,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"Lv. {GameManager.Instance.Player.PlayerStat.Level} {GameManager.Instance.Player.Name}");
             Console.WriteLine($"HP {prevHealth} -> {followingHealth}");
             Console.WriteLine("\n0. 다음");
+            SkipEnemy();
             index++;
         }
         private void SkipEnemy()
@@ -49,7 +50,7 @@ namespace TextRPG_Team3.Scenes
             switch (enemyPhaseMenuE)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    if (index == currentEnemies.Count)
+                    if (index >= currentEnemies.Count)
                     {
                         SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
                     }
