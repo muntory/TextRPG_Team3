@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using TextRPG_Team3.Data;
 
 namespace TextRPG_Team3.Managers
 {
@@ -17,7 +18,8 @@ namespace TextRPG_Team3.Managers
         public static string GAME_ROOT_DIR = $"{AppDomain.CurrentDomain.BaseDirectory}/../../..";
         public static string SAVE_DIR = $"{GAME_ROOT_DIR}/Save";
 
-        
+        private Dictionary<int, EnemyData> EnemyDB;
+
 
         private JsonSerializerOptions options;
         public ResourceManager()
@@ -26,6 +28,39 @@ namespace TextRPG_Team3.Managers
             {
                 instance = this;
             }
+        }
+
+        /// <summary>
+        /// EnemyData 정보가 있는 Dictionary를 가져오는 함수 
+        /// </summary>
+        /// <returns>key가 ID, value가 EnemyData인 Dictionary</returns>
+        public Dictionary<int, EnemyData> GetEnemyDB()
+        {
+            if (EnemyDB == null)
+            {
+                List<EnemyData> enemyList = LoadJsonData<EnemyData>($"GAME_ROOT_DIR/Data/EnemyDataList.json");
+                
+                foreach (EnemyData enemyData in enemyList)
+                {
+                    if (enemyData == null) continue;
+
+                    EnemyDB.Add(enemyData.ID, enemyData);
+                }
+            }
+
+            return EnemyDB;
+        }
+
+        /// <summary>
+        /// <paramref name="ID"/> EnemyData를 가져오는 메서드
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>EnemyData</returns>
+        public EnemyData GetEnemyData(int ID)
+        {
+            if (EnemyDB == null) return null;
+
+            return EnemyDB[ID];
         }
 
         /// <summary>

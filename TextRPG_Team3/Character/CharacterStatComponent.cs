@@ -17,6 +17,8 @@ namespace TextRPG_Team3.Character
             Health,
         }
 
+        public Action OnHpZero;
+
         // 레벨 선언 -> Private로
         private int level;
 
@@ -44,22 +46,29 @@ namespace TextRPG_Team3.Character
         }
 
         // 체력 선언
+        public int MaxHealth;
         private int health;
         public int Health           // 체력 범위 한정
         {
             get { return health; }
             set
             {
-                health = Math.Clamp(value, 0, 100);
+                health = Math.Clamp(value, 0, MaxHealth);
+                if (health == 0)
+                {
+                    OnHpZero?.Invoke();
+                }
             }
         }
+
 
         public CharacterStatComponent()
         {
             Level = 1;
             BaseAttack = 10.0;
             BaseDefense = 5.0;
-            Health = 100;
+            MaxHealth = 100;
+            Health = MaxHealth;
         }
     }
 }
