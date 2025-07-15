@@ -15,6 +15,4 @@ namespace TextRPG_Team3.Character
             Gold = 1500;
         }
     }
-
-    
 }
