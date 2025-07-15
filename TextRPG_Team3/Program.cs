@@ -6,34 +6,35 @@ namespace TextRPG_Team3
 {
     internal class Program
     {
-        SceneManager sceneManager;
-        int menuMin = 0;
-        int menuMax = 0;
+
         static void Main(string[] args)
         {
+            int menuMin = 0;
+            int menuMax = 0;
+
             Program program = new();
             program.Init();
 
             while (true)
             {
-                program.Render();
-                program.Update();
+                program.Render(ref menuMin, ref menuMax);
+                program.Update(menuMin, menuMax);
             }
         }
 
         void Init()
         {
-            sceneManager = new SceneManager();
+            SceneManager sceneManager = new SceneManager();
             SceneManager.Instance.CurrentScene = new IntroScene();
         }
 
-        void Render()
+        void Render(ref int menuMin, ref int menuMax)
         {
             Console.Clear();
             SceneManager.Instance.CurrentScene.Render(ref menuMin, ref menuMax);
         }
 
-        void Update()
+        void Update(int menuMin, int menuMax)
         {
             GetNumber numberGetter = new();
             int selectedNumber = numberGetter.GetMenuNumber(menuMin, menuMax);
