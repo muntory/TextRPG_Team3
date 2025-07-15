@@ -18,7 +18,7 @@ namespace TextRPG_Team3.Scenes
             bool allEnemiesDead = true;
             foreach (var enemy in enemies)
             {
-                if (enemy.isAlive)
+                if (enemy.IsAlive)
                 {
                     allEnemiesDead = false;
                     break;
@@ -40,8 +40,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("                 [  VICTORY  ]            \n");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"플레이어: {Player.Name}");
-            Console.WriteLine($"레벨: {Player.CharacterStat.Level}");
-            Console.WriteLine($"HP: {Player.CharacterStat.Health} / {Player.CharacterStat.MaxHealth}");
+            Console.WriteLine($"레벨: {Player.PlayerStat.Level}");
+            Console.WriteLine($"HP: {Player.PlayerStat.Health} / {Player.PlayerStat.MaxHealth}");
             Console.WriteLine($"보유 골드: {Player.Gold} G");
             Console.WriteLine("------------------------------------------\n");
             Console.WriteLine("0. 다음");

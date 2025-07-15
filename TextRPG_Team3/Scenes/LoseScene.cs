@@ -13,7 +13,7 @@ namespace TextRPG_Team3.Scenes
     {
         public void CheckPlayerLose()
         {
-            if (GameManager.Instance.Player.CharacterStat.Health == 0)
+            if (GameManager.Instance.Player.PlayerStat.Health == 0)
             {
                 LoseScene loseScene = new LoseScene();
                loseScene.ShowLoseScene(GameManager.Instance.Player);
@@ -29,8 +29,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("패배! 당신의 HP가 0이 되어 전투에서 졌습니다.");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"플레이어: {Player.Name}");
-            Console.WriteLine($"레벨: {Player.CharacterStat.Level}");
-            Console.WriteLine($"HP: 0 / {Player.CharacterStat.MaxHealth}");
+            Console.WriteLine($"레벨: {Player.PlayerStat.Level}");
+            Console.WriteLine($"HP: 0 / {Player.PlayerStat.MaxHealth}");
             Console.WriteLine($"보유 골드: {Player.Gold} G");
             Console.WriteLine("------------------------------------------\n");
             Console.WriteLine("0. 타이틀로 돌아가기");
