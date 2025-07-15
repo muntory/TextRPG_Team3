@@ -8,7 +8,7 @@ using TextRPG_Team3.Data;
 
 namespace TextRPG_Team3.Scenes
 {
-    internal class BattleScene : BaseScene
+    internal class BattleIntroScene : BaseScene
     {
         Dictionary<int, EnemyData> EnemyDB;
 
@@ -40,7 +40,7 @@ namespace TextRPG_Team3.Scenes
             }
         }
 
-        public BattleScene()
+        public BattleIntroScene()
         {
             // resourceManager로 EnemyDB 로드
 
