@@ -27,6 +27,12 @@ namespace TextRPG_Team3.Managers
             }
         }
 
+        /// <summary>
+        /// <typeparamref name="T"/> 클래스로 json 파일 역직렬화 하는 메서드
+        /// </summary>
+        /// <typeparam name="T">역직렬화할 클래스</typeparam>
+        /// <param name="jsonPath">json파일 저장되어 있는 경로</param>
+        /// <returns>역직렬화할 클래스의 List</returns>
         public List<T> LoadJsonData<T>(string jsonPath)
         {
             string json = File.ReadAllText(jsonPath);
@@ -37,9 +43,15 @@ namespace TextRPG_Team3.Managers
             return result;
         }
 
-        public void SaveJsonData<T>(string path, T saveData)
+        /// <summary>
+        /// <typeparamref name="T"/>직렬화해서 json 파일로 <paramref name="savePath"/>에 저장하는 메서드
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="savePath">저장 경로</param>
+        /// <param name="saveData">저장할 클래스</param>
+        public void SaveJsonData<T>(string savePath, T saveData)
         {
-            string directory = Path.GetDirectoryName(path);
+            string directory = Path.GetDirectoryName(savePath);
 
             if (!Directory.Exists(directory))
             {
@@ -49,7 +61,7 @@ namespace TextRPG_Team3.Managers
             var options = GetJsonSerializerOptions();
 
             string json = JsonSerializer.Serialize(saveData, options);
-            File.WriteAllText(path, json);
+            File.WriteAllText(savePath, json);
             
         }
 
