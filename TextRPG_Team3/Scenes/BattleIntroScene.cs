@@ -29,6 +29,7 @@ namespace TextRPG_Team3.Scenes
             foreach (var enemy in currentEnemies)
             {
                 // Level : 임시로 1~5 사이의 숫자 부여.
+                enemy.CharacterStat.Level = random.Next(1, 6);
 
                 enemyinfo += $"Lv. {enemy.CharacterStat.Level}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
             }
