@@ -9,6 +9,7 @@ namespace TextRPG_Team3
         GameManager gameManager;
         ResourceManager resourceManager;
         SceneManager sceneManager;
+        InputManager inputManager;
         static void Main(string[] args)
         {
 
@@ -28,6 +29,7 @@ namespace TextRPG_Team3
             gameManager.Player = new PlayerCharacter();
             resourceManager = new ResourceManager();
             sceneManager = new SceneManager();
+            inputManager = new InputManager();
             SceneManager.Instance.CurrentScene = new IntroScene();
 
         }
@@ -39,7 +41,7 @@ namespace TextRPG_Team3
 
         void Update()
         {
-            int selectedNumber = InputManager.Instance.GetMenuNumber();
+            int selectedNumber = InputManager.Instance.GetPlayerInput();
 
             SceneManager.Instance.CurrentScene.SelectMenu(selectedNumber);
         }

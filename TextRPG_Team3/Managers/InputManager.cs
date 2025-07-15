@@ -3,45 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Managers
 {
     internal class InputManager
     {
-        static private InputManager instance = new InputManager();
+        static private InputManager instance;
         static public InputManager Instance { get { return instance; } }
 
-        int menuMin = 0;
-        int menuMax = 0;
-        private void SetMinMax()
+        public InputManager()
         {
-            menuMin = SceneManager.Instance.CurrentScene.MenuMin;
-            menuMax = SceneManager.Instance.CurrentScene.MenuMax;
+            if (instance == null)
+            {
+                instance = this;
+            }
         }
-        public int GetMenuNumber()
+
+
+        public int GetPlayerInput()
         {
-            SetMinMax();
-            Console.WriteLine("\n원하시는 행동을 입력해주세요.");
+            int ret;
+            Console.WriteLine("원하시는 행동을 입력해주세요.");
+
+            int prevCursorTop = Console.CursorTop;
+
             while (true)
             {
-                Console.WriteLine(">>");
+                Console.Write(">> ");
+
                 string inputStr = Console.ReadLine();
-                if (!int.TryParse(inputStr, out int result))
+                if (!int.TryParse(inputStr, out ret))
                 {
-                    Console.WriteLine("잘못된 입력입니다.");
+                    RenderHelper.DeleteConsoleLine(Console.CursorTop - prevCursorTop);
                 }
                 else
                 {
-                    if (result >= menuMin && result <= menuMax)
-                    {
-                        return result;
-                    }
-                    else
-                    {
-                        Console.WriteLine("잘못된 입력입니다.");
-                    }
+                    break;
                 }
             }
+
+            return ret;
         }
     }
 }

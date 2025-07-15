@@ -4,36 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
-using static Program;
 
 namespace TextRPG_Team3.Scenes
 {
     internal class BattleScene : BaseScene
     {
-        public BattleScene()
-        {
-            MenuMin = 0;
-            MenuMax = 0;
-        }
-
         public override void Render()
         {
             base.Render();
-            Console.WriteLine("이 곳은 BattleScene입니다.\n");
+
+            Console.WriteLine("이 곳은 BattleScene입니다.");
+            Console.WriteLine();
 
             Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+
         }
 
-        public override void SelectMenu(int num)
+        public override void SelectMenu(int input)
         {
-            BattleMenuE selectedNumber = new BattleMenuE();
-
-            selectedNumber = (BattleMenuE)num;
+            Enums.BattleMenu selectedNumber = (Enums.BattleMenu)input;
 
             switch (selectedNumber)
             {
-                case BattleMenuE.Out:
-                    SceneManager.Instance.CurrentScene = new IntroScene(); break;
+                case Enums.BattleMenu.Out:
+                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    break;
+                default:
+                    break;
             }
         }
     }
