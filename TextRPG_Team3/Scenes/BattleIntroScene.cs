@@ -10,6 +10,8 @@ namespace TextRPG_Team3.Scenes
 {
     internal class BattleIntroScene : BaseScene
     {
+        Random random = new Random();
+        
 
         public override void Render()
         {
