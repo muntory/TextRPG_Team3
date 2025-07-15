@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Stat;
+using TextRPG_Team3.Managers;
+using TextRPG_Team3.Scenes;
 
 namespace TextRPG_Team3.Character
 {
@@ -32,6 +35,8 @@ namespace TextRPG_Team3.Character
 
         public void Die()
         {
+            LoseScene loseScene = new LoseScene();
+            loseScene.ShowLoseScene(GameManager.Instance.Player);
             // 플레이어 사망 로직
         }
 

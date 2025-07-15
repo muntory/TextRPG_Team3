@@ -5,7 +5,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 5,
-        "Discription": "무쇠로 만들어져 튼튼한 갑옷입니다"
+        "Description": "무쇠로 만들어져 튼튼한 갑옷입니다"
     },
 
     {
@@ -15,7 +15,7 @@
         "Type": "Weapon",
         "StatType": "Attack",
         "Value": 7,
-        "Discription": "스파르타의 전사들이 사용하던 전설의 창입니다"
+        "Description": "스파르타의 전사들이 사용하던 전설의 창입니다"
     },
 
     {
@@ -24,7 +24,7 @@
         "Type": "Armor",
         "StatType": "Attack",
         "Value": 2,
-        "Discription": "쉽게 볼 수 있는 녹이 슨 검입니다"
+        "Description": "쉽게 볼 수 있는 녹이 슨 검입니다"
     },
 
     {
@@ -33,7 +33,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 9,
-        "Discription": "스파르타의 전사들이 사용하던 전설의 갑옷입니다"
+        "Description": "스파르타의 전사들이 사용하던 전설의 갑옷입니다"
     },
 
     {
@@ -42,7 +42,7 @@
         "Type": "Waepon",
         "StatType": "Attack",
         "Value": 10,
-        "Discription": "왕을 호위하는 기사가 사용하는 검입니다"
+        "Description": "왕을 호위하는 기사가 사용하는 검입니다"
     },
 
     {
@@ -51,7 +51,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 13,
-        "Discription": "왕을 호위하는 기사가 사용하는 갑옷입니다"
+        "Description": "왕을 호위하는 기사가 사용하는 갑옷입니다"
     },
 
     {
@@ -60,7 +60,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 4,
-        "Discription": "견습 마법사가 사용하는 로브로 마법 방어에 효과적입니다"
+        "Description": "견습 마법사가 사용하는 로브로 마법 방어에 효과적입니다"
     },
 
     {
@@ -69,7 +69,7 @@
         "Type": "Waepon",
         "StatType": "Attack",
         "Value": 15,
-        "Discription": "기사단장의 검으로 특수한 광물로 만들어져 마나가 흐르는 검입니다"
+        "Description": "기사단장의 검으로 특수한 광물로 만들어져 마나가 흐르는 검입니다"
     },
 
     {
@@ -78,7 +78,7 @@
         "Type": "Waepon",
         "StatType": "Defense",
         "Value": 15,
-        "Discription": "기사단장의 갑옷으로 특수한 광물로 만들어져 마나가 흐르는 갑옷입니다"
+        "Description": "기사단장의 갑옷으로 특수한 광물로 만들어져 마나가 흐르는 갑옷입니다"
     },
 
     {
@@ -87,7 +87,7 @@
         "Type": "Waepon",
         "StatType": "Attack",
         "Value": 7,
-        "Discription": "오크부족의 전사가 사용하던 날이 많이 무딘 도끼입니다 "
+        "Description": "오크부족의 전사가 사용하던 날이 많이 무딘 도끼입니다 "
     },
 
     {
@@ -96,7 +96,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 15,
-        "Discription": "드레이크 가죽으로 만든 갑옷입니다 튼튼하고 따뜻합니다"
+        "Description": "드레이크 가죽으로 만든 갑옷입니다 튼튼하고 따뜻합니다"
     },
 
     {
@@ -105,7 +105,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 14,
-        "Discription": "희귀한 광물 미스릴로 만든 갑옷입니다"
+        "Description": "희귀한 광물 미스릴로 만든 갑옷입니다"
     },
 
     {
@@ -114,7 +114,7 @@
         "Type": "Armor",
         "StatType": "Defense",
         "Value": 11,
-        "Discription": "강철로 만든 방패입니다"
+        "Description": "강철로 만든 방패입니다"
     },
 
     {
@@ -123,6 +123,6 @@
         "Type": "Waepon",
         "StatType": "Attack",
         "Value": 14,
-        "Discription": "드레이크 이빨로으로 만든 단검입니다"
+        "Description": "드레이크 이빨로으로 만든 단검입니다"
     }
 ]
