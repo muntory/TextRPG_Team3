@@ -37,8 +37,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new StatScene();
                     break;
                 case Enums.IntroMenu.Battle:
-                    ResourceManager.Instance.SaveJsonData($"{ResourceManager.SAVE_DIR}/Enemy/test.json", new EnemyCharacter());
-                    SceneManager.Instance.CurrentScene = new BattleScene();
+                    SceneManager.Instance.CurrentScene = new BattleIntroScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

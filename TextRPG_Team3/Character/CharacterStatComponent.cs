@@ -17,6 +17,8 @@ namespace TextRPG_Team3.Character
             Health,
         }
 
+        public Action OnHpZero;
+
         // 레벨 선언 -> Private로
         private int level;
 
@@ -51,6 +53,10 @@ namespace TextRPG_Team3.Character
             set
             {
                 health = Math.Clamp(value, 0, 100);
+                if (health == 0)
+                {
+                    OnHpZero?.Invoke();
+                }
             }
         }
 
