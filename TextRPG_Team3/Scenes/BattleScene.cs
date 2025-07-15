@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Interfaces;
 using static Program;
 
 namespace TextRPG_Team3.Scenes
 {
-    internal class BattleScene : IScene
+    internal class BattleScene : BaseScene
     {
-        public void Render(ref int menuMin, ref int menuMax)
+        public BattleScene()
         {
-            menuMin = 0; menuMax = 0;
+            MenuMin = 0;
+            MenuMax = 0;
+        }
+
+        public override void Render()
+        {
+            base.Render();
             Console.WriteLine("이 곳은 BattleScene입니다.\n");
 
             Console.WriteLine("0. 나가기");
         }
 
-        public void SelectMenu(int num)
+        public override void SelectMenu(int num)
         {
             BattleMenuE selectedNumber = new BattleMenuE();
 

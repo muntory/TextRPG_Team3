@@ -9,7 +9,5 @@ namespace TextRPG_Team3.Character
     internal class BaseCharacter
     {
         public string Name { get; set; }
-
-
     }
 }

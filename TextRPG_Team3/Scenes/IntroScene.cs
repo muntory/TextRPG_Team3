@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Others;
 using static Program;
 
 namespace TextRPG_Team3.Scenes
 {
-    internal class IntroScene : IScene
+    internal class IntroScene : BaseScene
     {
-        public void Render(ref int menuMin, ref int menuMax)
+        public IntroScene()
         {
-            menuMin = 1;
-            menuMax = 2;
+            MenuMin = 1;
+            MenuMax = 2;
+        }
+
+        public override void Render()
+        {
+            base.Render();
             Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.");
             Console.WriteLine("이제 전투를 시작할 수 있습니다.\n");
 
@@ -22,7 +26,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("2. 전투 시작");
         }
 
-        public void SelectMenu(int num)
+        public override void SelectMenu(int num)
         {
             IntroMenuE introMenuE = new IntroMenuE();
 

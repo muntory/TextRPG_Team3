@@ -1,9 +1,21 @@
 ﻿using System;
-using TextRPG_Team3.Interfaces;
 
-public class BaseScene : IScene
+public class BaseScene
 {
-	public virtual void Render(ref int menuMin, ref int menuMax)
+	int menuMin;
+	int menuMax;
+	public int MenuMin
+	{
+		get { return menuMin; }
+		set { menuMin = (value > 0) ? value : 0; }
+	}
+
+	public int MenuMax
+	{
+		get { return menuMax; }
+		set { menuMax = (value > 0) ? value : 0; }
+	}
+	public virtual void Render()
 	{
 		Console.Clear();
 	}

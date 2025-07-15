@@ -1,6 +1,5 @@
 ﻿using TextRPG_Team3.Others;
 using TextRPG_Team3.Scenes;
-using TextRPG_Team3.Interfaces;
 
 namespace TextRPG_Team3
 {
@@ -9,16 +8,14 @@ namespace TextRPG_Team3
 
         static void Main(string[] args)
         {
-            int menuMin = 0;
-            int menuMax = 0;
 
             Program program = new();
             program.Init();
 
             while (true)
             {
-                program.Render(ref menuMin, ref menuMax);
-                program.Update(menuMin, menuMax);
+                program.Render();
+                program.Update();
             }
         }
 
@@ -28,16 +25,20 @@ namespace TextRPG_Team3
             SceneManager.Instance.CurrentScene = new IntroScene();
         }
 
-        void Render(ref int menuMin, ref int menuMax)
+        void Render()
         {
             Console.Clear();
-            SceneManager.Instance.CurrentScene.Render(ref menuMin, ref menuMax);
+            SceneManager.Instance.CurrentScene.Render();
         }
 
-        void Update(int menuMin, int menuMax)
+        void Update()
         {
             GetNumber numberGetter = new();
+
+            int menuMin = SceneManager.Instance.CurrentScene.MenuMin;
+            int menuMax = SceneManager.Instance.CurrentScene.MenuMax;
             int selectedNumber = numberGetter.GetMenuNumber(menuMin, menuMax);
+
             SceneManager.Instance.CurrentScene.SelectMenu(selectedNumber);
         }
     }
