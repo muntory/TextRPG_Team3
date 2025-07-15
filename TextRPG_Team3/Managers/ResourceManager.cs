@@ -58,7 +58,10 @@ namespace TextRPG_Team3.Managers
         /// <returns>EnemyData</returns>
         public EnemyData GetEnemyData(int ID)
         {
-            if (EnemyDB == null) return null;
+            if (EnemyDB == null)
+            {
+                GetEnemyDB();
+            }
 
             return EnemyDB[ID];
         }
