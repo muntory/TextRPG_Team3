@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Character;
 
 namespace TextRPG_Team3.Scenes
 {
     internal class BattleIntroScene : BaseScene
     {
+
         Random random = new Random();
         
+
+
 
         public override void Render()
         {
@@ -46,6 +50,24 @@ namespace TextRPG_Team3.Scenes
             // resourceManager로 EnemyDB 로드
 
             // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
+            SpawnRandomEnemies();
+        }
+
+        void SpawnRandomEnemies()
+        {
+            currentEnemies = new List<EnemyCharacter>();
+
+            int enemycount = Random.Shared.Next(1, 5);
+
+            for (int i = 0; i < enemycount; i++)
+            {
+                int randomint = Random.Shared.Next(1, 4);
+                EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
+
+                EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
+
+                currentEnemies.Add(newEnemy);
+            }
         }
     }
 }

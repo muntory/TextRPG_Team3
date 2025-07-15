@@ -5,21 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Stat;
 
 namespace TextRPG_Team3.Character
 {
     public class EnemyCharacter : BaseCharacter
     {
         private bool isAlive;
+
+        public CharacterStatComponent CharacterStat { get; set; }
+
         public EnemyCharacter() : base()
         {
             isAlive = true;
+            CharacterStat = new CharacterStatComponent();
+            OnHit += CharacterStat.TakeDamage;
             CharacterStat.OnHpZero += Die;
         }
 
         public EnemyCharacter(EnemyData enemyData) : base()
         {
             Name = enemyData.Name;
+            CharacterStat = new CharacterStatComponent();
             CharacterStat.MaxHealth = enemyData.HP;
             CharacterStat.BaseAttack = enemyData.Attack;
             CharacterStat.BaseDefense = enemyData.Defense;
