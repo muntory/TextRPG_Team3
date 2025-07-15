@@ -1,6 +1,7 @@
 ﻿using TextRPG_Team3.Others;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Interfaces;
+using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3
 {
