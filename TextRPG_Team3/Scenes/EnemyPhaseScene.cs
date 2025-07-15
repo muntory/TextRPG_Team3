@@ -10,27 +10,22 @@ namespace TextRPG_Team3.Scenes
 {
     internal class EnemyPhaseScene : BaseScene
     {
-        public void GetEnemyDB()
-        {
-
-        }
-
+        List<EnemyCharacter> currentEnemies;
+        int index = 0;
         public override void Render()
         {
             base.Render();
             Console.WriteLine("Battle!!\n");
-            int prevHealth = GameManager.Instance.Player.CharacterStat.Health;
-            /*
-            foreach(EnemyData enemy in EnemyDB){
-            Console.WriteLine($"Lv.{enemy.Level} {enemy.Name}의 공격!");
-            Console.WriteLine($"{GameManager.Instance.Player.Name} 을(를) 맞췄습니다. [데미지 : ?]\n");
+            int prevHealth = GameManager.Instance.Player.PlayerStat.Health;
+            currentEnemies[index].Attack(GameManager.Instance.Player);
+            int followingHealth = GameManager.Instance.Player.PlayerStat.Health;
+            Console.WriteLine($"Lv.{currentEnemies[index].CharacterStat.Level} {currentEnemies[index].Name}의 공격!");
+            Console.WriteLine($"{GameManager.Instance.Player.Name} 을(를) 맞췄습니다. [데미지 : {prevHealth - followingHealth}]\n");
 
-            Console.WriteLine($"Lv. {GameManager.Instance.Player.CharacterStat.Level} {GameManager.instance.Player.Name}");
-            Console.WriteLine($"HP {prevHealth} -> {GameManager.Instance.Player.CharacterStat.Health}");
-
-            Console.WriteLine("0. 다음");
-            }
-            */
+            Console.WriteLine($"Lv. {GameManager.Instance.Player.PlayerStat.Level} {GameManager.Instance.Player.Name}");
+            Console.WriteLine($"HP {prevHealth} -> {followingHealth}");
+            Console.WriteLine("\n0. 다음");
+            index++;
         }
 
         public override void SelectMenu(int input)
@@ -40,12 +35,24 @@ namespace TextRPG_Team3.Scenes
             switch (enemyPhaseMenuE)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    SceneManager.Instance.CurrentScene = new StatScene();
-                    break;
+                    if (index == currentEnemies.Count)
+                    {
+                        //SceneManager.Instance.CurrentScene = new PlayerWinScene()?
+                        SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
+                    }
+                    else
+                    {
+                        SceneManager.Instance.CurrentScene = this;
+                    }
+                        break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
             }
+        }
+        public EnemyPhaseScene(List<EnemyCharacter> list)
+        {
+            currentEnemies = list;
         }
     }
 }

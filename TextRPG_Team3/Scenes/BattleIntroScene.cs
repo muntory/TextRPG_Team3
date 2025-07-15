@@ -20,7 +20,10 @@ namespace TextRPG_Team3.Scenes
 
             Console.WriteLine("이 곳은 BattleScene입니다.");
             Console.WriteLine();
-
+            foreach(EnemyCharacter enemy in currentEnemies)
+            {
+                Console.WriteLine($"{enemy.Name} ");
+            }
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
         }
@@ -32,7 +35,7 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Out:
-                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    SceneManager.Instance.CurrentScene = new EnemyPhaseScene(currentEnemies);
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
@@ -46,6 +49,11 @@ namespace TextRPG_Team3.Scenes
 
             // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
             SpawnRandomEnemies();
+        }
+
+        public BattleIntroScene(List<EnemyCharacter> currentEnemies)
+        {
+            this.currentEnemies = currentEnemies;
         }
 
         void SpawnRandomEnemies()
