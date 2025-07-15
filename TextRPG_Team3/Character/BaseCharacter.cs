@@ -9,6 +9,12 @@ namespace TextRPG_Team3.Character
     public class BaseCharacter
     {
         public string Name { get; set; }
+        public CharacterStatComponent CharacterStat { get; set; }
 
+        public BaseCharacter()
+        {
+            Name = "Chad";
+            CharacterStat = new CharacterStatComponent();
+        }
     }
 }

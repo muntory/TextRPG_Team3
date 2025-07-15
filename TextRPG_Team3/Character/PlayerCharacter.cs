@@ -12,7 +12,6 @@ namespace TextRPG_Team3.Character
 
         public PlayerCharacter() : base()
         {
-            Name = "Chad";
             Gold = 1500;
         }
     }
