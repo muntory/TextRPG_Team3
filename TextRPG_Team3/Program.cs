@@ -1,4 +1,3 @@
-using TextRPG_Team3.Others;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
@@ -35,17 +34,12 @@ namespace TextRPG_Team3
 
         void Render()
         {
-            Console.Clear();
             SceneManager.Instance.CurrentScene.Render();
         }
 
         void Update()
         {
-            GetNumber numberGetter = new();
-
-            int menuMin = SceneManager.Instance.CurrentScene.MenuMin;
-            int menuMax = SceneManager.Instance.CurrentScene.MenuMax;
-            int selectedNumber = numberGetter.GetMenuNumber(menuMin, menuMax);
+            int selectedNumber = InputManager.Instance.GetMenuNumber();
 
             SceneManager.Instance.CurrentScene.SelectMenu(selectedNumber);
         }

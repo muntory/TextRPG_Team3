@@ -21,7 +21,6 @@ public class BaseScene
 	}
 	public virtual void SelectMenu(int num)
 	{
-
+        //GetNumber();
 	}
 }
-

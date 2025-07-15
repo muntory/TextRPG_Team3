@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Others;
 using TextRPG_Team3.Managers;
 using static Program;
 
@@ -29,6 +28,7 @@ namespace TextRPG_Team3.Scenes
 
         public override void SelectMenu(int num)
         {
+            //base.SelectMenu();
             IntroMenuE introMenuE = new IntroMenuE();
 
             introMenuE = (IntroMenuE)num;
