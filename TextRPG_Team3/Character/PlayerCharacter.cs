@@ -35,8 +35,6 @@ namespace TextRPG_Team3.Character
 
         public void Die()
         {
-            LoseScene loseScene = new LoseScene();
-            loseScene.ShowLoseScene(GameManager.Instance.Player);
             // 플레이어 사망 로직
         }
 
