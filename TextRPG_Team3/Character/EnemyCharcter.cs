@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextRPG_Team3.Character
 {
-    internal class EnemyCharcter : BaseCharacter
+    public class EnemyCharcter : BaseCharacter
     {
         public int ID {  get; set; } //1부터 시작
         public string Name { get; set;}
