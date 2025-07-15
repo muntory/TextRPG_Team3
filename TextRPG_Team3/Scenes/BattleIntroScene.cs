@@ -10,7 +10,6 @@ namespace TextRPG_Team3.Scenes
 {
     internal class BattleIntroScene : BaseScene
     {
-        Dictionary<int, EnemyData> EnemyDB;
 
         public override void Render()
         {
