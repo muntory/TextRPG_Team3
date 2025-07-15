@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
+using static Enums;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -27,11 +29,10 @@ namespace TextRPG_Team3.Scenes
 
             if (allEnemiesDead)
             {
-                Render(GameManager.Instance.Player);
+                Render();
             }
         }
-
-
+        
 
         public override void Render()
         {
@@ -47,5 +48,21 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("0. 다음");
             Console.WriteLine("==========================================");
         }
+
+        public override void SelectMenu(int input)
+        {
+            Enums.VictoryScene victoryScene = (Enums.VictoryScene)input;
+
+            switch (victoryScene)
+            {
+                case Enums.VictoryScene.Next:
+                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    break;
+                default:
+                    msg = "잘못된 입력입니다.";
+                    break;
+            }
+        }
+    
     }
 }

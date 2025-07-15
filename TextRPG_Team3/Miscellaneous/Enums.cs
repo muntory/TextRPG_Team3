@@ -13,7 +13,7 @@ public class Enums
         Stat = 1,
         Battle = 2
     }
-    
+
     public enum StatMenu
     {
         Out = 0
@@ -27,6 +27,11 @@ public class Enums
     }
 
     public enum EnemyPhaseMenuE
+    {
+        Next = 0
+    }
+    
+    public enum VictoryScene
     {
         Next = 0
     }
