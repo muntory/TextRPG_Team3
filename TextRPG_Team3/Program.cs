@@ -1,6 +1,5 @@
 using TextRPG_Team3.Others;
 using TextRPG_Team3.Scenes;
-using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 
