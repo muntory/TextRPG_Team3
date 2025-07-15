@@ -14,7 +14,9 @@ namespace TextRPG_Team3.Character
     public class EnemyCharacter : BaseCharacter
     {
         
-        
+
+        public bool IsAlive { get; private set; }
+        Random random = new Random();
 
         public CharacterStatComponent CharacterStat { get; set; }
 

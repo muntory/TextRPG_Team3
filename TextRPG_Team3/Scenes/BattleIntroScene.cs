@@ -38,7 +38,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("[내 정보]");
             Console.WriteLine
                 ($"Lv. {GameManager.Instance.Player.PlayerStat.Level}\t" +
-                 $"{GameManager.Instance.Player.Name}\t");
+                 $"{GameManager.Instance.Player.Name}");
             Console.WriteLine
                 ($"HP {GameManager.Instance.Player.PlayerStat.Health}/100");
             Console.WriteLine();
