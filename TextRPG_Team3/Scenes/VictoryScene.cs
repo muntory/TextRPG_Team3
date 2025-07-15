@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
+using static Enums;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -27,25 +29,40 @@ namespace TextRPG_Team3.Scenes
 
             if (allEnemiesDead)
             {
-                ShowVictoryScene(GameManager.Instance.Player);
+                Render();
             }
         }
+        
 
-
-
-        public void ShowVictoryScene(PlayerCharacter Player)
+        public override void Render()
         {
-            Console.Clear();
+            base.Render();
             Console.WriteLine("============== Battle Result ==============");
             Console.WriteLine("                 [  VICTORY  ]            \n");
             Console.WriteLine("------------------------------------------");
-            Console.WriteLine($"플레이어: {Player.Name}");
-            Console.WriteLine($"레벨: {Player.PlayerStat.Level}");
-            Console.WriteLine($"HP: {Player.PlayerStat.Health} / {Player.PlayerStat.MaxHealth}");
-            Console.WriteLine($"보유 골드: {Player.Gold} G");
+            Console.WriteLine($"플레이어: {GameManager.Instance.Player.Name}");
+            Console.WriteLine($"레벨: {GameManager.Instance.Player.PlayerStat.Level}");
+            Console.WriteLine($"HP: {GameManager.Instance.Player.PlayerStat.Health} / {GameManager.Instance.Player.PlayerStat.MaxHealth}");
+            Console.WriteLine($"보유 골드: {GameManager.Instance.Player.Gold} G");
             Console.WriteLine("------------------------------------------\n");
             Console.WriteLine("0. 다음");
             Console.WriteLine("==========================================");
         }
+
+        public override void SelectMenu(int input)
+        {
+            Enums.VictoryScene victoryScene = (Enums.VictoryScene)input;
+
+            switch (victoryScene)
+            {
+                case Enums.VictoryScene.Next:
+                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    break;
+                default:
+                    msg = "잘못된 입력입니다.";
+                    break;
+            }
+        }
+    
     }
 }
