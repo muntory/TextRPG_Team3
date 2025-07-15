@@ -10,6 +10,7 @@ namespace TextRPG_Team3.Managers
 
         // 플레이어
         public PlayerCharacter Player;
+        
 		public GameManager()
 		{
 			if (instance == null)

@@ -20,8 +20,13 @@ namespace TextRPG_Team3.Data
     {
         private static ItemData instance;
         private JsonSerializerOptions options;
-       
-    
+
+        static ItemData()
+        {
+            instance = new ItemData();
+        }
+
+
         public static ItemData Instance { get { return instance; } }
         public static string Game_Root_Dir = $"{AppDomain.CurrentDomain.BaseDirectory}/../../..";
         public static string SAVE_DIR = $"{Game_Root_Dir}/Save";
@@ -32,6 +37,7 @@ namespace TextRPG_Team3.Data
             if (instance == null)
             {
                 instance = this;
+                instance = new ItemData();
             }
         }
 
@@ -72,7 +78,7 @@ namespace TextRPG_Team3.Data
         {
             if (options == null)
             {
-                var options = new JsonSerializerOptions
+                options = new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     PropertyNameCaseInsensitive = true,
