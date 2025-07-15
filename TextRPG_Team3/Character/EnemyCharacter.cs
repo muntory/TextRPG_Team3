@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Scenes;
 
 namespace TextRPG_Team3.Character
 {
     public class EnemyCharacter : BaseCharacter
     {
-        private bool isAlive;
+        public bool isAlive { get; private set; }
         public EnemyCharacter() : base()
         {
             isAlive = true;
