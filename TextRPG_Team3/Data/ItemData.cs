@@ -22,6 +22,6 @@ namespace TextRPG_Team3
         public CharacterStatComponent.CharacterStatType CharacterBaseStat { get; set; }
         public int Value { get; set; }
 
-        public string Discription { get; set; }
+        public string Description { get; set; }
     }
 }
