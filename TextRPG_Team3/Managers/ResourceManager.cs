@@ -38,8 +38,10 @@ namespace TextRPG_Team3.Managers
         {
             if (EnemyDB == null)
             {
-                List<EnemyData> enemyList = LoadJsonData<EnemyData>($"GAME_ROOT_DIR/Data/EnemyDataList.json");
-                
+                List<EnemyData> enemyList = LoadJsonData<EnemyData>($"{GAME_ROOT_DIR}/Data/EnemyDataList.json");
+
+                EnemyDB = new Dictionary<int, EnemyData>();
+
                 foreach (EnemyData enemyData in enemyList)
                 {
                     if (enemyData == null) continue;

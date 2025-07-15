@@ -1,5 +1,13 @@
 public class Enums
 {
+    public enum StatType
+    {
+        Level,
+        Attack,
+        Defense,
+        Health,
+    }
+
     public enum IntroMenu
     {
         Stat = 1,
