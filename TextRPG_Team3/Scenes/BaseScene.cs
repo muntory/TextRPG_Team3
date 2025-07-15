@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TextRPG_Team3.Interfaces;
 
 public class BaseScene : IScene

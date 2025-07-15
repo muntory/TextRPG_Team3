@@ -19,7 +19,7 @@ namespace TextRPG_Team3
         public int Id { get; set; }
         public string Name { get; set; }
         public ItemType Type { get; set; }
-        public CharacterStat.CharacterStatType CharacterBaseStat { get; set; }
+        public CharacterStatComponent.CharacterStatType CharacterBaseStat { get; set; }
         public int Value { get; set; }
 
         public string Discription { get; set; }
