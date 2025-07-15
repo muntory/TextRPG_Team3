@@ -14,6 +14,7 @@ namespace TextRPG_Team3.Scenes
         int index = 0;
         public override void Render()
         {
+            SkipEnemy();
             base.Render();
             Console.WriteLine("Battle!!\n");
             int prevHealth = GameManager.Instance.Player.PlayerStat.Health;
@@ -25,9 +26,23 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"Lv. {GameManager.Instance.Player.PlayerStat.Level} {GameManager.Instance.Player.Name}");
             Console.WriteLine($"HP {prevHealth} -> {followingHealth}");
             Console.WriteLine("\n0. 다음");
+            SkipEnemy();
             index++;
         }
-
+        private void SkipEnemy()
+        {
+            while (currentEnemies.Count>index)
+            {
+                if (currentEnemies[index].CharacterStat.Health <= 0)
+                {
+                    index++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
         public override void SelectMenu(int input)
         {
             Enums.EnemyPhaseMenuE enemyPhaseMenuE = (Enums.EnemyPhaseMenuE)input;
@@ -35,9 +50,8 @@ namespace TextRPG_Team3.Scenes
             switch (enemyPhaseMenuE)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    if (index == currentEnemies.Count)
+                    if (index >= currentEnemies.Count)
                     {
-                        //SceneManager.Instance.CurrentScene = new PlayerWinScene()?
                         SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
                     }
                     else
