@@ -4,18 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_Team3.Character
+namespace TextRPG_Team3.Stat
 {
     public class CharacterStatComponent
     {
         // 캐릭터 스탯 타입 : 레벨, 공격력, 방어력, 체력
-        public enum CharacterStatType
-        {
-            Level,
-            Attack,
-            Defense,
-            Health,
-        }
+        
 
         public Action OnHpZero;
 
@@ -59,6 +53,11 @@ namespace TextRPG_Team3.Character
                     OnHpZero?.Invoke();
                 }
             }
+        }
+
+        public void TakeDamage(int inDamage)
+        {
+            Health -= inDamage;
         }
 
 

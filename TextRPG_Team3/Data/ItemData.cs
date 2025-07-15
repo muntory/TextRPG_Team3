@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Character;
+using TextRPG_Team3.Stat;
 
 namespace TextRPG_Team3
 {
@@ -19,7 +19,7 @@ namespace TextRPG_Team3
         public int Id { get; set; }
         public string Name { get; set; }
         public ItemType Type { get; set; }
-        public CharacterStatComponent.CharacterStatType CharacterBaseStat { get; set; }
+        public Enums.StatType CharacterBaseStat { get; set; }
         public int Value { get; set; }
 
         public string Discription { get; set; }
