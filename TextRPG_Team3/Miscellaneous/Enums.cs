@@ -22,6 +22,12 @@ public class Enums
     // 배틀 메뉴 업데이트 해야됨
     public enum BattleMenu
     {
+        Attack = 1,
         Out = 0
+    }
+
+    public enum EnemyPhaseMenuE
+    {
+        Next = 0
     }
 }

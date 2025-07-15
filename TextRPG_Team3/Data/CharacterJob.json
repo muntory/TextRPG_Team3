@@ -1,0 +1,23 @@
+[
+    {
+        "JobID": 1,
+        "JobName": "Warriar",
+        "JobAtk": 10,
+        "JobHP": 130,
+        "JobDef": 5,
+
+        "JobID": 2,
+        "JobName": "Magicion",
+        "JobAtk": 17,
+        "JobHP": 70,
+        "JobDef": 3,
+
+        "JobID": 3,
+        "JobName": "Assasin",
+        "JobAtk": 15,
+        "JobHP": 60,
+        "JobDef": 3
+
+
+    }
+]

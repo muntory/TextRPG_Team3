@@ -11,19 +11,39 @@ namespace TextRPG_Team3.Scenes
 {
     internal class BattleIntroScene : BaseScene
     {
+        // 필요한 변수 생성
         List<EnemyCharacter> currentEnemies;
+        Random random = new Random();
+        
         public override void Render()
         {
             base.Render();
 
-            // 요구 사항 맞춰서 Render 구현 굳이 플레이어 페이즈 , 에너미 페이즈 나누지 말고 그냥 플레이어 선턴으로 번갈아가면서 공격하는걸로
-
-            Console.WriteLine("이 곳은 BattleScene입니다.");
+            Console.WriteLine("**Battle!!**");
             Console.WriteLine();
 
-            Console.WriteLine("0. 나가기");
-            Console.WriteLine();
+            // 문자열 변수 만들어서 적 정보 할당할 공간 만들기
+            string enemyinfo = "";
 
+            // List 반복문 넣어서 적 정보 갱신하기
+            foreach (var enemy in currentEnemies)
+            {
+                // Level : 임시로 1~5 사이의 숫자 부여.
+                int enemyLevel = random.Next(1, 6);
+
+                enemyinfo += $"Lv. {enemyLevel}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
+            }
+            Console.WriteLine(enemyinfo);
+            Console.WriteLine();
+            Console.WriteLine("[내 정보]");
+            Console.WriteLine
+                ($"Lv. {GameManager.Instance.Player.PlayerStat.Level}\t" +
+                 $"{GameManager.Instance.Player.Name}\t");
+            Console.WriteLine
+                ($"HP {GameManager.Instance.Player.PlayerStat.Health}/100");
+            Console.WriteLine();
+            Console.WriteLine("1. 공격");
+            Console.WriteLine();
         }
 
         public override void SelectMenu(int input)
@@ -32,10 +52,11 @@ namespace TextRPG_Team3.Scenes
 
             switch (selectedNumber)
             {
-                case Enums.BattleMenu.Out:
-                    SceneManager.Instance.CurrentScene = new IntroScene();
+                case Enums.BattleMenu.Attack:
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
                     break;
                 default:
+                    msg = "잘못된 입력입니다.";
                     break;
             }
         }
@@ -46,6 +67,11 @@ namespace TextRPG_Team3.Scenes
 
             // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
             SpawnRandomEnemies();
+        }
+
+        public BattleIntroScene(List<EnemyCharacter> currentEnemies)
+        {
+            this.currentEnemies = currentEnemies;
         }
 
         void SpawnRandomEnemies()
