@@ -11,12 +11,14 @@ namespace TextRPG_Team3.Character
     {
         public string Name { get; set; }
 
-        public Action<int> OnHit;
+        public Func<int, int> OnHit;
+        public bool IsAlive { get; set; }
+
 
         public BaseCharacter()
         {
             Name = "Chad";
-
+            IsAlive = true;
         }
 
     }

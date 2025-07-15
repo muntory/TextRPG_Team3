@@ -26,6 +26,11 @@ public class Enums
         Out = 0
     }
 
+    public enum PlayerPhaseMenu
+    {
+        Out = 0
+    }
+
     public enum EnemyPhaseMenuE
     {
         Next = 0
