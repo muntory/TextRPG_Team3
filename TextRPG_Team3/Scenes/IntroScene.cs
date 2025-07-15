@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Others;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Data;
 using static Program;
 
 namespace TextRPG_Team3.Scenes
@@ -34,9 +35,11 @@ namespace TextRPG_Team3.Scenes
                 case IntroMenuE.Stat:
                     SceneManager.Instance.CurrentScene = new StatScene();
                     ResourceManager.Instance.SaveJsonData($"{ResourceManager.GAME_ROOT_DIR}/Save/Character/Player.json", GameManager.Instance.Player);
+                    ItemData.Instance.SaveJsonData($"{ItemData.Game_Root_Dir}/Save/Item/Item.json", ItemData.Instance.Id);
                     break;
                 case IntroMenuE.Battle:
                     SceneManager.Instance.CurrentScene = new BattleScene(); break;
+
             }
         }
     }
