@@ -35,4 +35,9 @@ public class Enums
     {
         Next = 0
     }
+
+    public enum LoseScene
+    {
+        Next = 0
+    }
 }
