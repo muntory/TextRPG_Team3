@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Character
@@ -14,6 +15,13 @@ namespace TextRPG_Team3.Character
         {
             isAlive = true;
             CharacterStat.OnHpZero += Die;
+        }
+
+        public EnemyCharacter(EnemyData enemyData) : base()
+        {
+            Name = enemyData.Name;
+            CharacterStat.MaxHealth = enemyData.HP;
+            CharacterStat.BaseAttack = enemyData.Attack;
         }
 
         // enemy Attack 로직 구현하기
