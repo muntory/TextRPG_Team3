@@ -22,6 +22,7 @@ namespace TextRPG_Team3.Character
             Name = enemyData.Name;
             CharacterStat.MaxHealth = enemyData.HP;
             CharacterStat.BaseAttack = enemyData.Attack;
+            CharacterStat.BaseDefense = enemyData.Defense;
         }
 
         // enemy Attack 로직 구현하기
