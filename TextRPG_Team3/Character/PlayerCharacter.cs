@@ -14,5 +14,9 @@ namespace TextRPG_Team3.Character
         {
             Gold = 1500;
         }
+
+        // Attack 로직 구현 하기
+
+        // HitReaction 로직 구현하기 (공격 받았을때 처리)
     }
 }

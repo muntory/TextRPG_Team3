@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Scenes
@@ -36,6 +37,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new StatScene();
                     break;
                 case Enums.IntroMenu.Battle:
+                    ResourceManager.Instance.SaveJsonData($"{ResourceManager.SAVE_DIR}/Enemy/test.json", new EnemyCharacter());
                     SceneManager.Instance.CurrentScene = new BattleScene();
                     break;
                 default:

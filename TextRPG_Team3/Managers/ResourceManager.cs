@@ -17,6 +17,7 @@ namespace TextRPG_Team3.Managers
         public static string GAME_ROOT_DIR = $"{AppDomain.CurrentDomain.BaseDirectory}/../../..";
         public static string SAVE_DIR = $"{GAME_ROOT_DIR}/Save";
 
+        
 
         private JsonSerializerOptions options;
         public ResourceManager()
