@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextRPG_Team3.Character
 {
-    internal class BaseCharacter
+    internal class PlayerCharacter : BaseCharacter
     {
-        public string Name { get; set; }
+        int Gold = 1500;
     }
 }
