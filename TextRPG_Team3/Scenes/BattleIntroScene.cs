@@ -52,7 +52,7 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Attack:
-                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene(currentEnemies);
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
