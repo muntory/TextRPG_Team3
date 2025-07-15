@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Scenes;
 
@@ -9,7 +9,7 @@ namespace TextRPG_Team3.Managers
 		private static SceneManager instance;
 		public static SceneManager Instance {  get { return instance; } }
 
-		public BaseScene CurrentScene { get; set; }
+		public IScene CurrentScene { get; set; }
 
 		public SceneManager()
 		{

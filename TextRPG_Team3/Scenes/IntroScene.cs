@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Interfaces;
 using TextRPG_Team3.Others;
+using TextRPG_Team3.Managers;
 using static Program;
 
 namespace TextRPG_Team3.Scenes
@@ -31,7 +32,9 @@ namespace TextRPG_Team3.Scenes
             switch (introMenuE)
             {
                 case IntroMenuE.Stat:
-                    SceneManager.Instance.CurrentScene = new StatScene(); break;
+                    SceneManager.Instance.CurrentScene = new StatScene();
+                    ResourceManager.Instance.SaveJsonData($"{ResourceManager.GAME_ROOT_DIR}/Save/Character/Player.json", GameManager.Instance.Player);
+                    break;
                 case IntroMenuE.Battle:
                     SceneManager.Instance.CurrentScene = new BattleScene(); break;
             }
