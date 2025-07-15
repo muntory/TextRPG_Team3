@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextRPG_Team3.Character
 {
-    internal class CharacterStat
-    {   
+    public class CharacterStatComponent
+    {
         // 캐릭터 스탯 타입 : 레벨, 공격력, 방어력, 체력
         public enum CharacterStatType
         {
@@ -28,9 +28,9 @@ namespace TextRPG_Team3.Character
         }
 
         // 공격력 선언 (기본, 변동, 최종)
-        public double BaseAttack;               
-        public double ExtraAttack = 0.0;        
-        public double FinalAttack               
+        public double BaseAttack;
+        public double ExtraAttack = 0.0;
+        public double FinalAttack
         {
             get { return BaseAttack + ExtraAttack; }
         }
@@ -54,7 +54,7 @@ namespace TextRPG_Team3.Character
             }
         }
 
-        public void CharacterBaseStat()
+        public CharacterStatComponent()
         {
             Level = 1;
             BaseAttack = 10.0;

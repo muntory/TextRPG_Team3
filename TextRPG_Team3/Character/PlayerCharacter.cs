@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace TextRPG_Team3.Character
 {
-    internal class PlayerCharacter : BaseCharacter
+    public class PlayerCharacter : BaseCharacter
     {
-        int Gold = 1500;
+        public int Gold { get; set; }
 
+        public PlayerCharacter() : base()
+        {
+            Gold = 1500;
+        }
     }
+
+    
 }

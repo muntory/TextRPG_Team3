@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 public class BaseScene
 {
@@ -24,3 +24,4 @@ public class BaseScene
 
 	}
 }
+

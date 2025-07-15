@@ -1,14 +1,21 @@
-﻿using System;
+using System;
+using TextRPG_Team3.Character;
 
-public class GameManager 
+namespace TextRPG_Team3.Managers
 {
-	private static GameManager instance;
-	public static GameManager Instance { get { return instance; } }
-	public GameManager()
+	public class GameManager
 	{
-		if (instance == null)
+		private static GameManager instance;
+		public static GameManager Instance { get { return instance; } }
+
+        // 플레이어
+        public PlayerCharacter Player;
+		public GameManager()
 		{
-			instance = this;
+			if (instance == null)
+			{
+				instance = this;
+			}
 		}
 	}
 }
