@@ -30,6 +30,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
 
+            PrintMsg();
+
         }
 
         public override void SelectMenu(int input)
@@ -42,6 +44,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new IntroScene();
                     break;
                 default:
+                    msg = "잘못된 입력입니다.";
                     break;
             }
         }

@@ -25,4 +25,9 @@ public class Enums
         Attack = 1,
         Out = 0
     }
+
+    public enum EnemyPhaseMenuE
+    {
+        Next = 0
+    }
 }

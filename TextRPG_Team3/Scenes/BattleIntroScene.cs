@@ -44,7 +44,6 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             Console.WriteLine("1. 공격");
             Console.WriteLine();
-
         }
 
         public override void SelectMenu(int input)
@@ -57,6 +56,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
                     break;
                 default:
+                    msg = "잘못된 입력입니다.";
                     break;
             }
         }
@@ -67,6 +67,11 @@ namespace TextRPG_Team3.Scenes
 
             // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
             SpawnRandomEnemies();
+        }
+
+        public BattleIntroScene(List<EnemyCharacter> currentEnemies)
+        {
+            this.currentEnemies = currentEnemies;
         }
 
         void SpawnRandomEnemies()
