@@ -11,6 +11,7 @@ public class Enums
         Out = 0
     }
 
+    // 배틀 메뉴 업데이트 해야됨
     public enum BattleMenu
     {
         Out = 0
