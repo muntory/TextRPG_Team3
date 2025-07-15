@@ -33,7 +33,7 @@ namespace TextRPG_Team3.Scenes
         {
             while (currentEnemies.Count>index)
             {
-                if (currentEnemies[index].CharacterStat.Health <= 0)
+                if (!currentEnemies[index].IsAlive)
                 {
                     index++;
                 }
