@@ -30,12 +30,11 @@ namespace TextRPG_Team3
         {
             gameManager = new GameManager();
             spawnManager = new SpawnManager();
-            gameManager.Player = new PlayerCharacter();
             resourceManager = new ResourceManager();
             sceneManager = new SceneManager();
             inputManager = new InputManager();
             questManager = new QuestManager();
-            SceneManager.Instance.LoadScene(new IntroScene());
+            SceneManager.Instance.LoadScene(new ChooseScene());
         }
 
         void Render()
