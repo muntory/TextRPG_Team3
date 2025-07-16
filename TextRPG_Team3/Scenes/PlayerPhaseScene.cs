@@ -6,12 +6,17 @@ using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Utils;
 using TextRPG_Team3.Scenes;
+using TextRPG_Team3.Data;
 
 namespace TextRPG_Team3.Scenes
 {
     public class PlayerPhaseScene : BaseScene
     {
-        bool isAttacked = false;
+        SkillData skillData;
+        public PlayerPhaseScene(SkillData skillData = null)
+        {
+            this.skillData = skillData;
+        }
 
         public override void Render()
         {
@@ -69,9 +74,16 @@ namespace TextRPG_Team3.Scenes
                     msg = "잘못된 입력입니다.";
                     return;
                 }
-
-                SceneManager.Instance.CurrentScene = new AttackResultScene();
-                isAttacked = true;
+                
+                if (SceneManager.Instance.PreviousScene is SkillSelectScene)
+                {
+                    SceneManager.Instance.PreviousScene = SceneManager.Instance.CurrentScene;
+                    SceneManager.Instance.CurrentScene = new AttackResultScene(skillData);
+                }
+                else
+                {
+                    SceneManager.Instance.CurrentScene = new AttackResultScene();
+                }
                 return;
             }
             

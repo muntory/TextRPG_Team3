@@ -14,8 +14,9 @@ namespace TextRPG_Team3.Stat
         public int MP
         {
             get { return mp; }
-            set { Math.Clamp(value, 0, MaxMP); }
+            set { mp = Math.Clamp(value, 0, MaxMP); }
         }
+
         public double CriticalRate;
         public double AccuracyRate;
 

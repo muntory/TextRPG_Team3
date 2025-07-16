@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TextRPG_Team3.Stat;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
+using TextRPG_Team3.Data;
 
 namespace TextRPG_Team3.Character
 {
@@ -14,6 +15,8 @@ namespace TextRPG_Team3.Character
     {
         public int Gold { get; set; }
 
+
+        public List<SkillData> SkillList;
         public PlayerCharacter() : base()
         {
             Gold = 1500;
@@ -59,6 +62,19 @@ namespace TextRPG_Team3.Character
             target.OnHit?.Invoke((int)inDamage);
 
             return ret;
+        }
+
+        public void ActiveSkill(BaseCharacter target, SkillData skillData)
+        {
+            if (skillData == null) return;
+
+            PlayerStatComponent playerStat = (PlayerStatComponent)Stat;
+            if (playerStat == null) return;
+
+            int inDamage = (int)Math.Ceiling(playerStat.FinalAttack * skillData.Multiplier);
+
+            target.OnHit?.Invoke(inDamage);
+
         }
 
         public void Die()
