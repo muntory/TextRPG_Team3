@@ -40,11 +40,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("0. 취소");
             Console.WriteLine();
 
-            }
-            if (GameManager.Instance.CheckVictory(currentEnemies))
-            {
-                GameManager.Instance.Victory = true;
-            }
+            
             PrintMsg();
         }
 

@@ -44,9 +44,9 @@ namespace TextRPG_Team3.Managers
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
 
-                newEnemy.CharacterStat.Level = rand.Next(1, 11);
+                newEnemy.Stat.Level = rand.Next(1, 11);
 
-                currentEnemies.Add(newEnemy);
+                CurrentEnemies.Add(newEnemy);
             }
         }
 
@@ -66,6 +66,7 @@ namespace TextRPG_Team3.Managers
             }
 
             CurrentEnemies = null;
+
             return false;
         }
     }
