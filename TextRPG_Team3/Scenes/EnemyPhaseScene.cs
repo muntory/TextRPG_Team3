@@ -26,6 +26,13 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"Lv. {GameManager.Instance.Player.PlayerStat.Level} {GameManager.Instance.Player.Name}");
             Console.WriteLine($"HP {prevHealth} -> {followingHealth}");
             Console.WriteLine("\n0. 다음");
+
+            if (GameManager.Instance.CheckLose())
+            {
+                GameManager.Instance.Lose = true;
+            }
+
+
             SkipEnemy();
             index++;
         }
@@ -50,12 +57,18 @@ namespace TextRPG_Team3.Scenes
             switch (enemyPhaseMenuE)
             {
                 case Enums.EnemyPhaseMenuE.Next:
+                    if(GameManager.Instance.CheckLose())
+                    {
+                        SceneManager.Instance.CurrentScene = new LoseScene();
+                        break;
+                    }
                     if (index >= currentEnemies.Count)
                     {
                         SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
                     }
                     else
                     {
+
                         SceneManager.Instance.CurrentScene = this;
                     }
                         break;
