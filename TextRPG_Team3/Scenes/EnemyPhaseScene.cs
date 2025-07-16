@@ -90,7 +90,9 @@ namespace TextRPG_Team3.Scenes
                         SceneManager.Instance.CurrentScene = new LoseScene();
                         break;
                     }
+
                     index = FindNextIndex(index);
+
                     if (index >= currentEnemies.Count)
                     {
                         SceneManager.Instance.CurrentScene = new BattleIntroScene();
