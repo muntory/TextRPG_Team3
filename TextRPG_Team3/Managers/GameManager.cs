@@ -1,5 +1,6 @@
 using System;
 using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
 
 namespace TextRPG_Team3.Managers
 {

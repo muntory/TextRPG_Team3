@@ -6,10 +6,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Stat;
 using static Enums;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -19,8 +21,20 @@ namespace TextRPG_Team3.Scenes
       
         public override void Render()
         {
+            
             base.Render();
+            int TotalGold = 0;
+            int TotalExp = 0;
+            foreach (var enemy in SpawnManager.Instance.CurrentEnemies)
+            {
+                EnemyData data = ResourceManager.Instance.GetEnemyData(enemy.EnemyID);
 
+                TotalExp = data.Exp;
+                TotalGold += data.Gold;
+            }
+
+            GameManager.Instance.Player.Gold += TotalGold;
+            GameManager.Instance.Player.Stat.exp += TotalExp;
            
             CharacterStatComponent stat = GameManager.Instance.Player.Stat;
             int exp = SpawnManager.Instance.SumofEnemyLevel();
@@ -41,7 +55,10 @@ namespace TextRPG_Team3.Scenes
             
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");
-            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("------------------------------------------\n");
+            Console.WriteLine($"흭득한 골드: {TotalGold}");
+            Console.WriteLine($"흭득한 경험치: {TotalExp}");
+            Console.WriteLine("\n==========================================\n");
             Console.WriteLine($"플레이어: {GameManager.Instance.Player.Name}");
             Console.WriteLine($"레벨: {GameManager.Instance.Player.Stat.Level}");
             Console.WriteLine($"경험치: {GameManager.Instance.Player.Stat.exp}");
@@ -73,4 +90,5 @@ namespace TextRPG_Team3.Scenes
         }
     
     }
+ 
 }
