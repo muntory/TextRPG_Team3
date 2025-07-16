@@ -14,12 +14,13 @@ namespace TextRPG_Team3.Character
     public class PlayerCharacter : BaseCharacter
     {
         public int Gold { get; set; }
-
+        public string RootClass { get; set; }
 
         public List<SkillData> SkillList;
         public PlayerCharacter() : base()
         {
             Gold = 1500;
+            RootClass = "전사";
             Stat = new PlayerStatComponent();
             OnHit += Stat.TakeDamage;
             Stat.OnHpZero += Die;

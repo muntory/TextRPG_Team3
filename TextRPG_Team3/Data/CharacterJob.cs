@@ -10,8 +10,8 @@ namespace TextRPG_Team3.Data
     {
         public int JobID { get; set; }
         public string JobName { get; set; }
-        public int JobAtk { get; set; }
+        public double JobAtk { get; set; }
         public int JobHP { get; set; }
-        public int JobDef { get; set; }
+        public double JobDef { get; set; }
     }
 }
