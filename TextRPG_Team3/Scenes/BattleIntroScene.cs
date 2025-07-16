@@ -12,7 +12,7 @@ namespace TextRPG_Team3.Scenes
     internal class BattleIntroScene : BaseScene
     {
         // 필요한 변수 생성
-        List<EnemyCharacter> currentEnemies;
+        
         Random random = new Random();
         
         public override void Render()
@@ -26,7 +26,7 @@ namespace TextRPG_Team3.Scenes
             string enemyinfo = "";
 
             // List 반복문 넣어서 적 정보 갱신하기
-            foreach (var enemy in currentEnemies)
+            foreach (var enemy in SpawnManager.Instance.currentEnemies)
             {
                 // Level : 임시로 1~5 사이의 숫자 부여.
                 enemy.CharacterStat.Level = random.Next(1, 6);
@@ -53,7 +53,7 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Attack:
-                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene(currentEnemies);
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene(SpawnManager.Instance.currentEnemies);
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
@@ -66,29 +66,12 @@ namespace TextRPG_Team3.Scenes
             // resourceManager로 EnemyDB 로드
 
             // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
-            SpawnRandomEnemies();
+            SpawnManager.Instance.SpawnRandomEnemies();
         }
 
         public BattleIntroScene(List<EnemyCharacter> currentEnemies)
         {
-            this.currentEnemies = currentEnemies;
-        }
-
-        void SpawnRandomEnemies()
-        {
-            currentEnemies = new List<EnemyCharacter>();
-
-            int enemycount = Random.Shared.Next(1, 5);
-
-            for (int i = 0; i < enemycount; i++)
-            {
-                int randomint = Random.Shared.Next(1, 4);
-                EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
-
-                EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
-
-                currentEnemies.Add(newEnemy);
-            }
+            SpawnManager.Instance.currentEnemies = currentEnemies;
         }
     }
 }

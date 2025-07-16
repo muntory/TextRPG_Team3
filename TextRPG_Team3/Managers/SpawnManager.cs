@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
+
+namespace TextRPG_Team3.Managers
+{
+    internal class SpawnManager
+    {
+        private static SpawnManager instance;
+
+        public SpawnManager()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
+
+        public static SpawnManager Instance { get { return instance; } }
+
+        public List<EnemyCharacter> currentEnemies;
+
+        public void SpawnRandomEnemies()
+        {
+            currentEnemies = new List<EnemyCharacter>();
+
+            int enemycount = Random.Shared.Next(1, 5);
+
+            for (int i = 0; i < enemycount; i++)
+            {
+                int randomint = Random.Shared.Next(1, 4);
+                EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
+
+                EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
+
+                currentEnemies.Add(newEnemy);
+            }
+        }
+    }
+}
