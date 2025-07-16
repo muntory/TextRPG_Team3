@@ -46,7 +46,7 @@ namespace TextRPG_Team3.Scenes
         }
         private void RenderQuest(int index)
         {
-            Quest quest = QuestManager.Instance.QuestDB[index];
+            Quest quest = QuestManager.Instance.GetQuestData(index);
             Console.WriteLine($"{quest.QuestName}");
             Console.WriteLine();
             Console.WriteLine($"{quest.QuestDescription}");
@@ -54,11 +54,11 @@ namespace TextRPG_Team3.Scenes
             if (quest.Goal is KillEnemyQuest killQuest)
             {
                 Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})");
+                Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
             }
             else if(quest.Goal is EquipItemQuest equipQuest)
             {
-                Console.Write("장착 퀘스트 테스트입니다.");
+                Console.WriteLine("장착 퀘스트 테스트입니다.");
             }
 
             Console.WriteLine();

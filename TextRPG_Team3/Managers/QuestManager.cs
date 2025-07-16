@@ -65,7 +65,7 @@ namespace TextRPG_Team3.Managers
 
         public void OnItemEquipped(int ID)
         {
-            foreach(var quest in ActiveQuests)
+            foreach(Quest quest in ActiveQuests)
             {
                 if(quest.Goal is EquipItemQuest equipGoal)
                 {
@@ -76,7 +76,7 @@ namespace TextRPG_Team3.Managers
 
         public void OnEnemyKilled(int ID)
         {
-            foreach(var quest in ActiveQuests)
+            foreach(Quest quest in ActiveQuests)
             {
                 if(quest.Goal is KillEnemyQuest killGoal)
                 {
