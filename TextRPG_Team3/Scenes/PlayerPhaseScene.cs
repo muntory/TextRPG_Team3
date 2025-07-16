@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Utils;
+using TextRPG_Team3.Scenes;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -55,6 +56,16 @@ namespace TextRPG_Team3.Scenes
                 Console.WriteLine($"Lv.{target.CharacterStat.Level} {target.Name}");
                 Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.CharacterStat.Health}" : "Dead")}");
                 Console.WriteLine();
+
+                Console.WriteLine("0. 다음");
+
+                if (GameManager.Instance.CheckVictory(currentEnemies))
+                {
+                    GameManager.Instance.Victory = true;  
+                    SceneManager.Instance.CurrentScene = new VictoryScene();
+                    return; 
+
+                }
 
                 Console.WriteLine("0. 다음");
             }
