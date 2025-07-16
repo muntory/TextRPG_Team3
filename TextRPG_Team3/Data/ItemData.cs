@@ -14,7 +14,7 @@ namespace TextRPG_Team3
         Armor,
         Shield,
     }
-    internal class ItemData
+    public class ItemData
     {
         public int Id { get; set; }
         public string Name { get; set; }

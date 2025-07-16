@@ -16,6 +16,8 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
+            PlayerCharacter player = GameManager.Instance.Player;
+
             Console.WriteLine("Battle!!");
             Console.WriteLine();
 
@@ -28,16 +30,15 @@ namespace TextRPG_Team3.Scenes
             {
                 WriteLineEnemyInfo(enemy);
             }
+
             Console.WriteLine();
             Console.WriteLine();
 
             Console.WriteLine("[내 정보]");
-            Console.WriteLine
-                ($"Lv. {GameManager.Instance.Player.Stat.Level}\t" +
-                 $"{GameManager.Instance.Player.Name}");
-            Console.WriteLine
-                ($"HP {GameManager.Instance.Player.Stat.Health}/100");
+            Console.WriteLine($"Lv. {player.Stat.Level} {player.Name}");
+            Console.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}");
             Console.WriteLine();
+            
             Console.WriteLine("1. 공격");
             Console.WriteLine();
         }

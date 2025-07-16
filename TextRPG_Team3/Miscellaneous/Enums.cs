@@ -50,4 +50,10 @@ public class Enums
     {
         Next = 0
     }
+
+    public enum InventoryMenu
+    {
+        Back = 0,
+        Set = 1,
+    }
 }
