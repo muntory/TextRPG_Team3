@@ -28,9 +28,6 @@ namespace TextRPG_Team3.Scenes
             // List 반복문 넣어서 적 정보 갱신하기
             foreach (var enemy in SpawnManager.Instance.currentEnemies)
             {
-                // Level : 임시로 1~5 사이의 숫자 부여.
-                enemy.CharacterStat.Level = random.Next(1, 6);
-
                 enemyinfo += $"Lv. {enemy.CharacterStat.Level}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
             }
             Console.WriteLine(enemyinfo);

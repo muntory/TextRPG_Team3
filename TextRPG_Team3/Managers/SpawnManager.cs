@@ -12,6 +12,8 @@ namespace TextRPG_Team3.Managers
     {
         private static SpawnManager instance;
 
+        Random rand = new Random();
+
         public SpawnManager()
         {
             if (instance == null)
@@ -28,7 +30,7 @@ namespace TextRPG_Team3.Managers
         {
             currentEnemies = new List<EnemyCharacter>();
 
-            int enemycount = Random.Shared.Next(1, 5);
+            int enemycount = rand.Next(1, 5);
 
             for (int i = 0; i < enemycount; i++)
             {
@@ -36,6 +38,8 @@ namespace TextRPG_Team3.Managers
                 EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
+
+                newEnemy.CharacterStat.Level = rand.Next(1, 11);
 
                 currentEnemies.Add(newEnemy);
             }
