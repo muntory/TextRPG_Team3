@@ -11,6 +11,7 @@ namespace TextRPG_Team3.Managers
         // 플레이어
         public PlayerCharacter Player;
         public bool Victory;
+        public bool Lose;
        
         public GameManager()
 		{
@@ -31,5 +32,15 @@ namespace TextRPG_Team3.Managers
             return true;
         }
 
+        public bool CheckLose()
+        {
+            if (GameManager.Instance.Player.PlayerStat.Health == 0)
+            {
+                return true;
+            }
+            {
+                return false;
+            }
+        }
     }
 }

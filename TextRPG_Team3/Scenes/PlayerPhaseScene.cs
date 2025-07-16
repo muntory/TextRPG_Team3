@@ -59,17 +59,14 @@ namespace TextRPG_Team3.Scenes
 
                 Console.WriteLine("0. 다음");
 
-                if (GameManager.Instance.CheckVictory(currentEnemies))
-                {
-                    GameManager.Instance.Victory = true;  
-                    SceneManager.Instance.CurrentScene = new VictoryScene();
-                    return; 
-
-                }
+           
 
                 Console.WriteLine("0. 다음");
             }
-
+            if (GameManager.Instance.CheckVictory(currentEnemies))
+            {
+                GameManager.Instance.Victory = true;
+            }
             PrintMsg();
         }
 
@@ -91,15 +88,22 @@ namespace TextRPG_Team3.Scenes
             switch (playerPhaseMenu)
             {
                 case Enums.PlayerPhaseMenu.Out:
-                    if (isAttacked)
+                    if (GameManager.Instance.CheckVictory(currentEnemies))
                     {
-                        SceneManager.Instance.CurrentScene = new EnemyPhaseScene(currentEnemies);
+                        SceneManager.Instance.CurrentScene = new VictoryScene();
+                        break;
                     }
-                    else
-                    {
-                        SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
+
+                    else { if (isAttacked)
+                        {
+                            SceneManager.Instance.CurrentScene = new EnemyPhaseScene(currentEnemies);
+                        }
+                        else
+                        {
+                            SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
+                        }
+                        break;
                     }
-                    break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
