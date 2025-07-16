@@ -73,7 +73,7 @@ namespace TextRPG_Team3.Managers
                 }
             }
 
-            CurrentEnemies = null;
+            //CurrentEnemies = null;
 
             return false;
         }
