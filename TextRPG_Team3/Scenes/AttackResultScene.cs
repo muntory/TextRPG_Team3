@@ -70,7 +70,6 @@ namespace TextRPG_Team3.Scenes
             else
             {
                 SceneManager.Instance.CurrentScene = new VictoryScene();
-
             }
             
             

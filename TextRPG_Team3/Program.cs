@@ -11,6 +11,7 @@ namespace TextRPG_Team3
         SceneManager sceneManager;
         InputManager inputManager;
         SpawnManager spawnManager;
+        QuestManager questManager;
 
         static void Main(string[] args)
         {
@@ -27,6 +28,7 @@ namespace TextRPG_Team3
 
         void Init()
         {
+            questManager = new QuestManager();
             gameManager = new GameManager();
             spawnManager = new SpawnManager();
             gameManager.Player = new PlayerCharacter();
@@ -34,7 +36,6 @@ namespace TextRPG_Team3
             sceneManager = new SceneManager();
             inputManager = new InputManager();
             SceneManager.Instance.LoadScene(new IntroScene());
-
         }
 
         void Render()
