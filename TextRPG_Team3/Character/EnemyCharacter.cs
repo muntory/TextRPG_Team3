@@ -30,11 +30,15 @@ namespace TextRPG_Team3.Character
         }
 
         // enemy Attack 로직 구현하기
-        public void Attack(BaseCharacter target)
+        public override int Attack(BaseCharacter target)
         {
+            int ret = -1;
             if (!IsAlive)
-                return;
+                return ret;
+
+            ret = 0;
             target.OnHit?.Invoke((int)Stat.FinalAttack);
+            return ret;
         }
 
 

@@ -69,12 +69,15 @@ namespace TextRPG_Team3.Scenes
             switch(enemyPhaseMenu)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    index = FindNextIndex(index);
                     if (!GameManager.Instance.Player.IsAlive)
                     {
                         SceneManager.Instance.CurrentScene = new LoseScene();
+                        break;
                     }
-                    else if (index >= currentEnemies.Count)
+
+                    index = FindNextIndex(index);
+
+                    if (index >= currentEnemies.Count)
                     {
                         SceneManager.Instance.CurrentScene = new BattleIntroScene();
                     }

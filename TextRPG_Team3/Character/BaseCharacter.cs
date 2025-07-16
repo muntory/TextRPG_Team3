@@ -23,7 +23,8 @@ namespace TextRPG_Team3.Character
         }
 
         // 시간남으면 IAttackable 인터페이스 해보기
-        
+        public abstract int Attack(BaseCharacter target);
+      
 
     }
 }

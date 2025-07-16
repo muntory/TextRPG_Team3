@@ -27,14 +27,24 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"{player.Name} 의 공격!");
 
             int prevHealth = target.Stat.Health;
-            player.Attack(target, out bool isCritical);
+            
+            int result = player.Attack(target);
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}] {(isCritical ? "- 치명타 공격!!" : "")}");
-            Console.WriteLine();
+            if (result >= 0)
+            {
+                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}] {(result == 1 ? "- 치명타 공격!!" : "")}");
+                Console.WriteLine();
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-            Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
-            Console.WriteLine();
+                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
+                Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+                Console.WriteLine();
+            }
+            else if (result == -1)
+            {
+                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.");
+                Console.WriteLine();
+            }
+
 
             Console.WriteLine("0. 다음");
             Console.WriteLine();
