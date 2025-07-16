@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Stat
 {
@@ -15,15 +16,17 @@ namespace TextRPG_Team3.Stat
             get { return mp; }
             set { Math.Clamp(value, 0, MaxMP); }
         }
-
         public double CriticalRate;
-        public double DodgeRate;
+        public double AccuracyRate;
 
         public PlayerStatComponent() : base() 
         {
             MaxMP = 50;
             MP = MaxMP;
-
+            CriticalRate = 0.15;
+            AccuracyRate = 0.9;
         }
+
+
     }
 }
