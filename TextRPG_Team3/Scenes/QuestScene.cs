@@ -33,10 +33,12 @@ namespace TextRPG_Team3.Scenes
         private void RenderQuestIntro()
         {
             QuestManager.Instance.GetQuestDB();
-            foreach(QuestData quest in QuestManager.Instance.QuestDB.Values)
+            int questCount = 1;
+            foreach(Quest quest in QuestManager.Instance.QuestDB.Values)
             {
-                string clearStr = quest.isCleared ? " Cleared!" : "";
-                Console.WriteLine($"{quest.ID}. {quest.QuestName} {clearStr}");
+                string clearStr = quest.IsCompleted ? " Cleared!" : "";
+                Console.WriteLine($"{questCount}. {quest.QuestName} {clearStr}");
+                questCount++;
             }
             Console.WriteLine();
             Console.WriteLine("0. 나가기");
@@ -44,17 +46,27 @@ namespace TextRPG_Team3.Scenes
         }
         private void RenderQuest(int index)
         {
-            Console.WriteLine($"{QuestManager.Instance.QuestDB[index].QuestName}");
+            Quest quest = QuestManager.Instance.QuestDB[index];
+            Console.WriteLine($"{quest.QuestName}");
             Console.WriteLine();
-            Console.WriteLine($"{QuestManager.Instance.QuestDB[index].QuestDescription}");
+            Console.WriteLine($"{quest.QuestDescription}");
             Console.WriteLine();
-            Console.WriteLine("- 미니언 5마리 처치(0/5)");//몬스터랑 연결해야됨.
+            if (quest.Goal is KillEnemyQuest killQuest)
+            {
+                Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
+                Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})");
+            }
+            else if(quest.Goal is EquipItemQuest equipQuest)
+            {
+                Console.Write("장착 퀘스트 테스트입니다.");
+            }
+
             Console.WriteLine();
             Console.WriteLine("- 보상");
-            Console.WriteLine($"  {QuestManager.Instance.QuestDB[index].GoldReward} G");
+            Console.WriteLine($"  {quest.GoldReward} G");
             Console.WriteLine();
 
-            if (!QuestManager.Instance.QuestDB[index].isAccepted)
+            if (!quest.isAccepted)
             {
                 Console.WriteLine("1. 수락");
                 Console.WriteLine("2. 거절");
@@ -71,7 +83,7 @@ namespace TextRPG_Team3.Scenes
         {
             if (index == 0 && 0 < input && input <= QuestManager.Instance.QuestDB.Count)
             {
-                if (QuestManager.Instance.QuestDB[input].isCleared)
+                if (QuestManager.Instance.QuestDB[input].IsCompleted)
                 {
                     msg = "잘못된 입력입니다.";
                     return;
@@ -102,7 +114,7 @@ namespace TextRPG_Team3.Scenes
                 case Enums.QuestMenuE.Accept:
                     if (index != 0 && !QuestManager.Instance.QuestDB[index].isAccepted)
                     {
-                        QuestManager.Instance.QuestDB[index].isAccepted = true;
+                        QuestManager.Instance.ActivateQuest(index);
                         index = 0;
                     }
                     else
