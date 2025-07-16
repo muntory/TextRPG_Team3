@@ -12,5 +12,7 @@ namespace TextRPG_Team3.Data
         public string QuestName { get; set; }
         public string QuestDescription { get; set; }
         public int GoldReward {  get; set; }
+        public bool isAccepted {  get; set; }
+        public bool isCleared {  get; set; }
     }
 }
