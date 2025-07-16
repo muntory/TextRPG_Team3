@@ -30,6 +30,7 @@ namespace TextRPG_Team3.Managers
         public ItemData GetItemData (int itemID)
         {
             // 매번 모든 아이템 정보를 읽어야 함 -> 어케 해결할지 생각하기.
+            // 생성자 -> 아이템 리스트 쭉 읽고 메모리에 조장해두는 거 하기
             List<ItemData> itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
         
             for (int i = 0; i < itemDataList.Count; i++)
@@ -101,7 +102,7 @@ namespace TextRPG_Team3.Managers
         }
 
         // 소지 중인 아이템 ID 목록 반환
-        public List<int> AllHaveItemIds()
+        public List<int> AllHaveItemIDs()
         {
             List<int> itemIDs = new List<int>();
 
