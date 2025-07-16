@@ -5,6 +5,7 @@ using System.Text;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Utils;
+using TextRPG_Team3.Scenes;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -39,6 +40,11 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("0. 취소");
             Console.WriteLine();
 
+            }
+            if (GameManager.Instance.CheckVictory(currentEnemies))
+            {
+                GameManager.Instance.Victory = true;
+            }
             PrintMsg();
         }
 

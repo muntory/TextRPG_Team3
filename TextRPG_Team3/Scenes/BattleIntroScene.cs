@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Managers;
-using TextRPG_Team3.Data;
 using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
+using TextRPG_Team3.Managers;
 using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes

@@ -14,25 +14,26 @@ namespace TextRPG_Team3.Scenes
 {
     internal class VictoryScene : BaseScene
     {
-        public void CheckVictory(List<EnemyCharacter> enemies)
-        {
-            // 모든 몬스터의 isAlive가 false면 victoryscene 호출
-            bool allEnemiesDead = true;
-            foreach (var enemy in enemies)
-            {
-                if (enemy.IsAlive)
-                {
-                    allEnemiesDead = false;
-                    break;
-                }
-            }
+        //public void CheckVictory(List<EnemyCharacter> enemies)
+        //{
+        //    // 모든 몬스터의 isAlive가 false면 victoryscene 호출
+        //    bool allEnemiesDead = true;
+        //    foreach (var enemy in enemies)
+        //    {
+        //        if (enemy.IsAlive)
+        //        {
+        //            allEnemiesDead = false;
+        //            break;
+        //        }
+        //    }
 
-            if (allEnemiesDead)
-            {
-                Render();
-            }
-        }
-        
+        //    if (allEnemiesDead)
+        //    {
+        //        Render();
+        //    }
+        //}
+
+      
 
         public override void Render()
         {

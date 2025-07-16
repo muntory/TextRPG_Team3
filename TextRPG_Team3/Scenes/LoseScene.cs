@@ -14,14 +14,14 @@ namespace TextRPG_Team3.Scenes
 {
     internal class LoseScene : BaseScene
     {
-        public void CheckPlayerLose()
-        {
-            if (GameManager.Instance.Player.Stat.Health == 0)
-            {
-                LoseScene loseScene = new LoseScene();
-                Render();
-            }
-        }
+        //public void CheckPlayerLose()
+        //{
+        //    if (GameManager.Instance.Player.PlayerStat.Health == 0)
+        //    {
+        //        LoseScene loseScene = new LoseScene();
+        //        Render();
+        //    }
+        //}
 
 
         public override void Render()
