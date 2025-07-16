@@ -12,7 +12,7 @@ namespace TextRPG_Team3.Managers
         private static QuestManager instance;
         public static QuestManager Instance { get { return instance; } }
 
-        private Dictionary<int, QuestData> QuestDB;
+        public Dictionary<int, QuestData> QuestDB;
 
         public Dictionary<int, QuestData> GetQuestDB()
         {
@@ -40,6 +40,13 @@ namespace TextRPG_Team3.Managers
             }
 
             return QuestDB[ID];
+        }
+        public QuestManager()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
         }
     }
 }
