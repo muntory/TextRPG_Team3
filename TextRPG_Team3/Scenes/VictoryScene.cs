@@ -41,8 +41,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("                 [  VICTORY  ]            \n");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"플레이어: {GameManager.Instance.Player.Name}");
-            Console.WriteLine($"레벨: {GameManager.Instance.Player.PlayerStat.Level}");
-            Console.WriteLine($"HP: {GameManager.Instance.Player.PlayerStat.Health} / {GameManager.Instance.Player.PlayerStat.MaxHealth}");
+            Console.WriteLine($"레벨: {GameManager.Instance.Player.Stat.Level}");
+            Console.WriteLine($"HP: {GameManager.Instance.Player.Stat.Health} / {GameManager.Instance.Player.Stat.MaxHealth}");
             Console.WriteLine($"보유 골드: {GameManager.Instance.Player.Gold} G");
             Console.WriteLine("------------------------------------------\n");
             Console.WriteLine("0. 다음");

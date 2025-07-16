@@ -33,7 +33,7 @@ namespace TextRPG_Team3
             resourceManager = new ResourceManager();
             sceneManager = new SceneManager();
             inputManager = new InputManager();
-            SceneManager.Instance.CurrentScene = new IntroScene();
+            SceneManager.Instance.LoadScene(new IntroScene());
 
         }
 

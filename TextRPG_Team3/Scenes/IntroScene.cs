@@ -37,7 +37,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new StatScene();
                     break;
                 case Enums.IntroMenu.Battle:
-                    SceneManager.Instance.CurrentScene = new BattleIntroScene();
+                    SceneManager.Instance.LoadScene(new BattleIntroScene());
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

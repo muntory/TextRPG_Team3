@@ -4,7 +4,8 @@ public class BaseScene
 {
     protected string msg;
 
-	public virtual void Render()
+    
+    public virtual void Render()
 	{
 		Console.Clear();
 	}
