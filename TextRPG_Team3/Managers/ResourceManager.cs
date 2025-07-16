@@ -20,7 +20,6 @@ namespace TextRPG_Team3.Managers
 
         private Dictionary<int, EnemyData> EnemyDB;
 
-
         private JsonSerializerOptions options;
         public ResourceManager()
         {
