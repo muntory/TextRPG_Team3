@@ -49,7 +49,15 @@ namespace TextRPG_Team3.Managers
                 CurrentEnemies.Add(newEnemy);
             }
         }
-
+        public int SumofEnemyLevel() //적의 총 레벨을 반환함.
+        {
+            int exp = 0;
+            foreach(EnemyCharacter enemy in CurrentEnemies)
+            {
+                exp += enemy.Stat.Level;
+            }
+            return exp;
+        }
         public bool HasEnemies()
         {
             if (CurrentEnemies == null)
@@ -65,7 +73,8 @@ namespace TextRPG_Team3.Managers
                 }
             }
 
-            CurrentEnemies = null;
+            //CurrentEnemies = null;
+            
 
             return false;
         }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Stat
 {
@@ -55,6 +57,16 @@ namespace TextRPG_Team3.Stat
             }
         }
 
+   
+        private int Exp;
+
+        public int exp
+        {
+            get { return Exp; }
+            set { Exp = value; }
+        }
+
+
         public int TakeDamage(int inDamage)
         {
             int prevHealth = Health;
@@ -71,6 +83,7 @@ namespace TextRPG_Team3.Stat
             BaseDefense = 5.0;
             MaxHealth = 100;
             Health = MaxHealth;
+            exp = 0;
         }
     }
 }

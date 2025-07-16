@@ -38,7 +38,6 @@ namespace TextRPG_Team3.Scenes
 
             Console.WriteLine("0. 다음");
             Console.WriteLine();
-
         }
 
         private static int FindNextIndex(int index)
