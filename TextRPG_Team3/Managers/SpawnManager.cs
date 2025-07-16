@@ -24,11 +24,16 @@ namespace TextRPG_Team3.Managers
 
         public static SpawnManager Instance { get { return instance; } }
 
-        public List<EnemyCharacter> currentEnemies;
+        public List<EnemyCharacter> CurrentEnemies;
 
         public void SpawnRandomEnemies()
         {
-            currentEnemies = new List<EnemyCharacter>();
+            if (CurrentEnemies != null)
+            {
+                return;
+            }
+
+            CurrentEnemies = new List<EnemyCharacter>();
 
             int enemycount = rand.Next(1, 5);
 
@@ -39,10 +44,30 @@ namespace TextRPG_Team3.Managers
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
 
-                newEnemy.CharacterStat.Level = rand.Next(1, 11);
+                newEnemy.Stat.Level = rand.Next(1, 11);
 
-                currentEnemies.Add(newEnemy);
+                CurrentEnemies.Add(newEnemy);
             }
+        }
+
+        public bool HasEnemies()
+        {
+            if (CurrentEnemies == null)
+            {
+                return false;
+            }
+
+            foreach (var enemy in CurrentEnemies)
+            {
+                if (enemy.IsAlive)
+                {
+                    return true;
+                }
+            }
+
+            CurrentEnemies = null;
+
+            return false;
         }
     }
 }

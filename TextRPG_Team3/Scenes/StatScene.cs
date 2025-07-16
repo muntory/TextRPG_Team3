@@ -12,18 +12,18 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            string extraAttackStr = (GameManager.Instance.Player.PlayerStat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.PlayerStat.ExtraAttack}";
-            string extraDefenseStr = (GameManager.Instance.Player.PlayerStat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.PlayerStat.ExtraDefense}";
+            string extraAttackStr = (GameManager.Instance.Player.Stat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraAttack}";
+            string extraDefenseStr = (GameManager.Instance.Player.Stat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraDefense}";
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다.");
             Console.WriteLine();
 
 
-            Console.WriteLine($"Lv. {GameManager.Instance.Player.PlayerStat.Level}");
+            Console.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}");
             Console.WriteLine($"{GameManager.Instance.Player.Name}");
-            Console.WriteLine($"공격력 : {GameManager.Instance.Player.PlayerStat.BaseAttack}{extraAttackStr}");
-            Console.WriteLine($"방어력 : {GameManager.Instance.Player.PlayerStat.BaseDefense}{extraDefenseStr}");
-            Console.WriteLine($"체력 : {GameManager.Instance.Player.PlayerStat.Health}");
+            Console.WriteLine($"공격력 : {GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}");
+            Console.WriteLine($"방어력 : {GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}");
+            Console.WriteLine($"체력 : {GameManager.Instance.Player.Stat.Health}");
             Console.WriteLine($"Gold : {GameManager.Instance.Player.Gold} G");
             Console.WriteLine();
 

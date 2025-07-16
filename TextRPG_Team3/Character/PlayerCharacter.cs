@@ -12,24 +12,23 @@ namespace TextRPG_Team3.Character
 {
     public class PlayerCharacter : BaseCharacter
     {
-        public PlayerStatComponent PlayerStat {  get; set; }
         public int Gold { get; set; }
 
         public PlayerCharacter() : base()
         {
             Gold = 1500;
-            PlayerStat = new PlayerStatComponent();
-            OnHit += PlayerStat.TakeDamage;
-            PlayerStat.OnHpZero += Die;
+            Stat = new PlayerStatComponent();
+            OnHit += Stat.TakeDamage;
+            Stat.OnHpZero += Die;
         }
 
         // Attack 로직 구현 하기
-        public void Attack(BaseCharacter target)
+        public override void Attack(BaseCharacter target)
         {
             if (!IsAlive) return;
 
             double damageModifier = 1.0 + (Random.Shared.NextDouble() * 20.0 - 10.0) * 0.01;
-            double inDamage = PlayerStat.FinalAttack * damageModifier;
+            double inDamage = Stat.FinalAttack * damageModifier;
             inDamage = Math.Ceiling(inDamage);
 
             target.OnHit?.Invoke((int)inDamage);
@@ -37,6 +36,11 @@ namespace TextRPG_Team3.Character
 
         public void Die()
         {
+            if (IsAlive)
+            {
+                IsAlive = false;
+
+            }
             // 플레이어 사망 로직
         }
 
