@@ -11,7 +11,8 @@ public class Enums
     public enum IntroMenu
     {
         Stat = 1,
-        Battle = 2
+        Battle = 2, 
+        Quest = 3
     }
 
     public enum StatMenu
@@ -56,5 +57,11 @@ public class Enums
         Warrior = 1, 
         Mage = 2, 
         Assassin = 3
+    }
+    public enum QuestMenuE
+    {
+        Out = 0,
+        Accept,
+        Refuse
     }
 }
