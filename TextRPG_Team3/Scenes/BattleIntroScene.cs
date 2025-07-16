@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Stat;
 using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
@@ -21,10 +22,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("Battle!!");
             Console.WriteLine();
 
-            // 문자열 변수 만들어서 적 정보 할당할 공간 만들기
-            string enemyinfo = "";
-
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
             // List 반복문 넣어서 적 정보 갱신하기
             foreach (var enemy in currentEnemies)
             {
@@ -40,6 +39,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             
             Console.WriteLine("1. 공격");
+            Console.WriteLine("2. 스킬");
             Console.WriteLine();
         }
 
@@ -50,7 +50,11 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Attack:
+                    SceneManager.Instance.PreviousScene = SceneManager.Instance.CurrentScene;
                     SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
+                    break;
+                case Enums.BattleMenu.Skill:
+                    SceneManager.Instance.CurrentScene = new SkillSelectScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

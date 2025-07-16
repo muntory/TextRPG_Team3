@@ -8,6 +8,12 @@ public class Enums
         Health,
     }
 
+    public enum AttackType
+    {
+        NormalAttack,
+        Skill,
+    }
+
     public enum IntroMenu
     {
         Stat = 1,
@@ -24,6 +30,7 @@ public class Enums
     public enum BattleMenu
     {
         Attack = 1,
+        Skill = 2,
         Out = 0
     }
 
