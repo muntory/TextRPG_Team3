@@ -38,7 +38,7 @@ namespace TextRPG_Team3.Scenes
         }
         private void SkipEnemy()
         {
-            while (currentEnemies.Count>index)
+            while (currentEnemies.Count > index)
             {
                 if (!currentEnemies[index].IsAlive)
                 {
@@ -57,21 +57,23 @@ namespace TextRPG_Team3.Scenes
             switch (enemyPhaseMenuE)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    if(GameManager.Instance.CheckLose())
+                    if (GameManager.Instance.CheckLose())
                     {
                         SceneManager.Instance.CurrentScene = new LoseScene();
-                        break;
-                    }
-                    if (index >= currentEnemies.Count)
-                    {
-                        SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
                     }
                     else
                     {
+                        if (index >= currentEnemies.Count)
+                        {
+                            SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
+                        }
+                        else
+                        {
 
-                        SceneManager.Instance.CurrentScene = this;
+                            SceneManager.Instance.CurrentScene = this;
+                        }
                     }
-                        break;
+                    break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;

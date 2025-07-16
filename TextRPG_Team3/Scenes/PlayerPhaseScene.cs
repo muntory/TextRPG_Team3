@@ -59,9 +59,6 @@ namespace TextRPG_Team3.Scenes
 
                 Console.WriteLine("0. 다음");
 
-           
-
-                Console.WriteLine("0. 다음");
             }
             if (GameManager.Instance.CheckVictory(currentEnemies))
             {
@@ -72,7 +69,7 @@ namespace TextRPG_Team3.Scenes
 
         public override void SelectMenu(int input)
         {
-            if (0 < input && input  <= currentEnemies.Count)
+            if (0 < input && input <= currentEnemies.Count)
             {
                 if (!currentEnemies[input - 1].IsAlive)
                 {
@@ -91,10 +88,10 @@ namespace TextRPG_Team3.Scenes
                     if (GameManager.Instance.CheckVictory(currentEnemies))
                     {
                         SceneManager.Instance.CurrentScene = new VictoryScene();
-                        break;
                     }
-
-                    else { if (isAttacked)
+                    else
+                    {
+                        if (isAttacked)
                         {
                             SceneManager.Instance.CurrentScene = new EnemyPhaseScene(currentEnemies);
                         }
@@ -102,8 +99,8 @@ namespace TextRPG_Team3.Scenes
                         {
                             SceneManager.Instance.CurrentScene = new BattleIntroScene(currentEnemies);
                         }
-                        break;
                     }
+                    break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
