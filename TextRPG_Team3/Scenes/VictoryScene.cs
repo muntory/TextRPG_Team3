@@ -36,9 +36,10 @@ namespace TextRPG_Team3.Scenes
             GameManager.Instance.Player.Gold += TotalGold;
             GameManager.Instance.Player.Stat.exp += TotalExp;
            
-            CharacterStatComponent stat = GameManager.Instance.Player.Stat;
+            PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
             int exp = SpawnManager.Instance.SumofEnemyLevel();
             stat.exp += exp;
+            stat.MP += 10;
 
             if (stat.exp >= 100)
             {
