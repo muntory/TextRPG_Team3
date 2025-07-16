@@ -13,6 +13,7 @@ namespace TextRPG_Team3.Character
 {
     public class EnemyCharacter : BaseCharacter
     {
+        public int EnemyID { get; private set; }
         public EnemyCharacter() : base()
         {
             Stat = new CharacterStatComponent();
@@ -22,6 +23,7 @@ namespace TextRPG_Team3.Character
 
         public EnemyCharacter(EnemyData enemyData) : this()
         {
+            EnemyID = enemyData.ID;
             Name = enemyData.Name;
             Stat.MaxHealth = enemyData.HP;
             Stat.Health = Stat.MaxHealth;
