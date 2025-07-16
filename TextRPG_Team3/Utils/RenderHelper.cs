@@ -9,6 +9,20 @@ namespace TextRPG_Team3.Utils
 {
     public static class RenderHelper
     {
+        public static void WriteLine(string str, ConsoleColor color = ConsoleColor.White)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(str);
+            Console.ResetColor();
+        }
+
+        public static void Write(string str, ConsoleColor color = ConsoleColor.White)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(str);
+            Console.ResetColor();
+        }
+
         public static void DeleteConsoleLine(int count = 1)
         {
             for (int i = 0; i < count; i++)

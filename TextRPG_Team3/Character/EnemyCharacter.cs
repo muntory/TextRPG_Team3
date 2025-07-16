@@ -13,34 +13,32 @@ namespace TextRPG_Team3.Character
 {
     public class EnemyCharacter : BaseCharacter
     {
-        
-        
-
-        public CharacterStatComponent CharacterStat { get; set; }
-
         public EnemyCharacter() : base()
         {
-            IsAlive = true;
-            CharacterStat = new CharacterStatComponent();
-            OnHit += CharacterStat.TakeDamage;
-            CharacterStat.OnHpZero += Die;
+            Stat = new CharacterStatComponent();
+            OnHit += Stat.TakeDamage;
+            Stat.OnHpZero += Die;
         }
 
         public EnemyCharacter(EnemyData enemyData) : this()
         {
             Name = enemyData.Name;
-            CharacterStat.MaxHealth = enemyData.HP;
-            CharacterStat.Health = CharacterStat.MaxHealth;
-            CharacterStat.BaseAttack = enemyData.Attack;
-            CharacterStat.BaseDefense = enemyData.Defense;
+            Stat.MaxHealth = enemyData.HP;
+            Stat.Health = Stat.MaxHealth;
+            Stat.BaseAttack = enemyData.Attack;
+            Stat.BaseDefense = enemyData.Defense;
         }
 
         // enemy Attack 로직 구현하기
-        public void Attack(BaseCharacter target)
+        public override int Attack(BaseCharacter target)
         {
+            int ret = -1;
             if (!IsAlive)
-                return;
-            target.OnHit?.Invoke((int)CharacterStat.FinalAttack);
+                return ret;
+
+            ret = 0;
+            target.OnHit?.Invoke((int)Stat.FinalAttack);
+            return ret;
         }
 
 

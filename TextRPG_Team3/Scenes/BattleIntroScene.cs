@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Managers;
-using TextRPG_Team3.Data;
 using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
+using TextRPG_Team3.Managers;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
 {
     internal class BattleIntroScene : BaseScene
     {
-        // 필요한 변수 생성
-        List<EnemyCharacter> currentEnemies;
-        Random random = new Random();
-        
         public override void Render()
         {
             base.Render();
@@ -25,22 +22,21 @@ namespace TextRPG_Team3.Scenes
             // 문자열 변수 만들어서 적 정보 할당할 공간 만들기
             string enemyinfo = "";
 
+            List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
             // List 반복문 넣어서 적 정보 갱신하기
             foreach (var enemy in currentEnemies)
             {
-                // Level : 임시로 1~5 사이의 숫자 부여.
-                enemy.CharacterStat.Level = random.Next(1, 6);
-
-                enemyinfo += $"Lv. {enemy.CharacterStat.Level}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
+                WriteLineEnemyInfo(enemy);
             }
-            Console.WriteLine(enemyinfo);
             Console.WriteLine();
+            Console.WriteLine();
+
             Console.WriteLine("[내 정보]");
             Console.WriteLine
-                ($"Lv. {GameManager.Instance.Player.PlayerStat.Level}\t" +
-                 $"{GameManager.Instance.Player.Name}\t");
+                ($"Lv. {GameManager.Instance.Player.Stat.Level}\t" +
+                 $"{GameManager.Instance.Player.Name}");
             Console.WriteLine
-                ($"HP {GameManager.Instance.Player.PlayerStat.Health}/100");
+                ($"HP {GameManager.Instance.Player.Stat.Health}/100");
             Console.WriteLine();
             Console.WriteLine("1. 공격");
             Console.WriteLine();
@@ -53,42 +49,33 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.BattleMenu.Attack:
-                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene(currentEnemies);
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
             }
         }
+        private void WriteLineEnemyInfo(EnemyCharacter enemy)
+        {
+            string str = $"LV.{enemy.Stat.Level} {RenderHelper.PadLeftToWidth(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
+
+            if (enemy.IsAlive)
+            {
+                Console.WriteLine(str);
+
+            }
+            else
+            {
+                RenderHelper.WriteLine(str, ConsoleColor.DarkGray);
+            }
+
+        }
 
         public BattleIntroScene()
         {
-            // resourceManager로 EnemyDB 로드
-
-            // 현재 에너미 리스트 만들어 놓고 랜덤으로 에너미 스폰
-            SpawnRandomEnemies();
+            SpawnManager.Instance.SpawnRandomEnemies();
         }
 
-        public BattleIntroScene(List<EnemyCharacter> currentEnemies)
-        {
-            this.currentEnemies = currentEnemies;
-        }
-
-        void SpawnRandomEnemies()
-        {
-            currentEnemies = new List<EnemyCharacter>();
-
-            int enemycount = Random.Shared.Next(1, 5);
-
-            for (int i = 0; i < enemycount; i++)
-            {
-                int randomint = Random.Shared.Next(1, 4);
-                EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
-
-                EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
-
-                currentEnemies.Add(newEnemy);
-            }
-        }
     }
 }
