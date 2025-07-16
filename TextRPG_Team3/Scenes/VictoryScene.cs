@@ -11,6 +11,7 @@ using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Stat;
 using static Enums;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -26,8 +27,10 @@ namespace TextRPG_Team3.Scenes
             int TotalExp = 0;
             foreach (var enemy in SpawnManager.Instance.CurrentEnemies)
             {
-                TotalExp = 
-                TotalGold += 
+                EnemyData data = ResourceManager.Instance.GetEnemyData(enemy.EnemyID);
+
+                TotalExp = data.Exp;
+                TotalGold += data.Gold;
             }
 
             GameManager.Instance.Player.Gold += TotalGold;
