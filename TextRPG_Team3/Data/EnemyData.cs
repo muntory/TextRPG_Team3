@@ -14,5 +14,9 @@ namespace TextRPG_Team3.Data
         public int HP { get; set; }
         public double Attack {  get; set; }
         public double Defense {  get; set; } 
+
+        public int Gold { get; set; }
+
+        public int Exp { get; set; }   
     }
 }
