@@ -8,10 +8,16 @@ public class Enums
         Health,
     }
 
+    public enum AttackType
+    {
+        NormalAttack,
+        Skill,
+    }
+
     public enum IntroMenu
     {
         Stat = 1,
-        Battle = 2,
+        Battle = 2, 
         Quest = 3
     }
 
@@ -24,6 +30,7 @@ public class Enums
     public enum BattleMenu
     {
         Attack = 1,
+        Skill = 2,
         Out = 0
     }
 
@@ -41,7 +48,7 @@ public class Enums
     {
         Next = 0
     }
-
+    
     public enum VictoryScene
     {
         Next = 0
@@ -52,6 +59,12 @@ public class Enums
         Next = 0
     }
 
+    public enum Job
+    {
+        Warrior = 1, 
+        Mage = 2, 
+        Assassin = 3
+    }
     public enum QuestMenuE
     {
         Out = 0,

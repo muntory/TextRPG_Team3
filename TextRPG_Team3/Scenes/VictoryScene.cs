@@ -36,9 +36,14 @@ namespace TextRPG_Team3.Scenes
 
             GameManager.Instance.Player.Gold += TotalGold;
             GameManager.Instance.Player.Stat.exp += TotalExp;
+           
+            PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
+            int exp = SpawnManager.Instance.SumofEnemyLevel();
+            stat.exp += exp;
+            stat.MP += 10;
 
             GameManager.Instance.MaxExperience();
-            CharacterStatComponent stat = new CharacterStatComponent();
+           
 
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");

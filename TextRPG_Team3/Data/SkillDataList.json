@@ -1,0 +1,19 @@
+[
+    {
+        "ID": 1,
+        "SkillName": "알파 스트라이크",
+        "CostValue": 10,
+        "Multiplier": 2.0,
+        "TargetCount": 1,
+        "RandomAttack": false
+    },
+    {
+        "ID": 2,
+        "SkillName": "더블 스트라이크",
+        "CostValue": 15,
+        "Multiplier": 1.5,
+        "TargetCount": 2,
+        "RandomAttack": true
+    }
+
+]
