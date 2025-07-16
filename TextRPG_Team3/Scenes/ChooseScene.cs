@@ -4,13 +4,20 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
+using TextRPG_Team3.Managers;
+using static Enums;
 
 namespace TextRPG_Team3.Scenes
 {
     internal class ChooseScene: BaseScene
     {
         public string name = "";
-        public int Job = 0;
+        public bool Jobool = false;
+        public static string GAME_ROOT_DIR = $"{AppDomain.CurrentDomain.BaseDirectory}/../../..";
+        List<BaseCharacter> currentJob;
+
         public override void Render()
         {
             base.Render();
@@ -22,13 +29,21 @@ namespace TextRPG_Team3.Scenes
 
         public override void SelectMenu (int input)
         {
-            Job = int.Parse(Console.ReadLine());
-            switch (Job)
+            currentJob = new List<BaseCharacter>();
+            Enums.Job selectedNumber = (Enums.Job)input;
+            List<CharacterJob> jobdata = ResourceManager.Instance.LoadJsonData<CharacterJob>($"{GAME_ROOT_DIR}/Data/CharacterJob.json");
+            switch (selectedNumber)
             {
-                case 1:
+                case Enums.Job.Warrior:
+                    CharacterJob characterjob = new CharacterJob();
                     break;
-                        
-            }
+
+            }            
+        }
+        void Jobselect()
+        {
+            
+            
         }
     }
 }
