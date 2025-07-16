@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_Team3.Managers;
-using TextRPG_Team3.Data;
 using TextRPG_Team3.Character;
+using TextRPG_Team3.Data;
+using TextRPG_Team3.Managers;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -28,7 +29,7 @@ namespace TextRPG_Team3.Scenes
             // List 반복문 넣어서 적 정보 갱신하기
             foreach (var enemy in SpawnManager.Instance.currentEnemies)
             {
-                enemyinfo += $"Lv. {enemy.CharacterStat.Level}\t {enemy.Name.PadRight(5)}\t HP {enemy.CharacterStat.Health}\n";
+                enemyinfo += $"Lv. {enemy.CharacterStat.Level} {RenderHelper.PadLeftToWidth(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.CharacterStat.Health}" : "Dead")}";
             }
             Console.WriteLine(enemyinfo);
             Console.WriteLine();
