@@ -50,7 +50,7 @@ namespace TextRPG_Team3.Character
             {
                 IsAlive = false;
             }
-            
+            QuestManager.Instance.OnEnemyKilled(EnemyID);
 
             // 에너미 사망 로직
             // 1. 플레이어 한테 경험치 주기
