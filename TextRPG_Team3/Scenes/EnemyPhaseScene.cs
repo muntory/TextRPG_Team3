@@ -38,7 +38,6 @@ namespace TextRPG_Team3.Scenes
 
             Console.WriteLine("0. 다음");
             Console.WriteLine();
-
         }
 
         private static int FindNextIndex(int index)
@@ -52,6 +51,22 @@ namespace TextRPG_Team3.Scenes
             return index;
         }
 
+        private void SkipEnemy()
+        {
+            List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
+
+            while (currentEnemies.Count>index)
+            {
+                if (!currentEnemies[index].IsAlive)
+                {
+                    index++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
         public override void SelectMenu(int input)
         {
             if (input != 0)
@@ -64,25 +79,24 @@ namespace TextRPG_Team3.Scenes
                 while (InputManager.Instance.GetPlayerInput() != 0);
             }
 
+            if (!GameManager.Instance.Player.IsAlive)
+            {
+                SceneManager.Instance.CurrentScene = new LoseScene();
+                return;
+            }
+
+            index = FindNextIndex(index);
+            if (index >= currentEnemies.Count)
+            {
+                SceneManager.Instance.CurrentScene = new BattleIntroScene();
+                return;
+            }
             Enums.EnemyPhaseMenuE enemyPhaseMenu = (Enums.EnemyPhaseMenuE)input;
 
             switch(enemyPhaseMenu)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    index = FindNextIndex(index);
-                    if (!GameManager.Instance.Player.IsAlive)
-                    {
-                        SceneManager.Instance.CurrentScene = new LoseScene();
-                    }
-                    else if (index >= currentEnemies.Count)
-                    {
-                        SceneManager.Instance.CurrentScene = new BattleIntroScene();
-                    }
-                    else
-                    {
-                        SceneManager.Instance.CurrentScene = this;
-                    }
-                        break;
+                    break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
