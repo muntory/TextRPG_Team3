@@ -18,8 +18,8 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            Console.WriteLine("============== Battle Result ==============");
-            Console.WriteLine("               [   GAME OVER   ]           \n");
+            Console.WriteLine("\n============== Battle Result ==============\n");
+            Console.WriteLine("             [   GAME OVER   ]           \n");
             Console.WriteLine("패배! 당신의 HP가 0이 되어 전투에서 졌습니다.");
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"플레이어: {GameManager.Instance.Player.Name}");
