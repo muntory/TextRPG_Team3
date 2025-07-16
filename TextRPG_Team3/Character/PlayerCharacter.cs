@@ -23,12 +23,25 @@ namespace TextRPG_Team3.Character
         }
 
         // Attack 로직 구현 하기
-        public override void Attack(BaseCharacter target)
+        public void Attack(BaseCharacter target, out bool isCritical)
         {
-            if (!IsAlive) return;
+            isCritical = false;
+            if (!IsAlive)
+            {
+                return;
+            }
+
+            PlayerStatComponent playerStat = (PlayerStatComponent)Stat;
 
             double damageModifier = 1.0 + (Random.Shared.NextDouble() * 20.0 - 10.0) * 0.01;
             double inDamage = Stat.FinalAttack * damageModifier;
+            double criticalRate = playerStat.CriticalRate;
+            if (Random.Shared.NextDouble() < criticalRate)
+            {
+                isCritical = true;
+                inDamage *= 1.6;
+            }
+
             inDamage = Math.Ceiling(inDamage);
 
             target.OnHit?.Invoke((int)inDamage);

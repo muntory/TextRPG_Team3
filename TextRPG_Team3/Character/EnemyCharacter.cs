@@ -30,7 +30,7 @@ namespace TextRPG_Team3.Character
         }
 
         // enemy Attack 로직 구현하기
-        public override void Attack(BaseCharacter target)
+        public void Attack(BaseCharacter target)
         {
             if (!IsAlive)
                 return;

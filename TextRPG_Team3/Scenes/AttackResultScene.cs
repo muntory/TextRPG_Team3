@@ -27,9 +27,9 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"{player.Name} 의 공격!");
 
             int prevHealth = target.Stat.Health;
-            player.Attack(target);
+            player.Attack(target, out bool isCritical);
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
+            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}] {(isCritical ? "- 치명타 공격!!" : "")}");
             Console.WriteLine();
 
             Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
