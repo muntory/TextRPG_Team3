@@ -57,14 +57,14 @@ namespace TextRPG_Team3.Scenes
             }
             else
             {
-                Console.Clear();
-
-                Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
-
+                
                 (player.Stat as PlayerStatComponent).MP -= skillData.CostValue;
 
                 for (int i = 0; i < skillData.TargetCount; ++i)
                 {
+                    Console.Clear();
+
+                    Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
                     int targetIndex;
                     if (skillData.RandomAttack)
                     {
