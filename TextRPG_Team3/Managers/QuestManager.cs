@@ -12,27 +12,36 @@ namespace TextRPG_Team3.Managers
         private static QuestManager instance;
         public static QuestManager Instance { get { return instance; } }
 
-        public Dictionary<int, QuestData> QuestDB;
+        public Dictionary<int, Quest> QuestDB;
+        public List<Quest> ActiveQuests = new();
 
-        public Dictionary<int, QuestData> GetQuestDB()
+        public Dictionary<int, Quest> GetQuestDB()
         {
             if (QuestDB == null)
             {
-                List<QuestData> questList = ResourceManager.Instance.LoadJsonData<QuestData>($"{ResourceManager.GAME_ROOT_DIR}/Data/QuestDataList.json");
+                List<Quest> questList = ResourceManager.Instance.LoadJsonData<Quest>($"{ResourceManager.GAME_ROOT_DIR}/Data/QuestDataList.json");
 
-                QuestDB = new Dictionary<int, QuestData>();
+                QuestDB = new Dictionary<int, Quest>();
 
-                foreach (QuestData questData in questList)
+                foreach (Quest quest in questList)
                 {
-                    if (questData == null) continue;
+                    if (quest == null) continue;
+                    if (quest.QuestType == "Kill")
+                    {
+                        quest.Goal = new KillEnemyQuest(quest.GoalData.GoalEnemyID, quest.GoalData.GoalAmount);
+                    }
+                    else if (quest.QuestType == "Equip")
+                    {
+                        quest.Goal = new EquipItemQuest(quest.GoalData.GoalItemID);
+                    }
 
-                    QuestDB.Add(questData.ID, questData);
+                        QuestDB.Add(quest.ID, quest);
                 }
             }
             return QuestDB;
         }
 
-        public QuestData GetQuestData(int ID)
+        public Quest GetQuestData(int ID)
         {
             if (QuestDB == null)
             {
@@ -46,6 +55,33 @@ namespace TextRPG_Team3.Managers
             if (instance == null)
             {
                 instance = this;
+            }
+        }
+        public void ActivateQuest(int ID)
+        {
+            QuestDB[ID].isAccepted = true;
+            ActiveQuests.Add(QuestDB[ID]);
+        }
+
+        public void OnItemEquipped(int ID)
+        {
+            foreach(var quest in ActiveQuests)
+            {
+                if(quest.Goal is EquipItemQuest equipGoal)
+                {
+                    equipGoal.OnItemEquipped(ID);
+                }
+            }
+        }
+
+        public void OnEnemyKilled(int ID)
+        {
+            foreach(var quest in ActiveQuests)
+            {
+                if(quest.Goal is KillEnemyQuest killGoal)
+                {
+                    killGoal.OnEnemyKilled(ID);
+                }
             }
         }
     }
