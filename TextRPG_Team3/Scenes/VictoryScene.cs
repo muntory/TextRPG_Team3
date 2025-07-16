@@ -23,7 +23,7 @@ namespace TextRPG_Team3.Scenes
         {
             
             base.Render();
-           
+            int count = 0;
             int TotalGold = 0;
             int TotalExp = 0;
             foreach (var enemy in SpawnManager.Instance.CurrentEnemies)
@@ -32,6 +32,7 @@ namespace TextRPG_Team3.Scenes
 
                 TotalExp += data.Exp;
                 TotalGold += data.Gold;
+                count++;
             }
 
             GameManager.Instance.Player.Gold += TotalGold;
@@ -48,6 +49,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");
             Console.WriteLine("------------------------------------------\n");
+            Console.WriteLine($"몬스터 {count}마리를 처치했습니다");
             Console.WriteLine("[캐릭터 정보]");
             Console.WriteLine($"레벨: {GameManager.Instance.Player.Stat.Level}");
             Console.WriteLine($"경험치: {GameManager.Instance.Player.Stat.exp - ((GameManager.Instance.Player.Stat.exp - TotalExp) + TotalExp )} -> {GameManager.Instance.Player.Stat.exp}");
