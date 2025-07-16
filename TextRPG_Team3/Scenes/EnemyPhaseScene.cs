@@ -55,7 +55,7 @@ namespace TextRPG_Team3.Scenes
         {
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
 
-            while (currentEnemies.Count > index)
+            while (currentEnemies.Count>index)
             {
                 if (!currentEnemies[index].IsAlive)
                 {
@@ -79,34 +79,29 @@ namespace TextRPG_Team3.Scenes
                 while (InputManager.Instance.GetPlayerInput() != 0);
             }
 
+            if (!GameManager.Instance.Player.IsAlive)
+            {
+                SceneManager.Instance.CurrentScene = new LoseScene();
+                return;
+            }
 
+            index = FindNextIndex(index);
+            if (index >= currentEnemies.Count)
+            {
+                SceneManager.Instance.CurrentScene = new BattleIntroScene();
+                return;
+            }
             Enums.EnemyPhaseMenuE enemyPhaseMenu = (Enums.EnemyPhaseMenuE)input;
 
-            switch (enemyPhaseMenu)
+            switch(enemyPhaseMenu)
             {
                 case Enums.EnemyPhaseMenuE.Next:
-                    if (!GameManager.Instance.Player.IsAlive)
-                    {
-                        SceneManager.Instance.CurrentScene = new LoseScene();
-                        break;
-                    }
-
-                    index = FindNextIndex(index);
-
-                    if (index >= currentEnemies.Count)
-                    {
-                        SceneManager.Instance.CurrentScene = new BattleIntroScene();
-                    }
-                    else
-                    {
-                        SceneManager.Instance.CurrentScene = this;
-                    }
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
             }
         }
-
+        
     }
 }
