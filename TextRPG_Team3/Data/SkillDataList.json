@@ -14,6 +14,85 @@
         "Multiplier": 1.5,
         "TargetCount": 2,
         "RandomAttack": true
+    },
+    {
+        "ID": 3,
+        "SkillName": "강타",
+        "CostValue": 12,
+        "Multiplier": 2.5,
+        "TargetCount": 1,
+        "RandomAttack": false
+    },
+    {
+        "ID": 4,
+        "SkillName": "회오리베기",
+        "CostValue": 20,
+        "Multiplier": 1.2,
+        "TargetCount": 3,
+        "RandomAttack": true
+    },
+    {
+        "ID": 5,
+        "SkillName": "파이어볼",
+        "CostValue": 18,
+        "Multiplier": 2.0,
+        "TargetCount": 1,
+        "RandomAttack": false
+    },
+    {
+        "ID": 6,
+        "SkillName": "아이스 스톰",
+        "CostValue": 25,
+        "Multiplier": 1.5,
+        "TargetCount": 3,
+        "RandomAttack": true
+    },
+    {
+        "ID": 7,
+        "SkillName": "라이트닝 체인",
+        "CostValue": 22,
+        "Multiplier": 1.8,
+        "TargetCount": 2,
+        "RandomAttack": false
+    },
+    {
+        "ID": 8,
+        "SkillName": "매직 미사일",
+        "CostValue": 10,
+        "Multiplier": 1.3,
+        "TargetCount": 3,
+        "RandomAttack": true
+    },
+    {
+        "ID": 9,
+        "SkillName": "백스탭",
+        "CostValue": 15,
+        "Multiplier": 2.2,
+        "TargetCount": 1,
+        "RandomAttack": false
+    },
+    {
+        "ID": 10,
+        "SkillName": "독 묻은 칼날",
+        "CostValue": 18,
+        "Multiplier": 1.8,
+        "TargetCount": 1,
+        "RandomAttack": false
+    },
+    {
+        "ID": 11,
+        "SkillName": "그림자 연속베기",
+        "CostValue": 20,
+        "Multiplier": 1.5,
+        "TargetCount": 2,
+        "RandomAttack": true
+    },
+    {
+        "ID": 12,
+        "SkillName": "암살자의 급습",
+        "CostValue": 22,
+        "Multiplier": 2.5,
+        "TargetCount": 1,
+        "RandomAttack": false
     }
-
 ]

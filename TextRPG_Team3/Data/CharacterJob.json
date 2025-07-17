@@ -4,20 +4,25 @@
         "JobName": "전사",
         "JobAtk": 10.0,
         "JobHP": 130,
-        "JobDef": 5.0
+        "JobDef": 5.0,
+        "BaseSkillSet": [ 1, 2, 3, 4 ]
     },
     {
         "JobID": 2,
         "JobName": "마법사",
         "JobAtk": 17.0,
         "JobHP": 70,
-        "JobDef": 3.0
+        "JobDef": 3.0,
+        "BaseSkillSet": [ 5, 6, 7, 8 ]
+
     },
     {
         "JobID": 3,
         "JobName": "암살자",
         "JobAtk": 15.0,
         "JobHP": 60,
-        "JobDef": 3.0
+        "JobDef": 3.0,
+        "BaseSkillSet": [ 9, 10, 11, 12 ]
+
     }
 ]

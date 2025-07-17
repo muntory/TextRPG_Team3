@@ -19,6 +19,8 @@ namespace TextRPG_Team3.Managers
         public static string SAVE_DIR = $"{GAME_ROOT_DIR}/Save";
 
         private Dictionary<int, EnemyData> EnemyDB;
+        private Dictionary<int, SkillData> SkillDB;
+
 
         private JsonSerializerOptions options;
         public ResourceManager()
@@ -64,7 +66,36 @@ namespace TextRPG_Team3.Managers
                 GetEnemyDB();
             }
 
-            return EnemyDB[ID];
+            return GetEnemyDB()[ID];
+        }
+
+        public Dictionary<int, SkillData> GetSkillDB()
+        {
+            if (SkillDB == null)
+            {
+                List<SkillData> skillList = LoadJsonData<SkillData>($"{GAME_ROOT_DIR}/Data/SkillDataList.json");
+
+                SkillDB = new Dictionary<int, SkillData>();
+
+                foreach (SkillData skillData in skillList)
+                {
+                    if (skillData == null) continue;
+
+                    SkillDB.Add(skillData.ID, skillData);
+                }
+            }
+
+            return SkillDB;
+        }
+
+        public SkillData GetSkillData(int ID)
+        {
+            if (SkillDB == null)
+            {
+                GetSkillDB();
+            }
+
+            return GetSkillDB()[ID];
         }
 
         /// <summary>

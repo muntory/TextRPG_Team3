@@ -13,5 +13,7 @@ namespace TextRPG_Team3.Data
         public double JobAtk { get; set; }
         public int JobHP { get; set; }
         public double JobDef { get; set; }
+        public List<int> BaseSkillSet { get; set; }
+
     }
 }

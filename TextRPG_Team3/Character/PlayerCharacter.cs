@@ -22,6 +22,7 @@ namespace TextRPG_Team3.Character
             Gold = 1500;
             RootClass = "전사";
             Stat = new PlayerStatComponent();
+            SkillList = new List<SkillData>();
             OnHit += Stat.TakeDamage;
             Stat.OnHpZero += Die;
         }
