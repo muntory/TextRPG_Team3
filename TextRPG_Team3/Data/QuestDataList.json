@@ -3,7 +3,7 @@
         "ID": 1,
         "QuestName": "마을을 위협하는 미니언 처치",
         "QuestDescription": "이봐! 마을 근처에 미니언들이 너무 많아졌다고 생각하지 않나?\n마을주민들의 안전을 위해서라도 저것들 수를 좀 줄여야 한다고!\n모험가인 자네가 좀 처치해주게!",
-        "GoldReward": 3000,
+        "GoldReward": 100,
         "ItemRewardID": 1,
         "ItemAmount" :  1,
         "IsAccepted": false,
@@ -17,15 +17,29 @@
 
     {
         "ID": 2,
-        "QuestName": "테스트 퀘스트입니다.",
-        "QuestDescription": "헬로우 월드?",
-        "GoldReward": 42,
+        "QuestName": "장비를 장착해보자",
+        "QuestDescription": "모험가 양반, 갑옷은 챙기고 다니는가?\n그대로 돌아다니다간 고블린 발톱에 긁히고, 오크 돌진에 부딪혀서 그대로 쓰러질지도 몰라!\n마침 무쇠로 만들어진 튼튼한 갑옷이 하나 있네.\n직접 장착해보고 몸에 잘 맞는지 확인해보게나!",
+        "GoldReward": 60,
         "ItemRewardID": -1,
         "ItemAmount": 0,
         "IsAccepted": false,
         "QuestType": "Equip",
         "GoalData": {
             "GoalItemID": 1
+        },
+        "IsCleared": false
+    },
+    {
+        "ID": 3,
+        "QuestName": "더욱 더 강해지기!",
+        "QuestDescription": "자네, 요즘 제법 단단해졌다는 소문이 있더군.\n하지만 진정한 실력은 시간이 지나면 저절로 드러나는 법이지.\n마침 잘 어울릴 법한 무기를 하나 구해놨네. 누구에게나 주는 건 아니고, 실력을 인정받은 자에게만 주는 거지!\n그만한 내공을 쌓아보게!",
+        "GoldReward": 300,
+        "ItemRewardID": 5,
+        "ItemAmount": 1,
+        "IsAccepted": false,
+        "QuestType": "Level",
+        "GoalData": {
+            "GoalLevel": 5
         },
         "IsCleared": false
     }

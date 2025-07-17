@@ -42,7 +42,7 @@ namespace TextRPG_Team3.Scenes
                     clearStr = "[Cleared!]";
                     
                 }
-                else if (quest.IsCompleted)
+                else if (quest.IsCompleted && quest.IsAccepted)
                 {
                     clearStr = "[보상 획득 가능!]";
                 }
@@ -75,7 +75,12 @@ namespace TextRPG_Team3.Scenes
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
-                Console.WriteLine("장착 퀘스트 테스트입니다.");
+                Console.WriteLine($"- {ItemManager.Instance.GetItemData(equipQuest.GoalItemID).Name} 장착");
+            }
+            else if(quest.Goal is LevelUpQuest levelQuest)
+            {
+                Console.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ");
+                Console.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n");
             }
 
             Console.WriteLine();
