@@ -39,12 +39,12 @@ namespace TextRPG_Team3.Scenes
                 
                 if (quest.IsCleared)
                 {
-                    clearStr = "Cleared!";
+                    clearStr = "[Cleared!]";
                     
                 }
                 else if (quest.IsCompleted)
                 {
-                    clearStr = "보상 획득 가능!";
+                    clearStr = "[보상 획득 가능!]";
                 }
                 string temp = $"{quest.ID}. {quest.QuestName} {clearStr}";
                 if (!quest.IsCleared)
