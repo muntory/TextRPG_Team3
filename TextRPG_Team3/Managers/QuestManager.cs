@@ -90,9 +90,9 @@ namespace TextRPG_Team3.Managers
             {
                 GoldReward(ID);
             }
-            if (QuestDB[ID].ItemIDReward != -1)
+            if (QuestDB[ID].ItemRewardID != -1)
             {
-                ItemReward(QuestDB[ID].ItemIDReward, QuestDB[ID].ItemAmount);
+                ItemReward(QuestDB[ID].ItemRewardID, QuestDB[ID].ItemAmount);
             }
         }
 

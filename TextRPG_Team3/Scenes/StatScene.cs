@@ -28,8 +28,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"Gold : {GameManager.Instance.Player.Gold} G");
             Console.WriteLine();
 
-            Console.WriteLine("0. 나가기");
             Console.WriteLine("1. 인벤토리");
+            Console.WriteLine("0. 나가기");
             Console.WriteLine();
 
             PrintMsg();
