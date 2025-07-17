@@ -34,8 +34,12 @@ namespace TextRPG_Team3.Managers
                     {
                         quest.Goal = new EquipItemQuest(quest.GoalData.GoalItemID);
                     }
+                    else if (quest.QuestType == "Level")
+                    {
+                        quest.Goal = new LevelUpQuest(quest.GoalData.GoalLevel);
+                    }
 
-                        QuestDB.Add(quest.ID, quest);
+                    QuestDB.Add(quest.ID, quest);
                 }
             }
             return QuestDB;
@@ -64,9 +68,9 @@ namespace TextRPG_Team3.Managers
 
         public void OnItemEquipped(int ID)
         {
-            foreach(Quest quest in ActiveQuests)
+            foreach (Quest quest in ActiveQuests)
             {
-                if(quest.Goal is EquipItemQuest equipGoal)
+                if (quest.Goal is EquipItemQuest equipGoal)
                 {
                     equipGoal.OnItemEquipped(ID);
                 }
@@ -75,24 +79,33 @@ namespace TextRPG_Team3.Managers
 
         public void OnEnemyKilled(int ID)
         {
-            foreach(Quest quest in ActiveQuests)
+            foreach (Quest quest in ActiveQuests)
             {
-                if(quest.Goal is KillEnemyQuest killGoal)
+                if (quest.Goal is KillEnemyQuest killGoal)
                 {
                     killGoal.OnEnemyKilled(ID);
                 }
             }
         }
-
+        public void OnLevelUp()
+        {
+            foreach (Quest quest in ActiveQuests)
+            {
+                if (quest.Goal is LevelUpQuest levelGoal)
+                {
+                    levelGoal.OnLevelUp();
+                }
+            }
+        }
         public void QueatReward(int ID)
         {
             if (QuestDB[ID].GoldReward > 0)
             {
                 GoldReward(ID);
             }
-            if (QuestDB[ID].ItemIDReward != -1)
+            if (QuestDB[ID].ItemRewardID != -1)
             {
-                ItemReward(QuestDB[ID].ItemIDReward, QuestDB[ID].ItemAmount);
+                ItemReward(QuestDB[ID].ItemRewardID, QuestDB[ID].ItemAmount);
             }
         }
 
@@ -103,14 +116,7 @@ namespace TextRPG_Team3.Managers
 
         public void ItemReward(int ID, int amount)
         {
-            if (ID == -1)
-            {
-
-            }
-            else
-            {
-                ItemManager.Instance.AddItem(ID, amount);
-            }
+            ItemManager.Instance.AddItem(ID, amount);
         }
     }
 }
