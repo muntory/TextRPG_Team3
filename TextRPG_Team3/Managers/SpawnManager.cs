@@ -39,7 +39,7 @@ namespace TextRPG_Team3.Managers
 
             for (int i = 0; i < enemycount; i++)
             {
-                int randomint = Random.Shared.Next(1, 4);
+                int randomint = Random.Shared.Next(1, ResourceManager.Instance.GetEnemyDB().Count + 1);
                 EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
