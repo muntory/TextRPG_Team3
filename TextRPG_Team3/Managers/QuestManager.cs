@@ -86,12 +86,31 @@ namespace TextRPG_Team3.Managers
 
         public void QueatReward(int ID)
         {
-            GoldReward(ID);
+            if (QuestDB[ID].GoldReward > 0)
+            {
+                GoldReward(ID);
+            }
+            if (QuestDB[ID].ItemIDReward != -1)
+            {
+                ItemReward(QuestDB[ID].ItemIDReward, QuestDB[ID].ItemAmount);
+            }
         }
 
         public void GoldReward(int ID)
         {
             GameManager.Instance.Player.Gold += QuestDB[ID].GoldReward;
+        }
+
+        public void ItemReward(int ID, int amount)
+        {
+            if (ID == -1)
+            {
+
+            }
+            else
+            {
+                ItemManager.Instance.AddItem(ID, amount);
+            }
         }
     }
 }
