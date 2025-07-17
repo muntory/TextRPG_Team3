@@ -66,7 +66,19 @@ namespace TextRPG_Team3.Stat
                 Exp = value;
             }
         }
-        
+
+        public void SetLevel(int level)
+        {
+            Level = level;
+
+            MaxHealth += (int)(MaxHealth * (0.02 * (level - 1)));
+            Health = MaxHealth;
+
+            BaseAttack += BaseAttack * 0.05 * (level - 1);
+            BaseDefense += BaseDefense * 0.04 * (level - 1);
+
+        }
+
 
         public int TakeDamage(int inDamage)
         {

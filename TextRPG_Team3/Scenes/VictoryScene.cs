@@ -70,6 +70,7 @@ namespace TextRPG_Team3.Scenes
         }
         public override void SelectMenu(int input)
         {
+            GameManager.CurrentStage++;
             Enums.VictoryScene victoryScene = (Enums.VictoryScene)input;
 
             switch (victoryScene)

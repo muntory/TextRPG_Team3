@@ -11,12 +11,12 @@ namespace TextRPG_Team3.Data
     {
         public int ID {  get; set; }
         public string Name { get; set; }
+        public int Tier { get; set; }
         public int HP { get; set; }
         public double Attack {  get; set; }
         public double Defense {  get; set; } 
 
         public int Gold { get; set; }
 
-        public int Exp { get; set; }   
     }
 }
