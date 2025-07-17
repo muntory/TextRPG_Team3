@@ -79,7 +79,7 @@ namespace TextRPG_Team3.Scenes
 
         public BattleIntroScene()
         {
-            SpawnManager.Instance.SpawnRandomEnemies();
+            SpawnManager.Instance.GenerateStage(GameManager.CurrentStage);
         }
 
     }
