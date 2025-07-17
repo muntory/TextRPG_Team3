@@ -57,8 +57,8 @@ namespace TextRPG_Team3.Stat
             }
         }
 
-        private int Exp;
-        public int exp
+        private double Exp;
+        public double exp
         {
             get { return Exp; }
             set
@@ -96,7 +96,7 @@ namespace TextRPG_Team3.Stat
             BaseDefense = 5.0;
             MaxHealth = 100;
             Health = MaxHealth;
-            exp = 0;
+            exp = 0.0;
         }
     }
 }
