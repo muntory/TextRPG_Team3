@@ -126,5 +126,26 @@ namespace TextRPG_Team3.Managers
         {
             return PlayerInventory.ContainsKey(itemID) && PlayerInventory[itemID] > 0;
         }
+
+        // 포션 사용 메서드
+        public bool UseItem(int itemID)
+        {
+            if (!HaveItem(itemID))
+            {
+                return false;
+            }
+
+            ItemData itemData = GetItemData(itemID);
+            if (itemData == null)
+            {
+                return false;
+            }
+
+            if (itemData.Type != ItemType.Potion)
+            {
+                return false;
+            }
+        }
+
     }
 }

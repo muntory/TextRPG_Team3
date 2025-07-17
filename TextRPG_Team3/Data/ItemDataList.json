@@ -125,4 +125,13 @@
         "Value": 4,
         "Description": "견습 마법사가 사용하는 로브로 마법 방어에 효과적입니다"
     }
+
+    {
+        "Id": 100,
+        "Name": "체력 포션",
+        "Type": "Consumable",
+        "StatType": "Health",
+        "Value": 30,
+        "Description": "체력을 30 회복시켜주는 포션입니다"
+    }
 ]

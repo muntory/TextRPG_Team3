@@ -13,6 +13,7 @@ namespace TextRPG_Team3
         Weapon,
         Armor,
         Shield,
+        Consumable,
     }
     public class ItemData
     {
