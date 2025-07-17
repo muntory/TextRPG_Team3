@@ -174,6 +174,7 @@ namespace TextRPG_Team3.Managers
             return false;
         }
 
+        // 체력 회복 메서드
         public void ApplyHealHP(int healHP)
         {
             PlayerCharacter player = GameManager.Instance.Player;
