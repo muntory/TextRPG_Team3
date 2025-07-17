@@ -29,11 +29,12 @@ namespace TextRPG_Team3.Scenes
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
             PlayerCharacter player = GameManager.Instance.Player;
             PlayerStatComponent playerStat = player.Stat as PlayerStatComponent;
-            // List 반복문 넣어서 적 정보 갱신하기
+
             foreach (var enemy in currentEnemies)
             {
                 WriteLineEnemyInfo(enemy);
             }
+
             Console.WriteLine();
             Console.WriteLine();
 
@@ -48,7 +49,15 @@ namespace TextRPG_Team3.Scenes
             foreach (SkillData skillData in player.SkillList)
             {
                 Console.WriteLine($"{index}. {skillData.SkillName} - MP {skillData.CostValue}");
-                Console.WriteLine($"공격력 * {skillData.Multiplier} 로 {skillData.TargetCount}명의 적을 {(skillData.RandomAttack ? "랜덤으로" : "")} 공격합니다.");
+                if (skillData.RandomAttack)
+                {
+                    Console.WriteLine($"공격력 * {skillData.Multiplier} 로 {skillData.TargetCount}명의 적을 랜덤으로 공격합니다.");
+                }
+                else
+                {
+                    Console.WriteLine($"공격력 * {skillData.Multiplier} 로 적을 {skillData.TargetCount}번 공격합니다.");
+
+                }
                 index++;
             }
             Console.WriteLine();
