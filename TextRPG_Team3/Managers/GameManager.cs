@@ -42,6 +42,7 @@ namespace TextRPG_Team3.Managers
 
             while (stat.Level < MaxExperienceLevel.Count && stat.exp >= MaxExperienceLevel[stat.Level - 1])
             {
+                stat.exp -= MaxExperienceLevel[stat.Level - 1];
                 stat.Level += 1;
                 stat.BaseDefense += 1.0;
                 stat.BaseAttack += 0.5;
@@ -61,7 +62,5 @@ namespace TextRPG_Team3.Managers
 
 
         }
-
-
     }
 }
