@@ -57,7 +57,6 @@ namespace TextRPG_Team3.Managers
         void AddStartingItems()
         {
             AddItem(100, 3);
-            AddItem(1, 1);
         }
 
         // 아이템 정보 받아오는 메서드
