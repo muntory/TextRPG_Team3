@@ -62,12 +62,15 @@ namespace TextRPG_Team3.Scenes
 
                 for (int i = 0; i < skillData.TargetCount; ++i)
                 {
-                    Console.Clear();
+                    if (!SpawnManager.Instance.HasEnemies())
+                    {
+                        break;
+                    }
 
-                    Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
                     int targetIndex;
                     if (skillData.RandomAttack)
                     {
+                        
                         do
                         {
                             targetIndex = Random.Shared.Next(currentEnemies.Count);
@@ -81,11 +84,15 @@ namespace TextRPG_Team3.Scenes
                     }
 
                     target = currentEnemies[targetIndex];
-                    int prevHealth = target.Stat.Health;
 
+
+                    int prevHealth = target.Stat.Health;
                     
                     player.ActiveSkill(target, skillData);
 
+                    Console.Clear();
+
+                    Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
                     Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
                     Console.WriteLine();
 
