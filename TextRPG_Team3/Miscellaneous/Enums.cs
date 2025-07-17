@@ -79,4 +79,10 @@ public class Enums
         Back = 0,
         Set = 1,
     }
+
+    public enum PotionSceneMenu
+    {
+        Back = 0,
+        use = 1,
+    }
 }

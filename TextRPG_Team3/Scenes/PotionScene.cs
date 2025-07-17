@@ -9,6 +9,8 @@ namespace TextRPG_Team3.Scenes
 {
     internal class PotionScene : BaseScene
     {
+        ItemData potionData = ItemManager.Instance.GetItemData(100);
+
         public override void Render()
         {
             base.Render();
@@ -29,6 +31,31 @@ namespace TextRPG_Team3.Scenes
         public override void SelectMenu(int input)
         {
             base.SelectMenu(input);
+
+            Enums.PotionSceneMenu potionSceneMenu = (Enums.PotionSceneMenu)input;
+
+            switch(potionSceneMenu)
+            {
+                case Enums.PotionSceneMenu.use:
+                    UseHPHealPotion();
+                    break;
+                case Enums.PotionSceneMenu.Back:
+                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    break;
+            }
+        }
+
+        void UseHPHealPotion()
+        {
+            if (ItemManager.Instance.UsePotion(100))
+            {
+                ItemManager.Instance.ApplyHealHP(potionData.Value);
+                Console.WriteLine("회복이 완료되었습니다.");
+            }
+            else
+            {
+                Console.WriteLine("포션이 부족합니다.");
+            }
         }
     }
 }

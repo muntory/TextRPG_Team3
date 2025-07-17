@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Character;
 
 namespace TextRPG_Team3.Managers
 {
@@ -173,5 +174,14 @@ namespace TextRPG_Team3.Managers
             return false;
         }
 
+        public void ApplyHealHP(int healHP)
+        {
+            PlayerCharacter player = GameManager.Instance.Player;
+
+            int currentHP = player.Stat.Health;
+            int maxHP = player.Stat.MaxHealth;
+
+            player.Stat.Health = Math.Min(currentHP + healHP, maxHP);
+        }
     }
 }
