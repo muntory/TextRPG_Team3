@@ -51,7 +51,7 @@ namespace TextRPG_Team3.Managers
                 Console.WriteLine($"Lv. {stat.Level - 1} {CharName.Name} -> Lv. {stat.Level} {CharName.Name}");
                 Console.WriteLine("기본공격력 0.5 방어력 1이 증가하셨습니다\n");
                 Console.WriteLine("\n");
-
+                QuestManager.Instance.OnLevelUp();
                 if (stat.Level == MaxExperienceLevel.Count)
                 {
                     stat.exp = MaxExperienceLevel[stat.Level - 1]; // or exp 고정, 혹은 더이상 exp 안 쌓이게
@@ -59,8 +59,6 @@ namespace TextRPG_Team3.Managers
                     break;
                 }
             }
-
-
         }
     }
 }

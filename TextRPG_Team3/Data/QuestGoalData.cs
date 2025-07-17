@@ -11,5 +11,6 @@ namespace TextRPG_Team3.Data
         public int GoalEnemyID { get; set; }
         public int GoalAmount { get; set; }
         public int GoalItemID { get; set; }
+        public int GoalLevel {  get; set; }
     }
 }
