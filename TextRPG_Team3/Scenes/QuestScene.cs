@@ -40,7 +40,6 @@ namespace TextRPG_Team3.Scenes
                 if (quest.IsCleared)
                 {
                     clearStr = "[Cleared!]";
-                    
                 }
                 else if (quest.IsCompleted && quest.IsAccepted)
                 {
