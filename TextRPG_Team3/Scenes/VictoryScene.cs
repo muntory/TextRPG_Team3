@@ -38,7 +38,7 @@ namespace TextRPG_Team3.Scenes
 
             PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
             int exp = SpawnManager.Instance.SumofEnemyLevel();
-            int prevexp = stat.exp;
+            double prevexp = stat.exp;
             int prevLevel = stat.Level;
             stat.exp += exp;
             stat.MP += 10;
@@ -47,14 +47,13 @@ namespace TextRPG_Team3.Scenes
 
         
 
-
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");
             Console.WriteLine("------------------------------------------\n");
             Console.WriteLine($"몬스터 {count}마리를 처치했습니다");
             Console.WriteLine("[캐릭터 정보]");
             Console.WriteLine($"레벨: {GameManager.Instance.Player.Stat.Level}");
-            Console.WriteLine($"경험치: Lv{prevLevel}. {prevexp} -> Lv{GameManager.Instance.Player.Stat.Level}. {GameManager.Instance.Player.Stat.exp}");
+            Console.WriteLine($"경험치: Lv{prevLevel}. {prevexp:0.} -> Lv{GameManager.Instance.Player.Stat.Level}. {GameManager.Instance.Player.Stat.exp:0.}");
             Console.WriteLine($"HP: {GameManager.Instance.Player.Stat.MaxHealth} -> {GameManager.Instance.Player.Stat.MaxHealth - (GameManager.Instance.Player.Stat.MaxHealth - GameManager.Instance.Player.Stat.Health)}\n");
             Console.WriteLine("[흭득 아이템]");
             Console.WriteLine($"흭득한 골드: {TotalGold}");

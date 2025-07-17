@@ -172,6 +172,5 @@ namespace TextRPG_Team3.Managers
 
             return false;
         }
-
     }
 }
