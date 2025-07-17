@@ -1,4 +1,5 @@
 using System;
+using TextRPG_Team3.Utils;
 
 public class BaseScene
 {
@@ -21,8 +22,8 @@ public class BaseScene
     {
         if (msg == null) return;
         
-        Console.WriteLine(msg);
-        Console.WriteLine();
+        RenderHelper.WriteLine(msg, ConsoleColor.DarkRed);
+        RenderHelper.WriteLine();
 
         msg = null;
         
