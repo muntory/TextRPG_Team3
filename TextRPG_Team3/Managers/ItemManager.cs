@@ -23,24 +23,33 @@ namespace TextRPG_Team3.Managers
             PlayerInventory = new Dictionary<int, int>();
 
             LoadItemData();
+
+            AddStartingItems();
         }
     // ------------------------------------------- 평범한 싱글톤
 
         // 플레이어 보유 중인 아이템 (Item ID, 개수)
         public Dictionary<int, int> PlayerInventory;
 
-        private List<ItemData> itemDataList;
+        private Dictionary<int, ItemData> itemDataDict;
 
-        // 아이템 데이터 로드 -> 생성자 -> 데잍터 한 번 로드 후 메모리에 저장.
+        // 아이템 데이터 로드 -> 생성자 -> 데이터 한 번 로드 후 메모리에 저장.
         private void LoadItemData()
         {
             try
             {
-                itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
+                List<ItemData> itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
+
+                itemDataDict = new Dictionary<int, ItemData>();
+
+                foreach (ItemData item in itemDataList)
+                {
+                    itemDataDict.Add(item.Id, item);
+                }
             }
             catch
             {
-                itemDataList = new List<ItemData>();
+                itemDataDict = new Dictionary<int, ItemData>();
                 Console.WriteLine("아이템 데이터 로드 실패");
             }
         }
@@ -48,31 +57,23 @@ namespace TextRPG_Team3.Managers
         void AddStartingItems()
         {
             AddItem(100, 3);
+            AddItem(1, 1);
         }
 
         // 아이템 정보 받아오는 메서드
         public ItemData GetItemData (int itemID)
         {
-            for (int i = 0; i < itemDataList.Count; i++)
+            if (itemDataDict.ContainsKey(itemID))
             {
-                if (itemDataList[i].Id == itemID)
-                {
-                    return itemDataList[i];
-                }
+                return itemDataDict[itemID];
             }
             return null;
-        }
-
-        // 아이템이 존재하는 지 확인하는 메서드
-        public bool IsItemExist(int itemID)
-        {
-            return GetItemData(itemID) != null;
         }
 
         // 아이템 증가 메서드
         public void AddItem(int itemID, int count = 1)
         { 
-            if (!IsItemExist(itemID)) return;
+            if (!itemDataDict.ContainsKey(itemID)) return;
 
             if (PlayerInventory.ContainsKey(itemID))
             {
