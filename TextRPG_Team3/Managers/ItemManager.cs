@@ -21,18 +21,25 @@ namespace TextRPG_Team3.Managers
 
             // 생성자 -> 인벤토리 초기화
             PlayerInventory = new Dictionary<int, int>();
+
+            LoadItemData();
         }
     // ------------------------------------------- 평범한 싱글톤
 
         // 플레이어 보유 중인 아이템 (Item ID, 개수)
         public Dictionary<int, int> PlayerInventory;
 
+        private List<ItemData> itemDataList;
+
+        // 아이템 데이터 로드 -> 생성자 -> 데잍터 한 번 로드 후 메모리에 저장.
+        private void LoadItemData()
+        {
+            itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
+        }
+
+        // 아이템 정보 받아오는 메서드
         public ItemData GetItemData (int itemID)
         {
-            // 매번 모든 아이템 정보를 읽어야 함 -> 어케 해결할지 생각하기.
-            // 생성자 -> 아이템 리스트 쭉 읽고 메모리에 조장해두는 거 하기
-            List<ItemData> itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
-        
             for (int i = 0; i < itemDataList.Count; i++)
             {
                 if (itemDataList[i].Id == itemID)
