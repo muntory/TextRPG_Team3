@@ -22,6 +22,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("1. 상태 보기");
             Console.WriteLine("2. 전투 시작");
             Console.WriteLine("3. 퀘스트");
+            Console.WriteLine("4. 회복 아이템");
             Console.WriteLine();
 
             PrintMsg();
@@ -42,6 +43,9 @@ namespace TextRPG_Team3.Scenes
                     break;
                 case Enums.IntroMenu.Quest:
                     SceneManager.Instance.CurrentScene = new QuestScene();
+                    break;
+                case Enums.IntroMenu.Potion:
+                    SceneManager.Instance.CurrentScene = new PotionScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

@@ -18,7 +18,8 @@ public class Enums
     {
         Stat = 1,
         Battle = 2, 
-        Quest = 3
+        Quest = 3,
+        Potion = 4,
     }
 
     public enum StatMenu

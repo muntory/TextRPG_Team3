@@ -17,8 +17,13 @@ namespace TextRPG_Team3.Scenes
 
             int potionCount = ItemManager.Instance.GetItemCount(100);
 
-            Console.WriteLine("포션을 사용하면 ");
+            Console.WriteLine("포션을 사용하면 체력을 30 회복할 수 있습니다.");
+            Console.WriteLine($"(남은 포션 : {potionCount})");
+            Console.WriteLine();
 
+            Console.WriteLine("1. 사용하기");
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
         }
 
         public override void SelectMenu(int input)
