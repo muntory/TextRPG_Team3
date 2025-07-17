@@ -1,23 +1,23 @@
 [
     {
         "JobID": 1,
-        "JobName": "Warriar",
-        "JobAtk": 10,
+        "JobName": "전사",
+        "JobAtk": 10.0,
         "JobHP": 130,
-        "JobDef": 5,
-
+        "JobDef": 5.0
+    },
+    {
         "JobID": 2,
-        "JobName": "Mage",
-        "JobAtk": 17,
+        "JobName": "마법사",
+        "JobAtk": 17.0,
         "JobHP": 70,
-        "JobDef": 3,
-
+        "JobDef": 3.0
+    },
+    {
         "JobID": 3,
-        "JobName": "Assasin",
-        "JobAtk": 15,
+        "JobName": "암살자",
+        "JobAtk": 15.0,
         "JobHP": 60,
-        "JobDef": 3
-
-
+        "JobDef": 3.0
     }
 ]
