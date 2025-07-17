@@ -17,11 +17,6 @@ namespace TextRPG_Team3.Scenes
 
         public SkillSelectScene()
         {
-            if (GameManager.Instance.Player.SkillList == null)
-            {
-                GameManager.Instance.Player.SkillList = ResourceManager.Instance.LoadJsonData<SkillData>($"{ResourceManager.GAME_ROOT_DIR}/Data/SkillDataList.json");
-
-            }
 
         }
         public override void Render()

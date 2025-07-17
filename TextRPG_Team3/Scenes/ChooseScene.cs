@@ -41,13 +41,18 @@ namespace TextRPG_Team3.Scenes
             }
             
             Character.PlayerCharacter player = new Character.PlayerCharacter();
-
+            CharacterJob characterJob = jobdata[input - 1];
             player.Name = name;
-            player.RootClass = jobdata[input - 1].JobName;
-            player.Stat.BaseAttack = jobdata[input - 1].JobAtk;
-            player.Stat.BaseDefense = jobdata[input - 1].JobDef;
-            player.Stat.MaxHealth = jobdata[input - 1].JobHP;
+            player.RootClass = characterJob.JobName;
+            player.Stat.BaseAttack = characterJob.JobAtk;
+            player.Stat.BaseDefense = characterJob.JobDef;
+            player.Stat.MaxHealth = characterJob.JobHP;
             player.Stat.Health = player.Stat.MaxHealth;
+            
+            foreach (int skillId in characterJob.BaseSkillSet)
+            {
+                player.SkillList.Add(ResourceManager.Instance.GetSkillData(skillId));
+            }
 
             Managers.GameManager.Instance.Player = player;
             SceneManager.Instance.CurrentScene = new IntroScene();
