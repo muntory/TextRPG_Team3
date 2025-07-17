@@ -45,7 +45,13 @@ namespace TextRPG_Team3.Scenes
             GameManager.Instance.MaxExperience();
             CharacterStatComponent Exp = new CharacterStatComponent();
 
-        
+            Random rand = new Random();
+
+            List<ItemData> AllItems = ItemManager.Instance.GetAllItems();
+            var nonPotionItems = AllItems.FindAll(i => i.Type != ItemType.Potion);
+            Console.WriteLine(nonPotionItems);
+
+
 
 
             Console.WriteLine("\n============== Battle Result ==============\n");

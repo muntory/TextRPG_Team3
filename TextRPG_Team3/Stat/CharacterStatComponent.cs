@@ -80,7 +80,7 @@ namespace TextRPG_Team3.Stat
         public CharacterStatComponent()
         {
             Level = 1;
-            BaseAttack = 10.0;
+            BaseAttack = 50000.0;
             BaseDefense = 5.0;
             MaxHealth = 100;
             Health = MaxHealth;

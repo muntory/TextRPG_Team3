@@ -172,6 +172,10 @@ namespace TextRPG_Team3.Managers
 
             return false;
         }
+        public List<ItemData> GetAllItems()
+        {
+            return itemDataList;
+        }
 
     }
 }
