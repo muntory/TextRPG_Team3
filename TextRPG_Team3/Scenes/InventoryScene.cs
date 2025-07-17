@@ -44,11 +44,11 @@ namespace TextRPG_Team3.Scenes
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        if (itemData.CharacterBaseStat == Enums.StatType.Attack)
+                        if (itemData.StatType == Enums.StatType.Attack)
                             statType = "공격력";
-                        else if (itemData.CharacterBaseStat == Enums.StatType.Defense)
+                        else if (itemData.StatType == Enums.StatType.Defense)
                             statType = "방어력";
-                        else if (itemData.CharacterBaseStat == Enums.StatType.Health)
+                        else if (itemData.StatType == Enums.StatType.Health)
                             statType = "체력";
 
                         Console.WriteLine($"- {itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");

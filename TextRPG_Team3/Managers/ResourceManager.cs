@@ -109,13 +109,14 @@ namespace TextRPG_Team3.Managers
         {
             if (options == null)
             {
-                var options = new JsonSerializerOptions
+                options = new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     PropertyNameCaseInsensitive = true,
                     Converters = { new JsonStringEnumConverter() }
                 };
             }
+
             return options;
         }
     }
