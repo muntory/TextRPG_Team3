@@ -34,7 +34,20 @@ namespace TextRPG_Team3.Managers
         // 아이템 데이터 로드 -> 생성자 -> 데잍터 한 번 로드 후 메모리에 저장.
         private void LoadItemData()
         {
-            itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
+            try
+            {
+                itemDataList = ResourceManager.Instance.LoadJsonData<ItemData>($"{ResourceManager.GAME_ROOT_DIR}/Data/ItemDataList.json");
+            }
+            catch
+            {
+                itemDataList = new List<ItemData>();
+                Console.WriteLine("아이템 데이터 로드 실패");
+            }
+        }
+
+        void AddStartingItems()
+        {
+            AddItem(100, 3);
         }
 
         // 아이템 정보 받아오는 메서드
@@ -151,6 +164,7 @@ namespace TextRPG_Team3.Managers
                 return false;
             }
 
+            // 아이템 삭제
             if (RemoveItem(itemID, 1))
             {
                 return true;
