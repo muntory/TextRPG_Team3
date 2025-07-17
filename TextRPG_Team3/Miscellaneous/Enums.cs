@@ -23,7 +23,8 @@ public class Enums
 
     public enum StatMenu
     {
-        Out = 0
+        Out = 0,
+        Inventory = 1,
     }
 
     // 배틀 메뉴 업데이트 해야됨

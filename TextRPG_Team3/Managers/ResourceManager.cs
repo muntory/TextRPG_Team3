@@ -147,6 +147,7 @@ namespace TextRPG_Team3.Managers
                     Converters = { new JsonStringEnumConverter() }
                 };
             }
+
             return options;
         }
     }
