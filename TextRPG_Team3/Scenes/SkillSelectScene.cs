@@ -46,18 +46,11 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
 
             int index = 1;
+            
             foreach (SkillData skillData in player.SkillList)
             {
-                Console.WriteLine($"{index}. {skillData.SkillName} - MP {skillData.CostValue}");
-                if (skillData.RandomAttack)
-                {
-                    Console.WriteLine($"공격력 * {skillData.Multiplier} 로 {skillData.TargetCount}명의 적을 랜덤으로 공격합니다.");
-                }
-                else
-                {
-                    Console.WriteLine($"공격력 * {skillData.Multiplier} 로 적을 {skillData.TargetCount}번 공격합니다.");
-
-                }
+                RenderHelper.WriteLine($"{index}. {skillData.SkillName} - MP {skillData.CostValue}", RenderHelper.GetPlayerColor());
+                RenderHelper.WriteLine(skillData.Description);
                 index++;
             }
             Console.WriteLine();

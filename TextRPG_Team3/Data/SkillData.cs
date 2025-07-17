@@ -13,7 +13,9 @@ namespace TextRPG_Team3.Data
         public int CostValue { get; set; }
         public double Multiplier { get; set; }
         public int TargetCount { get; set; }
+        public string Description { get; set; }
         public bool RandomAttack { get; set; }
+        public bool IsTargetAll { get; set; }
 
     }
 }
