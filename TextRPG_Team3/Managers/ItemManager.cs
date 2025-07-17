@@ -67,7 +67,7 @@ namespace TextRPG_Team3.Managers
             }
             else
             {
-                PlayerInventory[itemID] = count;
+                PlayerInventory.Add(itemID, count);
             }
         }
 
@@ -128,23 +128,35 @@ namespace TextRPG_Team3.Managers
         }
 
         // 포션 사용 메서드
-        public bool UseItem(int itemID)
+        public bool UsePotion(int itemID)
         {
+            // 소지하지 않았을 경우
             if (!HaveItem(itemID))
             {
                 return false;
             }
 
+            // 아이템 데이터 로드
             ItemData itemData = GetItemData(itemID);
+            
+            // 아이템 데이터가 없을 경우
             if (itemData == null)
             {
                 return false;
             }
 
+            // 소모품인지 확인
             if (itemData.Type != ItemType.Potion)
             {
                 return false;
             }
+
+            if (RemoveItem(itemID, 1))
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }
