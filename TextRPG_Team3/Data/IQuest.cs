@@ -8,6 +8,6 @@ namespace TextRPG_Team3.Data
 {
     internal interface IQuest
     {
-        bool isCompleted { get; }
+        bool IsCompleted { get; }
     }
 }

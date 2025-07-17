@@ -40,7 +40,6 @@ namespace TextRPG_Team3.Managers
             }
             return QuestDB;
         }
-
         public Quest GetQuestData(int ID)
         {
             if (QuestDB == null)
@@ -59,7 +58,7 @@ namespace TextRPG_Team3.Managers
         }
         public void ActivateQuest(int ID)
         {
-            QuestDB[ID].isAccepted = true;
+            QuestDB[ID].IsAccepted = true;
             ActiveQuests.Add(QuestDB[ID]);
         }
 
@@ -83,6 +82,16 @@ namespace TextRPG_Team3.Managers
                     killGoal.OnEnemyKilled(ID);
                 }
             }
+        }
+
+        public void QueatReward(int ID)
+        {
+            GoldReward(ID);
+        }
+
+        public void GoldReward(int ID)
+        {
+            GameManager.Instance.Player.Gold += QuestDB[ID].GoldReward;
         }
     }
 }

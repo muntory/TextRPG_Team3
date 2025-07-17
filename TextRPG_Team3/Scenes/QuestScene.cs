@@ -33,12 +33,28 @@ namespace TextRPG_Team3.Scenes
         private void RenderQuestIntro()
         {
             QuestManager.Instance.GetQuestDB();
-            int questCount = 1;
-            foreach(Quest quest in QuestManager.Instance.QuestDB.Values)
+            foreach (Quest quest in QuestManager.Instance.QuestDB.Values)
             {
-                string clearStr = quest.IsCompleted ? " Cleared!" : "";
-                Console.WriteLine($"{questCount}. {quest.QuestName} {clearStr}");
-                questCount++;
+                string clearStr = "";
+                
+                if (quest.IsCleared)
+                {
+                    clearStr = "[Cleared!]";
+                    
+                }
+                else if (quest.IsCompleted)
+                {
+                    clearStr = "[보상 획득 가능!]";
+                }
+                string temp = $"{quest.ID}. {quest.QuestName} {clearStr}";
+                if (!quest.IsCleared)
+                {
+                    Console.WriteLine($"{temp}");
+                }
+                else
+                {
+                    RenderHelper.WriteLine(temp, ConsoleColor.DarkGray);
+                }
             }
             Console.WriteLine();
             Console.WriteLine("0. 나가기");
@@ -56,17 +72,20 @@ namespace TextRPG_Team3.Scenes
                 Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
                 Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
             }
-            else if(quest.Goal is EquipItemQuest equipQuest)
+            else if (quest.Goal is EquipItemQuest equipQuest)
             {
                 Console.WriteLine("장착 퀘스트 테스트입니다.");
             }
 
             Console.WriteLine();
             Console.WriteLine("- 보상");
-            Console.WriteLine($"  {quest.GoldReward} G");
+            if (quest.GoldReward > 0)
+            {
+                Console.WriteLine($"  {quest.GoldReward} G");
+            }
             Console.WriteLine();
 
-            if (!quest.isAccepted)
+            if (!quest.IsAccepted)
             {
                 Console.WriteLine("1. 수락");
                 Console.WriteLine("2. 거절");
@@ -75,6 +94,11 @@ namespace TextRPG_Team3.Scenes
             else
             {
                 Console.WriteLine("이미 수락한 퀘스트입니다.");
+                Console.WriteLine();
+                if (quest.IsCompleted)
+                {
+                    Console.WriteLine("1. 보상 받기");
+                }
                 Console.WriteLine("0. 나가기");
                 Console.WriteLine();
             }
@@ -83,7 +107,7 @@ namespace TextRPG_Team3.Scenes
         {
             if (index == 0 && 0 < input && input <= QuestManager.Instance.QuestDB.Count)
             {
-                if (QuestManager.Instance.QuestDB[input].IsCompleted)
+                if (QuestManager.Instance.QuestDB[input].IsCleared)
                 {
                     msg = "잘못된 입력입니다.";
                     return;
@@ -102,7 +126,7 @@ namespace TextRPG_Team3.Scenes
                     {
                         SceneManager.Instance.CurrentScene = new IntroScene();
                     }
-                    else if (index != 0 && QuestManager.Instance.QuestDB[index].isAccepted == true)
+                    else if (index != 0 && QuestManager.Instance.QuestDB[index].IsAccepted == true)
                     {
                         index = 0;
                     }
@@ -112,9 +136,16 @@ namespace TextRPG_Team3.Scenes
                     }
                     break;
                 case Enums.QuestMenuE.Accept:
-                    if (index != 0 && !QuestManager.Instance.QuestDB[index].isAccepted)
+                    if (index != 0 && !QuestManager.Instance.QuestDB[index].IsAccepted)
                     {
                         QuestManager.Instance.ActivateQuest(index);
+                        index = 0;
+                    }
+                    else if (index != 0 && QuestManager.Instance.QuestDB[index].IsAccepted && QuestManager.Instance.QuestDB[index].IsCompleted)
+                    {
+                        QuestManager.Instance.QueatReward(index);
+                        QuestManager.Instance.QuestDB[index].IsCleared = true;
+                        QuestManager.Instance.ActiveQuests.Remove(QuestManager.Instance.QuestDB[index]);
                         index = 0;
                     }
                     else
@@ -123,7 +154,7 @@ namespace TextRPG_Team3.Scenes
                     }
                     break;
                 case Enums.QuestMenuE.Refuse:
-                    if (index != 0 && !QuestManager.Instance.QuestDB[index].isAccepted)
+                    if (index != 0 && !QuestManager.Instance.QuestDB[index].IsAccepted)
                     {
                         index = 0;
                     }
