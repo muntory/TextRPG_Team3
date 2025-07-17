@@ -5,8 +5,7 @@
         "HP": 15,
         "Attack": 5.0,
         "Defense": 0.0,
-        "Gold": 50,
-        "Exp": 4
+        "Gold": 50
     },
     {
         "ID": 2,
@@ -14,8 +13,7 @@
         "HP": 10,
         "Attack": 9.0,
         "Defense": 0.0,
-        "Gold": 80,
-        "Exp": 6
+        "Gold": 80
     },
     {
         "ID": 3,
@@ -23,8 +21,6 @@
         "HP": 25,
         "Attack": 8.0,
         "Defense": 0.0,
-        "Gold": 100,
-        "Exp": 8
-
+        "Gold": 100
     }
 ]
