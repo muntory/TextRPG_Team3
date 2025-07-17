@@ -62,7 +62,7 @@ namespace TextRPG_Team3.Scenes
         private void RenderQuest(int index)
         {
             Quest quest = QuestManager.Instance.GetQuestData(index);
-            ItemData item = ItemManager.Instance.GetItemData(quest.ItemRewardID);
+            
             Console.WriteLine($"{quest.QuestName}");
             Console.WriteLine();
             Console.WriteLine($"{quest.QuestDescription}");
@@ -86,7 +86,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("- 보상");
             if(quest.ItemRewardID != -1)
             {
-                Console.WriteLine($"  {item.Name} x {quest.ItemAmount}");
+                Console.WriteLine($"  {ItemManager.Instance.GetItemData(quest.ItemRewardID).Name} x {quest.ItemAmount}");
             }
             if (quest.GoldReward > 0)
             {
