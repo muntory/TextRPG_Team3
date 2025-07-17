@@ -60,8 +60,6 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("1. 장착 관리");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
-            Console.WriteLine("원하시는 행동을 입력해주세요.");
-            Console.Write(">>");
         }
 
         public override void SelectMenu(int input)
