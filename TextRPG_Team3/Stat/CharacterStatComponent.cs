@@ -57,15 +57,16 @@ namespace TextRPG_Team3.Stat
             }
         }
 
-   
         private int Exp;
-
         public int exp
         {
             get { return Exp; }
-            set { Exp = value; }
+            set
+            {
+                Exp = value;
+            }
         }
-
+        
 
         public int TakeDamage(int inDamage)
         {
