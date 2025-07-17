@@ -29,6 +29,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
 
             Console.WriteLine("0. 나가기");
+            Console.WriteLine("1. 인벤토리");
             Console.WriteLine();
 
             PrintMsg();
@@ -43,6 +44,9 @@ namespace TextRPG_Team3.Scenes
             {
                 case Enums.StatMenu.Out:
                     SceneManager.Instance.CurrentScene = new IntroScene();
+                    break;
+                case Enums.StatMenu.Inventory:
+                    SceneManager.Instance.CurrentScene = new InventoryScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
