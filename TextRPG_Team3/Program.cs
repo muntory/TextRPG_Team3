@@ -30,8 +30,8 @@ namespace TextRPG_Team3
         void Init()
         {
             gameManager = new GameManager();
-            spawnManager = new SpawnManager();
             resourceManager = new ResourceManager();
+            spawnManager = new SpawnManager();
             sceneManager = new SceneManager();
             inputManager = new InputManager();
             questManager = new QuestManager();

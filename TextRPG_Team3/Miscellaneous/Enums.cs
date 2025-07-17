@@ -18,7 +18,8 @@ public class Enums
     {
         Stat = 1,
         Battle = 2, 
-        Quest = 3
+        Quest = 3,
+        Potion = 4,
     }
 
     public enum StatMenu
@@ -77,5 +78,11 @@ public class Enums
     {
         Back = 0,
         Set = 1,
+    }
+
+    public enum PotionSceneMenu
+    {
+        Back = 0,
+        use = 1,
     }
 }

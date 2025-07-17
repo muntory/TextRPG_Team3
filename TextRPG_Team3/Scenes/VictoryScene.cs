@@ -30,7 +30,7 @@ namespace TextRPG_Team3.Scenes
             {
                 EnemyData data = ResourceManager.Instance.GetEnemyData(enemy.EnemyID);
 
-                TotalGold += data.Gold;
+                TotalGold += (int)(data.Gold * 0.05 * (enemy.Stat.Level - 1));
                 count++;
             }
 
@@ -69,6 +69,7 @@ namespace TextRPG_Team3.Scenes
         }
         public override void SelectMenu(int input)
         {
+            GameManager.CurrentStage++;
             Enums.VictoryScene victoryScene = (Enums.VictoryScene)input;
 
             switch (victoryScene)

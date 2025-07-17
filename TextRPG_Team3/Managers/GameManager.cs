@@ -13,6 +13,8 @@ namespace TextRPG_Team3.Managers
         // 플레이어
         public PlayerCharacter Player;
 
+        public static int CurrentStage = 1;
+
         public GameManager()
         {
             if (instance == null)

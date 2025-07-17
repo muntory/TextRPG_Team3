@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Character;
 
 namespace TextRPG_Team3.Managers
 {

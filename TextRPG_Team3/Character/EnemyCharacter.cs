@@ -31,6 +31,8 @@ namespace TextRPG_Team3.Character
             Stat.BaseDefense = enemyData.Defense;
         }
 
+        
+
         // enemy Attack 로직 구현하기
         public override int Attack(BaseCharacter target)
         {
