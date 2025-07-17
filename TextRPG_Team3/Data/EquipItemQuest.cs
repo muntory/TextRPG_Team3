@@ -23,6 +23,6 @@ namespace TextRPG_Team3.Data
             }
         }
 
-        public bool isCompleted => isEquipped;
+        public bool IsCompleted => isEquipped;
     }
 }

@@ -39,7 +39,7 @@ namespace TextRPG_Team3.Managers
 
             for (int i = 0; i < enemycount; i++)
             {
-                int randomint = Random.Shared.Next(1, 4);
+                int randomint = Random.Shared.Next(1, ResourceManager.Instance.GetEnemyDB().Count + 1);
                 EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
@@ -52,7 +52,7 @@ namespace TextRPG_Team3.Managers
         public int SumofEnemyLevel() //적의 총 레벨을 반환함.
         {
             int exp = 0;
-            foreach(EnemyCharacter enemy in CurrentEnemies)
+            foreach (EnemyCharacter enemy in CurrentEnemies)
             {
                 exp += enemy.Stat.Level;
             }
@@ -74,7 +74,7 @@ namespace TextRPG_Team3.Managers
             }
 
             //CurrentEnemies = null;
-            
+
 
             return false;
         }

@@ -40,7 +40,7 @@ namespace TextRPG_Team3.Utils
         /// <param name="str"></param>
         /// <param name="totalWidth"></param>
         /// <returns></returns>
-        public static string PadLeftToWidth(string str, int totalWidth)
+        public static string AlignLeftWithPadding(string str, int totalWidth)
         {
             int width = 0;
 
@@ -51,7 +51,8 @@ namespace TextRPG_Team3.Utils
             }
 
             int padding = Math.Max(0, totalWidth - width);
-            return str + new string(' ', padding);
+
+            return $"{str}{new string(' ', padding)}";
         }
 
 
@@ -61,7 +62,7 @@ namespace TextRPG_Team3.Utils
         /// <param name="str"></param>
         /// <param name="totalWidth"></param>
         /// <returns></returns>
-        public static string PadRightToWidth(string str, int totalWidth)
+        public static string AlignRightWithPadding(string str, int totalWidth)
         {
             int width = 0;
 
@@ -72,7 +73,27 @@ namespace TextRPG_Team3.Utils
             }
 
             int padding = Math.Max(0, totalWidth - width);
-            return new string(' ', padding) + str;
+
+            return $"{new string(' ', padding)}{str}";
+
+        }
+
+        public static string AlignCenterWithPadding(string str, int totalWidth)
+        {
+            int width = 0;
+
+            foreach (char c in str)
+            {
+                // 대부분의 한글은 2칸 차지함
+                width += EastAsianWidth.GetWidth(c);
+            }
+
+            int padding = Math.Max(0, totalWidth - width);
+            int left = padding / 2;
+            int right = padding - left;
+
+            return $"{new string(' ', left)}{str}{new string(' ', right)}";
+
         }
 
 

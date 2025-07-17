@@ -17,34 +17,36 @@ namespace TextRPG_Team3.Scenes
 {
     internal class VictoryScene : BaseScene
     {
-       
-      
+
+
         public override void Render()
         {
-            
+
             base.Render();
             int count = 0;
             int TotalGold = 0;
-            int TotalExp = 0;
+
             foreach (var enemy in SpawnManager.Instance.CurrentEnemies)
             {
                 EnemyData data = ResourceManager.Instance.GetEnemyData(enemy.EnemyID);
 
-                TotalExp += data.Exp;
                 TotalGold += data.Gold;
                 count++;
             }
 
             GameManager.Instance.Player.Gold += TotalGold;
-            GameManager.Instance.Player.Stat.exp += TotalExp;
-           
+
             PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
             int exp = SpawnManager.Instance.SumofEnemyLevel();
+            int prevexp = stat.exp;
+            int prevLevel = stat.Level;
             stat.exp += exp;
             stat.MP += 10;
-
             GameManager.Instance.MaxExperience();
-           
+            CharacterStatComponent Exp = new CharacterStatComponent();
+
+        
+
 
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");
@@ -52,7 +54,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"몬스터 {count}마리를 처치했습니다");
             Console.WriteLine("[캐릭터 정보]");
             Console.WriteLine($"레벨: {GameManager.Instance.Player.Stat.Level}");
-            Console.WriteLine($"경험치: {GameManager.Instance.Player.Stat.exp - ((GameManager.Instance.Player.Stat.exp - TotalExp) + TotalExp )} -> {GameManager.Instance.Player.Stat.exp}");
+            Console.WriteLine($"경험치: Lv{prevLevel}. {prevexp} -> Lv{GameManager.Instance.Player.Stat.Level}. {GameManager.Instance.Player.Stat.exp}");
             Console.WriteLine($"HP: {GameManager.Instance.Player.Stat.MaxHealth} -> {GameManager.Instance.Player.Stat.MaxHealth - (GameManager.Instance.Player.Stat.MaxHealth - GameManager.Instance.Player.Stat.Health)}\n");
             Console.WriteLine("[흭득 아이템]");
             Console.WriteLine($"흭득한 골드: {TotalGold}");
@@ -80,7 +82,7 @@ namespace TextRPG_Team3.Scenes
                     break;
             }
         }
-    
+
     }
- 
+
 }

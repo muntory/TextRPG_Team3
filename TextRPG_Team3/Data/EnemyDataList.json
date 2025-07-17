@@ -5,8 +5,7 @@
         "HP": 15,
         "Attack": 5.0,
         "Defense": 0.0,
-        "Gold": 50,
-        "Exp": 4
+        "Gold": 50
     },
     {
         "ID": 2,
@@ -14,8 +13,7 @@
         "HP": 10,
         "Attack": 9.0,
         "Defense": 0.0,
-        "Gold": 80,
-        "Exp": 6
+        "Gold": 80
     },
     {
         "ID": 3,
@@ -23,8 +21,62 @@
         "HP": 25,
         "Attack": 8.0,
         "Defense": 0.0,
-        "Gold": 100,
-        "Exp": 8
-
+        "Gold": 100
+    },
+    {
+        "ID": 4,
+        "Name": "불꽃 도마뱀",
+        "HP": 30,
+        "Attack": 12.0,
+        "Defense": 2.0,
+        "Gold": 120
+    },
+    {
+        "ID": 5,
+        "Name": "서리 늑대",
+        "HP": 35,
+        "Attack": 10.0,
+        "Defense": 1.5,
+        "Gold": 150
+    },
+    {
+        "ID": 6,
+        "Name": "맹독 살쾡이",
+        "HP": 28,
+        "Attack": 14.0,
+        "Defense": 1.0,
+        "Gold": 140
+    },
+    {
+        "ID": 7,
+        "Name": "돌연변이 거미",
+        "HP": 40,
+        "Attack": 11.0,
+        "Defense": 3.0,
+        "Gold": 170
+    },
+    {
+        "ID": 8,
+        "Name": "암흑 망령",
+        "HP": 60,
+        "Attack": 18.0,
+        "Defense": 4.0,
+        "Gold": 220
+    },
+    {
+        "ID": 9,
+        "Name": "불사의 기사",
+        "HP": 80,
+        "Attack": 15.0,
+        "Defense": 6.0,
+        "Gold": 300
+    },
+    {
+        "ID": 10,
+        "Name": "심연의 군주",
+        "HP": 150,
+        "Attack": 25.0,
+        "Defense": 10.0,
+        "Gold": 500
     }
 ]

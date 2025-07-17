@@ -4,12 +4,13 @@
         "QuestName": "마을을 위협하는 미니언 처치",
         "QuestDescription": "이봐! 마을 근처에 미니언들이 너무 많아졌다고 생각하지 않나?\n마을주민들의 안전을 위해서라도 저것들 수를 좀 줄여야 한다고!\n모험가인 자네가 좀 처치해주게!",
         "GoldReward": 3000,
-        "isAccepted": false,
+        "IsAccepted": false,
         "QuestType": "Kill",
         "GoalData": {
             "GoalEnemyID": 1,
             "GoalAmount": 5
-        }
+        },
+        "IsCleared": false
     },
 
     {
@@ -17,10 +18,11 @@
         "QuestName": "테스트 퀘스트입니다.",
         "QuestDescription": "헬로우 월드?",
         "GoldReward": 42,
-        "isAccepted": false,
+        "IsAccepted": false,
         "QuestType": "Equip",
         "GoalData": {
             "GoalItemID": 1
-        }
+        },
+        "IsCleared": false
     }
 ]
