@@ -12,7 +12,7 @@ namespace TextRPG_Team3.Data
         public int CurrentAmount { get; set; }
         public int GoalAmount {  get; set; }
 
-        public bool isCompleted => CurrentAmount >= GoalAmount;
+        public bool IsCompleted => CurrentAmount >= GoalAmount;
         public KillEnemyQuest(int goalEnemyID, int goalAmount)
         {
             GoalEnemyID = goalEnemyID;
