@@ -21,7 +21,7 @@
     {
         "Id": 3,
         "Name": "낡은 검",
-        "Type": "Armor",
+        "Type": "Weapon",
         "StatType": "Attack",
         "Value": 2,
         "Description": "쉽게 볼 수 있는 녹이 슨 검입니다"
@@ -55,15 +55,6 @@
     },
 
     {
-        "Id": 6,
-        "Name": "견습 마법사의 로브",
-        "Type": "Armor",
-        "StatType": "Defense",
-        "Value": 4,
-        "Description": "견습 마법사가 사용하는 로브로 마법 방어에 효과적입니다"
-    },
-
-    {
         "Id": 7,
         "Name": "기사단장의 검",
         "Type": "Weapon",
@@ -75,7 +66,7 @@
     {
         "Id": 8,
         "Name": "기사단장의 갑옷",
-        "Type": "Weapon",
+        "Type": "Armor",
         "StatType": "Defense",
         "Value": 15,
         "Description": "기사단장의 갑옷으로 특수한 광물로 만들어져 마나가 흐르는 갑옷입니다"
@@ -124,5 +115,14 @@
         "StatType": "Attack",
         "Value": 14,
         "Description": "드레이크 이빨로으로 만든 단검입니다"
+    },
+
+    {
+        "Id": 14,
+        "Name": "견습 마법사의 로브",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 4,
+        "Description": "견습 마법사가 사용하는 로브로 마법 방어에 효과적입니다"
     }
 ]
