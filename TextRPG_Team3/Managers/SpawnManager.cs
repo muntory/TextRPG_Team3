@@ -44,7 +44,7 @@ namespace TextRPG_Team3.Managers
 
                 EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
 
-                newEnemy.Stat.Level = rand.Next(1, 11);
+                newEnemy.Stat.Level = rand.Next(1, 12);
 
                 CurrentEnemies.Add(newEnemy);
             }
@@ -52,7 +52,7 @@ namespace TextRPG_Team3.Managers
         public int SumofEnemyLevel() //적의 총 레벨을 반환함.
         {
             int exp = 0;
-            foreach(EnemyCharacter enemy in CurrentEnemies)
+            foreach (EnemyCharacter enemy in CurrentEnemies)
             {
                 exp += enemy.Stat.Level;
             }
@@ -74,7 +74,7 @@ namespace TextRPG_Team3.Managers
             }
 
             //CurrentEnemies = null;
-            
+
 
             return false;
         }
