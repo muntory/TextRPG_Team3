@@ -63,7 +63,8 @@ namespace TextRPG_Team3.Scenes
         }
         private void WriteLineEnemyInfo(EnemyCharacter enemy)
         {
-            string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
+            string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} " +
+                $"{(enemy.IsAlive ? $"HP {RenderHelper.AlignRightWithPadding(Convert.ToString(enemy.Stat.Health), 5)}" : "Dead")}";
 
             if (enemy.IsAlive)
             {
