@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Scenes
@@ -26,6 +27,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("1. 사용하기");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
+
+            PrintMsg();
         }
 
         public override void SelectMenu(int input)
@@ -37,12 +40,12 @@ namespace TextRPG_Team3.Scenes
                 case Enums.PotionSceneMenu.use:
                     if(ItemManager.Instance.UsePotion(100))
                     {
-                        ItemManager.Instance.ApplyHealHP(potionData.Value);
-                        Console.WriteLine("회복이 완료되었습니다.");
+                        GameManager.Instance.Player.Stat.Health += potionData.Value;
+                        msg = "회복이 완료되었습니다.";
                     }
                     else
                     {
-                        Console.WriteLine("포션이 부족합니다.");
+                        msg = "포션이 부족합니다.";
                     }
                     break;
                 case Enums.PotionSceneMenu.Back:
