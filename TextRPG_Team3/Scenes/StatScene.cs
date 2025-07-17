@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -31,7 +32,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("0. 나가기");
             Console.WriteLine("1. 인벤토리");
             Console.WriteLine();
-
+            
             PrintMsg();
 
         }
