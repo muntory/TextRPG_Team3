@@ -127,10 +127,10 @@
 
     {
         "Id": 100,
-        "Name": "체력 포션",
+        "Name": "상처약",
         "Type": "Potion",
         "StatType": "Health",
         "Value": 30,
-        "Description": "체력을 30 회복시켜주는 포션입니다"
+        "Description": "포켓몬의 체력을 30 회복시킵니다"
     }
 ]
