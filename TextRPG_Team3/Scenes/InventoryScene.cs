@@ -86,7 +86,7 @@ namespace TextRPG_Team3.Scenes
             switch (selectedNumber)
             {
                 case Enums.InventoryMenu.Back:
-                    SceneManager.Instance.CurrentScene = new IntroScene();
+                    SceneManager.Instance.CurrentScene = new StatScene();
                     break;
                 case Enums.InventoryMenu.Set :
                     SceneManager.Instance.CurrentScene = new ItemEquipScene();
