@@ -8,21 +8,21 @@ namespace TextRPG_Team3.Data
 {
     public class KillEnemyQuest : IQuest
     {
-        public int GoalEnemyID {  get; set; }
+        public int GoalEnemyTier {  get; set; }
         public int CurrentAmount { get; set; }
         public int GoalAmount {  get; set; }
 
         public bool IsCompleted => CurrentAmount >= GoalAmount;
-        public KillEnemyQuest(int goalEnemyID, int goalAmount)
+        public KillEnemyQuest(int goalEnemyTier, int goalAmount)
         {
-            GoalEnemyID = goalEnemyID;
+            GoalEnemyTier = goalEnemyTier;
             GoalAmount = goalAmount;
             CurrentAmount = 0;
         }
 
-        public void OnEnemyKilled(int enemyID)
+        public void OnEnemyKilled(int enemyTier)
         {
-            if (enemyID == GoalEnemyID)
+            if (enemyTier == GoalEnemyTier)
             {
                 CurrentAmount++;
             }

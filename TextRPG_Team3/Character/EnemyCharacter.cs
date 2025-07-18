@@ -14,6 +14,7 @@ namespace TextRPG_Team3.Character
     public class EnemyCharacter : BaseCharacter
     {
         public int EnemyID { get; private set; }
+        public int Tier { get; set; }
         public EnemyCharacter() : base()
         {
             Stat = new CharacterStatComponent();
@@ -24,6 +25,7 @@ namespace TextRPG_Team3.Character
         public EnemyCharacter(EnemyData enemyData) : this()
         {
             EnemyID = enemyData.ID;
+            Tier = enemyData.Tier;
             Name = enemyData.Name;
             Stat.MaxHealth = enemyData.HP;
             Stat.Health = Stat.MaxHealth;
@@ -52,7 +54,7 @@ namespace TextRPG_Team3.Character
             {
                 IsAlive = false;
             }
-            QuestManager.Instance.OnEnemyKilled(EnemyID);
+            QuestManager.Instance.OnEnemyKilled(Tier);
 
             // 에너미 사망 로직
             // 1. 플레이어 한테 경험치 주기

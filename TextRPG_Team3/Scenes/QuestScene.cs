@@ -16,7 +16,8 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            Console.WriteLine("Quest!!");
+            RenderHelper.WriteLine("Quest!!", ConsoleColor.DarkYellow);
+            Console.WriteLine();
             Console.WriteLine();
 
             switch (index)
@@ -45,70 +46,73 @@ namespace TextRPG_Team3.Scenes
                 {
                     clearStr = "[보상 획득 가능!]";
                 }
-                string temp = $"{quest.ID}. {quest.QuestName} {clearStr}";
+                string temp = $"{quest.ID}. {quest.QuestName}";
                 if (!quest.IsCleared)
                 {
-                    Console.WriteLine($"{temp}");
+                    RenderHelper.Write($"{temp}",ConsoleColor.White);
+                    RenderHelper.WriteLine($" {clearStr}", ConsoleColor.Green);
                 }
                 else
                 {
+                    temp += $" {clearStr}";
                     RenderHelper.WriteLine(temp, ConsoleColor.DarkGray);
                 }
             }
             Console.WriteLine();
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("0. 나가기",ConsoleColor.White);
             Console.WriteLine();
         }
         private void RenderQuest(int index)
         {
             Quest quest = QuestManager.Instance.GetQuestData(index);
-            
-            Console.WriteLine($"{quest.QuestName}");
+
+            RenderHelper.WriteLine($"{quest.QuestName}", ConsoleColor.Green);
             Console.WriteLine();
-            Console.WriteLine($"{quest.QuestDescription}");
+            RenderHelper.WriteLine($"{quest.QuestDescription}", ConsoleColor.White);
             Console.WriteLine();
             if (quest.Goal is KillEnemyQuest killQuest)
             {
-                Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                Console.Write($"{killQuest.GoalAmount}마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
+                RenderHelper.Write($"- {quest.GoalData.GoalEnemyTier}티어 몬스터 ", ConsoleColor.Yellow);
+                RenderHelper.Write($"{killQuest.GoalAmount}", ConsoleColor.Yellow);
+                RenderHelper.Write($"마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n", ConsoleColor.Yellow);
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
-                Console.WriteLine($"- {ItemManager.Instance.GetItemData(equipQuest.GoalItemID).Name} 장착");
+                RenderHelper.WriteLine($"- {ItemManager.Instance.GetItemData(equipQuest.GoalItemID).Name} 장착", ConsoleColor.Yellow);
             }
             else if(quest.Goal is LevelUpQuest levelQuest)
             {
-                Console.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ");
-                Console.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n");
+                RenderHelper.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ", ConsoleColor.Yellow);
+                RenderHelper.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
             }
 
             Console.WriteLine();
-            Console.WriteLine("- 보상");
+            RenderHelper.WriteLine("- 보상",ConsoleColor.DarkYellow);
             if(quest.ItemRewardID != -1)
             {
-                Console.WriteLine($"  {ItemManager.Instance.GetItemData(quest.ItemRewardID).Name} x {quest.ItemAmount}");
+                RenderHelper.WriteLine($"  {ItemManager.Instance.GetItemData(quest.ItemRewardID).Name} x {quest.ItemAmount}", ConsoleColor.DarkYellow);
             }
             if (quest.GoldReward > 0)
             {
-                Console.WriteLine($"  {quest.GoldReward} G");
+                RenderHelper.WriteLine($"  {quest.GoldReward} G", ConsoleColor.DarkYellow);
             }
             Console.WriteLine();
 
             if (!quest.IsAccepted)
             {
-                Console.WriteLine("1. 수락");
-                Console.WriteLine("2. 거절");
+                RenderHelper.WriteLine("1. 수락",ConsoleColor.White);
+                RenderHelper.WriteLine("2. 거절", ConsoleColor.White);
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("이미 수락한 퀘스트입니다.");
+                RenderHelper.WriteLine("이미 수락한 퀘스트입니다.", ConsoleColor.Red);
                 Console.WriteLine();
                 if (quest.IsCompleted)
                 {
-                    Console.WriteLine("1. 보상 받기");
+                    RenderHelper.WriteLine("1. 보상 받기", ConsoleColor.White);
                 }
-                Console.WriteLine("0. 나가기");
+                RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
                 Console.WriteLine();
             }
         }

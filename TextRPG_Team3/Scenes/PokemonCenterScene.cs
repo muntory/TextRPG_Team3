@@ -18,7 +18,7 @@ namespace TextRPG_Team3.Scenes
             base.Render();
 
             RenderHelper.WriteLine("[포켓몬 센터]", ConsoleColor.Magenta);
-            RenderHelper.WriteLine("이 곳에서 1000 G를 지불하고 HP와 MP를 모두 회복할 수 있습니다.");
+            RenderHelper.WriteLine("이 곳에서 500 G를 지불하고 HP와 MP를 모두 회복할 수 있습니다.");
             RenderHelper.WriteLine();
 
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
@@ -28,8 +28,8 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine($"{RenderHelper.AlignLeftWithPadding("Gold", 4)} : {RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 8)}", ConsoleColor.DarkYellow);
             RenderHelper.WriteLine();
 
-            RenderHelper.WriteLine("1. 확인");
-            RenderHelper.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("1. 확인",ConsoleColor.White);
+            RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             RenderHelper.WriteLine();
 
             PrintMsg();
