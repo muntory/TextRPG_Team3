@@ -41,7 +41,7 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.Write($"{(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}", (target.IsAlive ? RenderHelper.GetStatColor(Enums.StatType.Health) : ConsoleColor.DarkGray));
             Console.WriteLine();
 
-            Console.WriteLine("0. 다음");
+            RenderHelper.WriteLine("0. 다음", ConsoleColor.White);
             Console.WriteLine();
         }
 
