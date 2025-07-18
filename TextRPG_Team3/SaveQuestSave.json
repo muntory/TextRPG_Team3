@@ -1,0 +1,14 @@
+[
+  {
+    "QuestID": 1,
+    "IsCleared": false,
+    "IsAccepted": false,
+    "CurrentAmount": 0
+  },
+  {
+    "QuestID": 2,
+    "IsCleared": false,
+    "IsAccepted": false,
+    "CurrentAmount": -1
+  }
+]

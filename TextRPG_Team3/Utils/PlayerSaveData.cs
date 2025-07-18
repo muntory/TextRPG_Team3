@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
@@ -107,6 +109,80 @@ namespace TextRPG_Team3.Utils
                 bool isEquipped = ItemManager.Instance.GetItemData(i).IsEquipped;
                 ItemSaveData item = new ItemSaveData(i, amount, isEquipped);
                 itemData.Add(item);
+            }
+        }
+
+        public void Load()
+        {
+            LoadPlayer();
+            LoadItem();
+            LoadQuest();
+        }
+        private void LoadPlayer()
+        {
+            if (!File.Exists(savePath + "PlayerSave.json"))
+            {
+
+            }
+            else
+            {
+                string jsonPlayer = File.ReadAllText(savePath + "PlayerSave.json");
+                PlayerSaveData playerData = JsonSerializer.Deserialize<PlayerSaveData>(jsonPlayer);
+                ApplyPlayerData(playerData);
+            }
+        }
+        private void LoadItem()
+        {
+            if (!File.Exists(savePath + "ItemSave.json"))
+            {
+
+            }
+            else
+            {
+                List<ItemSaveData> itemData = ResourceManager.Instance.LoadJsonData<ItemSaveData>(savePath + "ItemSave.json");
+                ApplyItemData(itemData);
+            }
+        }
+        private void LoadQuest()
+        {
+            if (!File.Exists(savePath + "QuestSave.json"))
+            {
+
+            }
+            else
+            {
+                List<QuestSaveData> questData = ResourceManager.Instance.LoadJsonData<QuestSaveData>(savePath + "QuestSave.json");
+                ApplyQuestData(questData);
+            }
+        }
+        private void ApplyPlayerData(PlayerSaveData playerData)
+        {
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+            GameManager.Instance.Player.Name = playerData.PlayerName;
+            GameManager.Instance.Player.Stat.Level = playerData.Level;
+            GameManager.Instance.Player.Gold = playerData.Gold;
+            GameManager.Instance.Player.Stat.exp = playerData.Exp;
+            playerStat.MP = playerData.MP;
+            GameManager.CurrentStage = playerData.CurrentStage;
+        }
+        private void ApplyItemData(List<ItemSaveData> itemData)
+        {
+
+        }
+        private void ApplyQuestData(List<QuestSaveData> questData)
+        {
+            
+            foreach(QuestSaveData quest in questData)
+            {
+                QuestManager.Instance.QuestDB[quest.QuestID].IsCleared = quest.IsCleared;
+                QuestManager.Instance.QuestDB[quest.QuestID].IsAccepted = quest.IsAccepted;
+                if(quest.CurrentAmount != -1)
+                {
+                    if (QuestManager.Instance.QuestDB[quest.QuestID].Goal is KillEnemyQuest killQuest)
+                    {
+                        killQuest.CurrentAmount = quest.CurrentAmount;
+                    }
+                }
             }
         }
     }
