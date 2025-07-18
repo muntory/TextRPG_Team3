@@ -18,8 +18,8 @@ namespace TextRPG_Team3.Scenes
             base.Render();
 
             PlayerCharacter player = GameManager.Instance.Player;
-
-            RenderHelper.WriteLine("Battle!!",ConsoleColor.DarkYellow);
+            PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
+            Console.WriteLine("Battle!!");
             Console.WriteLine();
 
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
@@ -33,9 +33,10 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             Console.WriteLine();
 
-            RenderHelper.WriteLine("[내 정보]",ConsoleColor.White);
-            RenderHelper.WriteLine($"Lv. {player.Stat.Level} {player.Name}",ConsoleColor.White);
-            RenderHelper.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}", ConsoleColor.Red);
+            Console.WriteLine("[내 정보]");
+            Console.WriteLine($"Lv. {player.Stat.Level} {player.Name}");
+            Console.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}");
+            Console.WriteLine($"MP {stat.MP}/{stat.MaxMP}");
             Console.WriteLine();
             
             RenderHelper.WriteLine("1. 공격", ConsoleColor.Yellow);
