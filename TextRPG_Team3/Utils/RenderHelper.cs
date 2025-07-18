@@ -4,25 +4,45 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_Team3.Managers;
 
 namespace TextRPG_Team3.Utils
 {
     public static class RenderHelper
     {
-        public static void WriteLine(string str, ConsoleColor color = ConsoleColor.White)
+        public static void WriteLine(string str = "", ConsoleColor color = ConsoleColor.Gray)
         {
             Console.ForegroundColor = color;
             Console.WriteLine(str);
             Console.ResetColor();
         }
 
-        public static void Write(string str, ConsoleColor color = ConsoleColor.White)
+        public static void Write(string str, ConsoleColor color = ConsoleColor.Gray)
         {
             Console.ForegroundColor = color;
             Console.Write(str);
             Console.ResetColor();
         }
 
+        public static ConsoleColor GetPlayerColor()
+        {
+            ConsoleColor color = ConsoleColor.Gray;
+
+            if (GameManager.Instance.Player.RootClass == "파이리")
+            {
+                color = ConsoleColor.Red;
+            }
+            if (GameManager.Instance.Player.RootClass == "꼬부기")
+            {
+                color = ConsoleColor.Cyan;
+            }
+            if (GameManager.Instance.Player.RootClass == "이상해씨")
+            {
+                color = ConsoleColor.Green;
+            }
+
+            return color;
+        }
         public static void DeleteConsoleLine(int count = 1)
         {
             for (int i = 0; i < count; i++)

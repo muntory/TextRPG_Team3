@@ -9,16 +9,20 @@ using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Utils;
 using TextRPG_Team3.Stat;
+using System.ComponentModel.Design;
 
 namespace TextRPG_Team3.Scenes
 {
     public class AttackResultScene : BaseScene
     {
         SkillData skillData;
+
         public AttackResultScene(SkillData skillData = null)
         {
             this.skillData = skillData;
         }
+
+
         public override void Render()
         {
             base.Render();
@@ -29,6 +33,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
 
             PlayerCharacter player = GameManager.Instance.Player;
+            PlayerStatComponent playerStat = player.Stat as PlayerStatComponent;
             EnemyCharacter target;
 
             if (skillData == null)
@@ -55,55 +60,76 @@ namespace TextRPG_Team3.Scenes
                     Console.WriteLine();
                 }
             }
-            else
+            else // 스킬공격
             {
                 
-                (player.Stat as PlayerStatComponent).MP -= skillData.CostValue;
+                playerStat.MP -= skillData.CostValue;
 
-                for (int i = 0; i < skillData.TargetCount; ++i)
+                if (!skillData.IsTargetAll)
                 {
-                    Console.Clear();
-
-                    Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
-                    int targetIndex;
-                    if (skillData.RandomAttack)
+                    for (int i = 0; i < skillData.TargetCount; ++i)
                     {
-                        do
+                        if (!SpawnManager.Instance.HasEnemies())
                         {
-                            targetIndex = Random.Shared.Next(currentEnemies.Count);
-                        } 
-                        while (!currentEnemies[targetIndex].IsAlive);
+                            break;
+                        }
 
+                        int targetIndex;
+                        if (skillData.RandomAttack)
+                        {
+
+                            do
+                            {
+                                targetIndex = Random.Shared.Next(currentEnemies.Count);
+                            }
+                            while (!currentEnemies[targetIndex].IsAlive);
+
+                        }
+                        else
+                        {
+                            targetIndex = InputManager.Instance.UserInput - 1;
+                        }
+
+                        target = currentEnemies[targetIndex];
+
+                        RenderSkill(player, target);
                     }
-                    else
-                    {
-                        targetIndex = InputManager.Instance.UserInput - 1;
-                    }
-
-                    target = currentEnemies[targetIndex];
-                    int prevHealth = target.Stat.Health;
-
-                    
-                    player.ActiveSkill(target, skillData);
-
-                    Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
-                    Console.WriteLine();
-
-                    Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-                    Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
-                    Console.WriteLine();
-
-                    Thread.Sleep(1000);
 
                 }
+                else
+                {
+                    foreach (EnemyCharacter enemy in currentEnemies)
+                    {
+                        if (!enemy.IsAlive) continue;
+
+                        RenderSkill(player, enemy);
+
+                    }
+                }
             }
-
             
-
-
             Console.WriteLine("0. 다음");
             Console.WriteLine();
 
+        }
+
+        private void RenderSkill(PlayerCharacter player, EnemyCharacter target)
+        {
+            int prevHealth = target.Stat.Health;
+
+            player.ActiveSkill(target, skillData);
+
+            Console.Clear();
+
+            Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
+            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
+            Console.WriteLine();
+
+            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
+            Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+            Console.WriteLine();
+
+            Thread.Sleep(1000);
         }
 
         public override void SelectMenu(int input)

@@ -1,98 +1,122 @@
 [
     {
         "ID": 1,
-        "SkillName": "알파 스트라이크",
+        "SkillName": "불꽃 펀치",
         "CostValue": 10,
         "Multiplier": 2.0,
         "TargetCount": 1,
-        "RandomAttack": false
+        "RandomAttack": false,
+        "Description": "강렬한 불꽃 주먹으로 적 하나에게 큰 피해를 입힙니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 2,
-        "SkillName": "더블 스트라이크",
+        "SkillName": "불의 춤",
         "CostValue": 15,
         "Multiplier": 1.5,
         "TargetCount": 2,
-        "RandomAttack": true
+        "RandomAttack": true,
+        "Description": "불꽃을 춤추듯 흩뿌려 여러 적에게 피해를 줍니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 3,
-        "SkillName": "강타",
+        "SkillName": "화염 폭발",
         "CostValue": 12,
         "Multiplier": 2.5,
         "TargetCount": 1,
-        "RandomAttack": false
+        "RandomAttack": false,
+        "Description": "강력한 폭발로 적 하나를 불태웁니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 4,
-        "SkillName": "회오리베기",
+        "SkillName": "화염 회오리",
         "CostValue": 20,
         "Multiplier": 1.2,
         "TargetCount": 3,
-        "RandomAttack": true
+        "RandomAttack": true,
+        "Description": "회오리처럼 불꽃을 날려 무작위 적에게 피해를 줍니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 5,
-        "SkillName": "파이어볼",
+        "SkillName": "물 대포",
         "CostValue": 18,
         "Multiplier": 2.0,
         "TargetCount": 1,
-        "RandomAttack": false
+        "RandomAttack": false,
+        "Description": "고압의 물줄기로 적 하나를 강타합니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 6,
-        "SkillName": "아이스 스톰",
+        "SkillName": "눈보라",
         "CostValue": 25,
         "Multiplier": 1.5,
         "TargetCount": 3,
-        "RandomAttack": true
+        "RandomAttack": true,
+        "Description": "차가운 눈보라로 무작위 적을 얼립니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 7,
-        "SkillName": "라이트닝 체인",
+        "SkillName": "연쇄 물줄기",
         "CostValue": 22,
         "Multiplier": 1.8,
         "TargetCount": 2,
-        "RandomAttack": false
+        "RandomAttack": true,
+        "Description": "물줄기가 번갈아 튕기며 적 둘에게 피해를 줍니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 8,
-        "SkillName": "매직 미사일",
-        "CostValue": 10,
+        "SkillName": "파도타기",
+        "CostValue": 30,
         "Multiplier": 1.3,
-        "TargetCount": 3,
-        "RandomAttack": true
+        "TargetCount": 999,
+        "RandomAttack": true,
+        "Description": "거대한 파도로 전장의 모든 적을 휩씁니다.",
+        "IsTargetAll": true
     },
     {
         "ID": 9,
-        "SkillName": "백스탭",
+        "SkillName": "덩굴 채찍",
         "CostValue": 15,
         "Multiplier": 2.2,
         "TargetCount": 1,
-        "RandomAttack": false
+        "RandomAttack": false,
+        "Description": "덩굴을 날려 적 하나를 강하게 타격합니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 10,
-        "SkillName": "독 묻은 칼날",
+        "SkillName": "맹독 뿌리기",
         "CostValue": 18,
         "Multiplier": 1.8,
         "TargetCount": 1,
-        "RandomAttack": false
+        "RandomAttack": false,
+        "Description": "맹독을 뿌려 적 하나에게 중독 피해를 입힙니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 11,
-        "SkillName": "그림자 연속베기",
+        "SkillName": "씨폭탄 연타",
         "CostValue": 20,
         "Multiplier": 1.5,
         "TargetCount": 2,
-        "RandomAttack": true
+        "RandomAttack": true,
+        "Description": "폭발하는 씨앗을 던져 무작위 적 둘에게 피해를 줍니다.",
+        "IsTargetAll": false
     },
     {
         "ID": 12,
-        "SkillName": "암살자의 급습",
-        "CostValue": 22,
+        "SkillName": "태초의 자연",
+        "CostValue": 25,
         "Multiplier": 2.5,
-        "TargetCount": 1,
-        "RandomAttack": false
+        "TargetCount": 999,
+        "RandomAttack": true,
+        "Description": "대자연의 힘을 소환하여 전장의 모든 적을 덮칩니다.",
+        "IsTargetAll": true
     }
 ]

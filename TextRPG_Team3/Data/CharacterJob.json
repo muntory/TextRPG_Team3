@@ -1,27 +1,36 @@
 [
     {
         "JobID": 1,
-        "JobName": "전사",
-        "JobAtk": 10.0,
-        "JobHP": 130,
+        "JobName": "파이리",
+        "JobAtk": 25.0,
+        "JobHP": 90,
+        "JobMP": 50,
         "JobDef": 5.0,
+        "CriticalRate": 0.2,
+        "AccuracyRate": 0.85,
         "BaseSkillSet": [ 1, 2, 3, 4 ]
     },
     {
         "JobID": 2,
-        "JobName": "마법사",
-        "JobAtk": 17.0,
-        "JobHP": 70,
-        "JobDef": 3.0,
+        "JobName": "꼬부기",
+        "JobAtk": 18.0,
+        "JobHP": 110,
+        "JobMP": 70,
+        "JobDef": 12.0,
+        "CriticalRate": 0.15,
+        "AccuracyRate": 0.9,
         "BaseSkillSet": [ 5, 6, 7, 8 ]
 
     },
     {
         "JobID": 3,
-        "JobName": "암살자",
+        "JobName": "이상해씨",
         "JobAtk": 15.0,
-        "JobHP": 60,
-        "JobDef": 3.0,
+        "JobHP": 120,
+        "JobMP": 80,
+        "JobDef": 15.0,
+        "CriticalRate": 0.1,
+        "AccuracyRate": 0.8,
         "BaseSkillSet": [ 9, 10, 11, 12 ]
 
     }

@@ -150,29 +150,6 @@ namespace TextRPG_Team3.Managers
 
         }
         
-        public void SpawnRandomEnemies()
-        {
-            if (CurrentEnemies != null)
-            {
-                return;
-            }
-
-            CurrentEnemies = new List<EnemyCharacter>();
-
-            int enemycount = Random.Shared.Next(1, 5);
-
-            for (int i = 0; i < enemycount; i++)
-            {
-                int randomint = Random.Shared.Next(1, ResourceManager.Instance.GetEnemyDB().Count + 1);
-                EnemyData enemyData = ResourceManager.Instance.GetEnemyData(randomint);
-
-                EnemyCharacter newEnemy = new EnemyCharacter(enemyData);
-
-                newEnemy.Stat.Level = Random.Shared.Next(1, 11);
-
-                CurrentEnemies.Add(newEnemy);
-            }
-        }
         public int SumofEnemyLevel() //적의 총 레벨을 반환함.
         {
             int exp = 0;
