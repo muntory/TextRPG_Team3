@@ -196,16 +196,16 @@ namespace TextRPG_Team3.Utils
             playerStat.CriticalRate = characterJob.CriticalRate;
             playerStat.AccuracyRate = characterJob.AccuracyRate;
             playerStat.CriticalDamageRate = characterJob.CriticalDamageRate;
+            playerStat.Level = playerData.Level;
+            player.Name = playerData.PlayerName;
+            playerStat.Exp = playerData.Exp;
             foreach (int skillId in characterJob.BaseSkillSet)
             {
                 player.SkillList.Add(ResourceManager.Instance.GetSkillData(skillId));
             }
 
             GameManager.Instance.Player = player;
-            GameManager.Instance.Player.Stat.Level = playerData.Level;
             GameManager.Instance.Player.Gold = playerData.Gold;
-            GameManager.Instance.Player.Name = playerData.PlayerName;
-            playerStat.Exp = playerData.Exp;
             GameManager.CurrentStage = playerData.CurrentStage;
         }
         private void ApplyItemData(List<ItemSaveData> itemData)
