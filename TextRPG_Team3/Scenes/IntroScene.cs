@@ -54,6 +54,14 @@ namespace TextRPG_Team3.Scenes
                 case Enums.IntroMenu.RefineBadge:
                     SceneManager.Instance.CurrentScene = new BadgeRefineScene();
                     break;
+                case Enums.IntroMenu.Save:
+                    Console.Clear();
+                    SaveAndLoad save = new();
+                    save.Save();
+                    Console.WriteLine("게임이 저장되었습니다.");
+                    Console.WriteLine("다음에 뵙겠습니다!");
+                    Environment.Exit(0);
+                    break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;

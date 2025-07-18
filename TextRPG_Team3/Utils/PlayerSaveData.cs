@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Emit;
 using System.Text;
 using System.Text.Json;
@@ -28,26 +29,6 @@ namespace TextRPG_Team3.Utils
 
         public PlayerSaveData()
         {
-            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-            PlayerName = GameManager.Instance.Player.Name;
-            Level = GameManager.Instance.Player.Stat.Level;
-            Gold = GameManager.Instance.Player.Gold;
-            Exp = GameManager.Instance.Player.Stat.exp;
-            MP = playerStat.MP;
-            CurrentStage = GameManager.CurrentStage;
-            Health = GameManager.Instance.Player.Stat.Health;
-            if (GameManager.Instance.Player.RootClass == "파이리")
-            {
-                JobID = 1;
-            }
-            else if(GameManager.Instance.Player.RootClass == "꼬부기")
-            {
-                JobID = 2;
-            }
-            else if(GameManager.Instance.Player.RootClass == "이상해씨")
-            {
-                JobID = 3;
-            }
         }
     }
 
@@ -93,6 +74,29 @@ namespace TextRPG_Team3.Utils
             ResourceManager.Instance.SaveJsonData(savePath + "PlayerSave.json", playerData);
             ResourceManager.Instance.SaveJsonData(savePath + "ItemSave.json", itemData);
             ResourceManager.Instance.SaveJsonData(savePath + "QuestSave.json", questData);
+        }
+        public void SavePlayer(PlayerSaveData playerData)
+        {
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+            playerData.PlayerName = GameManager.Instance.Player.Name;
+            playerData.Level = GameManager.Instance.Player.Stat.Level;
+            playerData.Gold = GameManager.Instance.Player.Gold;
+            playerData.Exp = playerStat.Exp;
+            playerData.MP = playerStat.MP;
+            playerData.CurrentStage = GameManager.CurrentStage;
+            playerData.Health = playerStat.Health;
+            if(GameManager.Instance.Player.RootClass == "파이리")
+            {
+                playerData.JobID = 1;
+            }
+            else if (GameManager.Instance.Player.RootClass == "꼬부기")
+            {
+                playerData.JobID = 2;
+            }
+            else if (GameManager.Instance.Player.RootClass == "이상해씨")
+            {
+                playerData.JobID = 3;
+            }
         }
         public void SaveQuest(List<QuestSaveData> questData)
         {
@@ -180,8 +184,9 @@ namespace TextRPG_Team3.Utils
             PlayerStatComponent playerStat = player.Stat as PlayerStatComponent;
 
             CharacterJob characterJob = jobdata[playerData.JobID-1];
-            player.Name = playerData.PlayerName;
+            
             player.RootClass = characterJob.JobName;
+
             playerStat.BaseAttack = characterJob.JobAtk + ((playerData.Level - 1) * 0.5f);
             playerStat.BaseDefense = characterJob.JobDef + ((playerData.Level - 1));
             playerStat.MaxHealth = characterJob.JobHP;
@@ -199,7 +204,8 @@ namespace TextRPG_Team3.Utils
             GameManager.Instance.Player = player;
             GameManager.Instance.Player.Stat.Level = playerData.Level;
             GameManager.Instance.Player.Gold = playerData.Gold;
-            GameManager.Instance.Player.Stat.exp = playerData.Exp;
+            GameManager.Instance.Player.Name = playerData.PlayerName;
+            playerStat.Exp = playerData.Exp;
             GameManager.CurrentStage = playerData.CurrentStage;
         }
         private void ApplyItemData(List<ItemSaveData> itemData)
