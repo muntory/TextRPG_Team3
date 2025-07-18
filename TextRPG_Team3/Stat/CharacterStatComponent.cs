@@ -71,7 +71,7 @@ namespace TextRPG_Team3.Stat
         {
             Level = level;
 
-            MaxHealth += (int)(MaxHealth * (0.15 * (level - 1)));
+            MaxHealth += (int)(MaxHealth * (0.1 * (level - 1)));
             Health = MaxHealth;
 
             BaseAttack += BaseAttack * 0.05 * (level - 1);
