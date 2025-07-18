@@ -19,7 +19,7 @@ namespace TextRPG_Team3.Scenes
 
             Console.WriteLine("인벤토리 - 장착관리");
             Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
-
+            Console.WriteLine();
 
 
             if (ItemIDs.Count == 0)
@@ -56,6 +56,9 @@ namespace TextRPG_Team3.Scenes
                     }
                 }
             }
+            Console.WriteLine();
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
             PrintMsg();
         }
 
@@ -75,7 +78,14 @@ namespace TextRPG_Team3.Scenes
                     break;
 
                 default:
-                    ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
+                    if (ItemManager.Instance.IsPotion(ItemIDs[input - 1]))
+                    {
+                        msg = "포션은 장착할 수 없습니다!";
+                    }
+                    else
+                    {
+                        ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
+                    }
                     break;
             }
         }
