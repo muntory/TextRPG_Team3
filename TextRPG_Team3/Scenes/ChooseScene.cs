@@ -23,7 +23,10 @@ namespace TextRPG_Team3.Scenes
             name = Console.ReadLine();
 
             Console.WriteLine("직업을 선택해주세요.");
-            Console.WriteLine("1. 전사 2. 마법사 3. 암살자");
+            RenderHelper.Write("1. 파이리 ", ConsoleColor.Red);
+            RenderHelper.Write("2. 꼬부기 ", ConsoleColor.Cyan);
+            RenderHelper.Write("3. 이상해씨 ", ConsoleColor.Green);
+            Console.WriteLine();
 
         }
 
@@ -41,21 +44,27 @@ namespace TextRPG_Team3.Scenes
                 while (!(0 < input && input <= jobdata.Count));
             }
             
-            Character.PlayerCharacter player = new Character.PlayerCharacter();
+            PlayerCharacter player = new PlayerCharacter();
+            PlayerStatComponent playerStat = player.Stat as PlayerStatComponent;
+
             CharacterJob characterJob = jobdata[input - 1];
             player.Name = name;
             player.RootClass = characterJob.JobName;
-            player.Stat.BaseAttack = characterJob.JobAtk;
-            player.Stat.BaseDefense = characterJob.JobDef;
-            player.Stat.MaxHealth = characterJob.JobHP;
-            player.Stat.Health = player.Stat.MaxHealth;
+            playerStat.BaseAttack = characterJob.JobAtk;
+            playerStat.BaseDefense = characterJob.JobDef;
+            playerStat.MaxHealth = characterJob.JobHP;
+            playerStat.Health = playerStat.MaxHealth;
+            playerStat.MaxMP = characterJob.JobMP;
+            playerStat.MP = playerStat.MaxMP;
+            playerStat.CriticalRate = characterJob.CriticalRate;
+            playerStat.AccuracyRate = characterJob.AccuracyRate;
             
             foreach (int skillId in characterJob.BaseSkillSet)
             {
                 player.SkillList.Add(ResourceManager.Instance.GetSkillData(skillId));
             }
 
-            Managers.GameManager.Instance.Player = player;
+            GameManager.Instance.Player = player;
             SceneManager.Instance.CurrentScene = new IntroScene();
         }
     }

@@ -40,6 +40,8 @@ namespace TextRPG_Team3.Scenes
             
             Console.WriteLine("1. 공격");
             Console.WriteLine("2. 스킬");
+            Console.WriteLine("3. 아이템");
+
             Console.WriteLine();
         }
 
@@ -55,6 +57,10 @@ namespace TextRPG_Team3.Scenes
                     break;
                 case Enums.BattleMenu.Skill:
                     SceneManager.Instance.CurrentScene = new SkillSelectScene();
+                    break;
+                case Enums.BattleMenu.Item:
+                    SceneManager.Instance.PreviousScene = SceneManager.Instance.CurrentScene;
+                    SceneManager.Instance.CurrentScene = new PotionScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";

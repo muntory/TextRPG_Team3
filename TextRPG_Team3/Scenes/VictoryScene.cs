@@ -30,7 +30,7 @@ namespace TextRPG_Team3.Scenes
             {
                 EnemyData data = ResourceManager.Instance.GetEnemyData(enemy.EnemyID);
 
-                TotalGold += (int)(data.Gold * 0.05 * (enemy.Stat.Level - 1));
+                TotalGold += (int)(data.Gold + data.Gold * 0.05 * (enemy.Stat.Level - 1));
                 count++;
             }
 
