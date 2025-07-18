@@ -49,6 +49,8 @@ namespace TextRPG_Team3.Scenes
 
                 }
             }
+
+            
         }
 
         public override void Render()
@@ -234,11 +236,6 @@ namespace TextRPG_Team3.Scenes
         private void ActiveEffect(Badge badge)
         {
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-
-            if (badge.Effects == null)
-            {
-                badge.Effects = new int[3];
-            }
 
             foreach (int id in badge.Effects)
             {

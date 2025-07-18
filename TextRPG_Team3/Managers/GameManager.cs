@@ -13,7 +13,7 @@ namespace TextRPG_Team3.Managers
         public static GameManager Instance { get { return instance; } }
 
         // 플레이어
-        public PlayerCharacter Player;
+        public PlayerCharacter Player = new();
         public List<Badge> BadgeList = new List<Badge>();
         public static int CurrentStage = 1;
 
@@ -23,12 +23,6 @@ namespace TextRPG_Team3.Managers
             {
                 instance = this;
             }
-
-            BadgeList.Add(new Badge("테스트 뱃지1"));
-            BadgeList.Add(new Badge("테스트 뱃지2"));
-            BadgeList.Add(new Badge("테스트 뱃지3"));
-            BadgeList.Add(new Badge("테스트 뱃지4"));
-            BadgeList.Add(new Badge("테스트 뱃지5"));
 
         }
         public bool CheckVictory(List<EnemyCharacter> enemies)

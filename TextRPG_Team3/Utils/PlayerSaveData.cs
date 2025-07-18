@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Emit;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
@@ -21,6 +24,8 @@ namespace TextRPG_Team3.Utils
         public double Exp { get; set; }
         public int MP { get; set; }
         public int CurrentStage { get; set; }
+        public int Health { get; set; }
+        public int JobID {  get; set; }
 
         public PlayerSaveData()
         {
@@ -65,7 +70,7 @@ namespace TextRPG_Team3.Utils
     
     public class SaveAndLoad
     {
-        string savePath = $"{AppDomain.CurrentDomain.BaseDirectory}/../../../Save";
+        string savePath = $"{AppDomain.CurrentDomain.BaseDirectory}/../../../Save/";
         public void Save()
         {
             PlayerSaveData playerData = new PlayerSaveData();
@@ -77,9 +82,32 @@ namespace TextRPG_Team3.Utils
             ResourceManager.Instance.SaveJsonData(savePath + "ItemSave.json", itemData);
             ResourceManager.Instance.SaveJsonData(savePath + "QuestSave.json", questData);
         }
+        public void SavePlayer(PlayerSaveData playerData)
+        {
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+            playerData.PlayerName = GameManager.Instance.Player.Name;
+            playerData.Level = GameManager.Instance.Player.Stat.Level;
+            playerData.Gold = GameManager.Instance.Player.Gold;
+            playerData.Exp = playerStat.Exp;
+            playerData.MP = playerStat.MP;
+            playerData.CurrentStage = GameManager.CurrentStage;
+            playerData.Health = playerStat.Health;
+            if(GameManager.Instance.Player.RootClass == "?뚯씠由?)
+            {
+                playerData.JobID = 1;
+            }
+            else if (GameManager.Instance.Player.RootClass == "瑗щ?湲?)
+            {
+                playerData.JobID = 2;
+            }
+            else if (GameManager.Instance.Player.RootClass == "?댁긽?댁뵪")
+            {
+                playerData.JobID = 3;
+            }
+        }
         public void SaveQuest(List<QuestSaveData> questData)
         {
-            for (int i = 1; i < QuestManager.Instance.QuestDB.Count; i++)
+            for (int i = 1; i <= QuestManager.Instance.QuestDB.Count; i++)
             {
                 int questID = i;
                 bool isCleared = QuestManager.Instance.QuestDB[i].IsCleared;
@@ -157,12 +185,34 @@ namespace TextRPG_Team3.Utils
         }
         private void ApplyPlayerData(PlayerSaveData playerData)
         {
-            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-            GameManager.Instance.Player.Name = playerData.PlayerName;
-            GameManager.Instance.Player.Stat.Level = playerData.Level;
-            GameManager.Instance.Player.Gold = playerData.Gold;
-            GameManager.Instance.Player.Stat.exp = playerData.Exp;
+            List<CharacterJob> jobdata = ResourceManager.Instance.LoadJsonData<CharacterJob>($"{ResourceManager.GAME_ROOT_DIR}/Data/CharacterJob.json");
+
+            PlayerCharacter player = new PlayerCharacter();
+            PlayerStatComponent playerStat = player.Stat as PlayerStatComponent;
+
+            CharacterJob characterJob = jobdata[playerData.JobID-1];
+            
+            player.RootClass = characterJob.JobName;
+
+            playerStat.BaseAttack = characterJob.JobAtk + ((playerData.Level - 1) * 0.5f);
+            playerStat.BaseDefense = characterJob.JobDef + ((playerData.Level - 1));
+            playerStat.MaxHealth = characterJob.JobHP;
+            playerStat.Health = playerData.Health;
+            playerStat.MaxMP = characterJob.JobMP;
             playerStat.MP = playerData.MP;
+            playerStat.CriticalRate = characterJob.CriticalRate;
+            playerStat.AccuracyRate = characterJob.AccuracyRate;
+            playerStat.CriticalDamageRate = characterJob.CriticalDamageRate;
+            playerStat.Level = playerData.Level;
+            player.Name = playerData.PlayerName;
+            playerStat.Exp = playerData.Exp;
+            foreach (int skillId in characterJob.BaseSkillSet)
+            {
+                player.SkillList.Add(ResourceManager.Instance.GetSkillData(skillId));
+            }
+
+            GameManager.Instance.Player = player;
+            GameManager.Instance.Player.Gold = playerData.Gold;
             GameManager.CurrentStage = playerData.CurrentStage;
         }
         private void ApplyItemData(List<ItemSaveData> itemData)

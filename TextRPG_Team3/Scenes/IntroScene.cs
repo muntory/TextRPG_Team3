@@ -26,7 +26,7 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine("3. 퀘스트", ConsoleColor.White);
             RenderHelper.WriteLine("4. 포켓몬 센터",ConsoleColor.White);
             RenderHelper.WriteLine("5. 배지 정제하기", ConsoleColor.White);
-
+            RenderHelper.WriteLine("6. 저장하기", ConsoleColor.White);
             Console.WriteLine();
 
             PrintMsg();
@@ -55,6 +55,14 @@ namespace TextRPG_Team3.Scenes
                     break;
                 case Enums.IntroMenu.RefineBadge:
                     SceneManager.Instance.CurrentScene = new BadgeRefineScene();
+                    break;
+                case Enums.IntroMenu.Save:
+                    Console.Clear();
+                    SaveAndLoad save = new();
+                    save.Save();
+                    Console.WriteLine("게임이 저장되었습니다.");
+                    Console.WriteLine("다음에 뵙겠습니다!");
+                    Environment.Exit(0);
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
