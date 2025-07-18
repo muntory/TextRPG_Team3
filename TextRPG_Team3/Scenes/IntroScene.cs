@@ -49,8 +49,6 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new QuestScene();
                     break;
                 case Enums.IntroMenu.Potion:
-                    SaveAndLoad save = new SaveAndLoad();
-                    save.Save();
                     SceneManager.Instance.CurrentScene = new PokemonCenterScene();
                     break;
                 case Enums.IntroMenu.RefineBadge:
