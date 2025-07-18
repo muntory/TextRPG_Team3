@@ -70,7 +70,7 @@ namespace TextRPG_Team3.Scenes
             if (quest.Goal is KillEnemyQuest killQuest)
             {
                 Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
+                Console.Write($"{killQuest.GoalAmount}마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
