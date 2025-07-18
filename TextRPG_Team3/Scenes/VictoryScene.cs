@@ -85,15 +85,21 @@ namespace TextRPG_Team3.Scenes
 
             RenderHelper.WriteLine(RenderHelper.AlignLeftWithPadding("\n============== Battle Result ============== \n", 5));
             RenderHelper.WriteLine(RenderHelper.AlignLeftWithPadding("                 [  VICTORY  ]                \n", 5), ConsoleColor.DarkYellow);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding("   ------------------------------------------\n", 5));
-            RenderHelper.WriteLine($"{RenderHelper.AlignRightWithPadding("몬스터", 5)} {(RenderHelper.AlignRightWithPadding($"{count}", 5), ConsoleColor.DarkRed)} {RenderHelper.AlignRightWithPadding("마리를 처치했습니다", 5)}");
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding("[캐릭터 정보]",5));
-            RenderHelper.WriteLine($"{RenderHelper.AlignRightWithPadding($"레벨: {GameManager.Instance.Player.Stat.Level}",5)}");
-            RenderHelper.WriteLine($"경험치: Lv{prevLevel}. {prevexp:0.} -> Lv{GameManager.Instance.Player.Stat.Level}. {GameManager.Instance.Player.Stat.exp:0.}");
-            RenderHelper.WriteLine($"HP: {GameManager.Instance.Player.Stat.MaxHealth} -> {GameManager.Instance.Player.Stat.MaxHealth - (GameManager.Instance.Player.Stat.MaxHealth - GameManager.Instance.Player.Stat.Health)}\n");
-            RenderHelper.WriteLine($"[흭득 아이템]");
-            RenderHelper.WriteLine($"흭득한 골드: {TotalGold}");
-            RenderHelper.WriteLine($"흭득한 포션 - {potionCount}개");
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding("---------------------------------------------\n", 5));
+            RenderHelper.Write("몬스터 ");
+            RenderHelper.Write($"{count}마리",ConsoleColor.DarkRed);
+            RenderHelper.WriteLine("를 처치했습니다");
+            RenderHelper.WriteLine("\t[캐릭터 정보]");
+            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write($"경험치\t:");
+            RenderHelper.Write($" Lv{prevLevel}", RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write($" {prevexp:0.}", ConsoleColor.Yellow);
+            RenderHelper.Write($" -> Lv{GameManager.Instance.Player.Stat.Level}. ");
+            RenderHelper.WriteLine($"{GameManager.Instance.Player.Stat.exp:0.}",ConsoleColor.Yellow);
+            RenderHelper.WriteLine($"HP\t: {GameManager.Instance.Player.Stat.MaxHealth} -> {GameManager.Instance.Player.Stat.MaxHealth - (GameManager.Instance.Player.Stat.MaxHealth - GameManager.Instance.Player.Stat.Health)}\n");
+            RenderHelper.WriteLine("\t[흭득 아이템]");
+            RenderHelper.WriteLine($"흭득한 골드\t: {TotalGold}");
+            RenderHelper.WriteLine($"흭득한 포션\t - {potionCount}개");
             if (droppedEquipNames.Count > 0)
             {
                 foreach (var equipment in droppedEquipNames)
