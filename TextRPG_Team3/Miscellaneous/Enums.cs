@@ -94,4 +94,16 @@ public class Enums
         Back = 0,
         use = 1,
     }
+
+    public enum ItemEquipMenu
+    {
+        Out
+    }
+    public enum ItemType
+    {
+        Weapon,
+        Armor,
+        Shield,
+        Potion,
+    }
 }

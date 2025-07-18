@@ -15,17 +15,24 @@ namespace TextRPG_Team3.Scenes
             base.Render();
             string extraAttackStr = (GameManager.Instance.Player.Stat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraAttack}";
             string extraDefenseStr = (GameManager.Instance.Player.Stat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraDefense}";
-            Console.WriteLine("상태 보기");
-            Console.WriteLine("캐릭터의 정보가 표시됩니다.");
+            RenderHelper.WriteLine("상태 보기", ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine("캐릭터의 정보가 표시됩니다.", ConsoleColor.White);
             Console.WriteLine();
 
-            Console.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})");
-            Console.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}");
-            Console.WriteLine($"경험치 : {GameManager.Instance.Player.Stat.exp}");
-            Console.WriteLine($"공격력 : {GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}");
-            Console.WriteLine($"방어력 : {GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}");
-            Console.WriteLine($"체력   : {GameManager.Instance.Player.Stat.Health}");
-            Console.WriteLine($"Gold   : {GameManager.Instance.Player.Gold} G");
+
+            RenderHelper.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})", RenderHelper.GetPlayerColor());
+            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write("경험치\t:", ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.exp}", 9), RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write($"공격력\t:", ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Attack));
+            RenderHelper.Write($"방어력\t:", ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Defense));
+            RenderHelper.Write($"체력\t:", ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.Health}", 9), RenderHelper.GetStatColor(Enums.StatType.Health));
+            RenderHelper.Write($"Gold\t:", ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 9), ConsoleColor.DarkYellow);
+
             Console.WriteLine();
 
             Console.WriteLine("1. 인벤토리");
