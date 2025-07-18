@@ -267,6 +267,7 @@ namespace TextRPG_Team3.Utils
             foreach(Badge badge in badges)
             {
                 GameManager.Instance.BadgeList.Add(badge);
+                BadgeRefineScene.ActiveEffect(badge);
             }
         }
     }
