@@ -65,7 +65,7 @@ namespace TextRPG_Team3.Scenes
             {
                 player.SkillList.Add(ResourceManager.Instance.GetSkillData(skillId));
             }
-
+            
             GameManager.Instance.Player = player;
             SceneManager.Instance.CurrentScene = new IntroScene();
         }

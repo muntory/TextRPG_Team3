@@ -29,6 +29,7 @@ namespace TextRPG_Team3
 
         void Init()
         {
+            string savePath = $"{AppDomain.CurrentDomain.BaseDirectory}/../../../Save/";
             gameManager = new GameManager();
             resourceManager = new ResourceManager();
             spawnManager = new SpawnManager();
@@ -36,7 +37,14 @@ namespace TextRPG_Team3
             inputManager = new InputManager();
             questManager = new QuestManager();
             itemManager = new ItemManager();
-            SceneManager.Instance.LoadScene(new ChooseScene());
+            if (File.Exists(savePath + "PlayerSave.json") || File.Exists(savePath + "ItemSave.json") || File.Exists(savePath + "QuestSave.json"))
+            {
+                SceneManager.Instance.LoadScene(new LoadDataScene());
+            }
+            else
+            {
+                SceneManager.Instance.LoadScene(new ChooseScene());
+            }
         }
 
         void Render()
