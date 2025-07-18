@@ -1,4 +1,5 @@
 using System;
+using TextRPG_Team3.Item;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Stat;
@@ -13,7 +14,7 @@ namespace TextRPG_Team3.Managers
 
         // 플레이어
         public PlayerCharacter Player;
-
+        public List<Badge> BadgeList = new List<Badge>();
         public static int CurrentStage = 1;
 
         public GameManager()
@@ -22,6 +23,8 @@ namespace TextRPG_Team3.Managers
             {
                 instance = this;
             }
+
+            BadgeList.Add(new Badge("테스트 뱃지"));
         }
         public bool CheckVictory(List<EnemyCharacter> enemies)
         {
@@ -39,7 +42,7 @@ namespace TextRPG_Team3.Managers
         {
             List<int> MaxExperienceLevel = new List<int> { 10, 35, 65, 100 }; // 2~5레벨까지 
 
-            CharacterStatComponent stat = GameManager.Instance.Player.Stat;
+            PlayerStatComponent stat = GameManager.Instance.Player.Stat as PlayerStatComponent;
             PlayerCharacter CharName = GameManager.Instance.Player;
 
             while (true)
@@ -57,12 +60,12 @@ namespace TextRPG_Team3.Managers
                     nextLevelExp *= Math.Pow(1.05, extraLevel);
                 }
 
-                if (stat.exp < nextLevelExp)
+                if (stat.Exp < nextLevelExp)
                 {
                     break;
                 }
 
-                stat.exp -= nextLevelExp;
+                stat.Exp -= nextLevelExp;
                 stat.Level += 1;
                 stat.BaseDefense += 1.0;
                 stat.BaseAttack += 0.5;

@@ -12,5 +12,7 @@ namespace TextRPG_Team3.Utils
         {
             return Random.Shared.NextDouble() < rate;
         }
+
+        
     }
 }
