@@ -60,6 +60,10 @@ namespace TextRPG_Team3.Managers
         void AddStartingItems()
         {
             AddItem(100, 3);
+            AddItem(1, 1);
+            AddItem(2, 1);
+            AddItem(3, 1);
+            AddItem(4, 1);
         }
 
         // 아이템 정보 받아오는 메서드
@@ -177,7 +181,7 @@ namespace TextRPG_Team3.Managers
         }
 
         public void EquipItem(int itemID)
-        {
+        { 
             //아이템 아이디를 받으면
             ItemData item = itemDataDict[itemID];
 
