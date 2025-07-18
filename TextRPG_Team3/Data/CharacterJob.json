@@ -7,6 +7,7 @@
         "JobMP": 50,
         "JobDef": 5.0,
         "CriticalRate": 0.2,
+        "CriticalDamageRate": 1.8,
         "AccuracyRate": 0.85,
         "BaseSkillSet": [ 1, 2, 3, 4 ]
     },
@@ -18,6 +19,7 @@
         "JobMP": 70,
         "JobDef": 12.0,
         "CriticalRate": 0.15,
+        "CriticalDamageRate": 1.6,
         "AccuracyRate": 0.9,
         "BaseSkillSet": [ 5, 6, 7, 8 ]
 
@@ -30,6 +32,7 @@
         "JobMP": 80,
         "JobDef": 15.0,
         "CriticalRate": 0.1,
+        "CriticalDamageRate": 1.5,
         "AccuracyRate": 0.8,
         "BaseSkillSet": [ 9, 10, 11, 12 ]
 
