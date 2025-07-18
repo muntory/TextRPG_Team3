@@ -1,183 +1,354 @@
 [
     {
-        "ID": 6,
-        "Description": "공격력 +10",
-        "StatType": "Attack",
-        "Value": 10,
-        "IsPercent": false,
-        "Chance": 0.25,
-        "Rarity": 0
-    },
-    {
-        "ID": 9,
-        "Description": "최대 체력 +100",
-        "StatType": "Health",
-        "Value": 100,
-        "IsPercent": false,
-        "Chance": 0.25,
-        "Rarity": 0
-    },
-    {
-        "ID": 12,
-        "Description": "최대 마나 +50",
-        "StatType": "MP",
-        "Value": 50,
-        "IsPercent": false,
-        "Chance": 0.25,
-        "Rarity": 0
-    },
-    {
-        "ID": 15,
-        "Description": "방어력 +10",
-        "StatType": "Defense",
-        "Value": 10,
-        "IsPercent": false,
-        "Chance": 0.25,
-        "Rarity": 0
-    },
-    {
         "ID": 1,
+        "Description": "공격력 +5",
+        "StatType": "Attack",
+        "Value": 5,
+        "IsPercent": false,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 2,
+        "Description": "최대 체력 +10",
+        "StatType": "Health",
+        "Value": 10,
+        "IsPercent": false,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 3,
+        "Description": "최대 마나 +5",
+        "StatType": "MP",
+        "Value": 5,
+        "IsPercent": false,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 4,
+        "Description": "방어력 +5",
+        "StatType": "Defense",
+        "Value": 5,
+        "IsPercent": false,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 5,
         "Description": "크리티컬 확률 +5%",
         "StatType": "CriticalRate",
         "Value": 0.05,
         "IsPercent": false,
-        "Chance": 0.15,
-        "Rarity": 1
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 6,
+        "Description": "공격력 +3%",
+        "StatType": "Attack",
+        "Value": 0.03,
+        "IsPercent": true,
+        "Chance": 0.125,
+        "Rarity": 0
     },
     {
         "ID": 7,
-        "Description": "공격력 +20",
+        "Description": "체력 +3%",
+        "StatType": "Health",
+        "Value": 0.03,
+        "IsPercent": true,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 8,
+        "Description": "방어력 +3%",
+        "StatType": "Defense",
+        "Value": 0.03,
+        "IsPercent": true,
+        "Chance": 0.125,
+        "Rarity": 0
+    },
+    {
+        "ID": 9,
+        "Description": "공격력 +10",
         "StatType": "Attack",
-        "Value": 20,
+        "Value": 10,
         "IsPercent": false,
-        "Chance": 0.15,
+        "Chance": 0.12,
         "Rarity": 1
     },
     {
         "ID": 10,
-        "Description": "최대 체력 +200",
+        "Description": "최대 체력 +20",
         "StatType": "Health",
-        "Value": 200,
+        "Value": 20,
         "IsPercent": false,
-        "Chance": 0.2,
+        "Chance": 0.11,
+        "Rarity": 1
+    },
+    {
+        "ID": 11,
+        "Description": "최대 마나 +10",
+        "StatType": "MP",
+        "Value": 10,
+        "IsPercent": false,
+        "Chance": 0.11,
+        "Rarity": 1
+    },
+    {
+        "ID": 12,
+        "Description": "방어력 +10",
+        "StatType": "Defense",
+        "Value": 10,
+        "IsPercent": false,
+        "Chance": 0.11,
         "Rarity": 1
     },
     {
         "ID": 13,
-        "Description": "최대 마나 +100",
-        "StatType": "MP",
-        "Value": 100,
+        "Description": "경험치 획득량 +5%",
+        "StatType": "ExpRate",
+        "Value": 0.05,
         "IsPercent": false,
-        "Chance": 0.15,
+        "Chance": 0.11,
+        "Rarity": 1
+    },
+    {
+        "ID": 14,
+        "Description": "크리티컬 확률 +9%",
+        "StatType": "CriticalRate",
+        "Value": 0.09,
+        "IsPercent": false,
+        "Chance": 0.11,
+        "Rarity": 1
+    },
+    {
+        "ID": 15,
+        "Description": "공격력 +6%",
+        "StatType": "Attack",
+        "Value": 0.06,
+        "IsPercent": true,
+        "Chance": 0.11,
         "Rarity": 1
     },
     {
         "ID": 16,
-        "Description": "방어력 +20",
+        "Description": "체력 +6%",
+        "StatType": "Health",
+        "Value": 0.06,
+        "IsPercent": true,
+        "Chance": 0.11,
+        "Rarity": 1
+    },
+    {
+        "ID": 17,
+        "Description": "방어력 +6%",
         "StatType": "Defense",
-        "Value": 20,
-        "IsPercent": false,
-        "Chance": 0.2,
+        "Value": 0.06,
+        "IsPercent": true,
+        "Chance": 0.11,
         "Rarity": 1
     },
     {
         "ID": 18,
-        "Description": "경험치 획득량 +10%",
-        "StatType": "ExpRate",
-        "Value": 0.10,
+        "Description": "공격력 +15",
+        "StatType": "Attack",
+        "Value": 15,
         "IsPercent": false,
         "Chance": 0.15,
-        "Rarity": 1
-    },
-
-    {
-        "ID": 2,
-        "Description": "크리티컬 확률 +10%",
-        "StatType": "CriticalRate",
-        "Value": 0.10,
-        "IsPercent": false,
-        "Chance": 0.1,
         "Rarity": 2
     },
     {
-        "ID": 4,
-        "Description": "크리티컬 데미지 +10%",
-        "StatType": "CriticalDamageRate",
+        "ID": 19,
+        "Description": "최대 체력 +30",
+        "StatType": "Health",
+        "Value": 30,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 2
+    },
+    {
+        "ID": 20,
+        "Description": "최대 마나 +15",
+        "StatType": "MP",
+        "Value": 15,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 2
+    },
+    {
+        "ID": 21,
+        "Description": "방어력 +15",
+        "StatType": "Defense",
+        "Value": 15,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 2
+    },
+    {
+        "ID": 22,
+        "Description": "경험치 획득량 +10%",
+        "StatType": "ExpRate",
         "Value": 0.10,
         "IsPercent": false,
         "Chance": 0.05,
         "Rarity": 2
     },
+
     {
-        "ID": 8,
-        "Description": "공격력 +10%",
+        "ID": 23,
+        "Description": "크리티컬 확률 +9%",
+        "StatType": "CriticalRate",
+        "Value": 0.09,
+        "IsPercent": false,
+        "Chance": 0.05,
+        "Rarity": 2
+    },
+
+    {
+        "ID": 24,
+        "Description": "크리티컬 데미지 +3%",
+        "StatType": "CriticalDamageRate",
+        "Value": 0.03,
+        "IsPercent": false,
+        "Chance": 0.05,
+        "Rarity": 2
+    },
+
+    {
+        "ID": 25,
+        "Description": "공격력 +9%",
         "StatType": "Attack",
-        "Value": 0.10,
+        "Value": 0.09,
         "IsPercent": true,
-        "Chance": 0.15,
+        "Chance": 0.05,
         "Rarity": 2
     },
     {
-        "ID": 11,
-        "Description": "최대 체력 +10%",
+        "ID": 26,
+        "Description": "최대 체력 +9%",
         "StatType": "Health",
-        "Value": 0.10,
+        "Value": 0.09,
         "IsPercent": true,
-        "Chance": 0.2,
+        "Chance": 0.1,
         "Rarity": 2
     },
+
     {
-        "ID": 14,
-        "Description": "최대 마나 +10%",
-        "StatType": "MP",
-        "Value": 0.10,
-        "IsPercent": true,
-        "Chance": 0.2,
-        "Rarity": 2
-    },
-    {
-        "ID": 17,
-        "Description": "방어력 +10%",
+        "ID": 27,
+        "Description": "방어력 +9%",
         "StatType": "Defense",
-        "Value": 0.10,
+        "Value": 0.09,
         "IsPercent": true,
-        "Chance": 0.2,
+        "Chance": 0.1,
         "Rarity": 2
     },
+
     {
-        "ID": 19,
+        "ID": 28,
+        "Description": "공격력 +20",
+        "StatType": "Attack",
+        "Value": 20,
+        "IsPercent": false,
+        "Chance": 0.14,
+        "Rarity": 3
+    },
+    {
+        "ID": 29,
+        "Description": "최대 체력 +40",
+        "StatType": "Health",
+        "Value": 40,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 3
+    },
+    {
+        "ID": 30,
+        "Description": "최대 마나 +20",
+        "StatType": "MP",
+        "Value": 20,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 3
+    },
+    {
+        "ID": 31,
+        "Description": "방어력 +20",
+        "StatType": "Defense",
+        "Value": 20,
+        "IsPercent": false,
+        "Chance": 0.15,
+        "Rarity": 3
+    },
+    {
+        "ID": 32,
         "Description": "경험치 획득량 +20%",
         "StatType": "ExpRate",
         "Value": 0.20,
         "IsPercent": false,
-        "Chance": 0.1,
-        "Rarity": 2
+        "Chance": 0.04,
+        "Rarity": 3
     },
+
     {
-        "ID": 3,
-        "Description": "크리티컬 확률 +20%",
+        "ID": 33,
+        "Description": "크리티컬 확률 +13%",
         "StatType": "CriticalRate",
-        "Value": 0.20,
+        "Value": 0.13,
         "IsPercent": false,
-        "Chance": 0.3,
+        "Chance": 0.04,
         "Rarity": 3
     },
     {
-        "ID": 5,
-        "Description": "크리티컬 데미지 +20%",
+        "ID": 34,
+        "Description": "크리티컬 데미지 +8%",
         "StatType": "CriticalDamageRate",
-        "Value": 0.20,
+        "Value": 0.08,
         "IsPercent": false,
+        "Chance": 0.04,
+        "Rarity": 3
+    },
+
+    {
+        "ID": 35,
+        "Description": "공격력 +12%",
+        "StatType": "Attack",
+        "Value": 0.12,
+        "IsPercent": true,
+        "Chance": 0.04,
+        "Rarity": 3
+    },
+    {
+        "ID": 36,
+        "Description": "최대 체력 +12%",
+        "StatType": "Health",
+        "Value": 0.12,
+        "IsPercent": true,
         "Chance": 0.1,
         "Rarity": 3
     },
+
     {
-        "ID": 20,
-        "Description": "경험치 획득량 +30%",
-        "StatType": "ExpRate",
-        "Value": 0.30,
+        "ID": 37,
+        "Description": "방어력 +12%",
+        "StatType": "Defense",
+        "Value": 0.12,
+        "IsPercent": true,
+        "Chance": 0.1,
+        "Rarity": 3
+    },
+
+    {
+        "ID": 38,
+        "Description": "최종 데미지 +10%",
+        "StatType": "FinalDamageMultiplier",
+        "Value": 0.10,
         "IsPercent": false,
-        "Chance": 0.6,
+        "Chance": 0.05,
         "Rarity": 3
     }
+
 ]
