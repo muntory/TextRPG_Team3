@@ -15,7 +15,7 @@ namespace TextRPG_Team3.Managers
         private static ItemManager instance;
         public static ItemManager Instance { get { return instance; } }
 
-        public ItemManager() 
+        public ItemManager()
         {
             if (instance == null)
             {
@@ -29,7 +29,7 @@ namespace TextRPG_Team3.Managers
 
             AddStartingItems();
         }
-    // ------------------------------------------- 평범한 싱글톤
+        // ------------------------------------------- 평범한 싱글톤
 
         // 플레이어 보유 중인 아이템 (Item ID, 개수)
         public Dictionary<int, int> PlayerInventory;
@@ -67,7 +67,7 @@ namespace TextRPG_Team3.Managers
         }
 
         // 아이템 정보 받아오는 메서드
-        public ItemData GetItemData (int itemID)
+        public ItemData GetItemData(int itemID)
         {
             if (itemDataDict.ContainsKey(itemID))
             {
@@ -78,7 +78,7 @@ namespace TextRPG_Team3.Managers
 
         // 아이템 증가 메서드
         public void AddItem(int itemID, int count = 1)
-        { 
+        {
             if (!itemDataDict.ContainsKey(itemID)) return;
 
             if (PlayerInventory.ContainsKey(itemID))
@@ -158,7 +158,7 @@ namespace TextRPG_Team3.Managers
 
             // 아이템 데이터 로드
             ItemData itemData = GetItemData(itemID);
-            
+
             // 아이템 데이터가 없을 경우
             if (itemData == null)
             {
@@ -191,11 +191,11 @@ namespace TextRPG_Team3.Managers
             }
         }
         public void EquipItem(int itemID)
-        { 
+        {
             //아이템 아이디를 받으면
             ItemData item = itemDataDict[itemID];
             List<int> inventoryItem = AllHaveItemIDs();
-            foreach(int i in inventoryItem)
+            foreach (int i in inventoryItem)
             {
                 if (item.Type == itemDataDict[i].Type && itemDataDict[i].IsEquipped)
                 {
@@ -263,5 +263,18 @@ namespace TextRPG_Team3.Managers
                 return false;
             }
         }
+        public Dictionary<int, ItemData> GetAllItemData() // 모든 아이템 목록을 반환
+        {
+            return itemDataDict;
+        }
+
     }
 }
+
+
+
+
+
+
+
+
