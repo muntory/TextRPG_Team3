@@ -203,6 +203,9 @@ namespace TextRPG_Team3.Scenes
         }
         private void ActiveEffect(Badge badge)
         {
+            if (badge == null || badge.Effects == null)
+                return;
+
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
 
             if (badge.Effects == null)
@@ -218,25 +221,15 @@ namespace TextRPG_Team3.Scenes
                     switch (data.StatType)
                     {
                         case Enums.StatType.Attack:
-                            playerStat.BaseAttack += playerStat.BaseAttack * data.Value;
+                            playerStat.AttackMultiplier += data.Value;
                             break;
                         case Enums.StatType.Defense:
-                            playerStat.BaseDefense += playerStat.BaseDefense * data.Value;
-                            break;
-                        case Enums.StatType.MP:
-                            playerStat.MaxMP += (int)(playerStat.MaxMP * data.Value);
+                            playerStat.DefenseMultiplier += data.Value;
                             break;
                         case Enums.StatType.Health:
-                            playerStat.MaxHealth += (int)(playerStat.MaxHealth * data.Value);
+                            playerStat.HealthMultiplier += data.Value;
                             break;
-                        case Enums.StatType.CriticalDamageRate:
-                            playerStat.CriticalDamageRate += playerStat.CriticalDamageRate * data.Value;
-                            break;
-                        case Enums.StatType.CriticalRate:
-                            playerStat.CriticalRate += playerStat.CriticalRate * data.Value;
-                            break;
-                        case Enums.StatType.ExpRate:
-                            playerStat.ExpRate += playerStat.ExpRate * data.Value;
+                        default:
                             break;
                     }
                 }
@@ -265,6 +258,11 @@ namespace TextRPG_Team3.Scenes
                         case Enums.StatType.ExpRate:
                             playerStat.ExpRate += data.Value;
                             break;
+                        case Enums.StatType.FinalDamageMultiplier:
+                            playerStat.FinalDamageMultiplier += data.Value;
+                            break;
+                        default:
+                            break;
                     }
                 }
 
@@ -275,12 +273,13 @@ namespace TextRPG_Team3.Scenes
 
         private void DeactiveEffect(Badge badge)
         {
-            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-
-            if (badge.Effects == null)
+            if (badge.Effects == null || badge.Effects == null)
             {
                 return;
             }
+
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+            
 
             foreach (int id in badge.Effects)
             {
@@ -290,26 +289,17 @@ namespace TextRPG_Team3.Scenes
                     switch (data.StatType)
                     {
                         case Enums.StatType.Attack:
-                            playerStat.BaseAttack -= playerStat.BaseAttack * data.Value;
+                            playerStat.AttackMultiplier -= data.Value;
                             break;
                         case Enums.StatType.Defense:
-                            playerStat.BaseDefense -= playerStat.BaseDefense * data.Value;
-                            break;
-                        case Enums.StatType.MP:
-                            playerStat.MaxMP -= (int)(playerStat.MaxMP * data.Value);
+                            playerStat.DefenseMultiplier -= data.Value;
                             break;
                         case Enums.StatType.Health:
-                            playerStat.MaxHealth -= (int)(playerStat.MaxHealth * data.Value);
+                            playerStat.HealthMultiplier -= data.Value;
                             break;
-                        case Enums.StatType.CriticalDamageRate:
-                            playerStat.CriticalDamageRate -= playerStat.CriticalDamageRate * data.Value;
+                        default:
                             break;
-                        case Enums.StatType.CriticalRate:
-                            playerStat.CriticalRate -= playerStat.CriticalRate * data.Value;
-                            break;
-                        case Enums.StatType.ExpRate:
-                            playerStat.ExpRate -= playerStat.ExpRate * data.Value;
-                            break;
+                        
                     }
                 }
                 else
@@ -336,6 +326,11 @@ namespace TextRPG_Team3.Scenes
                             break;
                         case Enums.StatType.ExpRate:
                             playerStat.ExpRate -= data.Value;
+                            break;
+                        case Enums.StatType.FinalDamageMultiplier:
+                            playerStat.FinalDamageMultiplier += data.Value;
+                            break;
+                        default:
                             break;
                     }
                 }
