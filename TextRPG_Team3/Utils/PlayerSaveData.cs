@@ -27,10 +27,6 @@ namespace TextRPG_Team3.Utils
         public int CurrentStage { get; set; }
         public int Health { get; set; }
         public int JobID {  get; set; }
-
-        public PlayerSaveData()
-        {
-        }
     }
 
     public class ItemSaveData
