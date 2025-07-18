@@ -23,6 +23,7 @@ namespace TextRPG_Team3
         public Enums.StatType StatType { get; set; }
         public int Value { get; set; }
         public bool IsEquipped { get; set; }
+
         public string Description { get; set; }
     }
 }
