@@ -13,10 +13,16 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-
-            Console.WriteLine("1. 새로하기");
-            Console.WriteLine("2. 불러오기");
-
+            RenderHelper.WriteLine("데이터 불러오기", ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine("세이브 데이터가 감지되었습니다.", ConsoleColor.White);
+            Console.WriteLine();
+            RenderHelper.WriteLine("새로하기를 누르면 데이터를 받아오지 않고 이름/직업 선택으로 넘어갑니다.", ConsoleColor.White);
+            RenderHelper.WriteLine("불러오기를 누르면 데이터를 받아와 메인 메뉴로 가게 됩니다.", ConsoleColor.White);
+            RenderHelper.WriteLine("새로할 시 저장을 누르면 이전의 데이터는 덮어쓰게 되니 주의해주세요!", ConsoleColor.White);
+            Console.WriteLine();
+            RenderHelper.WriteLine("1. 새로하기", ConsoleColor.White);
+            RenderHelper.WriteLine("2. 불러오기", ConsoleColor.White);
+            Console.WriteLine();
             PrintMsg();
         }
 
