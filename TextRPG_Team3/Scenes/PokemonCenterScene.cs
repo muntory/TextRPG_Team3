@@ -12,6 +12,7 @@ namespace TextRPG_Team3.Scenes
 {
     public class PokemonCenterScene : BaseScene
     {
+        private int goldAmount = 500;
         public override void Render()
         {
             base.Render();
@@ -42,12 +43,12 @@ namespace TextRPG_Team3.Scenes
             switch (selected)
             {
                 case Enums.CenterMenu.Confirm:
-                    if (GameManager.Instance.Player.Gold < 1000)
+                    if (GameManager.Instance.Player.Gold < goldAmount)
                     {
                         msg = "골드가 부족합니다.";
                         break;
                     }
-                    GameManager.Instance.Player.Gold -= 1000;
+                    GameManager.Instance.Player.Gold -= goldAmount;
                     Heal();
                     msg = "회복이 완료되었습니다.";
                     break;

@@ -65,7 +65,7 @@
         "CostValue": 22,
         "Multiplier": 1.8,
         "TargetCount": 2,
-        "RandomAttack": false,
+        "RandomAttack": true,
         "Description": "물줄기가 번갈아 튕기며 적 둘에게 피해를 줍니다.",
         "IsTargetAll": false
     },
@@ -75,7 +75,7 @@
         "CostValue": 30,
         "Multiplier": 1.3,
         "TargetCount": 999,
-        "RandomAttack": false,
+        "RandomAttack": true,
         "Description": "거대한 파도로 전장의 모든 적을 휩씁니다.",
         "IsTargetAll": true
     },
@@ -115,7 +115,7 @@
         "CostValue": 25,
         "Multiplier": 2.5,
         "TargetCount": 999,
-        "RandomAttack": false,
+        "RandomAttack": true,
         "Description": "대자연의 힘을 소환하여 전장의 모든 적을 덮칩니다.",
         "IsTargetAll": true
     }

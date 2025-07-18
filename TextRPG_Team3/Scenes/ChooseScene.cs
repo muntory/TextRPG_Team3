@@ -23,7 +23,10 @@ namespace TextRPG_Team3.Scenes
             name = Console.ReadLine();
 
             Console.WriteLine("직업을 선택해주세요.");
-            Console.WriteLine("1. 파이리 2. 꼬부기 3. 이상해씨");
+            RenderHelper.Write("1. 파이리 ", ConsoleColor.Red);
+            RenderHelper.Write("2. 꼬부기 ", ConsoleColor.Cyan);
+            RenderHelper.Write("3. 이상해씨 ", ConsoleColor.Green);
+            Console.WriteLine();
 
         }
 
