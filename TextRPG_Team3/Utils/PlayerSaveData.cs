@@ -60,7 +60,7 @@ namespace TextRPG_Team3.Utils
             CurrentAmount = currentAmount;
         }
     }
-
+    
     public class SaveAndLoad
     {
         public void Save()
@@ -90,5 +90,13 @@ namespace TextRPG_Team3.Utils
                 questData.Add(quest);
             }
         }
+        public void SaveItem(List<ItemData> itemData)
+        {
+            List<int> ID =ItemManager.Instance.AllHaveItemIDs();
+
+           
+
+        }
     }
+
 }
