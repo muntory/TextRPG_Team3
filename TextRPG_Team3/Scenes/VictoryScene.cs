@@ -32,10 +32,10 @@ namespace TextRPG_Team3.Scenes
             {
                 if (equipment.Value.Type != ItemType.Potion) //  만약 저장한아이템 타입이 Potion이 아니라면 
                 {
-                     Allequip.Add(equipment.Value); // 포션이 아닌 장비들을 리스트에 저장
+                    Allequip.Add(equipment.Value); // 포션이 아닌 장비들을 리스트에 저장
                 }
             }
-           
+
             if (GameManager.CurrentStage % 10 == 0 && GameManager.CurrentStage <= 50)
             {
                 string badgeName = null;
@@ -43,7 +43,6 @@ namespace TextRPG_Team3.Scenes
                 {
                     case 10:
                         badgeName = "파란뱃지";
-                        ItemManager.Instance.AddItem(badgeName);
                         break;
                     case 20:
                         badgeName = "노란뱃지";
@@ -57,7 +56,7 @@ namespace TextRPG_Team3.Scenes
                     case 50:
                         badgeName = "보라뱃지";
                         break;
-                  
+
                 }
                 if (badgeName != null)
                 {
@@ -87,7 +86,7 @@ namespace TextRPG_Team3.Scenes
             return (potionCount, equipName);
         }
 
-        
+
 
         public override void Render()
         {
@@ -118,18 +117,18 @@ namespace TextRPG_Team3.Scenes
             CharacterStatComponent Exp = new CharacterStatComponent();
 
             RenderHelper.WriteLine("\n============== Battle Result ============== \n");
-            RenderHelper.WriteLine(("                [  VICTORY  ]                \n"),ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine(("                [  VICTORY  ]                \n"), ConsoleColor.DarkYellow);
             RenderHelper.WriteLine("---------------------------------------------\n");
             RenderHelper.Write("몬스터 ");
-            RenderHelper.Write($"{count}마리",ConsoleColor.DarkRed);
+            RenderHelper.Write($"{count}마리", ConsoleColor.DarkRed);
             RenderHelper.WriteLine("를 처치했습니다");
             RenderHelper.WriteLine("\t[캐릭터 정보]");
-            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}", RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($"경험치\t:");
             RenderHelper.Write($" Lv{prevLevel}", RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($" {prevexp:0.}", ConsoleColor.Yellow);
             RenderHelper.Write($" -> Lv{GameManager.Instance.Player.Stat.Level}. ");
-            RenderHelper.WriteLine($"{stat.Exp:0.}",ConsoleColor.Yellow);
+            RenderHelper.WriteLine($"{stat.Exp:0.}", ConsoleColor.Yellow);
             RenderHelper.Write($"HP\t:");
             RenderHelper.Write($" {GameManager.Instance.Player.Stat.MaxHealth}", RenderHelper.GetStatColor(Enums.StatType.Health));
             RenderHelper.Write("-> ");
@@ -144,13 +143,19 @@ namespace TextRPG_Team3.Scenes
                 foreach (var equipment in droppedEquipNames)
                 {
                     RenderHelper.Write("흭득한 장비\t-: ");
-                    RenderHelper.WriteLine($"{equipment}\n",ConsoleColor.DarkGray);
+                    RenderHelper.WriteLine($"{equipment}\n", ConsoleColor.DarkGray);
                 }
             }
-            if(GameManager.CurrentStage -1 % 10 == 0)
+            if ((GameManager.CurrentStage - 1) % 10 == 0)
             {
-                RenderHelper.Write("뱃지 흭득!\t:");
-                RenderHelper.WriteLine()
+                var badgeList = GameManager.Instance.BadgeList;
+                if (badgeList.Count > 0)
+                {
+                    Badge badge = badgeList[badgeList.Count - 1];
+                    RenderHelper.WriteLine();
+                    RenderHelper.Write("뱃지 획득!\t: ");
+                    RenderHelper.WriteLine($"{badge.Name}", ConsoleColor.Yellow);
+                }
             }
             RenderHelper.WriteLine("------------------------------------------\n");
             RenderHelper.WriteLine("0. 다음");
