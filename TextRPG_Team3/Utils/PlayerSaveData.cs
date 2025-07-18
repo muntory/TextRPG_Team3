@@ -255,6 +255,10 @@ namespace TextRPG_Team3.Utils
                         killQuest.CurrentAmount = quest.CurrentAmount;
                     }
                 }
+                if (QuestManager.Instance.QuestDB[quest.QuestID].Goal is LevelUpQuest levelUpQuest)
+                {
+                    levelUpQuest.CurrentLevel = GameManager.Instance.Player.Stat.Level;
+                }
             }
         }
         private void ApplyBadgeData(List<Badge> badges)
