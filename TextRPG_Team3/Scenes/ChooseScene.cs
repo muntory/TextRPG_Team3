@@ -67,8 +67,6 @@ namespace TextRPG_Team3.Scenes
             }
             
             GameManager.Instance.Player = player;
-            SaveAndLoad load = new SaveAndLoad();
-            load.Load();
             SceneManager.Instance.CurrentScene = new IntroScene();
         }
     }
