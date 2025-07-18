@@ -175,12 +175,29 @@ namespace TextRPG_Team3.Managers
 
             return false;
         }
-
+        public void EquipOrDeEquip(int itemID)
+        {
+            if (itemDataDict[itemID].IsEquipped)
+            {
+                DisarmItem(itemID);
+            }
+            else
+            {
+                EquipItem(itemID);
+            }
+        }
         public void EquipItem(int itemID)
         {
             //아이템 아이디를 받으면
             ItemData item = itemDataDict[itemID];
-
+            List<int> inventoryItem = AllHaveItemIDs();
+            foreach(int i in inventoryItem)
+            {
+                if (item.Type == itemDataDict[i].Type && itemDataDict[i].IsEquipped)
+                {
+                    DisarmItem(i);
+                }
+            }
             item.IsEquipped = true;
             if (item.Type == Enums.ItemType.Weapon)
             {
@@ -202,7 +219,7 @@ namespace TextRPG_Team3.Managers
             //해당 아이템 속성에 맞는 Value값의 Extra를 올려준다.
             //그리고 아이템 인벤토리 딕셔너리를 돌아보다가, Type이 같은 친구인데 IsEquipped가 true인 친구를 false로 변경해준다.
         }
-        public void DeequipItem(int itemID)
+        public void DisarmItem(int itemID)
         {
             ItemData item = itemDataDict[itemID];
 
