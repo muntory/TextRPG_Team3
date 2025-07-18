@@ -33,8 +33,8 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 7), ConsoleColor.DarkYellow);
             Console.WriteLine();
 
-            Console.WriteLine("1. 인벤토리");
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("1. 인벤토리",ConsoleColor.White);
+            RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             Console.WriteLine();
 
             PrintMsg();
