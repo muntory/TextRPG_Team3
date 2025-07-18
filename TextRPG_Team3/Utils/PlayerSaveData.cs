@@ -29,9 +29,17 @@ namespace TextRPG_Team3.Utils
         }
     }
 
-    public class ItemData
+    public class ItemSaveData
     {
-        
+        public int ItemID { get; set; }
+        public int ItemNum { get; set; }
+        public bool IsEquipped { get; set; }
+        public ItemSaveData(int itemID , int itemNum, bool isEquipped)
+        {
+            ItemID = itemID;
+            ItemNum = itemNum;
+            IsEquipped = isEquipped;
+        }
     }
     public class QuestSaveData
     {
