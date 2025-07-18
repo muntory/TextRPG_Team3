@@ -13,7 +13,7 @@ namespace TextRPG_Team3.Managers
         public static GameManager Instance { get { return instance; } }
 
         // 플레이어
-        public PlayerCharacter Player;
+        public PlayerCharacter Player = new();
         public List<Badge> BadgeList = new List<Badge>();
         public static int CurrentStage = 1;
 
@@ -24,7 +24,6 @@ namespace TextRPG_Team3.Managers
                 instance = this;
             }
 
-            BadgeList.Add(new Badge("테스트 뱃지"));
         }
         public bool CheckVictory(List<EnemyCharacter> enemies)
         {
@@ -79,6 +78,7 @@ namespace TextRPG_Team3.Managers
                 RenderHelper.Write("1", RenderHelper.GetStatColor(Enums.StatType.Defense));
                 RenderHelper.WriteLine("이 증가하셨습니다\n");
                 Console.WriteLine("\n");
+                QuestManager.Instance.OnLevelUp();
             }
         }
     }
