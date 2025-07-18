@@ -78,6 +78,7 @@ namespace TextRPG_Team3.Managers
                 RenderHelper.Write("1", RenderHelper.GetStatColor(Enums.StatType.Defense));
                 RenderHelper.WriteLine("이 증가하셨습니다\n");
                 Console.WriteLine("\n");
+                QuestManager.Instance.OnLevelUp();
             }
         }
     }
