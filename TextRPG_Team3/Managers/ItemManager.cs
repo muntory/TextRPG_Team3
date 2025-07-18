@@ -173,5 +173,10 @@ namespace TextRPG_Team3.Managers
 
             return false;
         }
+        
+        public Dictionary<int, ItemData> GetAllItemData() // 모든 아이템 목록을 반환
+        {
+            return itemDataDict;
+        }
     }
 }
