@@ -52,7 +52,7 @@ namespace TextRPG_Team3.Scenes
 
         private void WriteLineEnemyInfo(EnemyCharacter enemy, int index)
         {
-            string str = $"{index + 1} LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} ";
+            string str = $"{index + 1} LV. {RenderHelper.AlignLeftWithPadding(enemy.Stat.Level.ToString(), 5)} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} ";
             string hpstr = $"{(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
 
             if (enemy.IsAlive)
