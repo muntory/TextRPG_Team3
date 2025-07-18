@@ -49,7 +49,7 @@ namespace TextRPG_Team3.Scenes
                     }
                     break;
                 case Enums.PotionSceneMenu.Back:
-                    SceneManager.Instance.CurrentScene = SceneManager.Instance.PreviousScene;
+                    SceneManager.Instance.CurrentScene = new EnemyPhaseScene();
                     break;
             }
         }

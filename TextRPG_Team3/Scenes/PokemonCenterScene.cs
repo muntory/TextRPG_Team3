@@ -17,8 +17,8 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            RenderHelper.WriteLine("[포켓몬 센터]", ConsoleColor.DarkYellow);
-            RenderHelper.WriteLine("이 곳에서 1000 G를 지불하고 HP와 MP를 모두 회복할 수 있습니다.");
+            RenderHelper.WriteLine("[포켓몬 센터]", ConsoleColor.Magenta);
+            RenderHelper.WriteLine("이 곳에서 500 G를 지불하고 HP와 MP를 모두 회복할 수 있습니다.");
             RenderHelper.WriteLine();
 
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
