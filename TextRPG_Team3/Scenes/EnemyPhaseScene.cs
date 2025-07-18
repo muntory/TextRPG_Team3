@@ -18,22 +18,27 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            Console.WriteLine("Battle!!");
+            RenderHelper.WriteLine("Battle!!",ConsoleColor.DarkYellow);
             Console.WriteLine();
 
             PlayerCharacter target = GameManager.Instance.Player;
             EnemyCharacter attacker = currentEnemies[index];
 
-            Console.WriteLine($"{attacker.Name} 의 공격!");
+            RenderHelper.WriteLine($"{attacker.Name} 의 공격!", ConsoleColor.DarkGreen);
 
             int prevHealth = target.Stat.Health;
             attacker.Attack(target);
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
+            RenderHelper.Write($"Lv.{target.Stat.Level}", RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write($" {target.Name}",RenderHelper.GetPlayerColor());
+            RenderHelper.Write(" 을(를) 맞췄습니다.", ConsoleColor.White);
+            RenderHelper.WriteLine($"[데미지 : {-(target.Stat.Health - prevHealth)}]", RenderHelper.GetStatColor(Enums.StatType.Health));
             Console.WriteLine();
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-            Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+            RenderHelper.Write($"Lv.{target.Stat.Level}", RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.WriteLine($" {target.Name}", RenderHelper.GetPlayerColor());
+            RenderHelper.Write($"HP {prevHealth} -> ", ConsoleColor.White);
+            RenderHelper.Write($"{(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}", (target.IsAlive ? RenderHelper.GetStatColor(Enums.StatType.Health) : ConsoleColor.DarkGray));
             Console.WriteLine();
 
             Console.WriteLine("0. 다음");
