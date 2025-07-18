@@ -16,7 +16,8 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            Console.WriteLine("Quest!!");
+            RenderHelper.WriteLine("Quest!!", ConsoleColor.DarkYellow);
+            Console.WriteLine();
             Console.WriteLine();
 
             switch (index)
@@ -70,7 +71,8 @@ namespace TextRPG_Team3.Scenes
             if (quest.Goal is KillEnemyQuest killQuest)
             {
                 Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                Console.Write($"{killQuest.GoalAmount}마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
+                RenderHelper.Write($"{killQuest.GoalAmount}",ConsoleColor.)
+                Console.Write($"마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
