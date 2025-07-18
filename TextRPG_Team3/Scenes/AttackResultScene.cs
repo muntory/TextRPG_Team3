@@ -75,7 +75,7 @@ namespace TextRPG_Team3.Scenes
                 }
             }
             
-            Console.WriteLine("0. 다음");
+            RenderHelper.WriteLine("0. 다음", ConsoleColor.White);
             Console.WriteLine();
 
         }
@@ -104,14 +104,14 @@ namespace TextRPG_Team3.Scenes
 
         private void RenderNormalAttack(PlayerCharacter player, EnemyCharacter target)
         {
-            Console.WriteLine($"{player.Name} 의 공격!");
+            RenderHelper.WriteLine($"{player.Name} 의 공격!", ConsoleColor.White);
 
             int prevHealth = target.Stat.Health;
             int result = player.Attack(target);
 
             if (result >= 0)
             {
-                Console.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ");
+                RenderHelper.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ", ConsoleColor.White);
 
                 if (result == 1)
                 {
@@ -119,17 +119,17 @@ namespace TextRPG_Team3.Scenes
                 }
                 else
                 {
-                    RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}]");
+                    RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}]", ConsoleColor.DarkRed);
                 }
                 Console.WriteLine();
 
-                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-                Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+                RenderHelper.WriteLine($"Lv.{target.Stat.Level} {target.Name}", ConsoleColor.White);
+                RenderHelper.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}", ConsoleColor.White);
                 Console.WriteLine();
             }
             else if (result == -1)
             {
-                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.");
+                RenderHelper.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.", ConsoleColor.White);
                 Console.WriteLine();
             }
         }
@@ -142,11 +142,11 @@ namespace TextRPG_Team3.Scenes
 
             Console.Clear();
 
-            Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
-            Console.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ");
+            RenderHelper.WriteLine($"{player.Name} 의 {skillData.SkillName}!", ConsoleColor.White);
+            RenderHelper.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ",ConsoleColor.White);
             if (result == 1)
             {
-                RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}] - 치명타 공격!!", ConsoleColor.DarkRed);
+                RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}] - 치명타 공격!!", ConsoleColor.Red);
             }
             else
             {
@@ -154,8 +154,8 @@ namespace TextRPG_Team3.Scenes
             }
             Console.WriteLine();
 
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-            Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+            RenderHelper.WriteLine($"Lv.{target.Stat.Level} {target.Name}", ConsoleColor.White);
+            RenderHelper.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}", ConsoleColor.White);
             Console.WriteLine();
 
             Thread.Sleep(1000);
