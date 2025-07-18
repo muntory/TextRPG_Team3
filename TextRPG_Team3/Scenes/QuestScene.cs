@@ -46,13 +46,15 @@ namespace TextRPG_Team3.Scenes
                 {
                     clearStr = "[보상 획득 가능!]";
                 }
-                string temp = $"{quest.ID}. {quest.QuestName} {clearStr}";
+                string temp = $"{quest.ID}. {quest.QuestName}";
                 if (!quest.IsCleared)
                 {
-                    Console.WriteLine($"{temp}");
+                    RenderHelper.Write($"{temp}",ConsoleColor.White);
+                    RenderHelper.WriteLine($" {clearStr}", ConsoleColor.Green);
                 }
                 else
                 {
+                    temp += $" {clearStr}";
                     RenderHelper.WriteLine(temp, ConsoleColor.DarkGray);
                 }
             }
@@ -63,36 +65,36 @@ namespace TextRPG_Team3.Scenes
         private void RenderQuest(int index)
         {
             Quest quest = QuestManager.Instance.GetQuestData(index);
-            
-            Console.WriteLine($"{quest.QuestName}");
+
+            RenderHelper.WriteLine($"{quest.QuestName}", ConsoleColor.Green);
             Console.WriteLine();
-            Console.WriteLine($"{quest.QuestDescription}");
+            RenderHelper.WriteLine($"{quest.QuestDescription}", ConsoleColor.White);
             Console.WriteLine();
             if (quest.Goal is KillEnemyQuest killQuest)
             {
-                Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                RenderHelper.Write($"{killQuest.GoalAmount}",ConsoleColor.)
-                Console.Write($"마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
+                RenderHelper.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ", ConsoleColor.Yellow);
+                RenderHelper.Write($"{killQuest.GoalAmount}", ConsoleColor.Yellow);
+                RenderHelper.Write($"마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n", ConsoleColor.Yellow);
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
-                Console.WriteLine($"- {ItemManager.Instance.GetItemData(equipQuest.GoalItemID).Name} 장착");
+                RenderHelper.WriteLine($"- {ItemManager.Instance.GetItemData(equipQuest.GoalItemID).Name} 장착", ConsoleColor.Yellow);
             }
             else if(quest.Goal is LevelUpQuest levelQuest)
             {
-                Console.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ");
-                Console.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n");
+                RenderHelper.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ", ConsoleColor.Yellow);
+                RenderHelper.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
             }
 
             Console.WriteLine();
-            Console.WriteLine("- 보상");
+            RenderHelper.WriteLine("- 보상",ConsoleColor.DarkYellow);
             if(quest.ItemRewardID != -1)
             {
-                Console.WriteLine($"  {ItemManager.Instance.GetItemData(quest.ItemRewardID).Name} x {quest.ItemAmount}");
+                RenderHelper.WriteLine($"  {ItemManager.Instance.GetItemData(quest.ItemRewardID).Name} x {quest.ItemAmount}", ConsoleColor.DarkYellow);
             }
             if (quest.GoldReward > 0)
             {
-                Console.WriteLine($"  {quest.GoldReward} G");
+                RenderHelper.WriteLine($"  {quest.GoldReward} G", ConsoleColor.DarkYellow);
             }
             Console.WriteLine();
 

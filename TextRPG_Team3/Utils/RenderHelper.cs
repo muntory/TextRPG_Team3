@@ -43,6 +43,29 @@ namespace TextRPG_Team3.Utils
 
             return color;
         }
+        public static ConsoleColor GetStatColor(Enums.StatType type)
+        {
+            ConsoleColor color;
+            switch (type)
+            {
+                case Enums.StatType.Level:
+                    color = ConsoleColor.White;
+                    break;
+                case Enums.StatType.Attack:
+                    color = ConsoleColor.Yellow;
+                    break;
+                case Enums.StatType.Defense:
+                    color = ConsoleColor.Cyan;
+                    break;
+                case Enums.StatType.Health:
+                    color = ConsoleColor.Red;
+                    break;
+                default:
+                    color = ConsoleColor.Gray;
+                    break;
+            }
+            return color;
+        }
         public static void DeleteConsoleLine(int count = 1)
         {
             for (int i = 0; i < count; i++)
