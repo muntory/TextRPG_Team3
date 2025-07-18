@@ -167,12 +167,13 @@ namespace TextRPG_Team3.Utils
         }
         private void ApplyItemData(List<ItemSaveData> itemData)
         {
-            foreach (ItemSaveData item in itemData)
+            foreach (ItemSaveData data in itemData)
             {
-                ItemManager.Instance.AddItem(item.ItemID, item.ItemNum);
-                bool isEquipped = ItemManager.Instance.GetItemData(i).IsEquipped;
-                ItemSaveData item = new ItemSaveData(i, amount, isEquipped);
-                itemData.Add(item);
+                ItemManager.Instance.AddItem(data.ItemID, data.ItemNum);
+                if(data.IsEquipped == true)
+                {
+                    ItemManager.Instance.EquipItem(data.ItemID);
+                }
             }
         }
         private void ApplyQuestData(List<QuestSaveData> questData)
