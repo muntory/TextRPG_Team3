@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -51,7 +52,7 @@ namespace TextRPG_Team3.Scenes
                             statType = "체력";
                         string equipped = itemData.IsEquipped ? "[E] " : "";
 
-                        Console.WriteLine($"- {i + 1} {equipped}{itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");
+                        Console.WriteLine($"- {i + 1} {equipped} {RenderHelper.AlignLeftWithPadding(itemData.Name, 15)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | {RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2, ConsoleColor.DarkCyan)} | {itemData.Description}");
                     }
                 }
             }
