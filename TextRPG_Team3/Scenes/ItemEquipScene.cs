@@ -49,8 +49,9 @@ namespace TextRPG_Team3.Scenes
                             statType = "방어력";
                         else if (itemData.StatType == Enums.StatType.Health)
                             statType = "체력";
+                        string equipped = itemData.IsEquipped ? "[E] " : "";
 
-                        Console.WriteLine($"- {i + 1} {itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");
+                        Console.WriteLine($"- {i + 1} {equipped}{itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");
                     }
                 }
             }
@@ -69,12 +70,11 @@ namespace TextRPG_Team3.Scenes
             switch (itemMenu)
             {
                 case Enums.ItemEquipMenu.Out:
-                    SceneManager.Instance.PreviousScene = SceneManager.Instance.CurrentScene;
-                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
+                    SceneManager.Instance.CurrentScene = new InventoryScene();
                     break;
 
                 default:
-
+                    ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
                     break;
             }
         }
