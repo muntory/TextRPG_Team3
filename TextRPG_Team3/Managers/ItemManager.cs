@@ -216,14 +216,15 @@ namespace TextRPG_Team3.Managers
             {
                 GameManager.Instance.Player.Stat.ExtraDefense += item.Value;
             }
-            else if(item.Type == Enums.ItemType.Shield)
+            else if (item.Type == Enums.ItemType.Shield)
             {
                 GameManager.Instance.Player.Stat.ExtraDefense += item.Value;
             }
-            else if(item.Type == Enums.ItemType.Potion)
+            else if (item.Type == Enums.ItemType.Potion)
             {
                 //Nothing
             }
+            QuestManager.Instance.OnItemEquipped(itemID);
             //해당 아이템의 IsEquipped를 true로 변경하고
             //해당 아이템 속성에 맞는 Value값의 Extra를 올려준다.
             //그리고 아이템 인벤토리 딕셔너리를 돌아보다가, Type이 같은 친구인데 IsEquipped가 true인 친구를 false로 변경해준다.
@@ -248,6 +249,18 @@ namespace TextRPG_Team3.Managers
             else if (item.Type == Enums.ItemType.Potion)
             {
                 //Nothing
+            }
+        }
+
+        public bool IsPotion(int itemID)
+        {
+            if (itemDataDict[itemID].Type == Enums.ItemType.Potion)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
