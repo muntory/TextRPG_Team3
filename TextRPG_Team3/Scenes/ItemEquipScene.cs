@@ -17,14 +17,16 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            RenderHelper.WriteLine("인벤토리 - 장착관리",ConsoleColor.Magenta);
-            Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
+            RenderHelper.WriteLine("인벤토리 - 장착관리",ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine("보유 중인 아이템을 관리할 수 있습니다.", ConsoleColor.DarkGray);
             Console.WriteLine();
 
+            RenderHelper.WriteLine("==========================================================================================================",ConsoleColor.DarkGray);
+            Console.WriteLine();
 
             if (ItemIDs.Count == 0)
             {
-                Console.WriteLine("보유 중인 아이템이 없습니다.");
+                RenderHelper.WriteLine("보유 중인 아이템이 없습니다.", ConsoleColor.DarkGray);
             }
             else
             {
@@ -46,7 +48,7 @@ namespace TextRPG_Team3.Scenes
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        RenderHelper.Write($"- {i + 1} {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ");
+                        RenderHelper.Write($"- {i + 1} {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ",ConsoleColor.White);
 
                         if (itemData.StatType == Enums.StatType.Attack)
                         {
@@ -64,11 +66,14 @@ namespace TextRPG_Team3.Scenes
                             RenderHelper.Write($"{RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2)}", ConsoleColor.Red);
                         }
 
-                        RenderHelper.WriteLine(" | " + itemData.Description);
+                        RenderHelper.WriteLine(" | " + itemData.Description,ConsoleColor.White);
                     }
                 }
             }
             Console.WriteLine();
+            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
+            Console.WriteLine();
+
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
             PrintMsg();
@@ -92,7 +97,7 @@ namespace TextRPG_Team3.Scenes
                 default:
                     if (ItemManager.Instance.IsPotion(ItemIDs[input - 1]))
                     {
-                        msg = "포션은 장착할 수 없습니다!";
+                        msg = "회복 아이템은 장착할 수 없습니다!";
                     }
                     else
                     {

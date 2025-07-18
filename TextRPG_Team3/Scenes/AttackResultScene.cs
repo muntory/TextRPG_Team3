@@ -29,7 +29,7 @@ namespace TextRPG_Team3.Scenes
 
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
 
-            Console.WriteLine("Battle!!");
+            RenderHelper.WriteLine("Battle!!", ConsoleColor.DarkYellow);
             Console.WriteLine();
 
             PlayerCharacter player = GameManager.Instance.Player;
@@ -38,31 +38,13 @@ namespace TextRPG_Team3.Scenes
 
             if (skillData == null)
             {
-                target = currentEnemies[InputManager.Instance.UserInput - 1];
-                Console.WriteLine($"{player.Name} 의 공격!");
+                int targetIndex = GetTargetIndex();
+                target = currentEnemies[targetIndex];
 
-                int prevHealth = target.Stat.Health;
-
-                int result = player.Attack(target);
-
-                if (result >= 0)
-                {
-                    Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}] {(result == 1 ? "- 치명타 공격!!" : "")}");
-                    Console.WriteLine();
-
-                    Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
-                    Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
-                    Console.WriteLine();
-                }
-                else if (result == -1)
-                {
-                    Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.");
-                    Console.WriteLine();
-                }
+                RenderNormalAttack(player, target);
             }
             else // 스킬공격
             {
-                
                 playerStat.MP -= skillData.CostValue;
 
                 if (!skillData.IsTargetAll)
@@ -74,22 +56,7 @@ namespace TextRPG_Team3.Scenes
                             break;
                         }
 
-                        int targetIndex;
-                        if (skillData.RandomAttack)
-                        {
-
-                            do
-                            {
-                                targetIndex = Random.Shared.Next(currentEnemies.Count);
-                            }
-                            while (!currentEnemies[targetIndex].IsAlive);
-
-                        }
-                        else
-                        {
-                            targetIndex = InputManager.Instance.UserInput - 1;
-                        }
-
+                        int targetIndex = GetTargetIndex();
                         target = currentEnemies[targetIndex];
 
                         RenderSkill(player, target);
@@ -113,16 +80,78 @@ namespace TextRPG_Team3.Scenes
 
         }
 
+        private int GetTargetIndex()
+        {
+            int targetIndex = 0;
+            List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
+
+            if (skillData == null || !skillData.RandomAttack)
+            {
+                targetIndex = InputManager.Instance.UserInput - 1;
+
+            }
+            else
+            {
+                do
+                {
+                    targetIndex = Random.Shared.Next(currentEnemies.Count);
+                }
+                while (!currentEnemies[targetIndex].IsAlive);
+            }
+
+            return targetIndex;
+        }
+
+        private void RenderNormalAttack(PlayerCharacter player, EnemyCharacter target)
+        {
+            Console.WriteLine($"{player.Name} 의 공격!");
+
+            int prevHealth = target.Stat.Health;
+            int result = player.Attack(target);
+
+            if (result >= 0)
+            {
+                Console.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ");
+
+                if (result == 1)
+                {
+                    RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}] - 치명타 공격!!", ConsoleColor.DarkRed);
+                }
+                else
+                {
+                    RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}]");
+                }
+                Console.WriteLine();
+
+                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");
+                Console.WriteLine($"HP {prevHealth} -> {(target.IsAlive ? $"{target.Stat.Health}" : "Dead")}");
+                Console.WriteLine();
+            }
+            else if (result == -1)
+            {
+                Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 공격했지만 아무일도 일어나지 않았습니다.");
+                Console.WriteLine();
+            }
+        }
+
         private void RenderSkill(PlayerCharacter player, EnemyCharacter target)
         {
             int prevHealth = target.Stat.Health;
 
-            player.ActiveSkill(target, skillData);
+            int result = player.ActiveSkill(target, skillData);
 
             Console.Clear();
 
             Console.WriteLine($"{player.Name} 의 {skillData.SkillName}!");
-            Console.WriteLine($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. [데미지 : {-(target.Stat.Health - prevHealth)}]");
+            Console.Write($"Lv.{target.Stat.Level} {target.Name} 을(를) 맞췄습니다. ");
+            if (result == 1)
+            {
+                RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}] - 치명타 공격!!", ConsoleColor.DarkRed);
+            }
+            else
+            {
+                RenderHelper.WriteLine($"[데미지 : {(prevHealth - target.Stat.Health)}]");
+            }
             Console.WriteLine();
 
             Console.WriteLine($"Lv.{target.Stat.Level} {target.Name}");

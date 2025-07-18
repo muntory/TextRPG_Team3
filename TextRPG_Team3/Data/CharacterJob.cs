@@ -16,6 +16,8 @@ namespace TextRPG_Team3.Data
 
         public double JobDef { get; set; }
         public double CriticalRate { get; set; }
+        public double CriticalDamageRate { get; set; }
+
         public double AccuracyRate { get; set; }
         public List<int> BaseSkillSet { get; set; }
 

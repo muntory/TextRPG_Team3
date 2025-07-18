@@ -19,6 +19,7 @@ namespace TextRPG_Team3.Stat
 
         public double CriticalRate;
         public double AccuracyRate;
+        public double CriticalDamageRate;
 
         public PlayerStatComponent() : base() 
         {
@@ -26,6 +27,8 @@ namespace TextRPG_Team3.Stat
             MP = MaxMP;
             CriticalRate = 0.15;
             AccuracyRate = 0.9;
+            CriticalDamageRate = 1.6;
+
         }
 
 
