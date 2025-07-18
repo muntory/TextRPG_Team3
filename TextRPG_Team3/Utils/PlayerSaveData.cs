@@ -27,7 +27,7 @@ namespace TextRPG_Team3.Utils
         public int CurrentStage { get; set; }
         public int Health { get; set; }
         public int JobID {  get; set; }
-
+    }
 
 
     public class ItemSaveData
@@ -88,15 +88,15 @@ namespace TextRPG_Team3.Utils
             playerData.MP = playerStat.MP;
             playerData.CurrentStage = GameManager.CurrentStage;
             playerData.Health = playerStat.Health;
-            if(GameManager.Instance.Player.RootClass == "?뚯씠由?)
+            if(GameManager.Instance.Player.RootClass == "파이리")
             {
                 playerData.JobID = 1;
             }
-            else if (GameManager.Instance.Player.RootClass == "瑗щ?湲?)
+            else if (GameManager.Instance.Player.RootClass == "꼬부기")
             {
                 playerData.JobID = 2;
             }
-            else if (GameManager.Instance.Player.RootClass == "?댁긽?댁뵪")
+            else if (GameManager.Instance.Player.RootClass == "이상해씨")
             {
                 playerData.JobID = 3;
             }
