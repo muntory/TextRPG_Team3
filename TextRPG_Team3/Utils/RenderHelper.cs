@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -139,6 +140,16 @@ namespace TextRPG_Team3.Utils
 
         }
 
+        public static void MakeLine()
+        {
+            string Line = new string('=', Console.WindowWidth);
+            
+            Console.WriteLine();
+            WriteLine(Line,ConsoleColor.DarkGray);
+            Console.WriteLine();
+
+       
+        }
 
         public static class EastAsianWidth
         {

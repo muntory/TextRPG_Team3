@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -16,16 +17,16 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            Console.WriteLine("회복");
+            RenderHelper.WriteLine("회복", ConsoleColor.DarkYellow);
 
             int potionCount = ItemManager.Instance.GetItemCount(100);
 
-            Console.WriteLine("포션을 사용하면 체력을 30 회복할 수 있습니다.");
-            Console.WriteLine($"(남은 포션 : {potionCount})");
+            RenderHelper.WriteLine("포션을 사용하면 체력을 30 회복할 수 있습니다.",ConsoleColor.White);
+            RenderHelper.WriteLine($"(남은 포션 : {potionCount})",ConsoleColor.White);
             Console.WriteLine();
 
-            Console.WriteLine("1. 사용하기");
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("1. 사용하기", ConsoleColor.White);
+            RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             Console.WriteLine();
 
             PrintMsg();

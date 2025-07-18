@@ -22,6 +22,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("닉네임을 설정해주세요.");
             name = Console.ReadLine();
 
+            RenderHelper.MakeLine();
             Console.WriteLine("직업을 선택해주세요.");
             RenderHelper.Write("1. 파이리 ", ConsoleColor.Red);
             RenderHelper.Write("2. 꼬부기 ", ConsoleColor.Cyan);

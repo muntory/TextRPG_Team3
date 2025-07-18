@@ -14,11 +14,9 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
             RenderHelper.WriteLine("인벤토리", ConsoleColor.DarkYellow);
-            RenderHelper.WriteLine("[아이템 목록]", ConsoleColor.DarkGray);
-            Console.WriteLine();
+            RenderHelper.WriteLine("[아이템 목록]", ConsoleColor.White);
 
-            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
-            Console.WriteLine();
+            RenderHelper.MakeLine();
 
             // 소지 중인 아이템 ID 목록 전체 가져오기
             List<int> ItemIDs = ItemManager.Instance.AllHaveItemIDs();
@@ -70,12 +68,10 @@ namespace TextRPG_Team3.Scenes
                     }
                 }
             }
-            Console.WriteLine();
-            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
-            Console.WriteLine();
+            RenderHelper.MakeLine();
 
-            Console.WriteLine("1. 장착 관리");
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("1. 장착 관리",ConsoleColor.White);
+            RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             Console.WriteLine();
         }
 

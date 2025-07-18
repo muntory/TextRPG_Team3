@@ -38,10 +38,10 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("[내정보]");
-            Console.WriteLine($"LV.{playerStat.Level} {player.Name}");
-            Console.WriteLine($"HP {playerStat.Health}/{playerStat.MaxHealth}");
-            Console.WriteLine($"MP {playerStat.MP}/{playerStat.MaxMP}");
+            RenderHelper.WriteLine("[내정보]",ConsoleColor.White);
+            RenderHelper.WriteLine($"LV.{playerStat.Level} {player.Name}", ConsoleColor.White);
+            RenderHelper.WriteLine($"HP {playerStat.Health}/{playerStat.MaxHealth}", ConsoleColor.Red);
+            RenderHelper.WriteLine($"MP {playerStat.MP}/{playerStat.MaxMP}", ConsoleColor.Blue);
 
             Console.WriteLine();
 
@@ -50,12 +50,12 @@ namespace TextRPG_Team3.Scenes
             foreach (SkillData skillData in player.SkillList)
             {
                 RenderHelper.WriteLine($"{index}. {skillData.SkillName} - MP {skillData.CostValue}", RenderHelper.GetPlayerColor());
-                RenderHelper.WriteLine(skillData.Description);
+                RenderHelper.WriteLine(skillData.Description, ConsoleColor.White);
                 index++;
             }
             Console.WriteLine();
 
-            Console.WriteLine("0. 취소");
+            RenderHelper.WriteLine("0. 취소", ConsoleColor.White);
             Console.WriteLine();
 
             PrintMsg();
@@ -63,16 +63,18 @@ namespace TextRPG_Team3.Scenes
 
         private void WriteLineEnemyInfo(EnemyCharacter enemy)
         {
-            string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
+            string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} ";
+            string hpstr = $"{(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
 
             if (enemy.IsAlive)
             {
-                Console.WriteLine(str);
-
+                RenderHelper.Write(str, ConsoleColor.White);
+                RenderHelper.WriteLine(hpstr, ConsoleColor.Red);
             }
             else
             {
-                RenderHelper.WriteLine(str, ConsoleColor.DarkGray);
+                RenderHelper.Write(str, ConsoleColor.DarkGray);
+                RenderHelper.WriteLine(hpstr, ConsoleColor.DarkGray);
             }
 
         }

@@ -28,8 +28,8 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine($"{RenderHelper.AlignLeftWithPadding("Gold", 4)} : {RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 8)}", ConsoleColor.DarkYellow);
             RenderHelper.WriteLine();
 
-            RenderHelper.WriteLine("1. 확인");
-            RenderHelper.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("1. 확인",ConsoleColor.White);
+            RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             RenderHelper.WriteLine();
 
             PrintMsg();
