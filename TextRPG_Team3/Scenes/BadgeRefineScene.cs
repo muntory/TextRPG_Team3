@@ -16,7 +16,6 @@ namespace TextRPG_Team3.Scenes
     public class BadgeRefineScene : BaseScene
     {
         private Dictionary<int, List<BadgeRefineData>> EffectsByRarity;
-        private Dictionary<int, BadgeRefineData> refineTable;
         private List<Badge> badgeList = GameManager.Instance.BadgeList;
         private Badge currentBadge = null;
 
@@ -27,18 +26,13 @@ namespace TextRPG_Team3.Scenes
                 EffectsByRarity = new Dictionary<int, List<BadgeRefineData>>();
             }
 
-            if (refineTable == null)
-            {
-                refineTable = new Dictionary<int, BadgeRefineData>();
-            }
-            List<BadgeRefineData> effectList = ResourceManager.Instance.LoadJsonData<BadgeRefineData>($"{ResourceManager.GAME_ROOT_DIR}/Data/BadgeRefineDataList.json");
+            List<BadgeRefineData> effectList = ResourceManager.Instance.GetBadgeEffectDB().Values.ToList();
 
             if (effectList != null)
             {
                 foreach (BadgeRefineData badgeData in effectList)
                 {
                     int rarity = badgeData.Rarity;
-                    refineTable.Add(badgeData.ID, badgeData);
 
                     if (!EffectsByRarity.ContainsKey(rarity))
                     {
@@ -76,7 +70,7 @@ namespace TextRPG_Team3.Scenes
                     {
                         for (int j = 0; j < 3; ++j)
                         {
-                            RenderHelper.Write(RenderHelper.AlignCenterWithPadding(refineTable[badgeList[i].Effects[j]].Description, 20), GetRarityColor(refineTable[badgeList[i].Effects[j]].Rarity));
+                            RenderHelper.Write(RenderHelper.AlignCenterWithPadding(ResourceManager.Instance.GetBadgeData(badgeList[i].Effects[j]).Description, 20), GetRarityColor(ResourceManager.Instance.GetBadgeData(badgeList[i].Effects[j]).Rarity));
                             RenderHelper.Write(" | ", ConsoleColor.White);
                         }
                     }
@@ -97,9 +91,9 @@ namespace TextRPG_Team3.Scenes
                 if (currentBadge.Effects != null)
                 {
                     RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{GetRarityStr(currentBadge.Rarity)}", 40)}", GetRarityColor(currentBadge.Rarity));
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[0]].Description}", 40)}", GetRarityColor(refineTable[currentBadge.Effects[0]].Rarity));
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[1]].Description}", 40)}", GetRarityColor(refineTable[currentBadge.Effects[1]].Rarity));
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[2]].Description}", 40)}", GetRarityColor(refineTable[currentBadge.Effects[2]].Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[0]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[0]).Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[1]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[1]).Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[2]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[2]).Rarity));
                 }
                 Console.WriteLine();
 
@@ -239,7 +233,7 @@ namespace TextRPG_Team3.Scenes
 
             foreach (int id in badge.Effects)
             {
-                BadgeRefineData data = refineTable[id];
+                BadgeRefineData data = ResourceManager.Instance.GetBadgeData(id);
                 if (data.IsPercent)
                 {
                     switch (data.StatType)
@@ -311,7 +305,7 @@ namespace TextRPG_Team3.Scenes
 
             foreach (int id in badge.Effects)
             {
-                BadgeRefineData data = refineTable[id];
+                BadgeRefineData data = ResourceManager.Instance.GetBadgeData(id);
                 if (data.IsPercent)
                 {
                     switch (data.StatType)

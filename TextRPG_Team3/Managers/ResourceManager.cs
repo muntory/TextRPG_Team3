@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Item;
 
 namespace TextRPG_Team3.Managers
 {
@@ -20,7 +21,7 @@ namespace TextRPG_Team3.Managers
 
         private Dictionary<int, EnemyData> EnemyDB;
         private Dictionary<int, SkillData> SkillDB;
-
+        private Dictionary<int, BadgeRefineData> badgeEffectDB;
 
         private JsonSerializerOptions options;
         public ResourceManager()
@@ -96,6 +97,35 @@ namespace TextRPG_Team3.Managers
             }
 
             return GetSkillDB()[ID];
+        }
+
+        public Dictionary<int, BadgeRefineData> GetBadgeEffectDB()
+        {
+            if (badgeEffectDB == null)
+            {
+                List<BadgeRefineData> effectList = LoadJsonData<BadgeRefineData>($"{GAME_ROOT_DIR}/Data/BadgeRefineDataList.json");
+
+                badgeEffectDB = new Dictionary<int, BadgeRefineData>();
+
+                foreach (BadgeRefineData badgeData in effectList)
+                {
+                    if (badgeData == null) continue;
+
+                    badgeEffectDB.Add(badgeData.ID, badgeData);
+                }
+            }
+
+            return badgeEffectDB;
+        }
+
+        public BadgeRefineData GetBadgeData(int ID)
+        {
+            if (GetBadgeEffectDB == null)
+            {
+                GetBadgeEffectDB();
+            }
+
+            return GetBadgeEffectDB()[ID];
         }
 
         /// <summary>

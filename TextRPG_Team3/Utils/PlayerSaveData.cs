@@ -27,10 +27,6 @@ namespace TextRPG_Team3.Utils
         public int CurrentStage { get; set; }
         public int Health { get; set; }
         public int JobID {  get; set; }
-
-        public PlayerSaveData()
-        {
-        }
     }
 
     public class ItemSaveData
@@ -140,7 +136,10 @@ namespace TextRPG_Team3.Utils
         }
         public void SaveBadge(List<Badge> badgeData)
         {
-
+            foreach(Badge badges in GameManager.Instance.BadgeList)
+            {
+                badgeData.Add(badges);
+            }
         }
 
         public void Load()
@@ -148,6 +147,7 @@ namespace TextRPG_Team3.Utils
             LoadPlayer();
             LoadItem();
             LoadQuest();
+            LoadBadge();
         }
         private void LoadPlayer()
         {
@@ -184,6 +184,18 @@ namespace TextRPG_Team3.Utils
             {
                 List<QuestSaveData> questData = ResourceManager.Instance.LoadJsonData<QuestSaveData>(savePath + "QuestSave.json");
                 ApplyQuestData(questData);
+            }
+        }
+        private void LoadBadge()
+        {
+            if(!File.Exists(savePath + "BadgeSave.json"))
+            {
+
+            }
+            else
+            {
+                List<Badge> badgeData = ResourceManager.Instance.LoadJsonData<Badge>(savePath + "BadgeSave.json");
+                ApplyBadgeData(badgeData);
             }
         }
         private void ApplyPlayerData(PlayerSaveData playerData)
@@ -243,6 +255,13 @@ namespace TextRPG_Team3.Utils
                         killQuest.CurrentAmount = quest.CurrentAmount;
                     }
                 }
+            }
+        }
+        private void ApplyBadgeData(List<Badge> badges)
+        {
+            foreach(Badge badge in badges)
+            {
+                GameManager.Instance.BadgeList.Add(badge);
             }
         }
     }
