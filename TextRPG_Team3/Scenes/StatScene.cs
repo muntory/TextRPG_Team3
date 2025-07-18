@@ -19,6 +19,7 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine("캐릭터의 정보가 표시됩니다.", ConsoleColor.White);
             Console.WriteLine();
 
+
             RenderHelper.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})", RenderHelper.GetPlayerColor());
             RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write("경험치\t:", ConsoleColor.White);
@@ -31,12 +32,13 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.Health}", 9), RenderHelper.GetStatColor(Enums.StatType.Health));
             RenderHelper.Write($"Gold\t:", ConsoleColor.White);
             RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 9), ConsoleColor.DarkYellow);
+
             Console.WriteLine();
 
             RenderHelper.WriteLine("1. 인벤토리",ConsoleColor.White);
             RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
             Console.WriteLine();
-
+            
             PrintMsg();
         }
 
