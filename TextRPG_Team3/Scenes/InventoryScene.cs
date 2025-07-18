@@ -72,7 +72,7 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new IntroScene();
                     break;
                 case Enums.InventoryMenu.Set :
-                    
+                    SceneManager.Instance.CurrentScene = new ItemEquipScene();
                     break;
             }
         }
