@@ -14,8 +14,9 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            string extraAttackStr = (GameManager.Instance.Player.Stat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraAttack}";
-            string extraDefenseStr = (GameManager.Instance.Player.Stat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraDefense}";
+            // 최종 공격력, 방어력 수식 바뀌어서 주석처리
+            // string extraAttackStr = (GameManager.Instance.Player.Stat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraAttack}";
+            // string extraDefenseStr = (GameManager.Instance.Player.Stat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraDefense}";
             RenderHelper.WriteLine("상태 보기", ConsoleColor.DarkYellow);
             RenderHelper.WriteLine("캐릭터의 정보가 표시됩니다.", ConsoleColor.White);
             Console.WriteLine();
@@ -24,16 +25,28 @@ namespace TextRPG_Team3.Scenes
 
             RenderHelper.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})", RenderHelper.GetPlayerColor());
             RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
-            RenderHelper.Write("경험치\t:", ConsoleColor.White);
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("경험치", 15), ConsoleColor.White);
             RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.Exp}", 9), RenderHelper.GetStatColor(Enums.StatType.Level));
-            RenderHelper.Write($"공격력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.BaseAttack.ToString("N1")}{extraAttackStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Attack));
-            RenderHelper.Write($"방어력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.BaseDefense.ToString("N1")}{extraDefenseStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Defense));
-            RenderHelper.Write($"체력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.Health}", 9), RenderHelper.GetStatColor(Enums.StatType.Health));
-            RenderHelper.Write($"Gold\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 9), ConsoleColor.DarkYellow);
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("경험치 획득률", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{((playerStat.ExpRate - 1.0) * 100).ToString("N0")} %", 9), RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("공격력", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.FinalAttack.ToString("N1")}", 9), RenderHelper.GetStatColor(Enums.StatType.Attack));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("방어력", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.FinalDefense.ToString("N1")}", 9), RenderHelper.GetStatColor(Enums.StatType.Defense));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("크리티컬 확률", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{(playerStat.CriticalRate * 100).ToString("N0")} %", 9), RenderHelper.GetStatColor(Enums.StatType.CriticalRate));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("크리티컬 데미지", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"+{((playerStat.CriticalDamageRate - 1.0) * 100).ToString("N0")} %", 9), RenderHelper.GetStatColor(Enums.StatType.CriticalDamageRate));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("명중률", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{(playerStat.AccuracyRate * 100).ToString("N0")} %", 9), RenderHelper.GetStatColor(Enums.StatType.Attack));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("최종 데미지", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{(playerStat.FinalDamageMultiplier * 100).ToString("N0")} %", 9), RenderHelper.GetStatColor(Enums.StatType.FinalDamageMultiplier));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("HP", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.Health}/{playerStat.MaxHealth}", 9), RenderHelper.GetStatColor(Enums.StatType.Health));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("MP", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{playerStat.MP}/{playerStat.MaxMP}", 9), RenderHelper.GetStatColor(Enums.StatType.MP));
+            RenderHelper.Write(RenderHelper.AlignCenterWithPadding("Gold", 15), ConsoleColor.White);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold}", 9), ConsoleColor.DarkYellow);
 
             Console.WriteLine();
 

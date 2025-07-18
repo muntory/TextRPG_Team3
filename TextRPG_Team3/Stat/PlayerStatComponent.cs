@@ -51,7 +51,6 @@ namespace TextRPG_Team3.Stat
 
         public override double FinalAttack => base.FinalAttack * AttackMultiplier;
         public override double FinalDefense => base.FinalDefense * DefenseMultiplier;
-        public override int Health { get => (int)(base.Health * HealthMultiplier); set => base.Health = value; }
 
         public PlayerStatComponent() : base() 
         {
@@ -63,8 +62,11 @@ namespace TextRPG_Team3.Stat
             ExpRate = 1.0;
             AttackMultiplier = 1.0;
             HealthMultiplier = 1.0;
+            MaxHealth = (int)(MaxHealth * HealthMultiplier);
+            Health = MaxHealth;
             DefenseMultiplier = 1.0;
             FinalDamageMultiplier = 1.0;
+
             Exp = 0.0;
         }
 

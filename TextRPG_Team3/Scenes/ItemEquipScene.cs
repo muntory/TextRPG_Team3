@@ -97,7 +97,7 @@ namespace TextRPG_Team3.Scenes
                     }
                     else
                     {
-                        ItemManager.Instance.EquipOrDisarm(ItemIDs[input - 1]);
+                        ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
                     }
                     break;
             }

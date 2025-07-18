@@ -44,7 +44,7 @@ namespace TextRPG_Team3.Stat
         // 체력 선언
         public int MaxHealth;
         private int health = 1;
-        public virtual int Health           // 체력 범위 한정
+        public int Health           // 체력 범위 한정
         {
             get { return health; }
             set
