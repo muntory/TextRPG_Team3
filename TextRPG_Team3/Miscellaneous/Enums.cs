@@ -22,6 +22,13 @@ public class Enums
         Potion = 4,
     }
 
+    public enum CenterMenu
+    {
+        Out = 0,
+        Confirm = 1,
+        
+    }
+
     public enum StatMenu
     {
         Out = 0,
@@ -31,9 +38,11 @@ public class Enums
     // 배틀 메뉴 업데이트 해야됨
     public enum BattleMenu
     {
-        Attack = 1,
-        Skill = 2,
-        Out = 0
+        Out,
+        Attack,
+        Skill,
+        Item,
+
     }
 
     public enum PlayerPhaseMenu

@@ -93,7 +93,7 @@ namespace TextRPG_Team3.Scenes
             switch (playerPhaseMenu)
             {
                 case Enums.PlayerPhaseMenu.Out:
-                    SceneManager.Instance.CurrentScene = new BattleIntroScene();
+                    SceneManager.Instance.CurrentScene = SceneManager.Instance.PreviousScene;
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
