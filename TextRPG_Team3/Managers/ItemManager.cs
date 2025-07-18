@@ -202,7 +202,12 @@ namespace TextRPG_Team3.Managers
                     DisarmItem(i);
                 }
             }
-            item.IsEquipped = true;
+
+            if (item.Type != Enums.ItemType.Potion)
+            {
+                item.IsEquipped = true;
+            }
+
             if (item.Type == Enums.ItemType.Weapon)
             {
                 GameManager.Instance.Player.Stat.ExtraAttack += item.Value;

@@ -74,7 +74,14 @@ namespace TextRPG_Team3.Scenes
                     break;
 
                 default:
-                    ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
+                    if (ItemManager.Instance.IsPotion(ItemIDs[input - 1]))
+                    {
+                        msg = "포션은 장착할 수 없습니다!";
+                    }
+                    else
+                    {
+                        ItemManager.Instance.EquipOrDeEquip(ItemIDs[input - 1]);
+                    }
                     break;
             }
         }
