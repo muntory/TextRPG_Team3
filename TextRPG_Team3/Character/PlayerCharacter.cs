@@ -58,6 +58,7 @@ namespace TextRPG_Team3.Character
                 ret = 1;
                 inDamage *= playerStat.CriticalDamageRate;
             }
+            inDamage *= playerStat.FinalDamageMultiplier;
             inDamage = Math.Ceiling(inDamage);
 
             ret = 0;
@@ -81,6 +82,7 @@ namespace TextRPG_Team3.Character
                 ret = 1;
                 inDamage *= playerStat.CriticalDamageRate;
             }
+            inDamage *= playerStat.FinalDamageMultiplier;
             inDamage = Math.Ceiling(inDamage);
 
             target.OnHit?.Invoke((int)inDamage);
