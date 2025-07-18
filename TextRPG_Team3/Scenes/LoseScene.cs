@@ -43,6 +43,9 @@ namespace TextRPG_Team3.Scenes
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
+
+
+                    
             }
         }
     }
