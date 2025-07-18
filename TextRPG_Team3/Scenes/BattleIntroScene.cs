@@ -20,6 +20,7 @@ namespace TextRPG_Team3.Scenes
             PlayerCharacter player = GameManager.Instance.Player;
             PlayerStatComponent stat = (PlayerStatComponent)GameManager.Instance.Player.Stat;
             RenderHelper.WriteLine("Battle!!", ConsoleColor.DarkYellow);
+
             Console.WriteLine();
 
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;

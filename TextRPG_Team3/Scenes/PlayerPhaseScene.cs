@@ -23,8 +23,9 @@ namespace TextRPG_Team3.Scenes
             base.Render();
             PlayerCharacter player = GameManager.Instance.Player;
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
-            
-            RenderHelper.WriteLine("Battle!!", ConsoleColor.DarkYellow);
+
+            RenderHelper.WriteLine($"Battle!!", ConsoleColor.DarkYellow);
+
             Console.WriteLine();
 
             for (int i = 0; i < currentEnemies.Count; ++i)

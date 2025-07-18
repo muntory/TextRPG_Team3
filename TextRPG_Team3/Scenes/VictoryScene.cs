@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Item;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Stat;
@@ -31,9 +32,49 @@ namespace TextRPG_Team3.Scenes
             {
                 if (equipment.Value.Type != ItemType.Potion) //  만약 저장한아이템 타입이 Potion이 아니라면 
                 {
-                     Allequip.Add(equipment.Value); // 포션이 아닌 장비들을 리스트에 저장
+                    Allequip.Add(equipment.Value); // 포션이 아닌 장비들을 리스트에 저장
                 }
             }
+
+            if (GameManager.CurrentStage % 10 == 0 && GameManager.CurrentStage <= 50)
+            {
+                string badgeName = null;
+                switch (GameManager.CurrentStage)
+                {
+                    case 10: badgeName = "파란뱃지"; 
+                        break;
+                    case 20: badgeName = "노란뱃지"; 
+                        break;
+                    case 30: badgeName = "빨간뱃지"; 
+                        break;
+                    case 40: badgeName = "초록뱃지"; 
+                        break;
+                    case 50: badgeName = "보라뱃지"; 
+                        break;
+                }
+
+                
+                bool alreadyHaveBadge = false; // 아직 뱃지가 없음
+
+                foreach (Badge badge in GameManager.Instance.BadgeList) // 뱃지 리스트 돌기
+                {
+                    if (badge.Name == badgeName)   // 이름이 같은지 비교
+                    {
+                        alreadyHaveBadge = true;  //같은 이름이 있다면 true변경
+                        break;                  
+                    }
+                }
+
+               
+                if (!alreadyHaveBadge && badgeName != null) // alreadyHaveBadge가 false이고 badgeName가 null이 아니면
+                {
+                    Badge badge = new Badge(badgeName);
+                    GameManager.Instance.BadgeList.Add(badge);
+                }
+
+
+            }
+
 
             int acquireCount = rand.Next(0, 3);
             List<string> equipName = new List<string>();
@@ -54,6 +95,8 @@ namespace TextRPG_Team3.Scenes
 
             return (potionCount, equipName);
         }
+
+
 
         public override void Render()
         {
@@ -84,18 +127,18 @@ namespace TextRPG_Team3.Scenes
             CharacterStatComponent Exp = new CharacterStatComponent();
 
             RenderHelper.WriteLine("\n============== Battle Result ============== \n");
-            RenderHelper.WriteLine(("                [  VICTORY  ]                \n"),ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine(("                [  VICTORY  ]                \n"), ConsoleColor.DarkYellow);
             RenderHelper.WriteLine("---------------------------------------------\n");
             RenderHelper.Write("몬스터 ");
-            RenderHelper.Write($"{count}마리",ConsoleColor.DarkRed);
+            RenderHelper.Write($"{count}마리", ConsoleColor.DarkRed);
             RenderHelper.WriteLine("를 처치했습니다");
             RenderHelper.WriteLine("\t[캐릭터 정보]");
-            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}", RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($"경험치\t:");
             RenderHelper.Write($" Lv{prevLevel}", RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($" {prevexp:0.}", ConsoleColor.Yellow);
             RenderHelper.Write($" -> Lv{GameManager.Instance.Player.Stat.Level}. ");
-            RenderHelper.WriteLine($"{stat.Exp:0.}",ConsoleColor.Yellow);
+            RenderHelper.WriteLine($"{stat.Exp:0.}", ConsoleColor.Yellow);
             RenderHelper.Write($"HP\t:");
             RenderHelper.Write($" {GameManager.Instance.Player.Stat.MaxHealth}", RenderHelper.GetStatColor(Enums.StatType.Health));
             RenderHelper.Write("-> ");
@@ -109,8 +152,17 @@ namespace TextRPG_Team3.Scenes
             {
                 foreach (var equipment in droppedEquipNames)
                 {
-                    RenderHelper.Write("흭득한 장비\t- ");
-                    RenderHelper.WriteLine($"{equipment}\n",ConsoleColor.DarkGray);
+                    RenderHelper.Write("흭득한 장비\t-: ");
+                    RenderHelper.WriteLine($"{equipment}\n", ConsoleColor.DarkGray);
+                }
+            }
+            if (GameManager.CurrentStage % 10 == 0 && GameManager.CurrentStage <= 50)
+            {
+                var badgeList = GameManager.Instance.BadgeList;
+                if (badgeList.Count > 0 && badgeList.Last().Name != null)
+                {
+                    Badge badge = badgeList.Last();
+                    RenderHelper.WriteLine("뱃지 획득!\t: " + badge.Name, ConsoleColor.Yellow);
                 }
             }
             RenderHelper.WriteLine("------------------------------------------\n");
@@ -138,7 +190,5 @@ namespace TextRPG_Team3.Scenes
                     break;
             }
         }
-
     }
-
 }

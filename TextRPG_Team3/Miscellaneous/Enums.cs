@@ -26,6 +26,7 @@ public class Enums
         Quest = 3,
         Potion = 4,
         RefineBadge,
+        Save
     }
 
     public enum CenterMenu
@@ -111,5 +112,10 @@ public class Enums
         Armor,
         Shield,
         Potion,
+    }
+    public enum LoadMenu
+    {
+        New = 1,
+        Load
     }
 }

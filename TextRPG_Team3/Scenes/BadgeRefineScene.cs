@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ namespace TextRPG_Team3.Scenes
     public class BadgeRefineScene : BaseScene
     {
         private Dictionary<int, List<BadgeRefineData>> EffectsByRarity;
-        private Dictionary<int, BadgeRefineData> refineTable;
         private List<Badge> badgeList = GameManager.Instance.BadgeList;
         private Badge currentBadge = null;
 
@@ -26,18 +26,13 @@ namespace TextRPG_Team3.Scenes
                 EffectsByRarity = new Dictionary<int, List<BadgeRefineData>>();
             }
 
-            if (refineTable == null)
-            {
-                refineTable = new Dictionary<int, BadgeRefineData>();
-            }
-            List<BadgeRefineData> effectList = ResourceManager.Instance.LoadJsonData<BadgeRefineData>($"{ResourceManager.GAME_ROOT_DIR}/Data/BadgeRefineDataList.json");
+            List<BadgeRefineData> effectList = ResourceManager.Instance.GetBadgeEffectDB().Values.ToList();
 
             if (effectList != null)
             {
                 foreach (BadgeRefineData badgeData in effectList)
                 {
                     int rarity = badgeData.Rarity;
-                    refineTable.Add(badgeData.ID, badgeData);
 
                     if (!EffectsByRarity.ContainsKey(rarity))
                     {
@@ -48,6 +43,8 @@ namespace TextRPG_Team3.Scenes
 
                 }
             }
+
+            
         }
 
         public override void Render()
@@ -57,10 +54,27 @@ namespace TextRPG_Team3.Scenes
             if (currentBadge == null)
             {
                 RenderHelper.WriteLine("이곳에서 획득한 배지를 정제할 수 있지. 정제하면 놀라운 힘이 깃들 거야.", ConsoleColor.DarkYellow);
+                Console.WriteLine();
 
                 for (int i = 0; i < badgeList.Count; i++)
                 {
-                    RenderHelper.WriteLine($"{i + 1} {badgeList[i].Name} ", ConsoleColor.White);
+                    string badgeName = badgeList[i].Name;
+                    string badgeRarity = GetRarityStr(badgeList[i].Rarity);
+                    string badgeEffectsStr = string.Empty;
+
+                    RenderHelper.Write($"{i + 1} {badgeName} | ", ConsoleColor.White);
+                    RenderHelper.Write(RenderHelper.AlignCenterWithPadding(badgeRarity, 8), GetRarityColor(badgeList[i].Rarity));
+                    RenderHelper.Write(" | ", ConsoleColor.White);
+
+                    if (badgeList[i].Effects != null)
+                    {
+                        for (int j = 0; j < 3; ++j)
+                        {
+                            RenderHelper.Write(RenderHelper.AlignCenterWithPadding(ResourceManager.Instance.GetBadgeData(badgeList[i].Effects[j]).Description, 20), GetRarityColor(ResourceManager.Instance.GetBadgeData(badgeList[i].Effects[j]).Rarity));
+                            RenderHelper.Write(" | ", ConsoleColor.White);
+                        }
+                    }
+                    Console.WriteLine();
                 }
                 Console.WriteLine();
 
@@ -74,16 +88,12 @@ namespace TextRPG_Team3.Scenes
                 RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding(currentBadge.Name, 40)}", ConsoleColor.White);
                 Console.WriteLine();
 
-                ConsoleColor color = ConsoleColor.White;
-                if (currentBadge.Rarity == 1) color = ConsoleColor.Magenta;
-                if (currentBadge.Rarity == 2) color = ConsoleColor.Yellow;
-                if (currentBadge.Rarity == 3) color = ConsoleColor.DarkGreen;
-
                 if (currentBadge.Effects != null)
                 {
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[0]].Description}", 40)}", color);
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[1]].Description}", 40)}", color);
-                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{refineTable[currentBadge.Effects[2]].Description}", 40)}", color);
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{GetRarityStr(currentBadge.Rarity)}", 40)}", GetRarityColor(currentBadge.Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[0]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[0]).Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[1]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[1]).Rarity));
+                    RenderHelper.WriteLine($"{RenderHelper.AlignCenterWithPadding($"{ResourceManager.Instance.GetBadgeData(currentBadge.Effects[2]).Description}", 40)}", GetRarityColor(ResourceManager.Instance.GetBadgeData(currentBadge.Effects[2]).Rarity));
                 }
                 Console.WriteLine();
 
@@ -95,6 +105,23 @@ namespace TextRPG_Team3.Scenes
             }
 
 
+        }
+
+        private string GetRarityStr(int rarity)
+        {
+            string str = "레어";
+            if (rarity == 1) str = "에픽";
+            if (rarity == 2) str = "유니크";
+            if (rarity == 3) str = "레전드리";
+            return str;
+        }
+        private ConsoleColor GetRarityColor(int rarity)
+        {
+            ConsoleColor color = ConsoleColor.White;
+            if (rarity == 1) color = ConsoleColor.Magenta;
+            if (rarity == 2) color = ConsoleColor.Yellow;
+            if (rarity == 3) color = ConsoleColor.DarkGreen;
+            return color;
         }
 
         public override void SelectMenu(int input)
@@ -120,8 +147,7 @@ namespace TextRPG_Team3.Scenes
             {
                 if (input == 0)
                 {
-                    SceneManager.Instance.CurrentScene = new IntroScene();
-
+                    currentBadge = null;
                 }
                 else if (input == 1)
                 {
@@ -145,17 +171,17 @@ namespace TextRPG_Team3.Scenes
             // 등급 업
             if (badge.Rarity == 0)
             {
-                if (RandomHelper.ProcChance(0.1))
+                if (RandomHelper.ProcChance(0.06))
                     badge.Rarity++;
             }
             else if (badge.Rarity == 1)
             {
-                if (RandomHelper.ProcChance(0.06))
+                if (RandomHelper.ProcChance(0.018))
                     badge.Rarity++;
             }
             else if (badge.Rarity == 2)
             {
-                if (RandomHelper.ProcChance(0.01))
+                if (RandomHelper.ProcChance(0.003))
                     badge.Rarity++;
             }
             
@@ -208,14 +234,9 @@ namespace TextRPG_Team3.Scenes
 
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
 
-            if (badge.Effects == null)
-            {
-                badge.Effects = new int[3];
-            }
-
             foreach (int id in badge.Effects)
             {
-                BadgeRefineData data = refineTable[id];
+                BadgeRefineData data = ResourceManager.Instance.GetBadgeData(id);
                 if (data.IsPercent)
                 {
                     switch (data.StatType)
@@ -283,7 +304,7 @@ namespace TextRPG_Team3.Scenes
 
             foreach (int id in badge.Effects)
             {
-                BadgeRefineData data = refineTable[id];
+                BadgeRefineData data = ResourceManager.Instance.GetBadgeData(id);
                 if (data.IsPercent)
                 {
                     switch (data.StatType)
