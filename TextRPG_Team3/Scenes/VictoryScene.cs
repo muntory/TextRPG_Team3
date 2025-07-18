@@ -95,7 +95,7 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.Write($" Lv{prevLevel}", RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($" {prevexp:0.}", ConsoleColor.Yellow);
             RenderHelper.Write($" -> Lv{GameManager.Instance.Player.Stat.Level}. ");
-            RenderHelper.WriteLine($"{GameManager.Instance.Player.Stat.exp:0.}",ConsoleColor.Yellow);
+            RenderHelper.WriteLine($"{stat.Exp:0.}",ConsoleColor.Yellow);
             RenderHelper.Write($"HP\t:");
             RenderHelper.Write($" {GameManager.Instance.Player.Stat.MaxHealth}", RenderHelper.GetStatColor(Enums.StatType.Health));
             RenderHelper.Write("-> ");

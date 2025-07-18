@@ -25,6 +25,8 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine($"2. 전투 시작 (현재 진행 : {GameManager.CurrentStage}층)", ConsoleColor.White);
             RenderHelper.WriteLine("3. 퀘스트", ConsoleColor.White);
             RenderHelper.WriteLine("4. 포켓몬 센터",ConsoleColor.White);
+            RenderHelper.WriteLine("5. 배지 정제하기", ConsoleColor.White);
+
             Console.WriteLine();
 
             PrintMsg();
