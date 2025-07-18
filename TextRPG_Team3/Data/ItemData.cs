@@ -5,16 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Stat;
 
+using static Enums;
+
 namespace TextRPG_Team3
 {
 
-    public enum ItemType
-    {
-        Weapon,
-        Armor,
-        Shield,
-        Potion,
-    }
+
     public class ItemData
     {
         public int Id { get; set; }

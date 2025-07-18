@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
+using static Enums;
 
 namespace TextRPG_Team3.Managers
 {
@@ -172,6 +174,55 @@ namespace TextRPG_Team3.Managers
             }
 
             return false;
+        }
+
+        public void EquipItem(int itemID)
+        {
+            //아이템 아이디를 받으면
+            ItemData item = itemDataDict[itemID];
+
+            item.IsEquipped = true;
+            if (item.Type == Enums.ItemType.Weapon)
+            {
+                GameManager.Instance.Player.Stat.ExtraAttack += item.Value;
+            }
+            else if (item.Type == Enums.ItemType.Armor)
+            {
+                GameManager.Instance.Player.Stat.ExtraDefense += item.Value;
+            }
+            else if(item.Type == Enums.ItemType.Shield)
+            {
+                GameManager.Instance.Player.Stat.ExtraDefense += item.Value;
+            }
+            else if(item.Type == Enums.ItemType.Potion)
+            {
+                //Nothing
+            }
+            //해당 아이템의 IsEquipped를 true로 변경하고
+            //해당 아이템 속성에 맞는 Value값의 Extra를 올려준다.
+            //그리고 아이템 인벤토리 딕셔너리를 돌아보다가, Type이 같은 친구인데 IsEquipped가 true인 친구를 false로 변경해준다.
+        }
+        public void DeequipItem(int itemID)
+        {
+            ItemData item = itemDataDict[itemID];
+
+            item.IsEquipped = false;
+            if (item.Type == Enums.ItemType.Weapon)
+            {
+                GameManager.Instance.Player.Stat.ExtraAttack -= item.Value;
+            }
+            else if (item.Type == Enums.ItemType.Armor)
+            {
+                GameManager.Instance.Player.Stat.ExtraDefense -= item.Value;
+            }
+            else if (item.Type == Enums.ItemType.Shield)
+            {
+                GameManager.Instance.Player.Stat.ExtraDefense -= item.Value;
+            }
+            else if (item.Type == Enums.ItemType.Potion)
+            {
+                //Nothing
+            }
         }
     }
 }
