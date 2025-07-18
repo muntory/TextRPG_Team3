@@ -31,6 +31,14 @@ namespace TextRPG_Team3.Utils
 
     public class ItemData
     {
-        
+        public int ItemID { get; set; }
+        public int ItemNum { get; set; }
+        public bool IsEquipped { get; set; }
+        public ItemData(int itemID , int itemNum, bool isEquipped)
+        {
+            ItemID = itemID;
+            ItemNum = itemNum;
+            IsEquipped = isEquipped;
+        }
     }
 }
