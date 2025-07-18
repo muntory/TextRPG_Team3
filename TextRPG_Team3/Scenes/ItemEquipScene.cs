@@ -17,7 +17,7 @@ namespace TextRPG_Team3.Scenes
         {
             base.Render();
 
-            Console.WriteLine("인벤토리 - 장착관리");
+            RenderHelper.WriteLine("인벤토리 - 장착관리",ConsoleColor.Magenta);
             Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
             Console.WriteLine();
 
@@ -41,18 +41,30 @@ namespace TextRPG_Team3.Scenes
                         // 개수 1개면 생략, 2개 이상부터 표시
                         string itemCountInterface = (ItemCount > 1) ? $"X {ItemCount}" : "";
 
+                        string equipped = itemData.IsEquipped ? "[E] " : "";
+
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        if (itemData.StatType == Enums.StatType.Attack)
-                            statType = "공격력";
-                        else if (itemData.StatType == Enums.StatType.Defense)
-                            statType = "방어력";
-                        else if (itemData.StatType == Enums.StatType.Health)
-                            statType = "체력";
-                        string equipped = itemData.IsEquipped ? "[E] " : "";
+                        RenderHelper.Write($"- {i + 1} {equipped} {RenderHelper.AlignLeftWithPadding(itemData.Name, 15)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ");
 
-                        Console.WriteLine($"- {i + 1} {equipped} {RenderHelper.AlignLeftWithPadding(itemData.Name, 15)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | {RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2, ConsoleColor.DarkCyan)} | {itemData.Description}");
+                        if (itemData.StatType == Enums.StatType.Attack)
+                        {
+                            statType = "공격력";
+                            RenderHelper.Write($"{RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2)}", ConsoleColor.Yellow);
+                        }
+                        else if (itemData.StatType == Enums.StatType.Defense)
+                        {
+                            statType = "방어력";
+                            RenderHelper.Write($"{RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2)}", ConsoleColor.Cyan);
+                        }
+                        else if (itemData.StatType == Enums.StatType.Health)
+                        {
+                            statType = "체력";
+                            RenderHelper.Write($"{RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2)}", ConsoleColor.Red);
+                        }
+
+                        RenderHelper.WriteLine(" | " + itemData.Description);
                     }
                 }
             }
