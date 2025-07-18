@@ -19,7 +19,7 @@ namespace TextRPG_Team3.Scenes
 
             PlayerCharacter player = GameManager.Instance.Player;
 
-            Console.WriteLine("Battle!!");
+            RenderHelper.WriteLine("Battle!!",ConsoleColor.DarkYellow);
             Console.WriteLine();
 
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
@@ -33,14 +33,14 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("[내 정보]");
-            Console.WriteLine($"Lv. {player.Stat.Level} {player.Name}");
-            Console.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}");
+            RenderHelper.WriteLine("[내 정보]",ConsoleColor.White);
+            RenderHelper.WriteLine($"Lv. {player.Stat.Level} {player.Name}",ConsoleColor.White);
+            RenderHelper.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}", ConsoleColor.Red);
             Console.WriteLine();
             
-            Console.WriteLine("1. 공격");
-            Console.WriteLine("2. 스킬");
-            Console.WriteLine("3. 아이템");
+            RenderHelper.WriteLine("1. 공격", ConsoleColor.Yellow);
+            RenderHelper.WriteLine("2. 스킬", ConsoleColor.Cyan);
+            RenderHelper.WriteLine("3. 아이템", ConsoleColor.White);
 
             Console.WriteLine();
         }
@@ -69,6 +69,7 @@ namespace TextRPG_Team3.Scenes
         }
         private void WriteLineEnemyInfo(EnemyCharacter enemy)
         {
+
             string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
 
             if (enemy.IsAlive)
