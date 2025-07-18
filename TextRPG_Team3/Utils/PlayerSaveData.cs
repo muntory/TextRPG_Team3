@@ -14,7 +14,6 @@ namespace TextRPG_Team3.Utils
     public class PlayerSaveData
     {
         public string PlayerName { get; set; } 
-        public string JobName {  get; set; }
         public int Level { get; set; }
         public int Gold { get; set; }
         public double Exp { get; set; }
@@ -25,7 +24,6 @@ namespace TextRPG_Team3.Utils
         {
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
             PlayerName = GameManager.Instance.Player.Name;
-            JobName = GameManager.Instance.Player.RootClass;
             Level = GameManager.Instance.Player.Stat.Level;
             Gold = GameManager.Instance.Player.Gold;
             Exp = GameManager.Instance.Player.Stat.exp;
