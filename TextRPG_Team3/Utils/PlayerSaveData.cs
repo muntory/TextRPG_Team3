@@ -29,6 +29,7 @@ namespace TextRPG_Team3.Utils
         public int JobID {  get; set; }
     }
 
+
     public class ItemSaveData
     {
         public int ItemID { get; set; }
