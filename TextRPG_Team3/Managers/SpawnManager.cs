@@ -50,9 +50,7 @@ namespace TextRPG_Team3.Managers
         public void GenerateStage(int currentStage)
         {
             if (CurrentEnemies != null) return;
-            
             CurrentEnemies = new List<EnemyCharacter>();
-            
 
             if (currentStage % 10 == 0)
             {
@@ -63,6 +61,15 @@ namespace TextRPG_Team3.Managers
                 {
                     EnemyCharacter enemy = new EnemyCharacter(ResourceManager.Instance.GetEnemyData(stageData.Enemies[i]));
                     enemy.SetLevel(stageData.Levels[i]);
+
+                    CurrentEnemies.Add(enemy);
+                }
+
+                // 50층이면 6티어 포켓몬 중에서 랜덤으로 하나 소환
+                if (currentStage == 50)
+                {
+                    EnemyCharacter enemy = new EnemyCharacter(EnemiesByTier[6][Random.Shared.Next(0, EnemiesByTier[6].Count)]);
+                    enemy.SetLevel(50);
 
                     CurrentEnemies.Add(enemy);
                 }
