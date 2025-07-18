@@ -2,6 +2,7 @@ using System;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
 using TextRPG_Team3.Stat;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Managers
 {
@@ -66,10 +67,14 @@ namespace TextRPG_Team3.Managers
                 stat.BaseDefense += 1.0;
                 stat.BaseAttack += 0.5;
 
-                Console.WriteLine("============== Level Up ==============\n");
+                Console.WriteLine("============== Level Up ==============\n", ConsoleColor.Yellow);
                 Console.WriteLine($"축하합니다 레벨업하셨습니다!");
                 Console.WriteLine($"Lv. {stat.Level - 1} {CharName.Name} -> Lv. {stat.Level} {CharName.Name}");
-                Console.WriteLine("기본공격력 0.5 방어력 1이 증가하셨습니다\n");
+                RenderHelper.Write("기본공격력");
+                RenderHelper.Write("0.5", RenderHelper.GetStatColor(Enums.StatType.Attack));
+                RenderHelper.Write("방어력");
+                RenderHelper.Write("1", RenderHelper.GetStatColor(Enums.StatType.Defense));
+                RenderHelper.WriteLine("이 증가하셨습니다\n");
                 Console.WriteLine("\n");
             }
         }
