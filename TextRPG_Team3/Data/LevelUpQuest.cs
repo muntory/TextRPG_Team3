@@ -16,7 +16,14 @@ namespace TextRPG_Team3.Data
         public LevelUpQuest(int goal)
         {
             GoalLevel = goal;
-            CurrentLevel = GameManager.Instance.Player.Stat.Level;
+            if(GameManager.Instance.Player.Stat.Level == 0)
+            {
+                CurrentLevel = 1;
+            }
+            else
+            {
+                CurrentLevel = GameManager.Instance.Player.Stat.Level;
+            }
         }
 
         public void OnLevelUp()
