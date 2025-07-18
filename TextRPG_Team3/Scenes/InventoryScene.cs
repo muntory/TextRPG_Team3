@@ -13,8 +13,11 @@ namespace TextRPG_Team3.Scenes
         public override void Render()
         {
             base.Render();
-            RenderHelper.WriteLine("인벤토리", ConsoleColor.Magenta);
-            Console.WriteLine("[아이템 목록]");
+            RenderHelper.WriteLine("인벤토리", ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine("[아이템 목록]", ConsoleColor.DarkGray);
+            Console.WriteLine();
+
+            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
             Console.WriteLine();
 
             // 소지 중인 아이템 ID 목록 전체 가져오기
@@ -23,6 +26,7 @@ namespace TextRPG_Team3.Scenes
             if (ItemIDs.Count == 0)
             {
                 Console.WriteLine("보유 중인 아이템이 없습니다.");
+                Console.WriteLine();
             }
             else
             {
@@ -44,7 +48,7 @@ namespace TextRPG_Team3.Scenes
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        RenderHelper.Write($"- {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ");
+                        RenderHelper.Write($"- {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ", ConsoleColor.White);
 
                         if (itemData.StatType == Enums.StatType.Attack)
                         {
@@ -62,12 +66,14 @@ namespace TextRPG_Team3.Scenes
                             RenderHelper.Write($"{RenderHelper.AlignLeftWithPadding(statType, 7)} + {RenderHelper.AlignLeftWithPadding(itemData.Value.ToString(), 2)}", ConsoleColor.Red);
                         }
 
-                        RenderHelper.WriteLine(" | " + itemData.Description);
+                        RenderHelper.WriteLine(" | " + itemData.Description, ConsoleColor.White);
                     }
                 }
             }
-
             Console.WriteLine();
+            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
+            Console.WriteLine();
+
             Console.WriteLine("1. 장착 관리");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
