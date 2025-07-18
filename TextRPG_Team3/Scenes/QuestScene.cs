@@ -152,7 +152,7 @@ namespace TextRPG_Team3.Scenes
                     }
                     else if (index != 0 && QuestManager.Instance.QuestDB[index].IsAccepted && QuestManager.Instance.QuestDB[index].IsCompleted)
                     {
-                        QuestManager.Instance.QueatReward(index);
+                        QuestManager.Instance.QuestReward(index);
                         QuestManager.Instance.QuestDB[index].IsCleared = true;
                         QuestManager.Instance.ActiveQuests.Remove(QuestManager.Instance.QuestDB[index]);
                         index = 0;

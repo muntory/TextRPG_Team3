@@ -18,7 +18,6 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("캐릭터의 정보가 표시됩니다.");
             Console.WriteLine();
 
-
             Console.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})");
             Console.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}");
             Console.WriteLine($"경험치 : {GameManager.Instance.Player.Stat.exp}");
@@ -33,7 +32,6 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
 
             PrintMsg();
-
         }
 
         public override void SelectMenu(int input)
