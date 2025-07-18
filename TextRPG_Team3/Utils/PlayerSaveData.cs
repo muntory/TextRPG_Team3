@@ -63,12 +63,17 @@ namespace TextRPG_Team3.Utils
     
     public class SaveAndLoad
     {
+        string savePath = $"{AppDomain.CurrentDomain.BaseDirectory}/../../../Save";
         public void Save()
         {
             PlayerSaveData playerData = new PlayerSaveData();
             List<ItemSaveData> itemData = new List<ItemSaveData>();
             List<QuestSaveData> questData = new List<QuestSaveData>();
             SaveQuest(questData);
+            SaveItem(itemData);
+            ResourceManager.Instance.SaveJsonData(savePath + "PlayerSave.json", playerData);
+            ResourceManager.Instance.SaveJsonData(savePath + "ItemSave.json", itemData);
+            ResourceManager.Instance.SaveJsonData(savePath + "QuestSave.json", questData);
         }
         public void SaveQuest(List<QuestSaveData> questData)
         {
@@ -78,6 +83,7 @@ namespace TextRPG_Team3.Utils
                 bool isCleared = QuestManager.Instance.QuestDB[i].IsCleared;
                 bool isAccepted = QuestManager.Instance.QuestDB[i].IsAccepted;
                 int currentAmount;
+
                 if (QuestManager.Instance.QuestDB[i].Goal is KillEnemyQuest killQuest)
                 {
                     currentAmount = killQuest.CurrentAmount;
@@ -86,16 +92,22 @@ namespace TextRPG_Team3.Utils
                 {
                     currentAmount = -1;
                 }
+
                 QuestSaveData quest = new QuestSaveData(questID, isCleared, isAccepted, currentAmount);
                 questData.Add(quest);
             }
         }
-        public void SaveItem(List<ItemData> itemData)
+        public void SaveItem(List<ItemSaveData> itemData)
         {
             List<int> ID =ItemManager.Instance.AllHaveItemIDs();
 
-           
-
+           foreach(int i in ID)
+            {
+                int amount = ItemManager.Instance.PlayerInventory[i];
+                bool isEquipped = ItemManager.Instance.GetItemData(i).IsEquipped;
+                ItemSaveData item = new ItemSaveData(i, amount, isEquipped);
+                itemData.Add(item);
+            }
         }
     }
 

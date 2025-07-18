@@ -12,7 +12,7 @@ namespace TextRPG_Team3.Managers
         public static GameManager Instance { get { return instance; } }
 
         // 플레이어
-        public PlayerCharacter Player;
+        public PlayerCharacter Player = new();
 
         public static int CurrentStage = 1;
 

@@ -138,7 +138,5 @@ namespace TextRPG_Team3.Scenes
                     break;
             }
         }
-
     }
-
 }

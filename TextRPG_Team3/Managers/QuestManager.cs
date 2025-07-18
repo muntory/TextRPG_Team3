@@ -59,6 +59,7 @@ namespace TextRPG_Team3.Managers
             {
                 instance = this;
             }
+            GetQuestDB();
         }
         public void ActivateQuest(int ID)
         {
