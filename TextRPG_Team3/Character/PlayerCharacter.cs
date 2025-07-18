@@ -44,7 +44,7 @@ namespace TextRPG_Team3.Character
             PlayerStatComponent playerStat = (PlayerStatComponent)Stat;
 
             // 공격 실패
-            if (Random.Shared.NextDouble() >= playerStat.AccuracyRate)
+            if (!RandomHelper.ProcChance(playerStat.AccuracyRate))
             {
                 ret = -1;
                 return ret;
