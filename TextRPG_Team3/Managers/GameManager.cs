@@ -24,12 +24,6 @@ namespace TextRPG_Team3.Managers
                 instance = this;
             }
 
-            BadgeList.Add(new Badge("테스트 뱃지1"));
-            BadgeList.Add(new Badge("테스트 뱃지2"));
-            BadgeList.Add(new Badge("테스트 뱃지3"));
-            BadgeList.Add(new Badge("테스트 뱃지4"));
-            BadgeList.Add(new Badge("테스트 뱃지5"));
-
         }
         public bool CheckVictory(List<EnemyCharacter> enemies)
         {
