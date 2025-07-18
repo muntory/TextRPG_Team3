@@ -44,7 +44,7 @@ namespace TextRPG_Team3.Scenes
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        RenderHelper.Write($"- {equipped} {RenderHelper.AlignLeftWithPadding(itemData.Name, 15)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ");
+                        RenderHelper.Write($"- {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ");
 
                         if (itemData.StatType == Enums.StatType.Attack)
                         {
