@@ -28,17 +28,7 @@ namespace TextRPG_Team3.Utils
         public int Health { get; set; }
         public int JobID {  get; set; }
 
-        public PlayerSaveData()
-        {
-            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-            PlayerName = GameManager.Instance.Player.Name;
-            Level = GameManager.Instance.Player.Stat.Level;
-            Gold = GameManager.Instance.Player.Gold;
-            Exp = GameManager.Instance.Player.Stat.exp;
-            MP = playerStat.MP;
-            CurrentStage = GameManager.CurrentStage;
-        }
-    }
+
 
     public class ItemSaveData
     {
