@@ -33,16 +33,16 @@ namespace TextRPG_Team3.Utils
     {
         
     }
-    public class QuestData
+    public class QuestSaveData
     {
         public bool IsCleared {  get; set; }
         public bool IsAccepted {  get; set; }
         public int CurrentAmount { get; set; }
 
-        public QuestData(bool isCleared, bool isAccepted, int currentAmount)
+        public QuestSaveData(bool isCleared, bool isAccepted, int currentAmount)
         {
-            IsCleared =isCleared;
-            IsAccepted =isAccepted;
+            IsCleared = isCleared;
+            IsAccepted = isAccepted;
             CurrentAmount = currentAmount;
         }
     }
