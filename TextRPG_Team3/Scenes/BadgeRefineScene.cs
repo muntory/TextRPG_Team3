@@ -103,7 +103,7 @@ namespace TextRPG_Team3.Scenes
                 Console.WriteLine();
 
                 PrintMsg();
-
+                RenderHelper.WriteLine($"{RenderHelper.AlignLeftWithPadding("[레어: 50G, 에픽: 70G, 유니크: 100G, 레전드리: 150G]", 50)}", ConsoleColor.DarkYellow);
                 RenderHelper.WriteLine($"보유 골드: {GameManager.Instance.Player.Gold}", ConsoleColor.DarkYellow);
                 Console.WriteLine();
 
