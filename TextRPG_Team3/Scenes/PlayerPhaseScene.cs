@@ -25,6 +25,7 @@ namespace TextRPG_Team3.Scenes
             List<EnemyCharacter> currentEnemies = SpawnManager.Instance.CurrentEnemies;
 
             RenderHelper.WriteLine($"Battle!!", ConsoleColor.DarkYellow);
+
             Console.WriteLine();
 
             for (int i = 0; i < currentEnemies.Count; ++i)
@@ -37,12 +38,12 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("[내정보]");
-            Console.WriteLine($"LV.{player.Stat.Level} {player.Name}");
-            Console.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}");
+            RenderHelper.WriteLine("[내정보]",ConsoleColor.White);
+            RenderHelper.WriteLine($"LV.{player.Stat.Level} {player.Name}", ConsoleColor.White);
+            RenderHelper.WriteLine($"HP {player.Stat.Health}/{player.Stat.MaxHealth}", ConsoleColor.Red);
             Console.WriteLine();
 
-            Console.WriteLine("0. 취소");
+            RenderHelper.WriteLine("0. 취소", ConsoleColor.White);
             Console.WriteLine();
 
             
@@ -51,16 +52,18 @@ namespace TextRPG_Team3.Scenes
 
         private void WriteLineEnemyInfo(EnemyCharacter enemy, int index)
         {
-            string str = $"{index + 1} LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
-            
+            string str = $"{index + 1} LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} ";
+            string hpstr = $"{(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
+
             if (enemy.IsAlive)
             {
-                Console.WriteLine(str);
-
+                RenderHelper.Write(str, ConsoleColor.White);
+                RenderHelper.WriteLine(hpstr, ConsoleColor.Red);
             }
             else
             {
-                RenderHelper.WriteLine(str, ConsoleColor.DarkGray);
+                RenderHelper.Write(str, ConsoleColor.DarkGray);
+                RenderHelper.WriteLine(hpstr,ConsoleColor.Red);
             }
             
         }
