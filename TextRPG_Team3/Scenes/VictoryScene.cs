@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Item;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Stat;
@@ -34,6 +35,37 @@ namespace TextRPG_Team3.Scenes
                      Allequip.Add(equipment.Value); // 포션이 아닌 장비들을 리스트에 저장
                 }
             }
+           
+            if (GameManager.CurrentStage % 10 == 0 && GameManager.CurrentStage <= 50)
+            {
+                string badgeName = null;
+                switch (GameManager.CurrentStage)
+                {
+                    case 10:
+                        badgeName = "파란뱃지";
+                        ItemManager.Instance.AddItem(badgeName);
+                        break;
+                    case 20:
+                        badgeName = "노란뱃지";
+                        break;
+                    case 30:
+                        badgeName = "빨간뱃지";
+                        break;
+                    case 40:
+                        badgeName = "초록뱃지";
+                        break;
+                    case 50:
+                        badgeName = "보라뱃지";
+                        break;
+                  
+                }
+                if (badgeName != null)
+                {
+                    Badge badge = new Badge(badgeName);
+                    GameManager.Instance.BadgeList.Add(badge);
+                }
+            }
+
 
             int acquireCount = rand.Next(0, 3);
             List<string> equipName = new List<string>();
@@ -54,6 +86,8 @@ namespace TextRPG_Team3.Scenes
 
             return (potionCount, equipName);
         }
+
+        
 
         public override void Render()
         {
@@ -109,9 +143,14 @@ namespace TextRPG_Team3.Scenes
             {
                 foreach (var equipment in droppedEquipNames)
                 {
-                    RenderHelper.Write("흭득한 장비\t- ");
+                    RenderHelper.Write("흭득한 장비\t-: ");
                     RenderHelper.WriteLine($"{equipment}\n",ConsoleColor.DarkGray);
                 }
+            }
+            if(GameManager.CurrentStage -1 % 10 == 0)
+            {
+                RenderHelper.Write("뱃지 흭득!\t:");
+                RenderHelper.WriteLine()
             }
             RenderHelper.WriteLine("------------------------------------------\n");
             RenderHelper.WriteLine("0. 다음");
