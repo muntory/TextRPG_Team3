@@ -97,7 +97,7 @@ namespace TextRPG_Team3.Managers
                 }
             }
         }
-        public void QueatReward(int ID)
+        public void QuestReward(int ID)
         {
             if (QuestDB[ID].GoldReward > 0)
             {

@@ -70,7 +70,7 @@ namespace TextRPG_Team3.Scenes
             if (quest.Goal is KillEnemyQuest killQuest)
             {
                 Console.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ");
-                Console.Write($"{killQuest.GoalAmount}마리 처치 ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
+                Console.Write($"{killQuest.GoalAmount}마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n");
             }
             else if (quest.Goal is EquipItemQuest equipQuest)
             {
@@ -152,7 +152,7 @@ namespace TextRPG_Team3.Scenes
                     }
                     else if (index != 0 && QuestManager.Instance.QuestDB[index].IsAccepted && QuestManager.Instance.QuestDB[index].IsCompleted)
                     {
-                        QuestManager.Instance.QueatReward(index);
+                        QuestManager.Instance.QuestReward(index);
                         QuestManager.Instance.QuestDB[index].IsCleared = true;
                         QuestManager.Instance.ActiveQuests.Remove(QuestManager.Instance.QuestDB[index]);
                         index = 0;
