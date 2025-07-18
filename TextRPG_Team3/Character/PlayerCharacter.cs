@@ -8,6 +8,7 @@ using TextRPG_Team3.Stat;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Utils;
 
 namespace TextRPG_Team3.Character
 {
@@ -32,7 +33,6 @@ namespace TextRPG_Team3.Character
         /// 크리티컬공격 : 1, 공격 실패(명중 실패) : -1, 그냥 공격 : 0 리턴
         /// </summary>
         /// <param name="target"></param>
-        /// <param name="isCritical"></param>
         public override int Attack(BaseCharacter target)
         {
             int ret = -2;
@@ -53,10 +53,10 @@ namespace TextRPG_Team3.Character
             double damageModifier = 1.0 + (Random.Shared.NextDouble() * 20.0 - 10.0) * 0.01;
             double inDamage = Stat.FinalAttack * damageModifier;
             double criticalRate = playerStat.CriticalRate;
-            if (Random.Shared.NextDouble() < criticalRate)
+            if (RandomHelper.ProcChance(playerStat.CriticalRate))
             {
                 ret = 1;
-                inDamage *= 1.6;
+                inDamage *= playerStat.CriticalDamageRate;
             }
             inDamage = Math.Ceiling(inDamage);
 
@@ -66,17 +66,25 @@ namespace TextRPG_Team3.Character
             return ret;
         }
 
-        public void ActiveSkill(BaseCharacter target, SkillData skillData)
+        public int ActiveSkill(BaseCharacter target, SkillData skillData)
         {
-            if (skillData == null) return;
+            if (skillData == null) return -1;
 
             PlayerStatComponent playerStat = (PlayerStatComponent)Stat;
-            if (playerStat == null) return;
+            if (playerStat == null) return -1;
 
-            int inDamage = (int)Math.Ceiling(playerStat.FinalAttack * skillData.Multiplier);
+            double inDamage = Stat.FinalAttack * skillData.Multiplier;
 
-            target.OnHit?.Invoke(inDamage);
+            int ret = 0;
+            if (RandomHelper.ProcChance(playerStat.CriticalRate))
+            {
+                ret = 1;
+                inDamage *= playerStat.CriticalDamageRate;
+            }
+            inDamage = Math.Ceiling(inDamage);
 
+            target.OnHit?.Invoke((int)inDamage);
+            return ret;
         }
 
         public void Die()

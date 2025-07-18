@@ -83,6 +83,7 @@ namespace TextRPG_Team3.Stat
         public int TakeDamage(int inDamage)
         {
             int prevHealth = Health;
+            inDamage = (int)(inDamage * (100 / (100 + FinalDefense)));
             Health -= inDamage;
 
             return Health - prevHealth;

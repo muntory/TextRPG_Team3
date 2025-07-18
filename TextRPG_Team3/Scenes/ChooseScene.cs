@@ -58,6 +58,7 @@ namespace TextRPG_Team3.Scenes
             playerStat.MP = playerStat.MaxMP;
             playerStat.CriticalRate = characterJob.CriticalRate;
             playerStat.AccuracyRate = characterJob.AccuracyRate;
+            playerStat.CriticalDamageRate = characterJob.CriticalDamageRate;
             
             foreach (int skillId in characterJob.BaseSkillSet)
             {
