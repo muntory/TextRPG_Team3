@@ -41,28 +41,38 @@ namespace TextRPG_Team3.Scenes
                 string badgeName = null;
                 switch (GameManager.CurrentStage)
                 {
-                    case 10:
-                        badgeName = "파란뱃지";
+                    case 10: badgeName = "파란뱃지"; 
                         break;
-                    case 20:
-                        badgeName = "노란뱃지";
+                    case 20: badgeName = "노란뱃지"; 
                         break;
-                    case 30:
-                        badgeName = "빨간뱃지";
+                    case 30: badgeName = "빨간뱃지"; 
                         break;
-                    case 40:
-                        badgeName = "초록뱃지";
+                    case 40: badgeName = "초록뱃지"; 
                         break;
-                    case 50:
-                        badgeName = "보라뱃지";
+                    case 50: badgeName = "보라뱃지"; 
                         break;
-
                 }
-                if (badgeName != null)
+
+                
+                bool alreadyHaveBadge = false; // 아직 뱃지가 없음
+
+                foreach (Badge badge in GameManager.Instance.BadgeList) // 뱃지 리스트 돌기
+                {
+                    if (badge.Name == badgeName)   // 이름이 같은지 비교
+                    {
+                        alreadyHaveBadge = true;  //같은 이름이 있다면 true변경
+                        break;                  
+                    }
+                }
+
+               
+                if (!alreadyHaveBadge && badgeName != null) // alreadyHaveBadge가 false이고 badgeName가 null이 아니면
                 {
                     Badge badge = new Badge(badgeName);
                     GameManager.Instance.BadgeList.Add(badge);
                 }
+
+
             }
 
 
@@ -146,15 +156,13 @@ namespace TextRPG_Team3.Scenes
                     RenderHelper.WriteLine($"{equipment}\n", ConsoleColor.DarkGray);
                 }
             }
-            if ((GameManager.CurrentStage - 1) % 10 == 0)
+            if (GameManager.CurrentStage % 10 == 0 && GameManager.CurrentStage <= 50)
             {
                 var badgeList = GameManager.Instance.BadgeList;
-                if (badgeList.Count > 0)
+                if (badgeList.Count > 0 && badgeList.Last().Name != null)
                 {
-                    Badge badge = badgeList[badgeList.Count - 1];
-                    RenderHelper.WriteLine();
-                    RenderHelper.Write("뱃지 획득!\t: ");
-                    RenderHelper.WriteLine($"{badge.Name}", ConsoleColor.Yellow);
+                    Badge badge = badgeList.Last();
+                    RenderHelper.WriteLine("뱃지 획득!\t: " + badge.Name, ConsoleColor.Yellow);
                 }
             }
             RenderHelper.WriteLine("------------------------------------------\n");
