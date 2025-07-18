@@ -28,7 +28,7 @@ namespace TextRPG_Team3.Managers
                     if (quest == null) continue;
                     if (quest.QuestType == "Kill")
                     {
-                        quest.Goal = new KillEnemyQuest(quest.GoalData.GoalEnemyID, quest.GoalData.GoalAmount);
+                        quest.Goal = new KillEnemyQuest(quest.GoalData.GoalEnemyTier, quest.GoalData.GoalAmount);
                     }
                     else if (quest.QuestType == "Equip")
                     {
@@ -77,13 +77,13 @@ namespace TextRPG_Team3.Managers
             }
         }
 
-        public void OnEnemyKilled(int ID)
+        public void OnEnemyKilled(int tier)
         {
             foreach (Quest quest in ActiveQuests)
             {
                 if (quest.Goal is KillEnemyQuest killGoal)
                 {
-                    killGoal.OnEnemyKilled(ID);
+                    killGoal.OnEnemyKilled(tier);
                 }
             }
         }

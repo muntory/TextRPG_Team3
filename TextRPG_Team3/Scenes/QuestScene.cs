@@ -72,7 +72,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine();
             if (quest.Goal is KillEnemyQuest killQuest)
             {
-                RenderHelper.Write($"- {ResourceManager.Instance.GetEnemyData(quest.GoalData.GoalEnemyID).Name} ", ConsoleColor.Yellow);
+                RenderHelper.Write($"- {quest.GoalData.GoalEnemyTier}티어 몬스터 ", ConsoleColor.Yellow);
                 RenderHelper.Write($"{killQuest.GoalAmount}", ConsoleColor.Yellow);
                 RenderHelper.Write($"마리 쓰러뜨리기! ({killQuest.CurrentAmount}/{killQuest.GoalAmount})\n", ConsoleColor.Yellow);
             }

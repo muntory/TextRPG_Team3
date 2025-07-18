@@ -46,7 +46,6 @@ namespace TextRPG_Team3.Managers
             }
         }
 
-
         public void GenerateStage(int currentStage)
         {
             if (CurrentEnemies != null) return;

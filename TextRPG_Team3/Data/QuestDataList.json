@@ -1,15 +1,15 @@
 [
     {
         "ID": 1,
-        "QuestName": "마을의 장난꾼, 피카츄!",
-        "QuestDescription": "어머나, 마을 근처에 피카츄들이 몰려와서 자꾸 감전 장난을 치고 있대요!\n아이들이 깜짝 놀라 도망가고, 가끔은 감자튀김도 태운다니까요!\n모험가님~ 혹시 시간 되시면 피카츄 친구들 좀 달래서 다른 데로 보내줄 수 있나요?\n마을이 다시 조용해지면 감사의 선물도 드릴게요!",
+        "QuestName": "마을의 장난꾸러기들!",
+        "QuestDescription": "요즘 마을 근처가 시끌시끌하죠?\n피카츄, 꼬부기, 파이리, 그리고 그 친구들이 모여서 하루 종일 뛰어놀고 있대요!\n아이들은 좋아하지만, 가게 간판이 넘어가고 감자튀김도 몇 번이나 태워먹었지 뭐예요!\n모험가님, 혹시 시간 되시면 장난꾸러기 친구들을 살~짝 진정시켜주실 수 있을까요?\n마을이 다시 평화로워지면 감사의 마음을 담아 작은 선물도 드릴게요!",
         "GoldReward": 2000,
         "ItemRewardID": 1,
         "ItemAmount": 1,
         "IsAccepted": false,
         "QuestType": "Kill",
         "GoalData": {
-            "GoalEnemyID": 1,
+            "GoalEnemyTier": 1,
             "GoalAmount": 5
         },
         "IsCleared": false

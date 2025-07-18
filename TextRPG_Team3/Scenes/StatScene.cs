@@ -22,15 +22,15 @@ namespace TextRPG_Team3.Scenes
             RenderHelper.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})", RenderHelper.GetPlayerColor());
             RenderHelper.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}",RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write("경험치\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.exp}", 7), RenderHelper.GetStatColor(Enums.StatType.Level));
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.exp}", 9), RenderHelper.GetStatColor(Enums.StatType.Level));
             RenderHelper.Write($"공격력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}", 7), RenderHelper.GetStatColor(Enums.StatType.Attack));
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Attack));
             RenderHelper.Write($"방어력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}", 7), RenderHelper.GetStatColor(Enums.StatType.Defense));
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}", 9), RenderHelper.GetStatColor(Enums.StatType.Defense));
             RenderHelper.Write($"체력\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.Health}", 7), RenderHelper.GetStatColor(Enums.StatType.Health));
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Stat.Health}", 9), RenderHelper.GetStatColor(Enums.StatType.Health));
             RenderHelper.Write($"Gold\t:", ConsoleColor.White);
-            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 7), ConsoleColor.DarkYellow);
+            RenderHelper.WriteLine(RenderHelper.AlignRightWithPadding($"{GameManager.Instance.Player.Gold} G", 9), ConsoleColor.DarkYellow);
             Console.WriteLine();
 
             Console.WriteLine("1. 인벤토리");
