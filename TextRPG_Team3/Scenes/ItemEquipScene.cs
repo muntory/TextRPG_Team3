@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
@@ -9,6 +10,8 @@ namespace TextRPG_Team3.Scenes
 {
     internal class ItemEquipScene : BaseScene
     {
+        List<int> ItemIDs = ItemManager.Instance.AllHaveItemIDs();
+
         public override void Render()
         {
             base.Render();
@@ -16,7 +19,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine("인벤토리 - 장착관리");
             Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
 
-            List<int> ItemIDs = ItemManager.Instance.AllHaveItemIDs();
+
 
             if (ItemIDs.Count == 0)
             {
@@ -47,7 +50,7 @@ namespace TextRPG_Team3.Scenes
                         else if (itemData.StatType == Enums.StatType.Health)
                             statType = "체력";
 
-                        Console.WriteLine($"- {i+1} {itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");
+                        Console.WriteLine($"- {i + 1} {itemData.Name} {itemCountInterface} | {statType} + {itemData.Value} | {itemData.Description}");
                     }
                 }
             }
@@ -56,7 +59,24 @@ namespace TextRPG_Team3.Scenes
 
         public override void SelectMenu(int input)
         {
-            base.SelectMenu(input);
+            if (0 > input || input > ItemIDs.Count)
+            {
+                msg = "잘못된 입력입니다.";
+                return;
+            }
+
+            Enums.ItemEquipMenu itemMenu = (Enums.ItemEquipMenu)input;
+            switch (itemMenu)
+            {
+                case Enums.ItemEquipMenu.Out:
+                    SceneManager.Instance.PreviousScene = SceneManager.Instance.CurrentScene;
+                    SceneManager.Instance.CurrentScene = new PlayerPhaseScene();
+                    break;
+
+                default:
+
+                    break;
+            }
         }
     }
 }
