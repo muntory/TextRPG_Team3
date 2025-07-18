@@ -45,7 +45,9 @@ namespace TextRPG_Team3.Scenes
             GameManager.Instance.MaxExperience();
             CharacterStatComponent Exp = new CharacterStatComponent();
 
-        
+            Random random = new Random();
+
+            double chance = random.NextDouble();
 
             Console.WriteLine("\n============== Battle Result ==============\n");
             Console.WriteLine("               [  VICTORY  ]                \n");
