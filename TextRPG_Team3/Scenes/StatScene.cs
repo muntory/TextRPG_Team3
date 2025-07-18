@@ -25,8 +25,8 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"경험치 : {GameManager.Instance.Player.Stat.exp}");
             Console.WriteLine($"공격력 : {GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}");
             Console.WriteLine($"방어력 : {GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}");
-            Console.WriteLine($"체력 : {GameManager.Instance.Player.Stat.Health}");
-            Console.WriteLine($"Gold : {GameManager.Instance.Player.Gold} G");
+            Console.WriteLine($"체력   : {GameManager.Instance.Player.Stat.Health}");
+            Console.WriteLine($"Gold   : {GameManager.Instance.Player.Gold} G");
             Console.WriteLine();
 
             Console.WriteLine("1. 인벤토리");
