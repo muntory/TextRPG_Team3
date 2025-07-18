@@ -18,11 +18,9 @@ namespace TextRPG_Team3.Scenes
             base.Render();
 
             RenderHelper.WriteLine("인벤토리 - 장착관리",ConsoleColor.DarkYellow);
-            RenderHelper.WriteLine("보유 중인 아이템을 관리할 수 있습니다.", ConsoleColor.DarkGray);
-            Console.WriteLine();
-
-            RenderHelper.WriteLine("==========================================================================================================",ConsoleColor.DarkGray);
-            Console.WriteLine();
+            RenderHelper.WriteLine("보유 중인 아이템을 관리할 수 있습니다.", ConsoleColor.White);
+            
+            RenderHelper.MakeLine();
 
             if (ItemIDs.Count == 0)
             {
@@ -48,7 +46,7 @@ namespace TextRPG_Team3.Scenes
                         // 스탯 타입 한글로 반환
                         string statType = "";
 
-                        RenderHelper.Write($"- {i + 1} {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ",ConsoleColor.White);
+                        RenderHelper.Write($"- {i + 1}. {RenderHelper.AlignLeftWithPadding(equipped + itemData.Name, 17)} {RenderHelper.AlignLeftWithPadding(itemCountInterface, 3)} | ",ConsoleColor.White);
 
                         if (itemData.StatType == Enums.StatType.Attack)
                         {
@@ -70,11 +68,9 @@ namespace TextRPG_Team3.Scenes
                     }
                 }
             }
-            Console.WriteLine();
-            RenderHelper.WriteLine("==========================================================================================================", ConsoleColor.DarkGray);
-            Console.WriteLine();
+            RenderHelper.MakeLine();
 
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("0. 나가기",ConsoleColor.White);
             Console.WriteLine();
             PrintMsg();
         }

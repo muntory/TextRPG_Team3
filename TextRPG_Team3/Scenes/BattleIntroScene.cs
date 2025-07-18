@@ -39,9 +39,9 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"MP {stat.MP}/{stat.MaxMP}");
             Console.WriteLine();
             
-            Console.WriteLine("1. 공격");
-            Console.WriteLine("2. 스킬");
-            Console.WriteLine("3. 아이템");
+            RenderHelper.WriteLine("1. 공격", ConsoleColor.Yellow);
+            RenderHelper.WriteLine("2. 스킬", ConsoleColor.Cyan);
+            RenderHelper.WriteLine("3. 아이템", ConsoleColor.White);
 
             Console.WriteLine();
         }
@@ -70,6 +70,7 @@ namespace TextRPG_Team3.Scenes
         }
         private void WriteLineEnemyInfo(EnemyCharacter enemy)
         {
+
             string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
 
             if (enemy.IsAlive)

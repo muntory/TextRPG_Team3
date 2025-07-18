@@ -59,7 +59,7 @@ namespace TextRPG_Team3.Scenes
                 }
             }
             Console.WriteLine();
-            Console.WriteLine("0. 나가기");
+            RenderHelper.WriteLine("0. 나가기",ConsoleColor.White);
             Console.WriteLine();
         }
         private void RenderQuest(int index)
@@ -100,19 +100,19 @@ namespace TextRPG_Team3.Scenes
 
             if (!quest.IsAccepted)
             {
-                Console.WriteLine("1. 수락");
-                Console.WriteLine("2. 거절");
+                RenderHelper.WriteLine("1. 수락",ConsoleColor.White);
+                RenderHelper.WriteLine("2. 거절", ConsoleColor.White);
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("이미 수락한 퀘스트입니다.");
+                RenderHelper.WriteLine("이미 수락한 퀘스트입니다.", ConsoleColor.Red);
                 Console.WriteLine();
                 if (quest.IsCompleted)
                 {
-                    Console.WriteLine("1. 보상 받기");
+                    RenderHelper.WriteLine("1. 보상 받기", ConsoleColor.White);
                 }
-                Console.WriteLine("0. 나가기");
+                RenderHelper.WriteLine("0. 나가기", ConsoleColor.White);
                 Console.WriteLine();
             }
         }
