@@ -73,6 +73,7 @@ namespace TextRPG_Team3.Scenes
 
             string str = $"LV.{enemy.Stat.Level} {RenderHelper.AlignLeftWithPadding(enemy.Name, 14)} {(enemy.IsAlive ? $"HP {enemy.Stat.Health}" : "Dead")}";
 
+
             if (enemy.IsAlive)
             {
                 Console.WriteLine(str);
