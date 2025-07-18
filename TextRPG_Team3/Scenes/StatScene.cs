@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_Team3.Managers;
+using TextRPG_Team3.Stat;
 
 namespace TextRPG_Team3.Scenes
 {
@@ -14,13 +15,15 @@ namespace TextRPG_Team3.Scenes
             base.Render();
             string extraAttackStr = (GameManager.Instance.Player.Stat.ExtraAttack == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraAttack}";
             string extraDefenseStr = (GameManager.Instance.Player.Stat.ExtraDefense == 0) ? "" : $" + {GameManager.Instance.Player.Stat.ExtraDefense}";
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다.");
             Console.WriteLine();
 
             Console.WriteLine($"{GameManager.Instance.Player.Name} ({GameManager.Instance.Player.RootClass})");
             Console.WriteLine($"Lv. {GameManager.Instance.Player.Stat.Level}");
-            Console.WriteLine($"경험치 : {GameManager.Instance.Player.Stat.exp}");
+            Console.WriteLine($"경험치 : {playerStat.Exp}");
             Console.WriteLine($"공격력 : {GameManager.Instance.Player.Stat.BaseAttack}{extraAttackStr}");
             Console.WriteLine($"방어력 : {GameManager.Instance.Player.Stat.BaseDefense}{extraDefenseStr}");
             Console.WriteLine($"체력 : {GameManager.Instance.Player.Stat.Health}");

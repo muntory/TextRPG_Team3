@@ -6,6 +6,10 @@ public class Enums
         Attack,
         Defense,
         Health,
+        CriticalRate,
+        CriticalDamageRate,
+        MP,
+        ExpRate,
     }
 
     public enum AttackType
@@ -20,6 +24,7 @@ public class Enums
         Battle = 2, 
         Quest = 3,
         Potion = 4,
+        RefineBadge,
     }
 
     public enum CenterMenu

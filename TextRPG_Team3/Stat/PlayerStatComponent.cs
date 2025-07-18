@@ -17,6 +17,28 @@ namespace TextRPG_Team3.Stat
             set { mp = Math.Clamp(value, 0, MaxMP); }
         }
 
+        
+
+        private double expRate;
+        public double ExpRate
+        {
+            get { return expRate; }
+            set
+            {
+                expRate = value;
+            }
+        }
+
+        private double exp;
+        public double Exp
+        {
+            get { return exp; }
+            set
+            {
+                exp = value * ExpRate;
+            }
+        }
+
         public double CriticalRate;
         public double AccuracyRate;
         public double CriticalDamageRate;
@@ -28,7 +50,8 @@ namespace TextRPG_Team3.Stat
             CriticalRate = 0.15;
             AccuracyRate = 0.9;
             CriticalDamageRate = 1.6;
-
+            ExpRate = 1.0;
+            Exp = 0.0;
         }
 
 

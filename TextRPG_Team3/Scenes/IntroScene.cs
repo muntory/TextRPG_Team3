@@ -23,6 +23,7 @@ namespace TextRPG_Team3.Scenes
             Console.WriteLine($"2. 전투 시작 (현재 진행 : {GameManager.CurrentStage}층)");
             Console.WriteLine("3. 퀘스트");
             Console.WriteLine("4. 포켓몬 센터");
+            Console.WriteLine("5. 배지 정제하기");
             Console.WriteLine();
 
             PrintMsg();
@@ -46,6 +47,9 @@ namespace TextRPG_Team3.Scenes
                     break;
                 case Enums.IntroMenu.Potion:
                     SceneManager.Instance.CurrentScene = new PokemonCenterScene();
+                    break;
+                case Enums.IntroMenu.RefineBadge:
+                    SceneManager.Instance.CurrentScene = new BadgeRefineScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
