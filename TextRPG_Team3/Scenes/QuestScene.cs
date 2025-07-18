@@ -86,7 +86,6 @@ namespace TextRPG_Team3.Scenes
                 RenderHelper.Write($"{levelQuest.CurrentLevel}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
                 //RenderHelper.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
             }
-
             Console.WriteLine();
             RenderHelper.WriteLine("- 보상",ConsoleColor.DarkYellow);
             if(quest.ItemRewardID != -1)
