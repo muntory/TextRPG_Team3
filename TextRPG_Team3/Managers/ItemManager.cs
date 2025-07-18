@@ -60,10 +60,6 @@ namespace TextRPG_Team3.Managers
         void AddStartingItems()
         {
             AddItem(100, 3);
-            AddItem(1, 1);
-            AddItem(2, 1);
-            AddItem(3, 1);
-            AddItem(4, 1);
         }
 
         // 아이템 정보 받아오는 메서드
