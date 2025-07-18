@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using TextRPG_Team3.Character;
 using TextRPG_Team3.Data;
+using TextRPG_Team3.Item;
 using TextRPG_Team3.Managers;
 using TextRPG_Team3.Scenes;
 using TextRPG_Team3.Stat;
@@ -67,6 +68,7 @@ namespace TextRPG_Team3.Utils
             CurrentAmount = currentAmount;
         }
     }
+
     
     public class SaveAndLoad
     {
@@ -76,11 +78,15 @@ namespace TextRPG_Team3.Utils
             PlayerSaveData playerData = new PlayerSaveData();
             List<ItemSaveData> itemData = new List<ItemSaveData>();
             List<QuestSaveData> questData = new List<QuestSaveData>();
+            List<Badge> badgeData = new List<Badge>();
+            SavePlayer(playerData);
             SaveQuest(questData);
             SaveItem(itemData);
+            SaveBadge(badgeData);
             ResourceManager.Instance.SaveJsonData(savePath + "PlayerSave.json", playerData);
             ResourceManager.Instance.SaveJsonData(savePath + "ItemSave.json", itemData);
             ResourceManager.Instance.SaveJsonData(savePath + "QuestSave.json", questData);
+            ResourceManager.Instance.SaveJsonData(savePath + "BadgeSave.json", badgeData);
         }
         public void SavePlayer(PlayerSaveData playerData)
         {
@@ -138,6 +144,10 @@ namespace TextRPG_Team3.Utils
                 ItemSaveData item = new ItemSaveData(i, amount, isEquipped);
                 itemData.Add(item);
             }
+        }
+        public void SaveBadge(List<Badge> badgeData)
+        {
+
         }
 
         public void Load()
@@ -243,5 +253,4 @@ namespace TextRPG_Team3.Utils
             }
         }
     }
-
 }
