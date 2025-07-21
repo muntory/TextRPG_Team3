@@ -260,6 +260,10 @@ namespace TextRPG_Team3.Utils
                 {
                     levelUpQuest.CurrentLevel = GameManager.Instance.Player.Stat.Level;
                 }
+                if (quest.IsAccepted && !quest.IsCleared)
+                {
+                    QuestManager.Instance.ActivateQuest(quest.QuestID);
+                }
             }
         }
         private void ApplyBadgeData(List<Badge> badges)
