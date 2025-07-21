@@ -83,7 +83,7 @@ namespace TextRPG_Team3.Scenes
             else if(quest.Goal is LevelUpQuest levelQuest)
             {
                 RenderHelper.Write($"- 레벨{levelQuest.GoalLevel} 달성하기! ", ConsoleColor.Yellow);
-                RenderHelper.Write($"{GameManager.Instance.Player.Stat.Level}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
+                RenderHelper.Write($"{levelQuest.CurrentLevel}/{levelQuest.GoalLevel}\n", ConsoleColor.Yellow);
             }
             Console.WriteLine();
             RenderHelper.WriteLine("- 보상",ConsoleColor.DarkYellow);
