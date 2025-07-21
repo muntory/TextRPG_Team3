@@ -43,6 +43,7 @@ namespace TextRPG_Team3.Scenes
             switch (loseScene)
             {
                 case Enums.LoseScene.Next:
+                    GameManager.Instance.Player.IsAlive = true;
                     SceneManager.Instance.CurrentScene = new IntroScene();
                     break;
                 default:
