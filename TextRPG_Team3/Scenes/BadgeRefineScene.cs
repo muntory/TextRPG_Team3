@@ -347,8 +347,8 @@ namespace TextRPG_Team3.Scenes
                             playerStat.DefenseMultiplier -= data.Value;
                             break;
                         case Enums.StatType.Health:
+                            playerStat.MaxHealth = (int)(playerStat.MaxHealth / playerStat.HealthMultiplier);
                             playerStat.HealthMultiplier -= data.Value;
-                            playerStat.MaxHealth = (int)(playerStat.MaxHealth * playerStat.HealthMultiplier);
                             playerStat.Health = playerStat.Health;
                             break;
                         default:
