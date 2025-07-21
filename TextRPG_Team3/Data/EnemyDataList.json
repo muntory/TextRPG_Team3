@@ -1,0 +1,542 @@
+[
+    {
+        "ID": 1,
+        "Name": "피카츄",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 2,
+        "Name": "이브이",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 3,
+        "Name": "꼬부기",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 4,
+        "Name": "파이리",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 5,
+        "Name": "이상해씨",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 6,
+        "Name": "캐터피",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 7,
+        "Name": "구구",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 8,
+        "Name": "뚜벅쵸",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 9,
+        "Name": "또가스",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 10,
+        "Name": "발챙이",
+        "Tier": 1,
+        "HP": 30,
+        "Attack": 6.0,
+        "Defense": 0.5,
+        "Gold": 50
+    },
+    {
+        "ID": 11,
+        "Name": "라이츄",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 12,
+        "Name": "샤미드",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 13,
+        "Name": "거북왕",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 14,
+        "Name": "리자드",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 15,
+        "Name": "이상해풀",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 16,
+        "Name": "단데기",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 17,
+        "Name": "피죤",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 18,
+        "Name": "냄새꼬",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 19,
+        "Name": "또도가스",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 20,
+        "Name": "슈륙챙이",
+        "Tier": 2,
+        "HP": 36,
+        "Attack": 7.8,
+        "Defense": 0.7,
+        "Gold": 62
+    },
+    {
+        "ID": 21,
+        "Name": "고지",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 22,
+        "Name": "브이젤",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 23,
+        "Name": "어니부기",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 24,
+        "Name": "리자드나",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 25,
+        "Name": "이상해꽃",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 26,
+        "Name": "도나리",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 27,
+        "Name": "피죤투",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 28,
+        "Name": "라플레시아",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 29,
+        "Name": "또가스킹",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 30,
+        "Name": "강챙이",
+        "Tier": 3,
+        "HP": 43,
+        "Attack": 10.1,
+        "Defense": 1.0,
+        "Gold": 78
+    },
+    {
+        "ID": 31,
+        "Name": "마그카르고",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 32,
+        "Name": "쥬피썬더",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 33,
+        "Name": "코리갑",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 34,
+        "Name": "마그마번",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 35,
+        "Name": "다탱구",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 36,
+        "Name": "밀로틱",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 37,
+        "Name": "버터플",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 38,
+        "Name": "도우미",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 39,
+        "Name": "코코파스",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 40,
+        "Name": "폴리곤",
+        "Tier": 4,
+        "HP": 51,
+        "Attack": 13.2,
+        "Defense": 1.4,
+        "Gold": 97
+    },
+    {
+        "ID": 41,
+        "Name": "헬가",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 42,
+        "Name": "샤크니아",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 43,
+        "Name": "마기라스",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 44,
+        "Name": "가디안",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 45,
+        "Name": "나인테일",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 46,
+        "Name": "앰페르트",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 47,
+        "Name": "야도란",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 48,
+        "Name": "기라티나",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 49,
+        "Name": "파르셀",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 50,
+        "Name": "레지락",
+        "Tier": 5,
+        "HP": 62,
+        "Attack": 17.1,
+        "Defense": 1.9,
+        "Gold": 122
+    },
+    {
+        "ID": 51,
+        "Name": "보만다",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 52,
+        "Name": "한카리아스",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 53,
+        "Name": "드래펄트",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 54,
+        "Name": "루기아",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 55,
+        "Name": "칠색조",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 56,
+        "Name": "디아루가",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 57,
+        "Name": "펄기아",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 58,
+        "Name": "레쿠쟈",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 59,
+        "Name": "뮤츠",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    },
+    {
+        "ID": 60,
+        "Name": "뮤",
+        "Tier": 6,
+        "HP": 74,
+        "Attack": 22.3,
+        "Defense": 2.7,
+        "Gold": 152
+    }
+]

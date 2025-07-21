@@ -1,0 +1,151 @@
+[
+    {
+        "Id": 1,
+        "Name": "튼튼 갑옷",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 5,
+        "IsEquipped": false,
+        "Description": "단단한 광석으로 만들어져 방어력을 높여주는 갑옷입니다."
+    },
+
+    {
+        "Id": 2,
+        "Name": "영웅 지팡이",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 7,
+        "IsEquipped": false,
+        "Description": "전설 속 트레이너들이 사용하던 지팡이입니다."
+    },
+
+    {
+        "Id": 3,
+        "Name": "낡은 몬스터볼",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 2,
+        "IsEquipped": false,
+        "Description": "오래되어 녹이 슨 몬스터볼입니다. 가끔 버그가 발생할 수 있습니다."
+    },
+
+    {
+        "Id": 4,
+        "Name": "챔피언복",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 9,
+        "IsEquipped": false,
+        "Description": "챔피언들이 입었던 전설적인 의상입니다. 위압감이 느껴집니다."
+    },
+
+    {
+        "Id": 5,
+        "Name": "베테랑 채찍",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 10,
+        "IsEquipped": false,
+        "Description": "많은 포켓몬을 훈련시킨 베테랑 트레이너가 사용하던 채찍입니다."
+    },
+
+    {
+        "Id": 6,
+        "Name": "엘리트복",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 13,
+        "IsEquipped": false,
+        "Description": "엘리트 트레이너들이 입는 유니폼입니다. 착용자의 기백을 높여줍니다."
+    },
+
+    {
+        "Id": 7,
+        "Name": "관장 지팡이",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 15,
+        "IsEquipped": false,
+        "Description": "체육관 관장이 사용하는 지팡이로, 특별한 에너지가 흐르고 있습니다."
+    },
+
+    {
+        "Id": 8,
+        "Name": "사천왕 망토",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 15,
+        "IsEquipped": false,
+        "Description": "사천왕이 두르던 망토로, 착용자를 신비롭게 감싸줍니다."
+    },
+
+    {
+        "Id": 9,
+        "Name": "포켓몬 뿔",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 7,
+        "IsEquipped": false,
+        "Description": "야생 포켓몬의 뿔로 만든 도구입니다. 날이 많이 무뎌졌습니다."
+    },
+
+    {
+        "Id": 10,
+        "Name": "용비늘 갑옷",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 15,
+        "IsEquipped": false,
+        "Description": "드래곤 포켓몬의 비늘로 만든 갑옷입니다. 매우 튼튼하고 따뜻합니다."
+    },
+
+    {
+        "Id": 11,
+        "Name": "신비 비늘갑",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 14,
+        "IsEquipped": false,
+        "Description": "희귀한 신비한 비늘로 만든 갑옷입니다. 알 수 없는 힘이 느껴집니다."
+    },
+
+    {
+        "Id": 12,
+        "Name": "강철 방패",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 11,
+        "IsEquipped": false,
+        "Description": "강철로 만든 방패입니다. 단단해서 공격을 잘 막아줍니다."
+    },
+
+    {
+        "Id": 13,
+        "Name": "용이빨 단검",
+        "Type": "Weapon",
+        "StatType": "Attack",
+        "Value": 14,
+        "IsEquipped": false,
+        "Description": "드래곤 포켓몬의 이빨로 만든 단검입니다. 매우 날카롭습니다."
+    },
+
+    {
+        "Id": 14,
+        "Name": "학자 로브",
+        "Type": "Armor",
+        "StatType": "Defense",
+        "Value": 4,
+        "IsEquipped": false,
+        "Description": "포켓몬 학자들이 연구할 때 입는 로브입니다. 특별한 효과는 없습니다."
+    },
+
+    {
+        "Id": 100,
+        "Name": "상처약",
+        "Type": "Potion",
+        "StatType": "Health",
+        "Value": 30,
+        "IsEquipped": false,
+        "Description": "포켓몬의 체력을 30 회복시킵니다."
+    }
+]

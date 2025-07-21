@@ -1,0 +1,46 @@
+[
+    {
+        "ID": 1,
+        "QuestName": "마을의 장난꾸러기들!",
+        "QuestDescription": "요즘 마을 근처가 시끌시끌하죠?\n피카츄, 꼬부기, 파이리, 그리고 그 친구들이 모여서 하루 종일 뛰어놀고 있대요!\n아이들은 좋아하지만, 가게 간판이 넘어가고 감자튀김도 몇 번이나 태워먹었지 뭐예요!\n모험가님, 혹시 시간 되시면 장난꾸러기 친구들을 살~짝 진정시켜주실 수 있을까요?\n마을이 다시 평화로워지면 감사의 마음을 담아 작은 선물도 드릴게요!",
+        "GoldReward": 2000,
+        "ItemRewardID": 1,
+        "ItemAmount": 1,
+        "IsAccepted": false,
+        "QuestType": "Kill",
+        "GoalData": {
+            "GoalEnemyTier": 1,
+            "GoalAmount": 5
+        },
+        "IsCleared": false
+    },
+
+    {
+        "ID": 2,
+        "QuestName": "새 옷을 입어봐요!",
+        "QuestDescription": "모험가님~ 방금 도착한 택배예요!\n새로 만든 튼튼한 갑옷인데, 사이즈가 딱 모험가님한테 맞을 것 같더라구요!\n전투 나가기 전에 한 번 입어보는 게 어때요? 편하면 그냥 쓰셔도 좋아요!\n안전이 제일 중요하니까요~ 후훗!",
+        "GoldReward": 1000,
+        "ItemRewardID": -1,
+        "ItemAmount": 0,
+        "IsAccepted": false,
+        "QuestType": "Equip",
+        "GoalData": {
+            "GoalItemID": 1
+        },
+        "IsCleared": false
+    },
+    {
+        "ID": 3,
+        "QuestName": "한층 더 멋져지기!",
+        "QuestDescription": "모험가님, 요즘 뭔가 더 반짝반짝해졌어요!\n몸놀림도 날렵해지고 표정도 자신감이 넘치는데요?\n사실 비밀 무기를 하나 준비해뒀는데요, 아직은 조금 이르다고 생각했거든요.\n하지만 지금이라면... 딱 잘 어울릴 것 같아요!\n조금만 더 모험을 해보면 분명 완벽해질 거예요!",
+        "GoldReward": 3000,
+        "ItemRewardID": 5,
+        "ItemAmount": 1,
+        "IsAccepted": false,
+        "QuestType": "Level",
+        "GoalData": {
+            "GoalLevel": 5
+        },
+        "IsCleared": false
+    }
+]
