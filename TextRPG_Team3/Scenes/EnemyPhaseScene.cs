@@ -86,6 +86,7 @@ namespace TextRPG_Team3.Scenes
 
             if (!GameManager.Instance.Player.IsAlive)
             {
+                SpawnManager.Instance.CurrentEnemies = null;
                 SceneManager.Instance.CurrentScene = new LoseScene();
                 return;
             }
