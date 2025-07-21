@@ -200,9 +200,9 @@
 
     {
         "ID": 23,
-        "Description": "크리티컬 확률 +9%",
+        "Description": "크리티컬 확률 +10%",
         "StatType": "CriticalRate",
-        "Value": 0.09,
+        "Value": 0.1,
         "IsPercent": false,
         "Chance": 0.05,
         "Rarity": 2
