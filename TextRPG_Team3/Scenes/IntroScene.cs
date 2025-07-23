@@ -43,6 +43,11 @@ namespace TextRPG_Team3.Scenes
                     SceneManager.Instance.CurrentScene = new StatScene();
                     break;
                 case Enums.IntroMenu.Battle:
+                    if (GameManager.Instance.Player.Stat.Health < 1)
+                    {
+                        msg = "체력이 부족합니다. 회복 후 다시 도전하세요!!";
+                        break;
+                    }
                     SceneManager.Instance.CurrentScene = new BattleIntroScene();
                     break;
                 case Enums.IntroMenu.Quest:

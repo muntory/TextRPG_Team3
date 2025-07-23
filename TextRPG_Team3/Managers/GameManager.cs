@@ -23,7 +23,6 @@ namespace TextRPG_Team3.Managers
             {
                 instance = this;
             }
-
         }
         public bool CheckVictory(List<EnemyCharacter> enemies)
         {

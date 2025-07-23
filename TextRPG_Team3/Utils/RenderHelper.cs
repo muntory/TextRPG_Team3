@@ -61,6 +61,15 @@ namespace TextRPG_Team3.Utils
                 case Enums.StatType.Health:
                     color = ConsoleColor.Red;
                     break;
+                case Enums.StatType.CriticalDamageRate:
+                    color = ConsoleColor.DarkGreen;
+                    break;
+                case Enums.StatType.CriticalRate:
+                    color = ConsoleColor.Green;
+                    break;
+                case Enums.StatType.MP:
+                    color = ConsoleColor.Blue;
+                    break;
                 default:
                     color = ConsoleColor.Gray;
                     break;

@@ -28,7 +28,7 @@ namespace TextRPG_Team3.Stat
         // 공격력 선언 (기본, 변동, 최종)
         public double BaseAttack;
         public double ExtraAttack = 0.0;
-        public double FinalAttack
+        public virtual double FinalAttack
         {
             get { return BaseAttack + ExtraAttack; }
         }
@@ -36,7 +36,7 @@ namespace TextRPG_Team3.Stat
         // 방어력 선언 (기본, 변동, 최종)
         public double BaseDefense;
         public double ExtraDefense = 0.0;
-        public double FinalDefense
+        public virtual double FinalDefense
         {
             get { return BaseDefense + ExtraDefense; }
         }

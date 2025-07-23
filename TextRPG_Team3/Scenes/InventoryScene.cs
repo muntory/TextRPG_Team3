@@ -65,8 +65,24 @@ namespace TextRPG_Team3.Scenes
                         }
 
                         RenderHelper.WriteLine(" | " + itemData.Description, ConsoleColor.White);
+                       
                     }
                 }
+                RenderHelper.MakeLine();
+                RenderHelper.WriteLine("[뱃지 목록]", ConsoleColor.White);
+                var badgeList = GameManager.Instance.BadgeList;
+                if (badgeList.Count == 0)
+                {
+                    RenderHelper.WriteLine("보유 중인 뱃지가 없습니다.", ConsoleColor.Gray);
+                }
+                else
+                {
+                    foreach (var badge in badgeList)
+                    {
+                        RenderHelper.WriteLine($"- {badge.Name}", ConsoleColor.Yellow);
+                    }
+                }
+
             }
             RenderHelper.MakeLine();
 

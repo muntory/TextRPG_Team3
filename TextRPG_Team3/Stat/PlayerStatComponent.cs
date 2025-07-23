@@ -39,9 +39,18 @@ namespace TextRPG_Team3.Stat
             }
         }
 
+
         public double CriticalRate;
         public double AccuracyRate;
         public double CriticalDamageRate;
+
+        public double AttackMultiplier;
+        public double HealthMultiplier;
+        public double DefenseMultiplier;
+        public double FinalDamageMultiplier;
+
+        public override double FinalAttack => base.FinalAttack * AttackMultiplier;
+        public override double FinalDefense => base.FinalDefense * DefenseMultiplier;
 
         public PlayerStatComponent() : base() 
         {
@@ -51,6 +60,13 @@ namespace TextRPG_Team3.Stat
             AccuracyRate = 0.9;
             CriticalDamageRate = 1.6;
             ExpRate = 1.0;
+            AttackMultiplier = 1.0;
+            HealthMultiplier = 1.0;
+            MaxHealth = (int)(MaxHealth * HealthMultiplier);
+            Health = MaxHealth;
+            DefenseMultiplier = 1.0;
+            FinalDamageMultiplier = 1.0;
+
             Exp = 0.0;
         }
 

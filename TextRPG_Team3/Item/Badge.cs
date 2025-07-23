@@ -8,9 +8,9 @@ namespace TextRPG_Team3.Item
 {
     public class Badge
     {
-        public int[] Effects;
-        public int Rarity = 0;
-        public string Name;
+        public int[] Effects { get; set; }
+        public int Rarity { get; set; }
+        public string Name { get; set; }
         public Badge(string Name = null) 
         { 
             this.Name = Name;

@@ -19,6 +19,7 @@ namespace TextRPG_Team3.Scenes
         private List<Badge> badgeList = GameManager.Instance.BadgeList;
         private Badge currentBadge = null;
 
+        int goldAmout;
         public BadgeRefineScene()
         {
             if (EffectsByRarity == null)
@@ -54,6 +55,7 @@ namespace TextRPG_Team3.Scenes
             if (currentBadge == null)
             {
                 RenderHelper.WriteLine("이곳에서 획득한 배지를 정제할 수 있지. 정제하면 놀라운 힘이 깃들 거야.", ConsoleColor.DarkYellow);
+                RenderHelper.WriteLine("정제하기 위해서는 골드가 필요하다네. [레어: 50G, 에픽: 70G, 유니크: 100G, 레전드리: 150G].", ConsoleColor.DarkYellow);
                 Console.WriteLine();
 
                 for (int i = 0; i < badgeList.Count; i++)
@@ -78,6 +80,9 @@ namespace TextRPG_Team3.Scenes
                 }
                 Console.WriteLine();
 
+                RenderHelper.WriteLine($"보유 골드: {GameManager.Instance.Player.Gold}", ConsoleColor.DarkYellow);
+                Console.WriteLine();
+
                 PrintMsg();
 
                 RenderHelper.WriteLine("0. 나가기");
@@ -98,6 +103,9 @@ namespace TextRPG_Team3.Scenes
                 Console.WriteLine();
 
                 PrintMsg();
+                RenderHelper.WriteLine($"{RenderHelper.AlignLeftWithPadding("[레어: 50G, 에픽: 70G, 유니크: 100G, 레전드리: 150G]", 50)}", ConsoleColor.DarkYellow);
+                RenderHelper.WriteLine($"보유 골드: {GameManager.Instance.Player.Gold}", ConsoleColor.DarkYellow);
+                Console.WriteLine();
 
                 RenderHelper.WriteLine("1. 계속 정제하기");
                 RenderHelper.WriteLine("0. 나가기");
@@ -162,7 +170,32 @@ namespace TextRPG_Team3.Scenes
 
         private void RefineBadge(Badge badge)
         {
-            
+            if (badge.Rarity == 0)
+            {
+                goldAmout = 50;
+            }
+            else if (badge.Rarity == 1)
+            {
+                goldAmout = 70;
+            }
+            else if (badge.Rarity == 2)
+            {
+                goldAmout = 100;
+            }
+            else if (badge.Rarity == 3)
+            {
+                goldAmout = 150;
+            }
+
+            if (GameManager.Instance.Player.Gold <  goldAmout)
+            {
+                msg = "보유한 골드가 부족합니다.";
+                return;
+            }
+
+            GameManager.Instance.Player.Gold -= goldAmout;
+
+
             // 만약 뱃지 효과가 있다면 효과 제거
             DeactiveEffect(badge);
 
@@ -227,8 +260,11 @@ namespace TextRPG_Team3.Scenes
             }
             return table.Last();
         }
-        private void ActiveEffect(Badge badge)
+        public static void ActiveEffect(Badge badge)
         {
+            if (badge == null || badge.Effects == null)
+                return;
+
             PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
 
             foreach (int id in badge.Effects)
@@ -239,25 +275,16 @@ namespace TextRPG_Team3.Scenes
                     switch (data.StatType)
                     {
                         case Enums.StatType.Attack:
-                            playerStat.BaseAttack += playerStat.BaseAttack * data.Value;
+                            playerStat.AttackMultiplier += data.Value;
                             break;
                         case Enums.StatType.Defense:
-                            playerStat.BaseDefense += playerStat.BaseDefense * data.Value;
-                            break;
-                        case Enums.StatType.MP:
-                            playerStat.MaxMP += (int)(playerStat.MaxMP * data.Value);
+                            playerStat.DefenseMultiplier += data.Value;
                             break;
                         case Enums.StatType.Health:
-                            playerStat.MaxHealth += (int)(playerStat.MaxHealth * data.Value);
+                            playerStat.HealthMultiplier += data.Value;
+                            playerStat.MaxHealth = (int)(playerStat.MaxHealth * playerStat.HealthMultiplier);
                             break;
-                        case Enums.StatType.CriticalDamageRate:
-                            playerStat.CriticalDamageRate += playerStat.CriticalDamageRate * data.Value;
-                            break;
-                        case Enums.StatType.CriticalRate:
-                            playerStat.CriticalRate += playerStat.CriticalRate * data.Value;
-                            break;
-                        case Enums.StatType.ExpRate:
-                            playerStat.ExpRate += playerStat.ExpRate * data.Value;
+                        default:
                             break;
                     }
                 }
@@ -286,22 +313,25 @@ namespace TextRPG_Team3.Scenes
                         case Enums.StatType.ExpRate:
                             playerStat.ExpRate += data.Value;
                             break;
+                        case Enums.StatType.FinalDamageMultiplier:
+                            playerStat.FinalDamageMultiplier += data.Value;
+                            break;
+                        default:
+                            break;
                     }
                 }
-
-
             }
-
         }
 
-        private void DeactiveEffect(Badge badge)
+        public static void DeactiveEffect(Badge badge)
         {
-            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
-
-            if (badge.Effects == null)
+            if (badge.Effects == null || badge.Effects == null)
             {
                 return;
             }
+
+            PlayerStatComponent playerStat = GameManager.Instance.Player.Stat as PlayerStatComponent;
+            
 
             foreach (int id in badge.Effects)
             {
@@ -311,26 +341,19 @@ namespace TextRPG_Team3.Scenes
                     switch (data.StatType)
                     {
                         case Enums.StatType.Attack:
-                            playerStat.BaseAttack -= playerStat.BaseAttack * data.Value;
+                            playerStat.AttackMultiplier -= data.Value;
                             break;
                         case Enums.StatType.Defense:
-                            playerStat.BaseDefense -= playerStat.BaseDefense * data.Value;
-                            break;
-                        case Enums.StatType.MP:
-                            playerStat.MaxMP -= (int)(playerStat.MaxMP * data.Value);
+                            playerStat.DefenseMultiplier -= data.Value;
                             break;
                         case Enums.StatType.Health:
-                            playerStat.MaxHealth -= (int)(playerStat.MaxHealth * data.Value);
+                            playerStat.MaxHealth = (int)(playerStat.MaxHealth / playerStat.HealthMultiplier);
+                            playerStat.HealthMultiplier -= data.Value;
+                            playerStat.Health = playerStat.Health;
                             break;
-                        case Enums.StatType.CriticalDamageRate:
-                            playerStat.CriticalDamageRate -= playerStat.CriticalDamageRate * data.Value;
+                        default:
                             break;
-                        case Enums.StatType.CriticalRate:
-                            playerStat.CriticalRate -= playerStat.CriticalRate * data.Value;
-                            break;
-                        case Enums.StatType.ExpRate:
-                            playerStat.ExpRate -= playerStat.ExpRate * data.Value;
-                            break;
+                        
                     }
                 }
                 else
@@ -357,6 +380,11 @@ namespace TextRPG_Team3.Scenes
                             break;
                         case Enums.StatType.ExpRate:
                             playerStat.ExpRate -= data.Value;
+                            break;
+                        case Enums.StatType.FinalDamageMultiplier:
+                            playerStat.FinalDamageMultiplier += data.Value;
+                            break;
+                        default:
                             break;
                     }
                 }

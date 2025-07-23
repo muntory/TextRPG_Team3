@@ -10,6 +10,7 @@ public class Enums
         CriticalDamageRate,
         MP,
         ExpRate,
+        FinalDamageMultiplier,
     }
 
     public enum AttackType

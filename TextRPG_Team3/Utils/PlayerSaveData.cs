@@ -29,6 +29,7 @@ namespace TextRPG_Team3.Utils
         public int JobID {  get; set; }
     }
 
+
     public class ItemSaveData
     {
         public int ItemID { get; set; }
@@ -259,6 +260,10 @@ namespace TextRPG_Team3.Utils
                 {
                     levelUpQuest.CurrentLevel = GameManager.Instance.Player.Stat.Level;
                 }
+                if (quest.IsAccepted && !quest.IsCleared)
+                {
+                    QuestManager.Instance.ActivateQuest(quest.QuestID);
+                }
             }
         }
         private void ApplyBadgeData(List<Badge> badges)
@@ -266,6 +271,7 @@ namespace TextRPG_Team3.Utils
             foreach(Badge badge in badges)
             {
                 GameManager.Instance.BadgeList.Add(badge);
+                BadgeRefineScene.ActiveEffect(badge);
             }
         }
     }

@@ -43,11 +43,15 @@ namespace TextRPG_Team3.Scenes
             switch (loseScene)
             {
                 case Enums.LoseScene.Next:
+                    GameManager.Instance.Player.IsAlive = true;
                     SceneManager.Instance.CurrentScene = new IntroScene();
                     break;
                 default:
                     msg = "잘못된 입력입니다.";
                     break;
+
+
+                    
             }
         }
     }
